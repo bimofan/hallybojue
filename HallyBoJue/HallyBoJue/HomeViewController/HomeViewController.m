@@ -7,8 +7,12 @@
 //
 
 #import "HomeViewController.h"
+#import "HomeSlideCell.h"
 
 @interface HomeViewController ()
+
+@property (nonatomic,strong) NSArray *slideTitles;
+
 
 @end
 
@@ -22,6 +26,30 @@
     
 }
 
+
+#
+
+#pragma mark - UITableViewDataSource
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    HomeSlideCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeSlideCell"];
+    
+    
+    
+    
+    
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
+}
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return _slideTitles.count;
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
