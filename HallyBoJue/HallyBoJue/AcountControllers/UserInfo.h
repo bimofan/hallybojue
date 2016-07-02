@@ -15,7 +15,7 @@
 +(BOOL)saveUserInfo:(Usermodel*)user;
 +(Usermodel*)getUserModel;
 +(BOOL)hadLogin;
-+(NSString*)getLevelString;
+
 
 
 @end

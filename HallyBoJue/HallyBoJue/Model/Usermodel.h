@@ -18,6 +18,10 @@
 @property (nonatomic,strong) NSString *real_name;
 @property(nonatomic,assign) int store_id;
 @property (nonatomic,assign) int level;
+@property(nonatomic,strong) NSString *level_name;
+@property (nonatomic,strong) NSString *level_desc;
+
+
 
 
 

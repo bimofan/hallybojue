@@ -53,7 +53,8 @@
     
     _realnameLabel.text = model.real_name;
     
-    _levelLabel.text = [UserInfo getLevelString];
+    _levelLabel.text = model.level_name ? model.level_name:@"";
+
     
     
     

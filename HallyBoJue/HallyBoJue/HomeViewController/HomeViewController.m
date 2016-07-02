@@ -11,18 +11,25 @@
 #import "LoginViewController.h"
 #import "HomeHeaderView.h"
 #import "FirstPageViewController.h"
+#import "YuyueViewController.h"
 
 
 
 CGFloat cellHeight = 70;
 
 @interface HomeViewController ()
+{
+    NSInteger selectedSection;
+    
+}
 
 @property (nonatomic,strong) NSArray *slideTitles;
 @property(nonatomic,strong) HomeHeaderView *homeHeaderView;
 @property(nonatomic,strong) UIView*selectedBackView;
 
 @property(nonatomic,strong) FirstPageViewController *firstpageController;
+@property(nonatomic,strong) YuyueViewController*yuyuepageController;
+
 
 
 
@@ -47,6 +54,9 @@ CGFloat cellHeight = 70;
     
     
      [_contentView addSubview:self.firstpageController.view];
+    
+    selectedSection = 0;
+    
     
     
 }
@@ -109,7 +119,7 @@ CGFloat cellHeight = 70;
     
 }
 
-#pragma mark － 初始化首页子页面
+#pragma mark － 首页子页面
 -(FirstPageViewController*)firstpageController
 {
     if (!_firstpageController) {
@@ -125,6 +135,22 @@ CGFloat cellHeight = 70;
     }
     
     return _firstpageController;
+    
+}
+
+#pragma mark - 预约管理
+-(YuyueViewController*)yuyuepageController
+{
+    if (!_yuyuepageController) {
+        
+        _yuyuepageController = [self.storyboard instantiateViewControllerWithIdentifier:@"YuyueViewController"];
+        
+        _yuyuepageController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+        
+    }
+    
+    
+    return _yuyuepageController;
     
 }
 
@@ -157,10 +183,7 @@ CGFloat cellHeight = 70;
     
     
 
-    
-    
-    
-    
+
     
     
     
@@ -206,7 +229,75 @@ CGFloat cellHeight = 70;
     [self setselected:indexPath.section];
     
     
+    [self switchSubPage:indexPath.section];
+    
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+}
+
+#pragma mark - 切换界面
+-(void)switchSubPage:(NSInteger)section
+{
+    
+    
+    if (section == selectedSection) {
+        
+        return;
+        
+    }
+    
+  
+    
+    for (UIView*view in self.contentView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    
+    switch (section) {
+        case 0:
+        {
+            [self.contentView addSubview:self.firstpageController.view];
+            
+        }
+            break;
+        
+        case 1:
+        {
+            [self.contentView addSubview:self.yuyuepageController.view];
+            
+        }
+            break;
+        case 2:
+        {
+            
+        }
+            break;
+        case 3:
+        {
+            
+        }
+            break;
+        case 4:
+        {
+            
+        }
+            break;
+        case 5:
+        {
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+    
+      selectedSection = section;
     
     
 }

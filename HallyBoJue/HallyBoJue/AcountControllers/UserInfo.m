@@ -56,46 +56,5 @@
     
 }
 
-+(NSString*)getLevelString
-{
-    int level = [UserInfo getUserModel].level;
-    
-    NSString *levelStr = @"";
-    
-    switch (level) {
-        case 1:
-        {
-            levelStr = @"一级管家";
-            
-        }
-            break;
-        case 2:
-        {  levelStr = @"二级管家";
-        }
-            break;
-        case 3:
-        {
-              levelStr = @"三级管家";
-        }
-            break;
-        case 4:
-        {
-              levelStr = @"四级管家";
-        }
-            break;
-        case 5:
-        {
-              levelStr = @"五级管家";
-        }
-            break;
-            
-            
-        default:
-            break;
-    }
-    
-    return levelStr;
-    
-    
-}
+
 @end

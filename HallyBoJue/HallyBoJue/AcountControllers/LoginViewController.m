@@ -23,6 +23,16 @@
     
     self.title = @"管家登录";
     
+    _usernameTF.clipsToBounds = YES;
+    _usernameTF.layer.cornerRadius = 6.0;
+    
+    _codeTF.clipsToBounds = YES;
+    _codeTF.layer.cornerRadius = 6.0;
+    
+    _summitbutton.clipsToBounds = YES;
+    _summitbutton.layer.cornerRadius = 6.0;
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

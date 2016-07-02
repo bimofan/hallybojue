@@ -74,6 +74,9 @@
 		1384A6721D283D1100D74892 /* FirstPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A6711D283D1100D74892 /* FirstPageViewController.m */; };
 		1384A6751D28490100D74892 /* FirstLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A6741D28490100D74892 /* FirstLeftCell.m */; };
 		1384A6781D28491100D74892 /* FirstRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A6771D28491100D74892 /* FirstRightCell.m */; };
+		1384A67C1D2861A700D74892 /* YuyueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A67B1D2861A700D74892 /* YuyueViewController.m */; };
+		1384A67F1D28620300D74892 /* YuyueLeftCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A67E1D28620300D74892 /* YuyueLeftCell.m */; };
+		1384A6821D28621300D74892 /* YuyueRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384A6811D28621300D74892 /* YuyueRightCell.m */; };
 		13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */; };
 		13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BF1D26920D0058D5C1 /* BaseViewController.m */; };
 		13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3C11D26920D0058D5C1 /* BaseHomeTableViewController.m */; };
@@ -238,6 +241,12 @@
 		1384A6741D28490100D74892 /* FirstLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstLeftCell.m; sourceTree = "<group>"; };
 		1384A6761D28491100D74892 /* FirstRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstRightCell.h; sourceTree = "<group>"; };
 		1384A6771D28491100D74892 /* FirstRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstRightCell.m; sourceTree = "<group>"; };
+		1384A67A1D2861A700D74892 /* YuyueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuyueViewController.h; sourceTree = "<group>"; };
+		1384A67B1D2861A700D74892 /* YuyueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuyueViewController.m; sourceTree = "<group>"; };
+		1384A67D1D28620300D74892 /* YuyueLeftCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuyueLeftCell.h; sourceTree = "<group>"; };
+		1384A67E1D28620300D74892 /* YuyueLeftCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuyueLeftCell.m; sourceTree = "<group>"; };
+		1384A6801D28621300D74892 /* YuyueRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YuyueRightCell.h; sourceTree = "<group>"; };
+		1384A6811D28621300D74892 /* YuyueRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YuyueRightCell.m; sourceTree = "<group>"; };
 		13BCF3B81D2691910058D5C1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		13BCF3BC1D26920D0058D5C1 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -310,6 +319,7 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.m */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
+				1384A6791D28619200D74892 /* YuyuePageController */,
 				1384A66F1D283CE300D74892 /* FirstPageController */,
 				13BCF3CF1D26A4240058D5C1 /* HomeViewController */,
 				1384A63E1D28111700D74892 /* Model */,
@@ -604,6 +614,19 @@
 			path = FirstPageController;
 			sourceTree = "<group>";
 		};
+		1384A6791D28619200D74892 /* YuyuePageController */ = {
+			isa = PBXGroup;
+			children = (
+				1384A67A1D2861A700D74892 /* YuyueViewController.h */,
+				1384A67B1D2861A700D74892 /* YuyueViewController.m */,
+				1384A67D1D28620300D74892 /* YuyueLeftCell.h */,
+				1384A67E1D28620300D74892 /* YuyueLeftCell.m */,
+				1384A6801D28621300D74892 /* YuyueRightCell.h */,
+				1384A6811D28621300D74892 /* YuyueRightCell.m */,
+			);
+			path = YuyuePageController;
+			sourceTree = "<group>";
+		};
 		13BCF3B71D2690A90058D5C1 /* constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -779,6 +802,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1384A6821D28621300D74892 /* YuyueRightCell.m in Sources */,
 				1384A6651D281B0A00D74892 /* JSONHTTPClient.m in Sources */,
 				1384A6341D27D2DB00D74892 /* AFHTTPRequestOperation.m in Sources */,
 				1384A6441D28139A00D74892 /* UserInfo.m in Sources */,
@@ -794,6 +818,7 @@
 				1384A6681D281B0A00D74892 /* JSONValueTransformer.m in Sources */,
 				1384A6601D281B0A00D74892 /* JSONModelArray.m in Sources */,
 				1384A6151D27A49600D74892 /* LoginViewController.m in Sources */,
+				1384A67F1D28620300D74892 /* YuyueLeftCell.m in Sources */,
 				136247211D24FDB100190DCF /* MKAnnotationView+WebCache.m in Sources */,
 				1384A6411D28112700D74892 /* Usermodel.m in Sources */,
 				13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */,
@@ -835,6 +860,7 @@
 				136246B61D24C35200190DCF /* main.m in Sources */,
 				1362472E1D24FDB100190DCF /* UIImageView+HighlightedWebCache.m in Sources */,
 				136247631D24FF9D00190DCF /* UIView+MJExtension.m in Sources */,
+				1384A67C1D2861A700D74892 /* YuyueViewController.m in Sources */,
 				136247231D24FDB100190DCF /* SDImageCache.m in Sources */,
 				1384A6611D281B0A00D74892 /* JSONModelClassProperty.m in Sources */,
 				1362472A1D24FDB100190DCF /* UIButton+WebCache.m in Sources */,
@@ -991,6 +1017,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HallyBoJue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
@@ -1006,6 +1033,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = HallyBoJue/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
