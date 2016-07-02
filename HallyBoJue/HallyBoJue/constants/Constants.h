@@ -12,7 +12,7 @@
 
 #define kNavigationTintColor      [UIColor whiteColor]
 
-#define kNavigationBarColor       [UIColor colorWithRed:8/255.0 green:43/255.0 blue:107/255.0 alpha:0.9]
+#define kNavigationBarColor       [UIColor colorWithRed:6/255.0 green:30/255.0 blue:126/255.0 alpha:0.9]
 
 #define kDarkGrayColor             [UIColor darkGrayColor]
 
@@ -28,7 +28,7 @@
 
 #define kHightLightColor          RGB(120,120,120,1)
 
-#define kLightBlueColor           RGB(64,158,222)
+#define kLightBlueColor          [UIColor colorWithRed:59/255.0 green:157/255.0 blue:231/255.0 alpha:0.9]
 
 #define kRedTextColor             RGB(190,0,0)
 
@@ -48,3 +48,11 @@
 /*宽高*/
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+//默认头像
+#define kDefaultHeadImage   [UIImage imageNamed:@"defaultHead"]
+
+
+
+
