@@ -33,7 +33,7 @@ NetWorking *netWorking;
     
 }
 
--(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param result:(RequestResultBlock)block
+-(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param itemModel:(id)model  result:(RequestResultBlock)block
 {
     
     NSString *url = [NSString stringWithFormat:@"%@%@",kRequestHeader,action];
@@ -57,8 +57,47 @@ NetWorking *netWorking;
         if (status == 1)
         {
         
+        
+           
             
-            block(YES,data);
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                
+                NSArray *items = [data objectForKey:@"items"];
+            
+                
+                if (items)
+                {
+                    
+                    DataModel *dataModel = [[DataModel alloc]init];
+                    
+                    [dataModel setValuesForKeysWithDictionary:data];
+                    
+
+                    
+                     block(YES,dataModel);
+                    
+                    
+                  }
+                else
+                {
+                    
+                    [model setValuesForKeysWithDictionary:data];
+                    
+                     block(YES,model);
+                    
+                    
+                  }
+                
+                
+                
+              
+             }
+            else
+            {
+                    block(YES,data);
+            }
+            
+    
             
             
         }

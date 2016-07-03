@@ -59,7 +59,7 @@
     
     NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text};
     
-    [[NetWorking shareNetWorking] RequestWithAction:kLoginAction Params:param result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kLoginAction Params:param itemModel:nil result:^(BOOL isSuccess, id data) {
        
        
         

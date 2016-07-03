@@ -12,6 +12,17 @@
 @implementation UserInfo
 
 
+
++(int)getkeeperid
+{
+    
+    Usermodel *model = [self getUserModel];
+    
+    
+    return model.id;
+    
+}
+
 +(BOOL)saveUserInfo:(Usermodel *)user
 {
     

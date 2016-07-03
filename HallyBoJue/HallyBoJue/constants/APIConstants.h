@@ -20,3 +20,12 @@
 
 //登录
 #define kLoginAction     @"kuser/login"
+
+//实时订单
+#define kNewOrder         @"korder/neworder"
+
+//抢单
+#define kCatchOrder        @"korder/catchorder"
+
+//我的预约列表
+#define kMyOrderList       @"korder/myorderlist"

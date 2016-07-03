@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "APIConstants.h"
 #import "AFNetworking.h"
+#import "ModelHeaders.h"
+
 
 
 typedef void (^RequestResultBlock)(BOOL isSuccess,id data);
@@ -17,7 +19,7 @@ typedef void (^RequestResultBlock)(BOOL isSuccess,id data);
 
 +(NetWorking*)shareNetWorking;
 
--(void)RequestWithAction:(NSString*)action  Params:(NSDictionary*)param result:(RequestResultBlock)block;
+-(void)RequestWithAction:(NSString*)action  Params:(NSDictionary*)param   itemModel:(id)model result:(RequestResultBlock)block;
 
 
 @end

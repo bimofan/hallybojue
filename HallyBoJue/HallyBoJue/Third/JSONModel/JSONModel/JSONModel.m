@@ -49,6 +49,8 @@ static JSONKeyMapper* globalKeyMapper = nil;
     NSString* _description;
 }
 
+
+
 #pragma mark - initialization methods
 
 +(void)load

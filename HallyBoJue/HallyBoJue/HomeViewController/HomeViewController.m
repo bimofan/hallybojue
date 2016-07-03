@@ -44,10 +44,9 @@ CGFloat cellHeight = 70;
     
     self.title = @"哈里伯爵－管家端";
     
-    
     _slideTabelView.delegate = self;
     _slideTabelView.dataSource = self;
-    _slideTabelView.backgroundColor = kBackgroundColor;
+
     
     
     [self.headerView addSubview:self.homeHeaderView];
@@ -91,7 +90,7 @@ CGFloat cellHeight = 70;
         _homeHeaderView = [apparray firstObject];
       
         
-        _homeHeaderView.frame = CGRectMake(0, 0, ScreenWidth, self.headerView.frame.size.height);
+        _homeHeaderView.frame = CGRectMake(0, 0, self.headerView.frame.size.width, self.headerView.frame.size.height);
         
         
          
@@ -106,10 +105,9 @@ CGFloat cellHeight = 70;
 {
     if (!_slideTitles) {
         
-        _slideTitles = @[@{@"selected":@(1),@"title":@"首页",@"imageName":@""},@{@"selected":@(0),@"title":@"预约管理"},@{@"selected":@(0),@"title":@"客户管理"},@{@"selected":@(0),@"title":@"跟进管理"},@{@"selected":@(0),@"title":@"排行榜"},@{@"selected":@(0),@"title":@"FAQ"}];
+        _slideTitles = @[@{@"selected":@(1),@"title":@"首页",@"imageName":@""},@{@"selected":@(0),@"title":@"预约管理"},@{@"selected":@(0),@"title":@"客户管理"},@{@"selected":@(0),@"title":@"跟进管理"},@{@"selected":@(0),@"title":@"排行榜"},@{@"selected":@(0),@"title":@"FAQ"},@{@"selected":@(0),@"title":@"设置"}];
         
         
-                                                                                                                                                                                                                  
         
         
         
@@ -130,7 +128,6 @@ CGFloat cellHeight = 70;
         _firstpageController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
         
        
-        
         
     }
     
@@ -183,8 +180,6 @@ CGFloat cellHeight = 70;
     
     
 
-
-    
     
     
     return cell;

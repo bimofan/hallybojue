@@ -15,6 +15,8 @@
 +(BOOL)saveUserInfo:(Usermodel*)user;
 +(Usermodel*)getUserModel;
 +(BOOL)hadLogin;
++(int)getkeeperid;
+
 
 
 

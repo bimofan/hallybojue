@@ -6,6 +6,12 @@
 //  Copyright © 2016年 Haikun Zhu. All rights reserved.
 //
 
+
+
+#pragma mark - 百度地图APIkey
+#define kBaiduMapKey   @"0hr7vuOhcZAkhlAOH52EZuFod0ZzWELm"
+
+
 #pragma mark - Color
 
 #define RGB(a,b,c,d)              [UIColor colorWithRed:a/255.0 green:b/255.0 blue:c/255.0 alpha:d]
