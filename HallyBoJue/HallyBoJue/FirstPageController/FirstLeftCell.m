@@ -7,6 +7,7 @@
 //
 
 #import "FirstLeftCell.h"
+#import "Constants.h"
 
 @implementation FirstLeftCell
 
@@ -17,10 +18,10 @@
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
     _serviceView.clipsToBounds = YES;
-    _serviceView.layer.cornerRadius = 6.0;
+    _serviceView.layer.cornerRadius = kCornerRadous;
     
     _catchButton.clipsToBounds = YES;
-    _catchButton.layer.cornerRadius = 6.0;
+    _catchButton.layer.cornerRadius = kCornerRadous;
     
     
 }

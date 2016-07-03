@@ -12,6 +12,8 @@
 #import "HomeHeaderView.h"
 #import "FirstPageViewController.h"
 #import "YuyueViewController.h"
+#import "CustomerViewController.h"
+
 
 
 
@@ -29,6 +31,8 @@ CGFloat cellHeight = 70;
 
 @property(nonatomic,strong) FirstPageViewController *firstpageController;
 @property(nonatomic,strong) YuyueViewController*yuyuepageController;
+@property (nonatomic,strong) CustomerViewController *customerViewController;
+
 
 
 
@@ -110,7 +114,6 @@ CGFloat cellHeight = 70;
         
         
         
-        
     }
     
     return _slideTitles;
@@ -151,6 +154,20 @@ CGFloat cellHeight = 70;
     
 }
 
+#pragma mark - 客户管理
+-(CustomerViewController*)customerViewController
+{
+    if (!_customerViewController) {
+        
+        _customerViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"CustomerViewController"];
+        
+        _customerViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+        
+    }
+    
+    return _customerViewController;
+    
+}
 
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -253,21 +270,23 @@ CGFloat cellHeight = 70;
     
     
     switch (section) {
-        case 0:
+        case 0:  // 首页
         {
             [self.contentView addSubview:self.firstpageController.view];
             
         }
             break;
         
-        case 1:
+        case 1:  //预约管理
         {
             [self.contentView addSubview:self.yuyuepageController.view];
             
         }
             break;
-        case 2:
+        case 2:  //客户管理
         {
+            [self.contentView addSubview:self.customerViewController.view];
+            
             
         }
             break;

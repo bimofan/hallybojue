@@ -38,6 +38,9 @@
 
 #define kRedTextColor             RGB(190,0,0)
 
+#define kOrangeBackColor        RGB(255,115,47,1)
+#define kGrayBackColor          RGB(207,207,211,1)
+
 
 /*字体*/
 #define FONT_20 [UIFont systemFontOfSize:20]
@@ -50,6 +53,8 @@
 #define FONT_12 [UIFont systemFontOfSize:12]
 
 
+//圆角大小
+#define kCornerRadous      6.0
 
 /*宽高*/
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width

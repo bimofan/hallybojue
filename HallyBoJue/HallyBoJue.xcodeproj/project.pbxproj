@@ -96,6 +96,8 @@
 		138EEA201D298A3A005D4A00 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 138EEA1F1D298A3A005D4A00 /* libstdc++.6.0.9.tbd */; };
 		138EEA221D298AAA005D4A00 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 138EEA211D298AAA005D4A00 /* mapapi.bundle */; };
 		138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA251D298B64005D4A00 /* BaiduMapHelper.m */; };
+		138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA321D29BD87005D4A00 /* CustomerCell.m */; };
+		138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA341D29BD87005D4A00 /* CustomerViewController.m */; };
 		13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */; };
 		13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BF1D26920D0058D5C1 /* BaseViewController.m */; };
 		13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3C11D26920D0058D5C1 /* BaseHomeTableViewController.m */; };
@@ -290,6 +292,10 @@
 		138EEA211D298AAA005D4A00 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
 		138EEA241D298B64005D4A00 /* BaiduMapHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaiduMapHelper.h; sourceTree = "<group>"; };
 		138EEA251D298B64005D4A00 /* BaiduMapHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaiduMapHelper.m; sourceTree = "<group>"; };
+		138EEA311D29BD87005D4A00 /* CustomerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerCell.h; sourceTree = "<group>"; };
+		138EEA321D29BD87005D4A00 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
+		138EEA331D29BD87005D4A00 /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
+		138EEA341D29BD87005D4A00 /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
 		13BCF3B81D2691910058D5C1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		13BCF3BC1D26920D0058D5C1 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -376,8 +382,8 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.mm */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
-				138EEA231D298B47005D4A00 /* Helper */,
-				1384A6791D28619200D74892 /* YuyuePageController */,
+				138EEA301D29BD87005D4A00 /* CustomerControllers */,
+				1384A6791D28619200D74892 /* AppointmentControllers */,
 				1384A66F1D283CE300D74892 /* FirstPageController */,
 				13BCF3CF1D26A4240058D5C1 /* HomeViewController */,
 				1384A63E1D28111700D74892 /* Model */,
@@ -385,6 +391,7 @@
 				1384A6121D27A47E00D74892 /* AcountControllers */,
 				1384A6161D27C31D00D74892 /* NetWorking */,
 				13BCF3B71D2690A90058D5C1 /* constants */,
+				138EEA231D298B47005D4A00 /* Helper */,
 				1362473E1D24FF5000190DCF /* Third */,
 				136246B41D24C35200190DCF /* Supporting Files */,
 				136246C81D24C35200190DCF /* Info.plist */,
@@ -689,7 +696,7 @@
 			path = FirstPageController;
 			sourceTree = "<group>";
 		};
-		1384A6791D28619200D74892 /* YuyuePageController */ = {
+		1384A6791D28619200D74892 /* AppointmentControllers */ = {
 			isa = PBXGroup;
 			children = (
 				1384A67A1D2861A700D74892 /* YuyueViewController.h */,
@@ -699,6 +706,7 @@
 				1384A6801D28621300D74892 /* YuyueRightCell.h */,
 				1384A6811D28621300D74892 /* YuyueRightCell.m */,
 			);
+			name = AppointmentControllers;
 			path = YuyuePageController;
 			sourceTree = "<group>";
 		};
@@ -722,6 +730,17 @@
 				138EEA251D298B64005D4A00 /* BaiduMapHelper.m */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
+			isa = PBXGroup;
+			children = (
+				138EEA311D29BD87005D4A00 /* CustomerCell.h */,
+				138EEA321D29BD87005D4A00 /* CustomerCell.m */,
+				138EEA331D29BD87005D4A00 /* CustomerViewController.h */,
+				138EEA341D29BD87005D4A00 /* CustomerViewController.m */,
+			);
+			path = CustomerControllers;
 			sourceTree = "<group>";
 		};
 		13BCF3B71D2690A90058D5C1 /* constants */ = {
@@ -926,6 +945,7 @@
 				136247621D24FF9D00190DCF /* UIScrollView+MJRefresh.m in Sources */,
 				1384A6631D281B0A00D74892 /* NSArray+JSONModel.m in Sources */,
 				13BCF3CA1D2692620058D5C1 /* CommonMethods.m in Sources */,
+				138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */,
 				1384A63A1D27D2DB00D74892 /* AFURLRequestSerialization.m in Sources */,
 				136247611D24FF9D00190DCF /* UIScrollView+MJExtension.m in Sources */,
 				1384A66C1D281D0600D74892 /* HomeHeaderView.m in Sources */,
@@ -971,6 +991,7 @@
 				1384A6751D28490100D74892 /* FirstLeftCell.m in Sources */,
 				1384A63B1D27D2DB00D74892 /* AFURLResponseSerialization.m in Sources */,
 				1384A65F1D281B0A00D74892 /* JSONModel.m in Sources */,
+				138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */,
 				138EE9FA1D294DA4005D4A00 /* OrderModel.m in Sources */,
 				136247221D24FDB100190DCF /* NSData+ImageContentType.m in Sources */,
 				13BCF3D21D26A44A0058D5C1 /* HomeViewController.m in Sources */,

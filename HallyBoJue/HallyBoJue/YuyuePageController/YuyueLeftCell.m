@@ -7,6 +7,7 @@
 //
 
 #import "YuyueLeftCell.h"
+#import "Constants.h"
 
 @implementation YuyueLeftCell
 
@@ -18,10 +19,10 @@
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
     
     _serviceview.clipsToBounds = YES;
-    _serviceview.layer.cornerRadius = 6;
+    _serviceview.layer.cornerRadius = kCornerRadous;
     
     _serviceStatusLabel.clipsToBounds = YES;
-    _serviceStatusLabel.layer.cornerRadius = 6.0;
+    _serviceStatusLabel.layer.cornerRadius = kCornerRadous;
     
     
 }

@@ -65,10 +65,10 @@
 -(void)viewWillLayoutSubviews
 {
     _leftView.clipsToBounds = YES;
-    _leftView.layer.cornerRadius = 6.0;
+    _leftView.layer.cornerRadius = kCornerRadous;
     
     _rightView.clipsToBounds = YES;
-    _rightView.layer.cornerRadius = 6.0;
+    _rightView.layer.cornerRadius = kCornerRadous;
     
     
     
