@@ -98,6 +98,9 @@
 		138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA251D298B64005D4A00 /* BaiduMapHelper.m */; };
 		138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA321D29BD87005D4A00 /* CustomerCell.m */; };
 		138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA341D29BD87005D4A00 /* CustomerViewController.m */; };
+		139DF3FC1D2AD2440082DF16 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF3F81D2AD2440082DF16 /* libXG-SDK.a */; };
+		139DF3FF1D2AD2680082DF16 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF3FE1D2AD2680082DF16 /* CFNetwork.framework */; };
+		139DF4011D2AD2870082DF16 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF4001D2AD2870082DF16 /* libz.tbd */; };
 		13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */; };
 		13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BF1D26920D0058D5C1 /* BaseViewController.m */; };
 		13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3C11D26920D0058D5C1 /* BaseHomeTableViewController.m */; };
@@ -296,6 +299,11 @@
 		138EEA321D29BD87005D4A00 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
 		138EEA331D29BD87005D4A00 /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
 		138EEA341D29BD87005D4A00 /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
+		139DF3F81D2AD2440082DF16 /* libXG-SDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libXG-SDK.a"; sourceTree = "<group>"; };
+		139DF3FA1D2AD2440082DF16 /* XGPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGPush.h; sourceTree = "<group>"; };
+		139DF3FB1D2AD2440082DF16 /* XGSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XGSetting.h; sourceTree = "<group>"; };
+		139DF3FE1D2AD2680082DF16 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		139DF4001D2AD2870082DF16 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		13BCF3B81D2691910058D5C1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		13BCF3BC1D26920D0058D5C1 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -321,12 +329,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				138EEA201D298A3A005D4A00 /* libstdc++.6.0.9.tbd in Frameworks */,
-				138EEA1E1D298A32005D4A00 /* CoreTelephony.framework in Frameworks */,
-				138EEA1C1D298A2B005D4A00 /* libsqlite3.0.tbd in Frameworks */,
 				138EEA1A1D298A19005D4A00 /* Security.framework in Frameworks */,
-				138EEA181D298A12005D4A00 /* CoreGraphics.framework in Frameworks */,
+				139DF4011D2AD2870082DF16 /* libz.tbd in Frameworks */,
+				138EEA1E1D298A32005D4A00 /* CoreTelephony.framework in Frameworks */,
 				138EEA161D298A04005D4A00 /* SystemConfiguration.framework in Frameworks */,
+				139DF3FF1D2AD2680082DF16 /* CFNetwork.framework in Frameworks */,
+				138EEA201D298A3A005D4A00 /* libstdc++.6.0.9.tbd in Frameworks */,
+				138EEA1C1D298A2B005D4A00 /* libsqlite3.0.tbd in Frameworks */,
+				138EEA181D298A12005D4A00 /* CoreGraphics.framework in Frameworks */,
+				139DF3FC1D2AD2440082DF16 /* libXG-SDK.a in Frameworks */,
 				138EEA141D2989FE005D4A00 /* OpenGLES.framework in Frameworks */,
 				138EEA121D2989F8005D4A00 /* QuartzCore.framework in Frameworks */,
 				138EEA101D2989F0005D4A00 /* CoreLocation.framework in Frameworks */,
@@ -430,6 +441,8 @@
 		136246EA1D24CEB800190DCF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				139DF4001D2AD2870082DF16 /* libz.tbd */,
+				139DF3FE1D2AD2680082DF16 /* CFNetwork.framework */,
 				138EEA1F1D298A3A005D4A00 /* libstdc++.6.0.9.tbd */,
 				138EEA1D1D298A32005D4A00 /* CoreTelephony.framework */,
 				138EEA1B1D298A2B005D4A00 /* libsqlite3.0.tbd */,
@@ -488,6 +501,7 @@
 		1362473E1D24FF5000190DCF /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				139DF3F61D2AD2370082DF16 /* XG-Push */,
 				138EEA041D298933005D4A00 /* BaiduMap */,
 				1384A6451D281B0A00D74892 /* JSONModel */,
 				1384A6201D27D2DB00D74892 /* AFNetworking */,
@@ -741,6 +755,24 @@
 				138EEA341D29BD87005D4A00 /* CustomerViewController.m */,
 			);
 			path = CustomerControllers;
+			sourceTree = "<group>";
+		};
+		139DF3F61D2AD2370082DF16 /* XG-Push */ = {
+			isa = PBXGroup;
+			children = (
+				139DF3F71D2AD2440082DF16 /* sdk */,
+			);
+			path = "XG-Push";
+			sourceTree = "<group>";
+		};
+		139DF3F71D2AD2440082DF16 /* sdk */ = {
+			isa = PBXGroup;
+			children = (
+				139DF3F81D2AD2440082DF16 /* libXG-SDK.a */,
+				139DF3FA1D2AD2440082DF16 /* XGPush.h */,
+				139DF3FB1D2AD2440082DF16 /* XGSetting.h */,
+			);
+			path = sdk;
 			sourceTree = "<group>";
 		};
 		13BCF3B71D2690A90058D5C1 /* constants */ = {
@@ -1147,6 +1179,10 @@
 				INFOPLIST_FILE = HallyBoJue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HallyBoJue/Third/XG-Push/sdk",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
@@ -1169,6 +1205,10 @@
 				INFOPLIST_FILE = HallyBoJue/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HallyBoJue/Third/XG-Push/sdk",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
