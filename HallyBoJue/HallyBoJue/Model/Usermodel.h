@@ -13,7 +13,7 @@
 @property (nonatomic) NSDictionary * avatar_img;
 @property (nonatomic,strong) NSString *create_time;
 @property(nonatomic,strong) NSString *desc;
-@property (nonatomic,assign) int id;
+@property (nonatomic,assign) int keeper_id;
 @property (nonatomic,strong) NSString *mobile;
 @property (nonatomic,strong) NSString *real_name;
 @property(nonatomic,assign) int store_id;

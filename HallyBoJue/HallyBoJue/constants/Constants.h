@@ -56,6 +56,9 @@
 //圆角大小
 #define kCornerRadous      6.0
 
+//每页数量
+#define kPageSize      15
+
 /*宽高*/
 #define ScreenWidth [UIScreen mainScreen].bounds.size.width
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height

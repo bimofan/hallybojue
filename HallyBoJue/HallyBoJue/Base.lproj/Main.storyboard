@@ -648,7 +648,7 @@
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="215" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DxK-Yj-rJL">
                                         <rect key="frame" x="0.0" y="51" width="300" height="549"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="YuyueLeftCell" rowHeight="215" id="W8o-rg-uhH" customClass="YuyueLeftCell">
                                                 <rect key="frame" x="0.0" y="28" width="300" height="215"/>
@@ -1161,7 +1161,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="0.0" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="PXi-5B-bvg" firstAttribute="leading" secondItem="K8y-Y6-fCG" secondAttribute="leading" id="7Wc-kb-7yX"/>
                                     <constraint firstAttribute="trailing" secondItem="PXi-5B-bvg" secondAttribute="trailing" id="BI2-O9-LsL"/>

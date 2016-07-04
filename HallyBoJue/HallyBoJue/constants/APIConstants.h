@@ -25,7 +25,28 @@
 #define kNewOrder         @"korder/neworder"
 
 //抢单
+/*
+ * order_id
+ * keeper_id
+ */
 #define kCatchOrder        @"korder/catchorder"
 
 //我的预约列表
+/*
+ * keeper_id
+ * page
+ * pagesize
+ */
 #define kMyOrderList       @"korder/myorderlist"
+
+//我的客户列表
+/*
+ *@pragma
+ * keeper_id 
+ * pagesize
+ * page
+ */
+#define kMyCustomerList     @"kcustomer/customerlist"
+
+
+

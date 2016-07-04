@@ -21,6 +21,10 @@
 #import "NetWorking.h"
 #import "APIConstants.h"
 #import "ModelHeaders.h"
+#import "UserInfo.h"
+#import "MJRefresh.h"
+
+
 
 
 

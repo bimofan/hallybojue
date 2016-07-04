@@ -24,6 +24,9 @@
     int pagesize;
     int page;
     
+    BOOL hadFirstRequest;
+    
+    
 }
 
 @property (nonatomic,strong) NSMutableArray *yuyueArray;
@@ -55,9 +58,22 @@
     page = 1;
     pagesize = 15;
     
-    [self firstHeaderRefresh];
+    hadFirstRequest = NO;
     
     
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin] && !hadFirstRequest) {
+        
+        [self firstHeaderRefresh];
+        hadFirstRequest = YES;
+    }
     
 }
 
@@ -360,7 +376,7 @@
     
     Usermodel *model = [UserInfo getUserModel];
     
-    [[NetWorking shareNetWorking] RequestWithAction:kCatchOrder Params:@{@"order_id":@(order_id),@"keeper_id":@(model.id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kCatchOrder Params:@{@"order_id":@(order_id),@"keeper_id":@(model.keeper_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
         
         if (isSuccess) {
             

@@ -59,27 +59,24 @@
     
     NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text};
     
-    [[NetWorking shareNetWorking] RequestWithAction:kLoginAction Params:param itemModel:nil result:^(BOOL isSuccess, id data) {
+     Usermodel *model = [[Usermodel alloc]init];
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kLoginAction Params:param itemModel:model result:^(BOOL isSuccess, id data) {
        
        
         
         if (isSuccess) {
           
+    
         
-            if ([data isKindOfClass:[NSDictionary class]]) {
-                
-                
-                Usermodel *model = [[Usermodel alloc]init];
-                
-                [model setValuesForKeysWithDictionary:data];
-                
+            
+            
                 [UserInfo saveUserInfo:model];
-                
+            
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
             
-                
-            }
+   
 
             
             
