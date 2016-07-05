@@ -11,7 +11,7 @@
 #import "AddCustomerController.h"
 
 
-@interface CustomerViewController ()
+@interface CustomerViewController ()<AddCustomerDelegate>
 {
     int page;
     
@@ -64,6 +64,7 @@
         
         _addCustomerController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
         
+        _addCustomerController.addCustomerDelegate = self;
         
     }
     
@@ -192,6 +193,12 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    
+    if (section == _customerArray.count -1) {
+        
+        return 0;
+        
+    }
     return  5;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -215,7 +222,6 @@
 {
     
     
-
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
@@ -235,6 +241,18 @@
     }
     
     [_rightView addSubview:self.addCustomerController.view];
+    
+    
+}
+
+#pragma mark - addCustomerDelegate
+-(void)didAddCustomer
+{
+      [self.addCustomerController.view removeFromSuperview];
+    
+    [_leftTableView.header beginRefreshing];
+    
+  
     
     
 }

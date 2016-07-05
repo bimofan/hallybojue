@@ -48,14 +48,32 @@
  */
 #define kMyCustomerList     @"kcustomer/customerlist"
 
-//新增客户
+//新增客户 并给客户新增汽车
 /*
  *  keeper_id
  *  mobile
  *  user_real_name
  * 默认密码 123456
+ *  plate_number
+ *  brand_id
  */
 #define kAddCustomer        @"kcustomer/addcustomer"
+
+/** 搜索汽车品牌或者系列
+ *
+ *  brand_name
+ *
+ **/
+#define kSearchcarbrand     @"kcustomer/searchcarbrand"
+
+
+///** 给客户新增汽车
+// *
+// *   user_id
+// *   plate_number
+// *   brand_id
+// */
+//#define kAddcar             @"kcustomer/addcar"
 
 
 

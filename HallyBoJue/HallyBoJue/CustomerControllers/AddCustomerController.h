@@ -31,6 +31,15 @@
 @property (weak, nonatomic) IBOutlet UITextField *mobileTF;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *carbrandLabel;
+
+@property (weak, nonatomic) IBOutlet UISearchBar *carSearchBar;
+
+@property (weak, nonatomic) IBOutlet UITableView *carTableView;
+
+@property (weak, nonatomic) IBOutlet UITextField *carnunTF;
+
+
 - (IBAction)nextAction:(id)sender;
 
 

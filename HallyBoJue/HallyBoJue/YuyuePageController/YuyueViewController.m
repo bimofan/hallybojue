@@ -42,7 +42,8 @@
     _leftTableView.dataSource = self;
     _leftTableView.delegate = self;
     
-
+  
+    
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(yuyueHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(yuyueFooterRefresh)];
     
@@ -175,6 +176,11 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+    if (section == _myYuyueArray.count -1) {
+        
+        return 0;
+        
+    }
     return  5;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -182,7 +188,7 @@
     
     UIView*blankView  = [[UIView alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 5)];
     
-    blankView.backgroundColor = [UIColor clearColor];
+    blankView.backgroundColor = kBackgroundColor;
     
 
     return blankView;
