@@ -108,6 +108,7 @@
 		13BCF3CA1D2692620058D5C1 /* CommonMethods.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3C91D2692620058D5C1 /* CommonMethods.m */; };
 		13BCF3CD1D26926C0058D5C1 /* StringHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3CC1D26926C0058D5C1 /* StringHeight.m */; };
 		13BCF3D21D26A44A0058D5C1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3D11D26A44A0058D5C1 /* HomeViewController.m */; };
+		13C0C13E1D2BB098003419C6 /* AddCustomerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C0C13D1D2BB098003419C6 /* AddCustomerController.m */; };
 		13C52DC41D26AD13009429C2 /* HomeSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C52DC31D26AD13009429C2 /* HomeSlideCell.m */; };
 /* End PBXBuildFile section */
 
@@ -320,6 +321,8 @@
 		13BCF3CE1D2692810058D5C1 /* NSUserDefaultKeys.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSUserDefaultKeys.h; sourceTree = "<group>"; };
 		13BCF3D01D26A44A0058D5C1 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		13BCF3D11D26A44A0058D5C1 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		13C0C13C1D2BB098003419C6 /* AddCustomerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCustomerController.h; sourceTree = "<group>"; };
+		13C0C13D1D2BB098003419C6 /* AddCustomerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCustomerController.m; sourceTree = "<group>"; };
 		13C52DC21D26AD13009429C2 /* HomeSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSlideCell.h; sourceTree = "<group>"; };
 		13C52DC31D26AD13009429C2 /* HomeSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSlideCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -749,6 +752,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13C0C13B1D2BB06F003419C6 /* AddCustomerViewController */,
 				138EEA311D29BD87005D4A00 /* CustomerCell.h */,
 				138EEA321D29BD87005D4A00 /* CustomerCell.m */,
 				138EEA331D29BD87005D4A00 /* CustomerViewController.h */,
@@ -814,6 +818,15 @@
 				13C52DC31D26AD13009429C2 /* HomeSlideCell.m */,
 			);
 			path = HomeViewController;
+			sourceTree = "<group>";
+		};
+		13C0C13B1D2BB06F003419C6 /* AddCustomerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13C0C13C1D2BB098003419C6 /* AddCustomerController.h */,
+				13C0C13D1D2BB098003419C6 /* AddCustomerController.m */,
+			);
+			name = AddCustomerViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -980,6 +993,7 @@
 				138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */,
 				1384A63A1D27D2DB00D74892 /* AFURLRequestSerialization.m in Sources */,
 				136247611D24FF9D00190DCF /* UIScrollView+MJExtension.m in Sources */,
+				13C0C13E1D2BB098003419C6 /* AddCustomerController.m in Sources */,
 				1384A66C1D281D0600D74892 /* HomeHeaderView.m in Sources */,
 				136247291D24FDB100190DCF /* SDWebImagePrefetcher.m in Sources */,
 				1384A6361D27D2DB00D74892 /* AFHTTPSessionManager.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "CustomerViewController.h"
 #import "CustomerCell.h"
+#import "AddCustomerController.h"
+
 
 @interface CustomerViewController ()
 {
@@ -15,6 +17,8 @@
     
     
 }
+
+@property (nonatomic,strong) AddCustomerController*addCustomerController;
 
 @property (nonatomic,strong) NSMutableArray *customerArray;
 
@@ -48,6 +52,22 @@
     [_leftTableView.header beginRefreshing];
     
     
+    
+}
+
+#pragma mark - 新建客户
+-(AddCustomerController*)addCustomerController
+{
+    if (!_addCustomerController) {
+        
+        _addCustomerController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddCustomerController"];
+        
+        _addCustomerController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+    }
+    
+    return _addCustomerController;
     
 }
 
@@ -195,8 +215,7 @@
 {
     
     
-    
-    
+
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
@@ -204,13 +223,19 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-
-
+#pragma mark - 添加客户 action
 - (IBAction)addCustomAction:(id)sender {
+    
+    
+    for (UIView *subview in _rightView.subviews) {
+        
+        [subview removeFromSuperview];
+        
+    }
+    
+    [_rightView addSubview:self.addCustomerController.view];
+    
+    
 }
 @end

@@ -48,5 +48,15 @@
  */
 #define kMyCustomerList     @"kcustomer/customerlist"
 
+//新增客户
+/*
+ *  keeper_id
+ *  mobile
+ *  user_real_name
+ * 默认密码 123456
+ */
+#define kAddCustomer        @"kcustomer/addcustomer"
+
+
 
 

@@ -20,4 +20,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *leftTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *cusSearchBar;
 
+@property (weak, nonatomic) IBOutlet UIView *rightView;
+
+
+
 @end
