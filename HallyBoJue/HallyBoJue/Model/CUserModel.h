@@ -20,7 +20,7 @@
 //@property (nonatomic,assign) float frozen_money;
 //@property (nonatomic,assign) float pay_points;
 @property (nonatomic,assign) int address_id;
-@property (nonatomic,assign) NSInteger  mobile;
+@property (nonatomic) NSString *  mobile;
 //@property (nonatomic,assign) BOOL mobile_validated;
 @property (nonatomic,strong) NSDictionary *avatar;
 
@@ -30,6 +30,15 @@
 @property (nonatomic,assign) float discount;
 @property (nonatomic,assign) float total_amount;
 @property (nonatomic,assign) int is_lock;
+@property (nonatomic,strong) NSString *level_name;
+@property (nonatomic,strong) NSString *brand_name;
+@property (nonatomic,strong) NSString *last_service_time;
+@property (nonatomic,strong) NSArray *cars;
+@property (nonatomic,strong) NSArray *service_orders;
+@property (nonatomic,strong) NSString *add_time;
+
+
+
 
 
 

@@ -41,6 +41,9 @@
 #define kOrangeBackColor        RGB(255,115,47,1)
 #define kGrayBackColor          RGB(207,207,211,1)
 
+#define kDarkTextColor        RGB(53,53,53,1)
+
+
 
 /*字体*/
 #define FONT_20 [UIFont systemFontOfSize:20]

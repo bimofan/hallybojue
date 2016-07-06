@@ -9,6 +9,7 @@
 #import "CustomerViewController.h"
 #import "CustomerCell.h"
 #import "AddCustomerController.h"
+#import "CUserInfoController.h"
 
 
 @interface CustomerViewController ()<AddCustomerDelegate>
@@ -19,6 +20,8 @@
 }
 
 @property (nonatomic,strong) AddCustomerController*addCustomerController;
+@property (nonatomic,strong) CUserInfoController *cUserInfoController;
+
 
 @property (nonatomic,strong) NSMutableArray *customerArray;
 
@@ -44,6 +47,8 @@
     _leftTableView.delegate = self;
     _leftTableView.dataSource = self;
     
+    _rightView.clipsToBounds = YES;
+    _rightView.layer.cornerRadius = kCornerRadous;
     
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(customerHeaderRefresh)];
@@ -53,6 +58,25 @@
     
     
     
+}
+
+#pragma makr - 用户详情页
+-(CUserInfoController*)cUserInfoController
+{
+    if (!_cUserInfoController) {
+        
+        _cUserInfoController = [self.storyboard instantiateViewControllerWithIdentifier:@"CUserInfoController"];
+        
+        _cUserInfoController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+    
+    
+        
+        
+        
+    }
+    
+    return _cUserInfoController;
 }
 
 #pragma mark - 新建客户
@@ -167,7 +191,28 @@
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
-//        cell.carnameLabel.text = m
+        NSDictionary *firstcar = [model.cars firstObject];
+        
+        if (firstcar) {
+            
+             cell.carnameLabel.text = [firstcar objectForKey:@"brand_name"];
+            
+        }
+        else
+        {
+            cell.carnameLabel.text = @"";
+            
+        }
+        
+        NSDictionary *firstservice = [model.service_orders firstObject];
+        
+        cell.lastserviceLabel.text = [NSString stringWithFormat:@"最近一次服务时间:%@",[firstservice objectForKey:@"order_time" ]?[firstservice objectForKey:@"order_time" ]:@""];
+        
+        
+    
+        cell.viplabel.text = model.level_name;
+        
+        
         cell.realnameLabel.text = model.user_real_name;
         
         
@@ -220,6 +265,19 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    CUserModel *usermodel = [_customerArray objectAtIndex:indexPath.section];
+    
+    self.cUserInfoController.cUserModel =usermodel;
+    
+    for (UIView *subview in _rightView.subviews) {
+        
+        [subview removeFromSuperview];
+        
+    }
+    
+    [_rightView addSubview:self.cUserInfoController.view];
     
     
     

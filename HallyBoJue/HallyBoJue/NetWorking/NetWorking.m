@@ -36,7 +36,7 @@ NetWorking *netWorking;
 -(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param itemModel:(id)model  result:(RequestResultBlock)block
 {
     
-    NSString *url = [NSString stringWithFormat:@"%@%@",kRequestHeader,action];
+    NSString *url = [NSString stringWithFormat:@"%@%@?XDEBUGER=EDEBUGER",kRequestHeader,action];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
