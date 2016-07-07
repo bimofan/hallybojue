@@ -112,6 +112,9 @@
 		13BCF3D21D26A44A0058D5C1 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3D11D26A44A0058D5C1 /* HomeViewController.m */; };
 		13C0C13E1D2BB098003419C6 /* AddCustomerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C0C13D1D2BB098003419C6 /* AddCustomerController.m */; };
 		13C52DC41D26AD13009429C2 /* HomeSlideCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C52DC31D26AD13009429C2 /* HomeSlideCell.m */; };
+		13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0BE1D2E53D400527489 /* ServiceCategoryViewController.m */; };
+		13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */; };
+		13C8D0C61D2EC23100527489 /* OneYuyueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C51D2EC23100527489 /* OneYuyueCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -331,6 +334,12 @@
 		13C0C13D1D2BB098003419C6 /* AddCustomerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCustomerController.m; sourceTree = "<group>"; };
 		13C52DC21D26AD13009429C2 /* HomeSlideCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeSlideCell.h; sourceTree = "<group>"; };
 		13C52DC31D26AD13009429C2 /* HomeSlideCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeSlideCell.m; sourceTree = "<group>"; };
+		13C8D0BD1D2E53D400527489 /* ServiceCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceCategoryViewController.h; sourceTree = "<group>"; };
+		13C8D0BE1D2E53D400527489 /* ServiceCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceCategoryViewController.m; sourceTree = "<group>"; };
+		13C8D0C01D2EC0A900527489 /* OneYuyueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneYuyueViewController.h; sourceTree = "<group>"; };
+		13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueViewController.m; sourceTree = "<group>"; };
+		13C8D0C41D2EC23100527489 /* OneYuyueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneYuyueCell.h; sourceTree = "<group>"; };
+		13C8D0C51D2EC23100527489 /* OneYuyueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -722,12 +731,15 @@
 		1384A6791D28619200D74892 /* AppointmentControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13C8D0C31D2EC20800527489 /* OneYuYueViewController */,
 				1384A67A1D2861A700D74892 /* YuyueViewController.h */,
 				1384A67B1D2861A700D74892 /* YuyueViewController.m */,
 				1384A67D1D28620300D74892 /* YuyueLeftCell.h */,
 				1384A67E1D28620300D74892 /* YuyueLeftCell.m */,
 				1384A6801D28621300D74892 /* YuyueRightCell.h */,
 				1384A6811D28621300D74892 /* YuyueRightCell.m */,
+				13C8D0BD1D2E53D400527489 /* ServiceCategoryViewController.h */,
+				13C8D0BE1D2E53D400527489 /* ServiceCategoryViewController.m */,
 			);
 			name = AppointmentControllers;
 			path = YuyuePageController;
@@ -837,6 +849,17 @@
 				13C0C13D1D2BB098003419C6 /* AddCustomerController.m */,
 			);
 			name = AddCustomerViewController;
+			sourceTree = "<group>";
+		};
+		13C8D0C31D2EC20800527489 /* OneYuYueViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13C8D0C01D2EC0A900527489 /* OneYuyueViewController.h */,
+				13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */,
+				13C8D0C41D2EC23100527489 /* OneYuyueCell.h */,
+				13C8D0C51D2EC23100527489 /* OneYuyueCell.m */,
+			);
+			name = OneYuYueViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1026,10 +1049,12 @@
 				13BCF3C71D26920D0058D5C1 /* BaseNavigationController.m in Sources */,
 				1362476C1D24FFF800190DCF /* ProgressHUD.m in Sources */,
 				136247301D24FDB100190DCF /* UIView+WebCacheOperation.m in Sources */,
+				13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */,
 				136247261D24FDB100190DCF /* SDWebImageDownloader.m in Sources */,
 				1384A6621D281B0A00D74892 /* JSONModelError.m in Sources */,
 				1362472B1D24FDB100190DCF /* UIImage+GIF.m in Sources */,
 				1362475A1D24FF9D00190DCF /* MJRefreshConst.m in Sources */,
+				13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */,
 				136247701D25003700190DCF /* Reachability.m in Sources */,
 				1384A63C1D27D2DB00D74892 /* AFURLSessionManager.m in Sources */,
 				1384A6371D27D2DB00D74892 /* AFNetworkReachabilityManager.m in Sources */,
@@ -1050,6 +1075,7 @@
 				1384A63B1D27D2DB00D74892 /* AFURLResponseSerialization.m in Sources */,
 				1384A65F1D281B0A00D74892 /* JSONModel.m in Sources */,
 				138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */,
+				13C8D0C61D2EC23100527489 /* OneYuyueCell.m in Sources */,
 				138EE9FA1D294DA4005D4A00 /* OrderModel.m in Sources */,
 				136247221D24FDB100190DCF /* NSData+ImageContentType.m in Sources */,
 				13BCF3D21D26A44A0058D5C1 /* HomeViewController.m in Sources */,
@@ -1213,7 +1239,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "942a7747-8bd2-45d9-98fa-ad9433c97aa5";
 			};
 			name = Debug;
 		};

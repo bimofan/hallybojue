@@ -23,6 +23,11 @@
 #define kMobile         @"Mobile"
 
 
+//deviceToken
+#define kDeviceToken   @"DeviceToken"
+
+
+
 
 
 

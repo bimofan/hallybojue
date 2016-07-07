@@ -11,6 +11,10 @@
 #pragma mark - 百度地图APIkey
 #define kBaiduMapKey   @"0hr7vuOhcZAkhlAOH52EZuFod0ZzWELm"
 
+#pragma mark - 信鸽推送
+#define kXingePush_ACCESSID   2200208163
+#define kXingePush_ACCESSKEY   @"IK74R35R4HFE"
+
 
 #pragma mark - Color
 

@@ -19,6 +19,7 @@
 @property (nonatomic,assign) int store_id;
 @property (nonatomic,assign) int keeper_id;
 @property (nonatomic,assign) int order_service_id;
+@property (nonatomic,strong) NSArray *services;
 @property (nonatomic,strong) NSString *service_name;
 @property (nonatomic,strong) NSString *order_time;
 @property (nonatomic,strong) NSString *add_time;
@@ -36,6 +37,8 @@
 @property (nonatomic,strong) NSString *status_str;
 @property (nonatomic,strong) NSString *order_address;
 @property (nonatomic,strong) NSDictionary *address_location;
+
+@property (nonatomic,strong) NSString *car_plate_num;
 
 
 

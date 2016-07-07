@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "CommonMethods.h"
 #import "UserInfo.h"
+#import "XGPush.h"
 
 
 
@@ -68,16 +69,31 @@
         if (isSuccess) {
           
     
-        
-            
-            
+            //绑定信鸽推送
+            [XGPush initForReregister:^{
+                
+                [XGPush setAccount:[NSString stringWithFormat:@"%@",model.mobile]];
+                
+                
+                NSData *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+                
+                if (deviceToken) {
+                    
+                    
+                    [XGPush registerDevice:deviceToken];
+                    
+                    
+                }
+                
+            }];
+      
+           
                 [UserInfo saveUserInfo:model];
             
                 
                 [self dismissViewControllerAnimated:YES completion:nil];
             
    
-
             
             
         }

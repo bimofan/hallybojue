@@ -19,7 +19,7 @@
 
 
 
-@interface FirstPageViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FirstPageViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
 {
     int pagesize;
     int page;
@@ -34,6 +34,7 @@
 
 
 
+
 @end
 
 @implementation FirstPageViewController
@@ -43,9 +44,13 @@
     // Do any additional setup after loading the view.
     
     
+    _rightSearchBar.delegate =self;
+    
     
     _leftTableView.delegate = self;
     _leftTableView.dataSource = self;
+    
+    
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(firstHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(firstFooterRefresh)];
@@ -121,7 +126,6 @@
 {
     
    
-    
     [[NetWorking shareNetWorking] RequestWithAction:kNewOrder Params:@{@"page":@(page),@"pagesize":@(pagesize)} itemModel:nil result:^(BOOL isSuccess, id data) {
         
        
@@ -184,6 +188,51 @@
         }
     }];
 }
+
+#pragma mark - 搜索用户
+-(void)searchCustomer
+{
+    if (_rightSearchBar.text.length == 0) {
+        
+        [CommonMethods showDefaultErrorString:@"请输入关键字"];
+        
+        return;
+    }
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSearchCustomer Params:@{@"keyword":_rightSearchBar.text} itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        
+        if (isSuccess) {
+            
+            DataModel *datamodel = (DataModel*)data;
+            
+            _searchArray  = [[NSMutableArray alloc]init];
+            
+            
+            for (int i = 0 ; i < datamodel.items.count; i++) {
+                
+                NSDictionary *dict = [datamodel.items objectAtIndex:i];
+                
+                CUserModel *cusermodel = [[CUserModel alloc]init];
+                
+                [cusermodel setValuesForKeysWithDictionary:dict];
+                
+                [_searchArray addObject:cusermodel];
+                
+            }
+            
+            [_rightTableView reloadData];
+            
+            
+            
+            
+        }
+        
+        
+    }];
+}
+
+
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -261,10 +310,40 @@
 
         
         return cell;
-    }
+     }
     else
     {
         FirstRightCell* rightcell = [tableView dequeueReusableCellWithIdentifier:@"FirstRightCell"];
+        
+        
+        if (_searchArray.count > indexPath.section) {
+            
+            CUserModel *_cusermodel = [_searchArray objectAtIndex:indexPath.section];
+            
+            [rightcell.headImageView sd_setImageWithURL:[NSURL URLWithString:[_cusermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+            
+            rightcell.nameLabel.text = _cusermodel.user_real_name;
+            
+            NSDictionary *firstcar = [_cusermodel.cars firstObject];
+            
+            rightcell.carLabel.text = [firstcar objectForKey:@"brand_name"];
+            
+            rightcell.levelLabel.text = _cusermodel.level_name;
+            
+            
+            NSDictionary *firstservice = [_cusermodel.service_orders firstObject];
+            
+            rightcell.lastTimeLabel.text = [NSString stringWithFormat:@"最近一次服务时间:%@",[firstservice objectForKey:@"order_time"]?[firstservice objectForKey:@"order_time"]:@""];
+            
+            rightcell.lastServiceLabel.text = [NSString stringWithFormat:@"服务名称:%@",[firstservice objectForKey:@"service_name"]?[firstservice objectForKey:@"service_name"]:@""];
+            
+            
+        
+            
+             
+            
+        }
+        
         
         return rightcell ;
         
@@ -400,6 +479,29 @@
     
     
 }
+
+#pragma mark - UISearchBarDelegate
+-(void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    
+}
+
+-(void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    
+}
+
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self.view endEditing:YES];
+    
+    [self searchCustomer];
+    
+    
+}
+
 
 
 

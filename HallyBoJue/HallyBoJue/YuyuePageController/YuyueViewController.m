@@ -10,6 +10,8 @@
 #import "YuyueLeftCell.h"
 #import "UserInfo.h"
 #import "MJRefresh.h"
+#import "OneYuyueViewController.h"
+
 
 
 
@@ -20,6 +22,8 @@
     
 }
 @property(nonatomic,strong) NSMutableArray*myYuyueArray;
+@property (nonatomic,strong)OneYuyueViewController *oneYuyueViewController;
+
 
 @end
 
@@ -50,7 +54,28 @@
     
     [_leftTableView.header beginRefreshing];
     
+    
+    
 }
+
+
+#pragma mark - 预约确认界面
+-(OneYuyueViewController*)oneYuyueViewController
+{
+    if (!_oneYuyueViewController) {
+        
+        _oneYuyueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OneYuyueViewController"];
+        
+        _oneYuyueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+    }
+    
+    
+    return _oneYuyueViewController;
+    
+}
+
 
 
 -(void)yuyueHeaderRefresh
@@ -205,7 +230,60 @@
     
     
     
-    
+    if (_myYuyueArray.count > indexPath.section) {
+        
+        OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
+        
+        switch (model.status) {
+            case 1: //预约中
+            {
+                
+            }
+                break;
+            case 2://预约确认
+            {
+                self.oneYuyueViewController.ordermodel = model;
+                
+                [self.rightView addSubview:self.oneYuyueViewController.view];
+                
+            }
+                break;
+            case 3: //派工中
+            {
+                
+            }
+                break;
+            case 4: //服务中
+            {
+                
+            }
+                break;
+            case 5: //服务介绍 - 未支付
+            {
+                
+            }
+                break;
+            case 6: // 已支付 -未评价
+            {
+                
+            }
+                break;
+            case 7: //完全结束
+            {
+                
+            }
+                break;
+            case 8:  //异常支付
+            {
+                
+            }
+                break;
+                
+                
+            default:
+                break;
+        }
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     

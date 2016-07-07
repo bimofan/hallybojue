@@ -67,13 +67,16 @@
 #define kSearchcarbrand     @"kcustomer/searchcarbrand"
 
 
-///** 给客户新增汽车
-// *
-// *   user_id
-// *   plate_number
-// *   brand_id
-// */
-//#define kAddcar             @"kcustomer/addcar"
+
+
+/*
+ *   搜索客户
+ *
+ *   keyword
+ */
+#define kSearchCustomer     @"kcustomer/searchcustomer"
+
+
 
 
 
