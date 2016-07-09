@@ -10,7 +10,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.122/api/"
+#define kRequestHeader  @"http://192.168.1.105/api/"
 
 
 
@@ -48,7 +48,7 @@
  */
 #define kMyCustomerList     @"kcustomer/customerlist"
 
-//新增客户 并给客户新增汽车
+//新增客户并给客户新增汽车
 /*
  *  keeper_id
  *  mobile
@@ -68,13 +68,21 @@
 
 
 
-
 /*
  *   搜索客户
  *
  *   keyword
  */
 #define kSearchCustomer     @"kcustomer/searchcustomer"
+
+
+
+/*  环车检查表
+ *
+ */
+#define kChecklist       @"korder/checklist"
+
+
 
 
 

@@ -147,6 +147,9 @@ CGFloat cellHeight = 70;
         
         _yuyuepageController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
         
+        _yuyuepageController.superViewController = self;
+        
+        
     }
     
     

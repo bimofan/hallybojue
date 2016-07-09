@@ -9,12 +9,20 @@
 #import "BaseViewController.h"
 #import "OrderModel.h"
 
+
+@protocol OneYuyueDelegate <NSObject>
+
+-(void)didSelectedCarCheck;
+
+
+@end
 @interface OneYuyueViewController : BaseViewController
 
 
 
 @property (nonatomic,strong) OrderModel *ordermodel;
 
+@property (nonatomic,assign) id <OneYuyueDelegate>delegate;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;

@@ -9,6 +9,7 @@
 #import "OneYuyueViewController.h"
 #import "OneYuyueCell.h"
 
+
 @interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -112,6 +113,16 @@
 
 
 - (IBAction)checkAction:(id)sender {
+    
+    
+    if ([self.delegate respondsToSelector:@selector(didSelectedCarCheck)]) {
+        
+        [self.delegate didSelectedCarCheck];
+        
+    }
+ 
+    
+    
 }
 - (IBAction)sendAction:(id)sender {
 }

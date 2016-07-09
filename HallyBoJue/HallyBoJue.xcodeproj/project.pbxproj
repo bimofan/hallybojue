@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F4B1D3079F400163F55 /* CarCheckViewController.m */; };
 		136246B61D24C35200190DCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 136246B51D24C35200190DCF /* main.m */; };
 		136246B91D24C35200190DCF /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 136246B81D24C35200190DCF /* AppDelegate.mm */; };
 		136246C21D24C35200190DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136246C01D24C35200190DCF /* Main.storyboard */; };
@@ -135,6 +136,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		132C2F4A1D3079F400163F55 /* CarCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCheckViewController.h; sourceTree = "<group>"; };
+		132C2F4B1D3079F400163F55 /* CarCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCheckViewController.m; sourceTree = "<group>"; };
 		136246B11D24C35200190DCF /* HallyBoJue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HallyBoJue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136246B51D24C35200190DCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		136246B71D24C35200190DCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -384,6 +387,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132C2F491D30799400163F55 /* CarCheckViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132C2F4A1D3079F400163F55 /* CarCheckViewController.h */,
+				132C2F4B1D3079F400163F55 /* CarCheckViewController.m */,
+			);
+			name = CarCheckViewController;
+			path = CarCheck;
+			sourceTree = "<group>";
+		};
 		136246A81D24C35200190DCF = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +424,7 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.mm */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
+				132C2F491D30799400163F55 /* CarCheckViewController */,
 				138EEA301D29BD87005D4A00 /* CustomerControllers */,
 				1384A6791D28619200D74892 /* AppointmentControllers */,
 				1384A66F1D283CE300D74892 /* FirstPageController */,
@@ -1001,6 +1015,7 @@
 				1384A6651D281B0A00D74892 /* JSONHTTPClient.m in Sources */,
 				138EEA031D296298005D4A00 /* CUserModel.m in Sources */,
 				1384A6341D27D2DB00D74892 /* AFHTTPRequestOperation.m in Sources */,
+				132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */,
 				1384A6441D28139A00D74892 /* UserInfo.m in Sources */,
 				1362475D1D24FF9D00190DCF /* MJRefreshGifHeader.m in Sources */,
 				139C54FC1D2D20BD000A7C8E /* CUserInfoController.m in Sources */,

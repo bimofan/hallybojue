@@ -12,6 +12,8 @@
 @interface YuyueViewController : BaseViewController
 
 
+@property (nonatomic,strong) UIViewController *superViewController;
+
 @property (weak, nonatomic) IBOutlet UIView *leftView;
 
 

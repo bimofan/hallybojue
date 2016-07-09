@@ -15,7 +15,7 @@
 
 
 
-@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate>
 {
     int pagesize;
     int page;
@@ -67,6 +67,8 @@
         _oneYuyueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"OneYuyueViewController"];
         
         _oneYuyueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        _oneYuyueViewController.delegate = self;
         
         
     }
@@ -173,6 +175,8 @@
         OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
         cell.namecarnumLabel.text = model.usermodel.user_real_name;
+        
+        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
         cell.timeLabel.text = model.order_time;
         
@@ -290,6 +294,14 @@
     
 }
 
+
+#pragma mark - OneYuyueDelegate
+-(void)didSelectedCarCheck
+{
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"CarCheckNav"];
+    
+    [self.superViewController presentViewController:nav animated:YES completion:nil];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
