@@ -20,4 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *serviceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *serviceStatusLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *serviceLabelHeigh;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *serivceviewheight;
+
+
+
 @end

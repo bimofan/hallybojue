@@ -10,7 +10,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.1.105/api/"
+#define kRequestHeader  @"http://192.168.0.102/api/"
 
 
 

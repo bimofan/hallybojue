@@ -10,6 +10,7 @@
 #import "OneYuyueCell.h"
 
 
+
 @interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -125,5 +126,18 @@
     
 }
 - (IBAction)sendAction:(id)sender {
+    
+    
+    if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
+        
+        
+        [self.delegate startSendWorders:_ordermodel];
+        
+        
+    }
+    
+    
+    
+    
 }
 @end

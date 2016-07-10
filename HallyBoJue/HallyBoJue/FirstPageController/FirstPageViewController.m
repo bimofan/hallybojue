@@ -268,6 +268,7 @@
             
             cell.nameLabel.text = model.usermodel.user_real_name;
     
+            [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar  objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
             float lat = [[model.address_location objectForKey:@"lat"]floatValue];
             float lon = [[model.address_location objectForKey:@"lon"]floatValue];
             
@@ -276,6 +277,8 @@
                 cell.addressLabel.text = address;
                 
             }];
+            
+            cell.serviceLabel.text = @"哈里伯爵至尊洗车";
             
             
 //            if (lat > 0) {
@@ -298,7 +301,7 @@
             
             cell.timeLabel.text = model.order_time;
             
-            cell.serviceLabel.text = model.service_name;
+//            cell.serviceLabel.text = model.service_name;
             
             cell.catchButton.tag = indexPath.section;
             

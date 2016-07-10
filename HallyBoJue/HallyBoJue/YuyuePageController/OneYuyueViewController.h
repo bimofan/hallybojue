@@ -14,6 +14,9 @@
 
 -(void)didSelectedCarCheck;
 
+-(void)startSendWorders:(OrderModel*)model;
+
+
 
 @end
 @interface OneYuyueViewController : BaseViewController

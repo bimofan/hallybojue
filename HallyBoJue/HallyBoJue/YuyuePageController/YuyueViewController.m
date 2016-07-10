@@ -11,7 +11,7 @@
 #import "UserInfo.h"
 #import "MJRefresh.h"
 #import "OneYuyueViewController.h"
-
+#import "TwoViewController.h"
 
 
 
@@ -23,6 +23,8 @@
 }
 @property(nonatomic,strong) NSMutableArray*myYuyueArray;
 @property (nonatomic,strong)OneYuyueViewController *oneYuyueViewController;
+@property (nonatomic,strong) TwoViewController *twoViewController;  //开始派工
+
 
 
 @end
@@ -58,6 +60,23 @@
     
 }
 
+
+#pragma mark -派工
+-(TwoViewController*)twoViewController
+{
+    if (!_twoViewController) {
+        
+        
+        _twoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TwoViewController"];
+        
+        _twoViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+        
+    }
+    
+    return _twoViewController;
+}
 
 #pragma mark - 预约确认界面
 -(OneYuyueViewController*)oneYuyueViewController
@@ -178,9 +197,35 @@
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
+        NSMutableString *service_str = [[NSMutableString alloc]init];
+        
+        for (int i = 0; i < model.services.count; i++) {
+            
+            NSDictionary *service = [model.services objectAtIndex:i];
+            
+            NSString *servicename = [service objectForKey:@"name"];
+            
+            if (service_str.length == 0) {
+                
+                [service_str appendString:servicename];
+            }
+            else
+            {
+                [service_str appendFormat:@"\n \n%@",servicename];
+                
+            }
+            
+            
+
+        }
+        
+        cell.serivceviewheight.constant = 50 *model.services.count;
+        cell.serviceLabelHeigh.constant = 50*model.services.count;
+        
+        
         cell.timeLabel.text = model.order_time;
         
-        cell.serviceLabel.text = model.service_name;
+        cell.serviceLabel.text = service_str;
         
         cell.serviceStatusLabel.text = model.status_str;
         
@@ -225,7 +270,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 215;
+    
+    OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
+    
+    return 215 + 50 *model.services.count;
     
 }
 
@@ -241,7 +289,9 @@
         switch (model.status) {
             case 1: //预约中
             {
+                self.oneYuyueViewController.ordermodel = model;
                 
+                [self.rightView addSubview:self.oneYuyueViewController.view];
             }
                 break;
             case 2://预约确认
@@ -254,6 +304,12 @@
                 break;
             case 3: //派工中
             {
+                self.twoViewController.orderModel = model;
+                
+                [self.oneYuyueViewController.view removeFromSuperview];
+                
+                [self.rightView addSubview:self.twoViewController.view];
+                
                 
             }
                 break;
@@ -301,6 +357,15 @@
     UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"CarCheckNav"];
     
     [self.superViewController presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)startSendWorders:(OrderModel*)model
+{
+    self.twoViewController.orderModel = model;
+    
+    [self.oneYuyueViewController.view removeFromSuperview];
+    
+    [self.rightView addSubview:self.twoViewController.view];
 }
 
 - (void)didReceiveMemoryWarning {
