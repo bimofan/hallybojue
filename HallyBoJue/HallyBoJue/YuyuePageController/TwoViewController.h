@@ -26,19 +26,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *workplaceButton;
-
-@property (weak, nonatomic) IBOutlet UIButton *choseWorkplace;
 
 
-- (IBAction)choseWorkPlaceAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *timeTextField;
 
 @property (weak, nonatomic) IBOutlet UITableView *workerTableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *startService;
 
+- (IBAction)startServiceAction:(id)sender;
 
 @end

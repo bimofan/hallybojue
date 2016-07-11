@@ -11,6 +11,8 @@
 #import "NetWorking.h"
 #import "APIConstants.h"
 #import "DataModel.h"
+#import "CommonMethods.h"
+
 
 
 @implementation ChoseWorkPlaceView
@@ -69,10 +71,42 @@
     if (_workDataSource.count == 0)
     {
         
-           [self getdata];
+          [_workTableView reloadData];
+        
+        if (_type ==1) {
+            
+             [self getdata];
+        }
+        else
+        {
+            [self getworkerlist];
+            
+        }
+        
     }
     else
     {
+        
+        if (_type == 1) {
+            
+            
+            [self dealWorkPlace:_workDataSource];
+            
+            
+            
+        }
+        else
+        {
+            
+            
+            [self dealWorkersSelected:_workDataSource];
+            
+            
+            
+        }
+        
+ 
+        
         [_workTableView reloadData];
         
     }
@@ -80,24 +114,166 @@
     
 
     
+}
+
+-(void)dealWorkPlace:(NSArray*)workplace
+{
+    
+    NSMutableArray *muarray = [[NSMutableArray alloc]init];
+    
+    [muarray addObjectsFromArray:workplace];
+    
+    for (int i = 0 ; i < muarray.count; i++) {
+        
+        NSDictionary *temDict = [ muarray objectAtIndex:i];
+        
+        NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:temDict];
+        
+        int mudict_id = [[mudict objectForKey:@"workplace_id"]intValue];
+        
+        
+        BOOL contented = NO;
+        
+        for (int d = 0; d < _selectedArray.count; d++) {
+            
+            NSDictionary *selectDict = [_selectedArray objectAtIndex:d];
+            
+            int workplace_id = [[selectDict objectForKey:@"workplace_id"]intValue];
+            
+            
+            if (mudict_id == workplace_id) {
+                
+                contented = YES;
+                
+                
+            }
+            
+            
+        }
+        
+        if (contented ) {
+            
+            [mudict setObject:@(1) forKey:@"selected"];
+        }
+        else
+        {
+            [mudict setObject:@(0) forKey:@"selected"];
+        }
+        
+        
+        [muarray replaceObjectAtIndex:i withObject:mudict];
+        
+        
+        
+        
+    }
+    
+    _workDataSource  = muarray;
+    
+    
+    
+    [_workTableView reloadData];
+    
     
 }
 
+-(void)dealWorkersSelected:(NSArray *)workers
+{
+    NSMutableArray *muArray = [[NSMutableArray alloc]init];
+    
+    [muArray addObjectsFromArray:workers];
+    
+    for (int i = 0; i < muArray.count; i++) {
+        
+        NSDictionary *dict = [muArray objectAtIndex:i];
+        
+        NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+        
+        int worker_id = [[mudict objectForKey:@"worker_id"]intValue];
+        
+        
+        BOOL contented  = NO;
+        
+        for (int d = 0; d < _selectedArray.count; d++) {
+            
+            NSDictionary *selectedDict = [_selectedArray objectAtIndex:d];
+            
+            int selectworder_id = [[selectedDict objectForKey:@"worker_id"]intValue];
+            
+            if (selectworder_id == worker_id) {
+                
+                contented = YES;
+                
+            }
+            
+        }
+        
+        if (contented) {
+            
+            [mudict setObject:@(1) forKey:@"selected"];
+        }
+        else
+        {
+            [mudict setObject:@(0) forKey:@"selected"];
+        }
+        
+        
+        
+        [muArray replaceObjectAtIndex:i withObject:mudict];
+        
+        
+        
+        
+    }
+    
+    _workDataSource = muArray;
+    
+    
+    
+    [_workTableView reloadData];
+}
+
+
+#pragma mark -工位
 -(void)getdata
 {
-    [[NetWorking shareNetWorking] RequestWithAction:kWorkList Params:nil itemModel:nil result:^(BOOL isSuccess, id data) {
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kWorkPlaceList Params:@{@"store_id":@(_store_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
        
         if (isSuccess) {
             
            
             DataModel*dataModel = (DataModel*)data;
             
-            _workDataSource = dataModel.items;
             
             
-            [_workTableView reloadData];
+            [self dealWorkPlace:dataModel.items];
+            
+  
             
         }
+        
+    }];
+}
+
+#pragma mark -技师
+-(void)getworkerlist
+{
+    [[NetWorking shareNetWorking] RequestWithAction:kWorkerList Params:@{@"store_id":@(_store_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+        
+        
+        if (isSuccess) {
+            
+            DataModel*dataModel = (DataModel*)data;
+            
+    
+            
+            [self dealWorkersSelected:dataModel.items];
+            
+            
+        
+        }
+        
         
     }];
 }
@@ -125,17 +301,35 @@
     NSDictionary *dict = [_workDataSource objectAtIndex:indexPath.section];
     
     
-    cell.textLabel.text = [dict objectForKey:@"name"];
-    
-    if (_hadSeletedItems.count > 0 && _selectedIndex == indexPath.section) {
+    if (_type ==1) {
         
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.textLabel.text = [dict objectForKey:@"name"];
         
+        if ([[dict objectForKey:@"selected"]boolValue]) {
+            
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
     }
+
     else
     {
-        cell.accessoryType = UITableViewCellAccessoryNone;
+        cell.textLabel.text = [dict objectForKey:@"real_name"];
         
+        if ([[dict objectForKey:@"selected"]boolValue]) {
+            
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
     }
     
     
@@ -191,16 +385,70 @@
 {
     
     
-    _selectedIndex = indexPath.section;
+    NSMutableArray *muArray = [[NSMutableArray alloc]init];
+    
+    [muArray addObjectsFromArray:_workDataSource];
+    
+    NSDictionary *selectedDict = [muArray objectAtIndex:indexPath.section];
+    
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:selectedDict];
     
     
-    if ([self.delegate respondsToSelector:@selector(didChoseItems:)]) {
+    if (_type == 1) {
+        
+        for (int i = 0; i < muArray.count; i++) {
+            
+            NSDictionary *temdict = [muArray objectAtIndex:i];
+            
+            NSMutableDictionary *mutemdict = [[NSMutableDictionary alloc]initWithDictionary:temdict];
+            
+            if (i == indexPath.section) {
+                
+                
+                BOOL selected = [[mutemdict objectForKey:@"selected"]boolValue];
+                
+                [mutemdict setObject:@(!selected) forKey:@"selected"];
+                
+                
+            }
+            else
+            {
+                [mutemdict setObject:@(0) forKey:@"selected"];
+                
+            }
+            
+            
+            [muArray replaceObjectAtIndex:i  withObject:mutemdict];
+        
+            
+        }
         
         
+        _workDataSource = muArray;
         
-        [self.delegate didChoseItems: [_workDataSource objectAtIndex:indexPath.section]];
         
     }
+    
+    else
+    {
+        BOOL selected = [[mudict objectForKey:@"selected"]boolValue];
+        
+        [mudict setObject:@(!selected) forKey:@"selected"];
+        
+        [muArray replaceObjectAtIndex:indexPath.section withObject:mudict];
+        
+        
+        _workDataSource = muArray;
+    }
+    
+
+    
+    
+    
+    [_workTableView reloadData];
+    
+
+
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -208,4 +456,62 @@
 
 
 
+
+
+- (IBAction)okAction:(id)sender {
+    
+    
+    
+    if ([self.delegate respondsToSelector:@selector(didChoseItems:)]) {
+        
+        
+        NSMutableArray *selectedItems = [[NSMutableArray alloc]init];
+        
+        for (int i = 0 ; i < _workDataSource.count; i++) {
+            
+            NSDictionary *dict = [_workDataSource objectAtIndex:i];
+            
+            if ([[dict objectForKey:@"selected"]boolValue]) {
+                
+                [selectedItems addObject:dict];
+                
+            }
+        }
+        
+        
+        
+        if (selectedItems.count == 0) {
+            
+            NSString *alertStr = @"";
+            
+            if (_type == 1) {
+                
+                alertStr = @"请选择工位";
+                
+            }
+            else if (_type == 2)
+            {
+                alertStr = @"请选择技师";
+            }
+            
+            [CommonMethods showDefaultErrorString:alertStr];
+            
+            return;
+            
+            
+            
+        }
+        
+        
+        
+        [self.delegate didChoseItems:selectedItems];
+        
+    }
+    
+    
+    
+    [self dismiss];
+    
+    
+}
 @end

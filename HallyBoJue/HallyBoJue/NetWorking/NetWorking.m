@@ -36,11 +36,11 @@ NetWorking *netWorking;
 -(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param itemModel:(id)model  result:(RequestResultBlock)block
 {
     
-    NSString *url = [NSString stringWithFormat:@"%@%@?XDEBUGER=EDEBUGER",kRequestHeader,action];
+    NSString *url = [NSString stringWithFormat:@"%@%@?XDEBUG_SESSION_START=1",kRequestHeader,action];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
-    
+  
     [MyProgressHUD showProgress];
     
     [manager POST:url parameters:param  success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -58,7 +58,6 @@ NetWorking *netWorking;
         {
         
         
-           
             
             if ([data isKindOfClass:[NSDictionary class]]) {
                 

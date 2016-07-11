@@ -315,10 +315,16 @@
                 break;
             case 4: //服务中
             {
+                self.twoViewController.orderModel = model;
+                
+                [self.oneYuyueViewController.view removeFromSuperview];
+                
+                [self.rightView addSubview:self.twoViewController.view];
+                
                 
             }
                 break;
-            case 5: //服务介绍 - 未支付
+            case 5: //服务结束 - 未支付
             {
                 
             }

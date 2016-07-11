@@ -83,10 +83,27 @@
 #define kChecklist       @"korder/checklist"
 
 /*  工位列表
- *
+ *  store_id
  */
 
-#define kWorkList       @"korder/workplacelist"
+#define kWorkPlaceList       @"korder/workplacelist"
+
+
+
+/*  技师列表
+ *
+ *  store_id
+ *
+ */
+#define kWorkerList       @"korder/workerlist"
+
+
+/*  开始服务
+ *  order_id
+ *  expecte_time
+ *  services
+ */
+#define kOrderStartService  @"korder/startservice"
 
 
 
