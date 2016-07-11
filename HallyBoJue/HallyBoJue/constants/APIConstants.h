@@ -10,7 +10,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.102/api/"
+#define kRequestHeader  @"http://192.168.0.100/api/"
 
 
 
@@ -81,6 +81,14 @@
  *
  */
 #define kChecklist       @"korder/checklist"
+
+/*  工位列表
+ *
+ */
+
+#define kWorkList       @"korder/workplacelist"
+
+
 
 
 

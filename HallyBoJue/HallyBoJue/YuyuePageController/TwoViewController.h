@@ -30,6 +30,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *choseWorkplace;
 
+
+- (IBAction)choseWorkPlaceAction:(id)sender;
+
+
 @property (weak, nonatomic) IBOutlet UITableView *workerTableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;

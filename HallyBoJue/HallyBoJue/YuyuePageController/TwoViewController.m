@@ -8,8 +8,13 @@
 
 #import "TwoViewController.h"
 #import "WorkerCell.h"
+#import "ChoseWorkPlaceView.h"
 
-@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,ChoseWorkPlaceDelegate>
+
+
+@property (nonatomic,strong) ChoseWorkPlaceView *choseWorkPlaceView;
+
 
 @end
 
@@ -24,6 +29,30 @@
     
 }
 
+
+-(ChoseWorkPlaceView*)choseWorkPlaceView
+{
+    if (!_choseWorkPlaceView) {
+        
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"ChoseWorkPlaceView" owner:self options:nil];
+        
+        _choseWorkPlaceView = [views firstObject];
+        
+        _choseWorkPlaceView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        
+        [_choseWorkPlaceView show];
+        
+        
+        _choseWorkPlaceView.delegate = self;
+        
+        
+    }
+    
+    return _choseWorkPlaceView;
+    
+    
+    
+}
 -(void)setOrderModel:(OrderModel *)orderModel
 {
     _orderModel = orderModel;
@@ -119,5 +148,23 @@
 }
 
 
+#pragma mark - ChoseWorkPlaceDelegate
+-(void)didChoseWorkPlace:(NSDictionary *)workplace
+{
+    
+}
 
+
+- (IBAction)choseWorkPlaceAction:(id)sender {
+    
+    
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.choseWorkPlaceView];
+    
+    
+    
+    
+    
+    
+}
 @end

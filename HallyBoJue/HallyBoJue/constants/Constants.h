@@ -47,6 +47,8 @@
 
 #define kDarkTextColor        RGB(53,53,53,1)
 
+#define kLighGrayBackColor      [UIColor colorWithWhite:0.3 alpha:0.1]
+
 
 
 /*字体*/

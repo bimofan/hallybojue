@@ -1914,12 +1914,12 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JBv-Ge-vcb">
-                                                            <rect key="frame" x="14" y="0.0" width="406" height="57.5"/>
+                                                            <rect key="frame" x="14" y="0.0" width="406" height="58"/>
                                                             <attributedString key="attributedText"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择技师" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mPa-rn-B7L">
-                                                            <rect key="frame" x="428" y="0.0" width="73" height="57.5"/>
+                                                            <rect key="frame" x="428" y="0.0" width="73" height="58"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="73" id="whg-2B-JyL"/>
                                                             </constraints>
@@ -1991,6 +1991,9 @@
                                         <state key="normal" title="点击选择">
                                             <color key="titleColor" red="0.23137254901960785" green="0.61568627450980395" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="choseWorkPlaceAction:" destination="8mq-JS-Rkb" eventType="touchUpInside" id="T9j-EJ-QHf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

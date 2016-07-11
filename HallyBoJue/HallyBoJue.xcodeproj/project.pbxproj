@@ -10,6 +10,8 @@
 		132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F4B1D3079F400163F55 /* CarCheckViewController.m */; };
 		132C2F501D323B6C00163F55 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F4F1D323B6C00163F55 /* TwoViewController.m */; };
 		132C2F531D32413000163F55 /* WorkerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F521D32413000163F55 /* WorkerCell.m */; };
+		1330D44A1D33309600CF4723 /* ChoseWorkPlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1330D4491D33309600CF4723 /* ChoseWorkPlaceView.m */; };
+		1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1330D44B1D3330B800CF4723 /* ChoseWorkPlaceView.xib */; };
 		136246B61D24C35200190DCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 136246B51D24C35200190DCF /* main.m */; };
 		136246B91D24C35200190DCF /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 136246B81D24C35200190DCF /* AppDelegate.mm */; };
 		136246C21D24C35200190DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136246C01D24C35200190DCF /* Main.storyboard */; };
@@ -144,6 +146,9 @@
 		132C2F4F1D323B6C00163F55 /* TwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoViewController.m; sourceTree = "<group>"; };
 		132C2F511D32413000163F55 /* WorkerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkerCell.h; sourceTree = "<group>"; };
 		132C2F521D32413000163F55 /* WorkerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkerCell.m; sourceTree = "<group>"; };
+		1330D4481D33309600CF4723 /* ChoseWorkPlaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseWorkPlaceView.h; sourceTree = "<group>"; };
+		1330D4491D33309600CF4723 /* ChoseWorkPlaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseWorkPlaceView.m; sourceTree = "<group>"; };
+		1330D44B1D3330B800CF4723 /* ChoseWorkPlaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoseWorkPlaceView.xib; sourceTree = "<group>"; };
 		136246B11D24C35200190DCF /* HallyBoJue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HallyBoJue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136246B51D24C35200190DCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		136246B71D24C35200190DCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -417,6 +422,9 @@
 		132C2F541D32567200163F55 /* popViews */ = {
 			isa = PBXGroup;
 			children = (
+				1330D4481D33309600CF4723 /* ChoseWorkPlaceView.h */,
+				1330D4491D33309600CF4723 /* ChoseWorkPlaceView.m */,
+				1330D44B1D3330B800CF4723 /* ChoseWorkPlaceView.xib */,
 			);
 			path = popViews;
 			sourceTree = "<group>";
@@ -1010,6 +1018,7 @@
 				136246C41D24C35200190DCF /* Assets.xcassets in Resources */,
 				1384A66E1D281E5500D74892 /* HomeHeaderView.xib in Resources */,
 				136247581D24FF9D00190DCF /* MJRefresh.bundle in Resources */,
+				1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */,
 				1362476B1D24FFF800190DCF /* ProgressHUD.bundle in Resources */,
 				136246C21D24C35200190DCF /* Main.storyboard in Resources */,
 				138EEA221D298AAA005D4A00 /* mapapi.bundle in Resources */,
@@ -1095,6 +1104,7 @@
 				136247261D24FDB100190DCF /* SDWebImageDownloader.m in Sources */,
 				1384A6621D281B0A00D74892 /* JSONModelError.m in Sources */,
 				1362472B1D24FDB100190DCF /* UIImage+GIF.m in Sources */,
+				1330D44A1D33309600CF4723 /* ChoseWorkPlaceView.m in Sources */,
 				1362475A1D24FF9D00190DCF /* MJRefreshConst.m in Sources */,
 				13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */,
 				136247701D25003700190DCF /* Reachability.m in Sources */,
