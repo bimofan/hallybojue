@@ -82,6 +82,13 @@ CGFloat cellHeight = 70;
         [self.homeHeaderView setdata];
         
     }
+    
+    
+    //test
+//    [[NetWorking shareNetWorking] RequestWithAction:@"" Params:@{@"mobile":@"123456",@"password":@"123456"} itemModel:nil result:^(BOOL isSuccess, id data) {
+//        
+//    }];
+    
 }
 
 -(HomeHeaderView*)homeHeaderView

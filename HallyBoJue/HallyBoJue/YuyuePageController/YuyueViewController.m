@@ -12,6 +12,7 @@
 #import "MJRefresh.h"
 #import "OneYuyueViewController.h"
 #import "TwoViewController.h"
+#import "ThirdYuYueViewController.h"
 
 
 
@@ -24,6 +25,8 @@
 @property(nonatomic,strong) NSMutableArray*myYuyueArray;
 @property (nonatomic,strong)OneYuyueViewController *oneYuyueViewController;
 @property (nonatomic,strong) TwoViewController *twoViewController;  //开始派工
+@property (nonatomic,strong) ThirdYuYueViewController *thirdYuYueViewController;
+
 
 
 
@@ -59,6 +62,25 @@
     
     
 }
+
+
+#pragma mark - 服务中
+-(ThirdYuYueViewController*)thirdYuYueViewController
+{
+    if (!_thirdYuYueViewController) {
+        
+        _thirdYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ThirdYuYueViewController"];
+        
+        _thirdYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+        
+    }
+    
+    return _thirdYuYueViewController;
+    
+}
+
 
 
 #pragma mark -派工
@@ -286,6 +308,12 @@
         
         OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
+        for (UIView *view in _rightView.subviews) {
+            
+            [view removeFromSuperview];
+            
+        }
+        
         switch (model.status) {
             case 1: //预约中
             {
@@ -306,7 +334,6 @@
             {
                 self.twoViewController.orderModel = model;
                 
-                [self.oneYuyueViewController.view removeFromSuperview];
                 
                 [self.rightView addSubview:self.twoViewController.view];
                 
@@ -315,11 +342,13 @@
                 break;
             case 4: //服务中
             {
-                self.twoViewController.orderModel = model;
+                self.thirdYuYueViewController.orderModel = model;
                 
-                [self.oneYuyueViewController.view removeFromSuperview];
+                self.thirdYuYueViewController.superViewController = self;
                 
-                [self.rightView addSubview:self.twoViewController.view];
+                
+                [self.rightView addSubview:self.thirdYuYueViewController.view];
+                
                 
                 
             }

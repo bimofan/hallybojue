@@ -10,9 +10,9 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.100/api/"
+#define kRequestHeader  @"http://192.168.0.101/api/"
 
-
+//#define kRequestHeader  @"http://114.55.42.248/public/api/user/login"
 
 
 

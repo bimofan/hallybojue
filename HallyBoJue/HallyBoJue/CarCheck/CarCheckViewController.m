@@ -8,7 +8,7 @@
 
 #import "CarCheckViewController.h"
 
-@interface CarCheckViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface CarCheckViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate>
 
 
 @property (nonatomic,strong) NSMutableArray *leftDataArray;
@@ -16,6 +16,9 @@
 
 @property (nonatomic,assign) NSInteger leftSelectedindex;
 @property (nonatomic,assign) NSInteger rightSelectedindex;
+
+@property (nonatomic,strong) NSMutableArray *descArray;
+
 
 
 
@@ -32,10 +35,16 @@
     self.navigationItem.leftBarButtonItem = dismisButton;
     
     
+    _descArray = [[NSMutableArray alloc]init];
+    
+    
     _firstTableView.delegate = self;
     _firstTableView.dataSource = self;
     _secondTableView.delegate = self;
     _secondTableView.dataSource =self;
+    
+    _suggestTextView.delegate = self;
+    
     
     [self getchecklist];
     
@@ -97,8 +106,7 @@
             
             _leftDataArray = temleftArray;
             
-            
-            
+        
             
             _leftSelectedindex = 0;
             
@@ -308,6 +316,7 @@
         [muleftdict setObject:_rightDataArray forKey:@"subchecks"];
         
         
+        [self setproblemView:mudict];
         
         
     }
@@ -316,6 +325,75 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+
+
+#pragma mark - 设置右边问题界面
+-(void)setproblemView:(NSDictionary *)dict
+{
+    
+    NSLog(@"dict:%@",dict);
+    
+     NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
+    
+    NSString *lefttitle = [leftdict objectForKey:@"desc"];
+    
+    NSString *righttitle = [dict objectForKey:@"desc"];
+    
+    _problemNameLabel.text = [NSString stringWithFormat:@" %@-%@",lefttitle,righttitle];
+    
+    [_photoButton setImage:nil forState:UIControlStateNormal];
+    
+   
+    
+    [_advisButton setTitle:@"点击选择" forState:UIControlStateNormal];
+    
+    
+    
+    NSString *advise = [dict objectForKey:@"advise"];
+    
+    NSString *suggest = [dict objectForKey:@"suggest"];
+    
+    UIImage *photo = [dict objectForKey:@"photo"];
+    
+    if (advise.length >0) {
+        
+        [_advisButton setTitle:advise forState:UIControlStateNormal];
+        
+        
+    }
+    
+    if (suggest.length > 0) {
+        
+        _suggestLabel.hidden = YES;
+        
+        _suggestTextView.text = suggest;
+        
+    }
+    else{
+        
+        _suggestTextView.text = nil;
+        
+        _suggestLabel.hidden = NO;
+        
+    }
+    
+    if (photo) {
+        
+           [_photoButton setImage:photo forState:UIControlStateNormal];
+        
+    }
+    else
+    {
+         [_photoButton setTitle:@"点击添加" forState:UIControlStateNormal];
+    }
+    
+    
+    
+    
+    
+    
+}
+
 
 
 - (IBAction)photoAction:(id)sender {
@@ -329,6 +407,9 @@
      [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+
+- (IBAction)adviseAction:(id)sender {
+}
 
 - (IBAction)summitAction:(id)sender {
     

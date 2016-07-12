@@ -120,6 +120,8 @@
 		13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0BE1D2E53D400527489 /* ServiceCategoryViewController.m */; };
 		13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */; };
 		13C8D0C61D2EC23100527489 /* OneYuyueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C51D2EC23100527489 /* OneYuyueCell.m */; };
+		13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8C61D348B2100BA0F58 /* ThirdYuYueViewController.m */; };
+		13E8C8CA1D348DD200BA0F58 /* ThirdYuYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8C91D348DD200BA0F58 /* ThirdYuYueCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -354,6 +356,10 @@
 		13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueViewController.m; sourceTree = "<group>"; };
 		13C8D0C41D2EC23100527489 /* OneYuyueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneYuyueCell.h; sourceTree = "<group>"; };
 		13C8D0C51D2EC23100527489 /* OneYuyueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueCell.m; sourceTree = "<group>"; };
+		13E8C8C51D348B2100BA0F58 /* ThirdYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdYuYueViewController.h; sourceTree = "<group>"; };
+		13E8C8C61D348B2100BA0F58 /* ThirdYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdYuYueViewController.m; sourceTree = "<group>"; };
+		13E8C8C81D348DD200BA0F58 /* ThirdYuYueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdYuYueCell.h; sourceTree = "<group>"; };
+		13E8C8C91D348DD200BA0F58 /* ThirdYuYueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdYuYueCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -778,6 +784,7 @@
 		1384A6791D28619200D74892 /* AppointmentControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13E8C8C41D348AC300BA0F58 /* ThirdYuYueViewController */,
 				132C2F4D1D323B4200163F55 /* TwoYuYueViewController */,
 				13C8D0C31D2EC20800527489 /* OneYuYueViewController */,
 				1384A67A1D2861A700D74892 /* YuyueViewController.h */,
@@ -908,6 +915,17 @@
 				13C8D0C51D2EC23100527489 /* OneYuyueCell.m */,
 			);
 			name = OneYuYueViewController;
+			sourceTree = "<group>";
+		};
+		13E8C8C41D348AC300BA0F58 /* ThirdYuYueViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13E8C8C51D348B2100BA0F58 /* ThirdYuYueViewController.h */,
+				13E8C8C61D348B2100BA0F58 /* ThirdYuYueViewController.m */,
+				13E8C8C81D348DD200BA0F58 /* ThirdYuYueCell.h */,
+				13E8C8C91D348DD200BA0F58 /* ThirdYuYueCell.m */,
+			);
+			name = ThirdYuYueViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1069,6 +1087,7 @@
 				136247211D24FDB100190DCF /* MKAnnotationView+WebCache.m in Sources */,
 				1384A6411D28112700D74892 /* Usermodel.m in Sources */,
 				13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */,
+				13E8C8CA1D348DD200BA0F58 /* ThirdYuYueCell.m in Sources */,
 				13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */,
 				13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */,
 				132C2F531D32413000163F55 /* WorkerCell.m in Sources */,
@@ -1094,6 +1113,7 @@
 				1384A6351D27D2DB00D74892 /* AFHTTPRequestOperationManager.m in Sources */,
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
 				136247251D24FDB100190DCF /* SDWebImageDecoder.m in Sources */,
+				13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */,
 				1362472C1D24FDB100190DCF /* UIImage+MultiFormat.m in Sources */,
 				1362472D1D24FDB100190DCF /* UIImage+WebP.m in Sources */,
 				136247271D24FDB100190DCF /* SDWebImageDownloaderOperation.m in Sources */,

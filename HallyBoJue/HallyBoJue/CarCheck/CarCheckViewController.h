@@ -23,8 +23,8 @@
 
 - (IBAction)photoAction:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UITableView *adviseTableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *problemNameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *suggestLabel;
 
@@ -33,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *summit;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *advisButton;
+
+- (IBAction)adviseAction:(id)sender;
 
 
 - (IBAction)summitAction:(id)sender;
