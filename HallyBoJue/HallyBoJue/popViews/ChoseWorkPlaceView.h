@@ -26,7 +26,7 @@
 -(void)dismiss;
 
 
-@property (nonatomic,assign) NSInteger type ; //显示类型 1 工位选择；  2 技师分派
+@property (nonatomic,assign) NSInteger type ; //显示类型 1 工位选择；  2 技师分派  3 服务建议
 @property (nonatomic,strong) NSArray *hadSeletedItems;
 @property (nonatomic,assign) NSInteger selectedIndex;
 @property (nonatomic,assign) int store_id;
@@ -34,6 +34,9 @@
 @property (nonatomic,strong) NSArray *selectedArray;
 
 @property (nonatomic,strong) NSArray *workDataSource;
+
+@property (nonatomic,strong) NSDictionary *selectedDict;
+
 
 @property (nonatomic,assign) id <ChoseWorkPlaceDelegate> delegate;
 

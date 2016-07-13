@@ -27,6 +27,7 @@
 
 @property (nonatomic,assign) id <OneYuyueDelegate>delegate;
 
+@property (nonatomic,strong) UIViewController *superViewController;
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 
@@ -51,6 +52,10 @@
 
 - (IBAction)sendAction:(id)sender;
 
+
+@property (weak, nonatomic) IBOutlet UIButton *addServiceButton;
+
+- (IBAction)addServiceAction:(id)sender;
 
 
 @end

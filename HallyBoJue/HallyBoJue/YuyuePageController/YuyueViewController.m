@@ -150,7 +150,6 @@
         if (isSuccess ) {
             
             
-            
             if (page == 1) {
                 
                 _myYuyueArray = [[NSMutableArray alloc]init];
@@ -325,6 +324,7 @@
             case 2://预约确认
             {
                 self.oneYuyueViewController.ordermodel = model;
+                self.oneYuyueViewController.superViewController = self.superViewController;
                 
                 [self.rightView addSubview:self.oneYuyueViewController.view];
                 
@@ -344,7 +344,7 @@
             {
                 self.thirdYuYueViewController.orderModel = model;
                 
-                self.thirdYuYueViewController.superViewController = self;
+                self.thirdYuYueViewController.superViewController = self.superViewController;
                 
                 
                 [self.rightView addSubview:self.thirdYuYueViewController.view];
@@ -396,11 +396,72 @@
 
 -(void)startSendWorders:(OrderModel*)model
 {
-    self.twoViewController.orderModel = model;
     
-    [self.oneYuyueViewController.view removeFromSuperview];
+    if (model.status == 1) //预约中  确认预约
+    {
+        
+        [self checkappoint:model];
+        
+    }
+    else if (model.status == 2) //预约确认 开始派工
+    {
+        
+    }
+
+}
+
+#pragma mark - 确认预约
+-(void)checkappoint:(OrderModel*)model
+{
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+      
+        if (isSuccess) {
+            
+            
+            for (int i = 0; i < _myYuyueArray.count; i++) {
+                
+                OrderModel *temmodel = [_myYuyueArray objectAtIndex:i];
+                
+                if (temmodel.id == model.id) {
+                    
+                    
+                    temmodel.status = 2;
+                    
+                    temmodel.status_str = @"预约确认";
+                    
+                    [_myYuyueArray replaceObjectAtIndex:i withObject:temmodel];
+                    
+                    [_leftTableView reloadData];
+                    
+                    
+                }
+             }
+            
+            
+            
+            
+                 model.status_str = @"预约确认";
+                 model.status = 2;
+            
+                 self.twoViewController.orderModel = model;
+            
+                [self.oneYuyueViewController.view removeFromSuperview];
+            
+                [self.rightView addSubview:self.twoViewController.view];
+            
+            
+            
+        }
+        
+    }];
     
-    [self.rightView addSubview:self.twoViewController.view];
+}
+
+
+#pragma mark - 开始派工
+-(void)sendworkers:(OrderModel*)ordermodel
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

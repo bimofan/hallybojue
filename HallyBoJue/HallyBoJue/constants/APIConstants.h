@@ -106,6 +106,32 @@
 #define kOrderStartService  @"korder/startservice"
 
 
+/**  提交环车检查
+ *  service_order_id
+ *   user_id
+ *  keeper_id
+ *  store_id
+ *  position
+ *  position_problem
+ *  advise
+ *  suggest
+ *  user_car_id
+ */
+#define kSummitcarcheck    @"korder/summitcarcheck"
+
+
+/**  确认预约
+ *
+ *  order_id
+ */
+#define kCheckappoint     @"korder/checkappoint"
+
+/** 服务列表
+ *
+ *
+ */
+#define kServiceList    @"kservice/servicelist"
+
 
 
 

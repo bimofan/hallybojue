@@ -8,6 +8,8 @@
 
 #import "OneYuyueViewController.h"
 #import "OneYuyueCell.h"
+#import "AddServiceViewController.h"
+
 
 
 
@@ -33,6 +35,13 @@
     _sendButton.clipsToBounds = YES;
     _sendButton.layer.cornerRadius = kCornerRadous;
     
+    _addServiceButton.clipsToBounds = YES;
+    _addServiceButton.layer.cornerRadius = kCornerRadous;
+    
+    
+    _serviceTable.delegate = self;
+    _serviceTable.dataSource = self;
+    
     
 
 }
@@ -54,6 +63,25 @@
     _statusLabel.text = ordermodel.status_str;
     
     _timeTwoLabel.text = ordermodel.order_time;
+    
+    if (_ordermodel.status == 1)//预约中
+    {
+        
+        _checkButton.hidden = YES;
+        _addServiceButton.hidden = YES;
+        
+        [_sendButton setTitle:@"确认预约" forState:UIControlStateNormal];
+        
+        
+    }
+    else  //预约确认
+    {
+        _checkButton.hidden = NO;
+        _addServiceButton.hidden = NO;
+        
+        [_sendButton setTitle:@"开始派工" forState:UIControlStateNormal];
+    }
+    
     
     [_serviceTable reloadData];
     
@@ -82,7 +110,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    return 5;
+    return 0;
     
 }
 
@@ -102,7 +130,7 @@
     
     OneYuyueCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OneYuyueCell"];
     
-    cell.service_nameLabel.text = [[_ordermodel.services objectAtIndex:indexPath.section] objectForKey:@"service_name"];
+    cell.service_nameLabel.text = [[_ordermodel.services objectAtIndex:indexPath.section] objectForKey:@"name"];
     
     
     
@@ -135,6 +163,18 @@
         
         
     }
+    
+    
+    
+    
+}
+- (IBAction)addServiceAction:(id)sender {
+    
+   
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"AddServiceNav"];
+    
+    
+    [self.superViewController presentViewController:nav animated:YES completion:nil];
     
     
     

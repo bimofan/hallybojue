@@ -134,4 +134,112 @@ NetWorking *netWorking;
     
     
 }
+
+-(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param Data:(NSData *)data filename:(NSString*)fileName  result:(RequestResultBlock)block
+{
+    NSString *url = [NSString stringWithFormat:@"%@%@",kRequestHeader,action];
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    
+    [MyProgressHUD showProgress];
+    
+    [manager POST:url parameters:param  constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        if (data) {
+            
+            [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"png"];
+            
+        }
+        
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+      
+        
+        
+        
+        int status = [[responseObject objectForKey:@"status"]intValue];
+        
+        id data = [responseObject objectForKey:@"data"];
+        
+        
+        if (status == 1)
+        {
+            
+            
+            
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                
+                NSArray *items = [data objectForKey:@"items"];
+                
+                
+                if (items)
+                {
+                    
+                    DataModel *dataModel = [[DataModel alloc]init];
+                    
+                    [dataModel setValuesForKeysWithDictionary:data];
+                    
+                    
+                    
+                    block(YES,dataModel);
+                    
+                    
+                }
+                else
+                {
+                    
+            
+                    
+                    block(YES,data);
+                    
+                    
+                }
+                
+                
+                
+                
+            }
+            else
+            {
+                block(YES,data);
+            }
+            
+            
+            
+            
+        }
+        else
+        {
+            NSString *err_str = [responseObject objectForKey:@"msg"];
+            
+            
+            [CommonMethods showDefaultErrorString:err_str];
+            
+            
+            block(NO,data);
+        }
+        
+        
+        
+        NSLog(@"url:%@,param:%@",url,param);
+        
+        NSLog(@"success:%@",responseObject);
+        
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+        [MyProgressHUD dismiss];
+        
+        block(NO,nil);
+        
+        NSLog(@"url:%@,param:%@",url,param);
+        NSLog(@"fail:%@,%@",error,operation.responseString);
+    }];
+    
+    
+}
 @end

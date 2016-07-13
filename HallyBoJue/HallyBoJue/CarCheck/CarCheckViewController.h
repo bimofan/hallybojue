@@ -14,6 +14,8 @@
 
 
 
+@property (nonatomic,strong) NSString *user_car_id;
+
 
 @property (weak, nonatomic) IBOutlet UITableView *firstTableView;
 
@@ -31,6 +33,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *suggestTextView;
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *summit;
+
+
+@property (weak, nonatomic) IBOutlet UIView *rightView;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *advisButton;

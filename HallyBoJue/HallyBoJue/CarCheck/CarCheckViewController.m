@@ -7,9 +7,18 @@
 //
 
 #import "CarCheckViewController.h"
+#import "ChoseWorkPlaceView.h"
+#import "UserInfo.h"
 
-@interface CarCheckViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate>
 
+
+@interface CarCheckViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,UITextViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UIActionSheetDelegate,ChoseWorkPlaceDelegate>
+{
+    __block NSInteger summitCount;
+    NSMutableArray *car_check_result;
+    
+    
+}
 
 @property (nonatomic,strong) NSMutableArray *leftDataArray;
 @property (nonatomic,strong) NSMutableArray *rightDataArray;
@@ -18,6 +27,9 @@
 @property (nonatomic,assign) NSInteger rightSelectedindex;
 
 @property (nonatomic,strong) NSMutableArray *descArray;
+
+@property (nonatomic,strong) ChoseWorkPlaceView *choseWorkPlaceView;
+
 
 
 
@@ -47,6 +59,33 @@
     
     
     [self getchecklist];
+    
+    
+    
+}
+
+-(ChoseWorkPlaceView*)choseWorkPlaceView
+{
+    if (!_choseWorkPlaceView) {
+        
+        NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"ChoseWorkPlaceView" owner:self options:nil];
+        
+        _choseWorkPlaceView = [views firstObject];
+        
+        _choseWorkPlaceView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        
+        
+        _choseWorkPlaceView.type = 1;
+        
+        [_choseWorkPlaceView show];
+        
+        
+        _choseWorkPlaceView.delegate = self;
+        
+        
+    }
+    
+    return _choseWorkPlaceView;
     
     
     
@@ -289,10 +328,17 @@
         
         [_firstTableView reloadData];
         
+         [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        
+        
         
     }
     
     if (tableView == _secondTableView) {
+        
+        
+        _rightSelectedindex = indexPath.section;
+        
         
         NSDictionary *dict = [_rightDataArray objectAtIndex:indexPath.section];
         
@@ -309,11 +355,7 @@
         [_secondTableView reloadData];
         
         
-        NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
-        
-        NSMutableDictionary *muleftdict = [[NSMutableDictionary alloc]initWithDictionary:leftdict];
-        
-        [muleftdict setObject:_rightDataArray forKey:@"subchecks"];
+        [self saveleftdata];
         
         
         [self setproblemView:mudict];
@@ -322,7 +364,7 @@
     }
     
     
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   
     
 }
 
@@ -331,7 +373,7 @@
 -(void)setproblemView:(NSDictionary *)dict
 {
     
-    NSLog(@"dict:%@",dict);
+
     
      NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
     
@@ -341,24 +383,22 @@
     
     _problemNameLabel.text = [NSString stringWithFormat:@" %@-%@",lefttitle,righttitle];
     
-    [_photoButton setImage:nil forState:UIControlStateNormal];
-    
-   
-    
-    [_advisButton setTitle:@"点击选择" forState:UIControlStateNormal];
-    
-    
     
     NSString *advise = [dict objectForKey:@"advise"];
     
     NSString *suggest = [dict objectForKey:@"suggest"];
     
-    UIImage *photo = [dict objectForKey:@"photo"];
+    NSData *photo = [dict objectForKey:@"photo"];
     
     if (advise.length >0) {
         
         [_advisButton setTitle:advise forState:UIControlStateNormal];
         
+        
+    }
+    else
+    {
+        [_advisButton setTitle:@"点击添加" forState:UIControlStateNormal];
         
     }
     
@@ -379,11 +419,14 @@
     
     if (photo) {
         
-           [_photoButton setImage:photo forState:UIControlStateNormal];
-        
+        [_photoButton setBackgroundImage:[UIImage imageWithData:photo] forState:UIControlStateNormal];
+        [_photoButton setTitle:nil forState:UIControlStateNormal];
     }
     else
     {
+        
+         [_photoButton setBackgroundImage:nil forState:UIControlStateNormal];
+        
          [_photoButton setTitle:@"点击添加" forState:UIControlStateNormal];
     }
     
@@ -399,8 +442,198 @@
 - (IBAction)photoAction:(id)sender {
     
     
+    UIActionSheet *  _pickPhotoActionSheet = [[UIActionSheet alloc]initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil, nil];
+    
+    [_pickPhotoActionSheet addButtonWithTitle:@"相册图片描述"];
+    
+    [_pickPhotoActionSheet addButtonWithTitle:@"手机拍照描述"];
+    
+    [_pickPhotoActionSheet addButtonWithTitle:@"取消"];
+    
+    _pickPhotoActionSheet.cancelButtonIndex = 2;
+    
+    _pickPhotoActionSheet.tag = 99;
+    
+    
+    
+    [_pickPhotoActionSheet showInView:self.view];
+    
     
 }
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+    if (actionSheet.tag ==99) {
+        
+        
+        NSUInteger sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        // 判断是否支持相机
+        if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            switch (buttonIndex) {
+                case 2:
+                {
+                    return;
+                }
+                    break;
+                    
+                    
+                case 1: //相机
+                    sourceType = UIImagePickerControllerSourceTypeCamera;
+                    break;
+                case 0: //相册
+                    sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    break;
+            }
+        }
+        else {
+            if (buttonIndex == 1) {
+                return;
+            } else {
+                sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+            }
+        }
+        
+        
+        UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+        
+        picker.delegate = self;
+        picker.sourceType = sourceType;
+        
+        
+    
+        UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:picker];
+    
+        [popover presentPopoverFromRect:CGRectMake(0, 0, 600, 800) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+        
+        
+        
+        
+
+        
+  
+
+    }
+    
+    
+}
+
+
+#pragma mark - UITextViewDelegate
+
+-(void)textViewDidBeginEditing:(UITextView *)textView
+{
+    _suggestLabel.hidden = YES;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+
+
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 300);
+        
+//        _rightView.center = CGPointMake(_rightView.center.x
+//                                        , _rightView.center.y - 300);
+//        
+        
+        
+    }];
+    
+    
+  
+}
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    
+
+    
+    NSString *suggest = textView.text;
+    
+    NSDictionary *rightdict = [_rightDataArray objectAtIndex:_rightSelectedindex];
+    
+    NSMutableDictionary *muRightDict = [[NSMutableDictionary alloc]initWithDictionary:rightdict];
+    
+    [muRightDict setObject:suggest forKey:@"suggest"];
+    
+    
+    [_rightDataArray replaceObjectAtIndex:_rightSelectedindex withObject:muRightDict];
+    
+     [self saveleftdata];
+    
+    
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView
+{
+    
+    if (textView.text.length == 0) {
+        
+        _suggestLabel.hidden = NO;
+        
+    }
+    else
+    {
+        
+    }
+    
+    
+    self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 300);
+    
+
+}
+
+
+#pragma mark -  UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    
+    image = [CommonMethods autoSizeImageWithImage:image];
+    
+    [_photoButton setTitle:nil forState:UIControlStateNormal];
+    [_photoButton setBackgroundImage:image forState:UIControlStateNormal];
+    
+    
+    NSDictionary *dict = [_rightDataArray objectAtIndex:_rightSelectedindex];
+    
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+    
+    
+    NSData *imagedata = UIImagePNGRepresentation(image);
+    
+    [mudict setObject:imagedata forKey:@"photo"];
+    
+    [_rightDataArray replaceObjectAtIndex:_rightSelectedindex withObject:mudict];
+    
+    
+       [self saveleftdata];
+    
+    
+    
+    
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+
+    
+    
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+
+
 
 -(void)dismisactin
 {
@@ -409,11 +642,205 @@
 
 
 - (IBAction)adviseAction:(id)sender {
+    
+
+    
+    NSDictionary *dict = [_leftDataArray objectAtIndex:_leftSelectedindex];
+    
+    NSArray *advises  = [dict objectForKey:@"advises"];
+    
+    
+    if (advises.count == 0) {
+        
+        [CommonMethods showDefaultErrorString:@"暂无系统默认服务建议"];
+        
+        return;
+        
+    }
+    
+    
+    self.choseWorkPlaceView.type = 3;
+    
+    self.choseWorkPlaceView.workDataSource = advises;
+    
+    self.choseWorkPlaceView.titleLabel.text = @"服务建议";
+    
+    
+    self.choseWorkPlaceView.selectedDict = [_rightDataArray objectAtIndex:_rightSelectedindex];
+    
+
+    
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.choseWorkPlaceView];
+    
 }
+
+
+-(void)didChoseItems:(NSArray*)items
+{
+    
+    NSDictionary *selectedDict = [items firstObject];
+    
+    NSString *advise = [selectedDict objectForKey:@"advise"];
+    
+    NSInteger advise_id = [[selectedDict objectForKey:@"advise_id"]integerValue];
+    
+    NSDictionary *rightdict = [_rightDataArray objectAtIndex:_rightSelectedindex];
+    
+    NSMutableDictionary *muRightDict = [[NSMutableDictionary alloc]initWithDictionary:rightdict];
+    
+    [muRightDict setObject:advise forKey:@"advise"];
+    
+    [muRightDict setObject:@(advise_id) forKey:@"advise_id"];
+    
+    
+    [_rightDataArray replaceObjectAtIndex:_rightSelectedindex withObject:muRightDict];
+    
+    [self saveleftdata];
+    
+    
+    [_advisButton setTitle:advise forState:UIControlStateNormal];
+    
+    
+    
+    
+}
+
+
+#pragma mark - 更新左边数据
+-(void)saveleftdata
+{
+    NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
+    
+    NSMutableDictionary *muleftdict = [[NSMutableDictionary alloc]initWithDictionary:leftdict];
+    
+    [muleftdict setObject:_rightDataArray forKey:@"subchecks"];
+    
+    [_leftDataArray replaceObjectAtIndex:_leftSelectedindex withObject:muleftdict];
+}
+
 
 - (IBAction)summitAction:(id)sender {
     
+    car_check_result = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < _leftDataArray.count; i++) {
+        
+        NSDictionary *leftDict = [_leftDataArray objectAtIndex:i];
+        NSString *position = [leftDict objectForKey:@"desc"];
+        
+        NSArray *subchecks = [leftDict objectForKey:@"subchecks"];
+        
+        for (int d = 0; d < subchecks.count; d++) {
+            
+            NSDictionary *subcheck = [subchecks objectAtIndex:d ];
+            
+            BOOL selected = [[subcheck objectForKey:@"selected"]boolValue];
+            
+            if (selected) {
+                
+                if (![subcheck objectForKey:@"photo"]) {
+                    
+                    [CommonMethods showDefaultErrorString:[NSString stringWithFormat: @"请上传 %@-%@ 的描述图片",position,[subcheck objectForKey:@"desc"]]];
+                    
+                    return;
+                    
+                    
+                    
+                }
+                
+                
+                NSMutableDictionary *musubcheck = [[NSMutableDictionary alloc]initWithDictionary:subcheck];
+                
+                [musubcheck setObject:position forKey:@"position"];
+                
+                
+                [car_check_result addObject:musubcheck];
+                
+            }
+        }
+    }
     
     
+    
+    NSLog(@"car_check_result:%ld",(long)car_check_result.count);
+    
+    
+    if (car_check_result.count == 0) {
+        
+        [CommonMethods showDefaultErrorString:@"请选择环检问题"];
+        
+        return;
+    }
+    
+    
+    summitCount = 0;
+    
+    
+    [self summitdataindex:0];
+    
+
+    
+}
+
+-(void)summitdataindex:(NSInteger)index
+{
+    NSDictionary *orderinfodict = [[NSUserDefaults standardUserDefaults] objectForKey:kOrderInfo];
+    
+    NSDictionary *firstproblem = [car_check_result objectAtIndex:index];
+    
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    
+    [params setDictionary:orderinfodict];
+    
+    int keeper_id = [UserInfo getkeeperid];
+    
+    NSString *position = [firstproblem objectForKey:@"position"];
+    NSString *position_problem = [firstproblem objectForKey:@"desc"];
+    NSString *advise = [firstproblem objectForKey:@"advise"];
+    NSString *suggest = [firstproblem objectForKey:@"suggest"];
+    
+    [params setObject:@(keeper_id) forKey:@"keeper_id"];
+    
+    [params setObject:position forKey:@"position"];
+    [params setObject:position_problem forKey:@"position_problem"];
+    [params setObject:advise forKey:@"advise"];
+    [params setObject:suggest forKey:@"suggest"];
+    
+    
+    
+    NSData *photo = [firstproblem objectForKey:@"photo"];
+    
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSummitcarcheck Params:params Data:photo filename:@"photo.png" result:^(BOOL isSuccess, id data) {
+        
+        if (isSuccess) {
+            
+            summitCount ++;
+            
+            if (summitCount < car_check_result.count) {
+                
+                [self summitdataindex:summitCount];
+                
+                
+            }
+            else
+            {
+                  [MyProgressHUD dismiss];
+                
+                [CommonMethods showDefaultErrorString:@"环车检查报告提交成功"];
+                
+                [self dismissViewControllerAnimated:YES completion:nil];
+                
+            }
+            
+           
+        }
+        else
+        {
+              [MyProgressHUD dismiss];
+        }
+    }];
 }
 @end

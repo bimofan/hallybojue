@@ -40,6 +40,9 @@
 
 @property (nonatomic,strong) NSString *car_plate_num;
 
+@property (nonatomic,assign) int  car_id;
+
+
 
 
 

@@ -95,7 +95,7 @@
             
             
         }
-        else
+        else if (_type == 2)
         {
             
             
@@ -104,7 +104,10 @@
             
             
         }
-        
+        else if (_type == 3)
+        {
+            
+        }
  
         
         [_workTableView reloadData];
@@ -115,6 +118,7 @@
 
     
 }
+
 
 -(void)dealWorkPlace:(NSArray*)workplace
 {
@@ -317,7 +321,7 @@
         }
     }
 
-    else
+    else if(_type == 2)
     {
         cell.textLabel.text = [dict objectForKey:@"real_name"];
         
@@ -330,6 +334,27 @@
             cell.accessoryType = UITableViewCellAccessoryNone;
             
         }
+    }
+    else if (_type == 3)
+    {
+        cell.textLabel.text = [dict objectForKey:@"advise"];
+        
+        NSInteger advise_id = [[dict objectForKey:@"advise_id"]integerValue];
+        
+        NSInteger selected_advise_id = [[_selectedDict objectForKey:@"advise_id"]integerValue];
+        
+    
+        if (selected_advise_id == advise_id) {
+            
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
+        
+        
     }
     
     
@@ -344,21 +369,21 @@
     
 }
 
--(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
-    
-    label.textColor = kDarkTextColor;
-    
-    label.textAlignment = NSTextAlignmentCenter;
-    
-    
-    label.text = @"工位选择";
-    
-    return label;
-    
-    
-}
+//-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 50)];
+//    
+//    label.textColor = kDarkTextColor;
+//    
+//    label.textAlignment = NSTextAlignmentCenter;
+//    
+//    
+//    label.text = @"工位选择";
+//    
+//    return label;
+//    
+//    
+//}
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
@@ -429,7 +454,7 @@
         
     }
     
-    else
+    else if(_type == 2)
     {
         BOOL selected = [[mudict objectForKey:@"selected"]boolValue];
         
@@ -439,6 +464,26 @@
         
         
         _workDataSource = muArray;
+    }
+    
+    else if (_type == 3)
+    {
+        
+        NSInteger advise_id = [[mudict objectForKey:@"advise_id"]integerValue];
+        
+        NSInteger selected_advise_id = [[_selectedDict objectForKey:@"advise_id"]integerValue];
+        
+        if (selected_advise_id == advise_id) {
+            
+            _selectedDict = nil;
+        }
+        else
+        {
+            _selectedDict = mudict;
+            
+            
+        }
+        
     }
     
 
@@ -458,12 +503,32 @@
 
 
 
+
 - (IBAction)okAction:(id)sender {
     
     
     
     if ([self.delegate respondsToSelector:@selector(didChoseItems:)]) {
         
+        
+        
+        if (_type == 3) {
+            
+            if (!_selectedDict) {
+                
+                [CommonMethods showDefaultErrorString:@"请选择服务建议"];
+                
+                return;
+                
+            }
+            
+            [self.delegate didChoseItems:@[_selectedDict]];
+            
+        }
+        else
+        {
+            
+     
         
         NSMutableArray *selectedItems = [[NSMutableArray alloc]init];
         
@@ -505,6 +570,10 @@
         
         
         [self.delegate didChoseItems:selectedItems];
+            
+        
+        }
+        
         
     }
     

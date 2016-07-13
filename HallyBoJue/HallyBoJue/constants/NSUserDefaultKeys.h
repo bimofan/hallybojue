@@ -29,13 +29,15 @@
 
 
 
-
-
-
 //位置
 #define kCurrentLatitude   @"CurrentLatitude"
 #define kCurrentLongitude  @"CurrentLongitude"
 #define kHadSeletedNormalAddress  @"HadSeletedNormalAddress"
+
+
+//当前操作的订单
+#define kOrderInfo       @"OrderInfo"
+
 
 
 

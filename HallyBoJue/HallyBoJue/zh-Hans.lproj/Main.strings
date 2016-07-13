@@ -1,0 +1,282 @@
+
+/* Class = "UILabel"; text = "哈里伯爵至尊洗车"; ObjectID = "0FK-dN-JCB"; */
+"0FK-dN-JCB.text" = "哈里伯爵至尊洗车";
+
+/* Class = "UILabel"; text = "2016.06.20 12:00:00"; ObjectID = "0eY-kM-tK4"; */
+"0eY-kM-tK4.text" = "2016.06.20 12:00:00";
+
+/* Class = "UILabel"; text = "注册时间:"; ObjectID = "0uW-DJ-oiK"; */
+"0uW-DJ-oiK.text" = "注册时间:";
+
+/* Class = "UILabel"; text = "粤B AE866"; ObjectID = "1mC-tr-J0M"; */
+"1mC-tr-J0M.text" = "粤B AE866";
+
+/* Class = "UIButton"; normalTitle = "添加客户"; ObjectID = "2ou-Hv-jEA"; */
+"2ou-Hv-jEA.normalTitle" = "添加客户";
+
+/* Class = "UILabel"; text = "13480966666"; ObjectID = "41u-1M-jbU"; */
+"41u-1M-jbU.text" = "13480966666";
+
+/* Class = "UILabel"; text = "13480966666"; ObjectID = "4Ly-cX-hU7"; */
+"4Ly-cX-hU7.text" = "13480966666";
+
+/* Class = "UILabel"; text = "预约中"; ObjectID = "4sY-br-aof"; */
+"4sY-br-aof.text" = "预约中";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "5Go-vV-ft3"; */
+"5Go-vV-ft3.normalTitle" = "保存";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "5tP-Zu-wdA"; */
+"5tP-Zu-wdA.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "开始服务"; ObjectID = "7DJ-3B-B46"; */
+"7DJ-3B-B46.normalTitle" = "开始服务";
+
+/* Class = "UILabel"; text = "汪尼玛"; ObjectID = "7LE-UW-3g4"; */
+"7LE-UW-3g4.text" = "汪尼玛";
+
+/* Class = "UILabel"; text = "服务名称"; ObjectID = "7ie-an-phS"; */
+"7ie-an-phS.text" = "服务名称";
+
+/* Class = "UILabel"; text = "手机号码:"; ObjectID = "8D0-sJ-INg"; */
+"8D0-sJ-INg.text" = "手机号码:";
+
+/* Class = "UIButton"; normalTitle = "抢单"; ObjectID = "8of-FH-n7L"; */
+"8of-FH-n7L.normalTitle" = "抢单";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "93g-w9-Sfm"; */
+"93g-w9-Sfm.text" = "Label";
+
+/* Class = "UILabel"; text = "13480966666"; ObjectID = "AhD-wU-nXQ"; */
+"AhD-wU-nXQ.text" = "13480966666";
+
+/* Class = "UIButton"; normalTitle = "返回"; ObjectID = "Bdv-jN-L15"; */
+"Bdv-jN-L15.normalTitle" = "返回";
+
+/* Class = "UILabel"; text = "宝马z4"; ObjectID = "Bxo-Hh-u3i"; */
+"Bxo-Hh-u3i.text" = "宝马z4";
+
+/* Class = "UIButton"; normalTitle = "完成服务"; ObjectID = "Cz5-Bs-JE6"; */
+"Cz5-Bs-JE6.normalTitle" = "完成服务";
+
+/* Class = "UILabel"; text = "汪尼玛"; ObjectID = "Dlp-ro-1e9"; */
+"Dlp-ro-1e9.text" = "汪尼玛";
+
+/* Class = "UILabel"; text = "汪汪叫"; ObjectID = "E2n-IU-rE6"; */
+"E2n-IU-rE6.text" = "汪汪叫";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EVJ-Pn-85C"; */
+"EVJ-Pn-85C.text" = "Label";
+
+/* Class = "UILabel"; text = "2016.06.20 12:00:00"; ObjectID = "En2-el-owg"; */
+"En2-el-owg.text" = "2016.06.20 12:00:00";
+
+/* Class = "UILabel"; text = "技师:"; ObjectID = "GZL-HA-KjN"; */
+"GZL-HA-KjN.text" = "技师:";
+
+/* Class = "UILabel"; text = "服务名称:哈里伯爵至尊洗车"; ObjectID = "HEH-xf-n3J"; */
+"HEH-xf-n3J.text" = "服务名称:哈里伯爵至尊洗车";
+
+/* Class = "UILabel"; text = "哈里伯爵至尊洗车"; ObjectID = "HVp-CA-hRD"; */
+"HVp-CA-hRD.text" = "哈里伯爵至尊洗车";
+
+/* Class = "UILabel"; text = "客户查询"; ObjectID = "I7Q-Pg-3Od"; */
+"I7Q-Pg-3Od.text" = "客户查询";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Igf-ln-QNM"; */
+"Igf-ln-QNM.text" = "Label";
+
+/* Class = "UILabel"; text = "照片描述:"; ObjectID = "Ind-G4-Kfc"; */
+"Ind-G4-Kfc.text" = "照片描述:";
+
+/* Class = "UILabel"; text = "基本信息"; ObjectID = "JZf-9G-Uq5"; */
+"JZf-9G-Uq5.text" = "基本信息";
+
+/* Class = "UILabel"; text = "专属管家"; ObjectID = "KP6-CB-eXm"; */
+"KP6-CB-eXm.text" = "专属管家";
+
+/* Class = "UILabel"; text = "会籍会员"; ObjectID = "LDw-dw-FXX"; */
+"LDw-dw-FXX.text" = "会籍会员";
+
+/* Class = "UILabel"; text = "服务建议:"; ObjectID = "LfV-pd-IOG"; */
+"LfV-pd-IOG.text" = "服务建议:";
+
+/* Class = "UILabel"; text = "品牌车型:"; ObjectID = "MSo-P0-gLY"; */
+"MSo-P0-gLY.text" = "品牌车型:";
+
+/* Class = "UILabel"; text = "最近一次服务时间:"; ObjectID = "Mhn-HS-6cG"; */
+"Mhn-HS-6cG.text" = "最近一次服务时间:";
+
+/* Class = "UILabel"; text = "我的客户"; ObjectID = "MoN-et-IUm"; */
+"MoN-et-IUm.text" = "我的客户";
+
+/* Class = "UILabel"; text = "管家建议:"; ObjectID = "N50-eJ-5gI"; */
+"N50-eJ-5gI.text" = "管家建议:";
+
+/* Class = "UILabel"; text = "预约确认"; ObjectID = "OJI-lh-ddF"; */
+"OJI-lh-ddF.text" = "预约确认";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PVT-L4-vJM"; */
+"PVT-L4-vJM.text" = "Label";
+
+/* Class = "UILabel"; text = "预约时间"; ObjectID = "Pkq-1n-VZ2"; */
+"Pkq-1n-VZ2.text" = "预约时间";
+
+/* Class = "UILabel"; text = "预约服务"; ObjectID = "Q7a-aQ-zhV"; */
+"Q7a-aQ-zhV.text" = "预约服务";
+
+/* Class = "UILabel"; text = "首页"; ObjectID = "RPE-YR-MbQ"; */
+"RPE-YR-MbQ.text" = "首页";
+
+/* Class = "UILabel"; text = "2016年6月20日 12:00:00"; ObjectID = "S7B-8Y-JcR"; */
+"S7B-8Y-JcR.text" = "2016年6月20日 12:00:00";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "SBa-Qi-NEq"; */
+"SBa-Qi-NEq.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Tik-md-YIc"; */
+"Tik-md-YIc.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TxO-cu-dLl"; */
+"TxO-cu-dLl.text" = "Label";
+
+/* Class = "UILabel"; text = "预估服务时间："; ObjectID = "UQS-d5-evm"; */
+"UQS-d5-evm.text" = "预估服务时间：";
+
+/* Class = "UILabel"; text = "粤B AE866"; ObjectID = "Vq0-bO-u8w"; */
+"Vq0-bO-u8w.text" = "粤B AE866";
+
+/* Class = "UIButton"; normalTitle = "添加预约"; ObjectID = "Vz6-dh-zBB"; */
+"Vz6-dh-zBB.normalTitle" = "添加预约";
+
+/* Class = "UILabel"; text = "添加客户:"; ObjectID = "W3v-GR-C6z"; */
+"W3v-GR-C6z.text" = "添加客户:";
+
+/* Class = "UILabel"; text = "车牌号:"; ObjectID = "WVz-DW-tWi"; */
+"WVz-DW-tWi.text" = "车牌号:";
+
+/* Class = "UIButton"; normalTitle = "开卡"; ObjectID = "XGI-9i-Npt"; */
+"XGI-9i-Npt.normalTitle" = "开卡";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "YFG-yb-4EH"; */
+"YFG-yb-4EH.text" = "Label";
+
+/* Class = "UILabel"; text = "汪尼玛"; ObjectID = "YPv-nV-B5Y"; */
+"YPv-nV-B5Y.text" = "汪尼玛";
+
+/* Class = "UILabel"; text = "预约确认"; ObjectID = "YRd-RS-3o5"; */
+"YRd-RS-3o5.text" = "预约确认";
+
+/* Class = "UIButton"; normalTitle = "点击添加"; ObjectID = "YrT-mV-gKT"; */
+"YrT-mV-gKT.normalTitle" = "点击添加";
+
+/* Class = "UISearchBar"; placeholder = "搜索汽车品牌"; ObjectID = "Yul-38-fcI"; */
+"Yul-38-fcI.placeholder" = "搜索汽车品牌";
+
+/* Class = "UITextField"; placeholder = "请输入车牌号"; ObjectID = "Zrt-Bc-owJ"; */
+"Zrt-Bc-owJ.placeholder" = "请输入车牌号";
+
+/* Class = "UILabel"; text = "工位:"; ObjectID = "brT-U5-CHk"; */
+"brT-U5-CHk.text" = "工位:";
+
+/* Class = "UILabel"; text = "客户姓名:"; ObjectID = "c3r-Sv-qce"; */
+"c3r-Sv-qce.text" = "客户姓名:";
+
+/* Class = "UILabel"; text = "南山区华侨城沃尔玛地下停车场"; ObjectID = "cQW-dm-uG9"; */
+"cQW-dm-uG9.text" = "南山区华侨城沃尔玛地下停车场";
+
+/* Class = "UILabel"; text = "2016.06.20 12:00:00"; ObjectID = "cyt-Dj-EnH"; */
+"cyt-Dj-EnH.text" = "2016.06.20 12:00:00";
+
+/* Class = "UILabel"; text = "客户姓名:"; ObjectID = "eOo-cR-JSI"; */
+"eOo-cR-JSI.text" = "客户姓名:";
+
+/* Class = "UILabel"; text = "会籍会员"; ObjectID = "fmn-YM-4z8"; */
+"fmn-YM-4z8.text" = "会籍会员";
+
+/* Class = "UILabel"; text = "手机号码:"; ObjectID = "fz3-V6-Awk"; */
+"fz3-V6-Awk.text" = "手机号码:";
+
+/* Class = "UITextField"; placeholder = "请输入客户手机号码"; ObjectID = "g0p-Eo-ggf"; */
+"g0p-Eo-ggf.placeholder" = "请输入客户手机号码";
+
+/* Class = "UIButton"; normalTitle = "推送信息"; ObjectID = "gav-VJ-KQY"; */
+"gav-VJ-KQY.normalTitle" = "推送信息";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hf8-ol-cF4"; */
+"hf8-ol-cF4.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "开始派工"; ObjectID = "hkx-eT-9pk"; */
+"hkx-eT-9pk.normalTitle" = "开始派工";
+
+/* Class = "UILabel"; text = "2016年6月20日 12:00:00"; ObjectID = "iGR-b3-BF2"; */
+"iGR-b3-BF2.text" = "2016年6月20日 12:00:00";
+
+/* Class = "UILabel"; text = "选择服务"; ObjectID = "iIF-4r-GGA"; */
+"iIF-4r-GGA.text" = "选择服务";
+
+/* Class = "UILabel"; text = "实时预约"; ObjectID = "izS-ch-nU8"; */
+"izS-ch-nU8.text" = "实时预约";
+
+/* Class = "UILabel"; text = "请输入建议"; ObjectID = "jEr-al-C29"; */
+"jEr-al-C29.text" = "请输入建议";
+
+/* Class = "UIButton"; normalTitle = "点击选择"; ObjectID = "jfC-qD-yKi"; */
+"jfC-qD-yKi.normalTitle" = "点击选择";
+
+/* Class = "UILabel"; text = "分钟"; ObjectID = "jvo-4w-Eef"; */
+"jvo-4w-Eef.text" = "分钟";
+
+/* Class = "UILabel"; text = "会籍会员"; ObjectID = "kmW-1Q-Qg1"; */
+"kmW-1Q-Qg1.text" = "会籍会员";
+
+/* Class = "UITextField"; placeholder = "  请输入帐号"; ObjectID = "li6-wP-4vE"; */
+"li6-wP-4vE.placeholder" = "  请输入帐号";
+
+/* Class = "UINavigationItem"; title = "环车检查"; ObjectID = "mLk-np-gsb"; */
+"mLk-np-gsb.title" = "环车检查";
+
+/* Class = "UILabel"; text = "选择技师"; ObjectID = "mPa-rn-B7L"; */
+"mPa-rn-B7L.text" = "选择技师";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "n3q-rd-1Ub"; */
+"n3q-rd-1Ub.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "进行环车检查"; ObjectID = "nx7-V7-Gkn"; */
+"nx7-V7-Gkn.normalTitle" = "进行环车检查";
+
+/* Class = "UILabel"; text = "预约确认"; ObjectID = "qdO-Rh-5gg"; */
+"qdO-Rh-5gg.text" = "预约确认";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "r4O-Mf-dSm"; */
+"r4O-Mf-dSm.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "粤B AE866"; ObjectID = "tuM-hL-AxA"; */
+"tuM-hL-AxA.text" = "粤B AE866";
+
+/* Class = "UILabel"; text = "我的预约"; ObjectID = "tyg-iP-TGD"; */
+"tyg-iP-TGD.text" = "我的预约";
+
+/* Class = "UITextField"; placeholder = "  请输入密码"; ObjectID = "u4J-b3-bGQ"; */
+"u4J-b3-bGQ.placeholder" = "  请输入密码";
+
+/* Class = "UILabel"; text = "最近一次服务时间:2016.06.20"; ObjectID = "ugj-lh-IhK"; */
+"ugj-lh-IhK.text" = "最近一次服务时间:2016.06.20";
+
+/* Class = "UILabel"; text = "汪尼玛"; ObjectID = "vyM-Se-xQn"; */
+"vyM-Se-xQn.text" = "汪尼玛";
+
+/* Class = "UIBarButtonItem"; title = "提交"; ObjectID = "xMx-ow-APv"; */
+"xMx-ow-APv.title" = "提交";
+
+/* Class = "UIButton"; normalTitle = "环车检查"; ObjectID = "xYP-TE-bbG"; */
+"xYP-TE-bbG.normalTitle" = "环车检查";
+
+/* Class = "UILabel"; text = "汪尼玛"; ObjectID = "xnO-mx-u0r"; */
+"xnO-mx-u0r.text" = "汪尼玛";
+
+/* Class = "UITextField"; placeholder = "请输入客户姓名"; ObjectID = "z1S-y1-gfv"; */
+"z1S-y1-gfv.placeholder" = "请输入客户姓名";
+
+/* Class = "UIButton"; normalTitle = "服务记录"; ObjectID = "zI9-9F-DbR"; */
+"zI9-9F-DbR.normalTitle" = "服务记录";

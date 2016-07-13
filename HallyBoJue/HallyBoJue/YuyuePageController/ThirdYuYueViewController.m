@@ -161,6 +161,23 @@
 
 - (IBAction)checkCarAction:(id)sender {
     
+    
+    
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
+    
+    [mudict setObject:@(_orderModel.store_id) forKey:@"store_id"];
+    [mudict setObject:@(_orderModel.user_id) forKey:@"user_id"];
+    [mudict setObject:@(_orderModel.id) forKey:@"service_order_id"];
+    [mudict setObject:@(_orderModel.car_id) forKey:@"user_car_id"];
+    
+    
+
+    
+    [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kOrderInfo];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"CarCheckNav"];
     
     [self.superViewController presentViewController:nav animated:YES completion:nil];
