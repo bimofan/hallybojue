@@ -126,6 +126,8 @@
 		13E8C8EE1D35E53400BA0F58 /* SingleTableSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E8C8ED1D35E53400BA0F58 /* SingleTableSelectView.xib */; };
 		13E8C8F41D366A1300BA0F58 /* AddServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8F31D366A1300BA0F58 /* AddServiceViewController.m */; };
 		13E8C8F71D366C0500BA0F58 /* AddServiceThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8F61D366C0500BA0F58 /* AddServiceThirdCell.m */; };
+		13E8C8FA1D37761A00BA0F58 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8F91D37761A00BA0F58 /* NullSafe.m */; };
+		13E8C8FE1D378C5200BA0F58 /* FourYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -373,6 +375,9 @@
 		13E8C8F31D366A1300BA0F58 /* AddServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddServiceViewController.m; sourceTree = "<group>"; };
 		13E8C8F51D366C0500BA0F58 /* AddServiceThirdCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddServiceThirdCell.h; sourceTree = "<group>"; };
 		13E8C8F61D366C0500BA0F58 /* AddServiceThirdCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddServiceThirdCell.m; sourceTree = "<group>"; };
+		13E8C8F91D37761A00BA0F58 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
+		13E8C8FC1D378C5200BA0F58 /* FourYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourYuYueViewController.h; sourceTree = "<group>"; };
+		13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourYuYueViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -667,6 +672,7 @@
 		1384A6161D27C31D00D74892 /* NetWorking */ = {
 			isa = PBXGroup;
 			children = (
+				13E8C8F81D37761A00BA0F58 /* NullSafe */,
 				1384A6171D27C65E00D74892 /* NetWorking.h */,
 				1384A6181D27C65E00D74892 /* NetWorking.m */,
 			);
@@ -801,6 +807,7 @@
 		1384A6791D28619200D74892 /* AppointmentControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13E8C8FB1D378C2200BA0F58 /* FourYuYueViewController */,
 				13E8C8C41D348AC300BA0F58 /* ThirdYuYueViewController */,
 				132C2F4D1D323B4200163F55 /* TwoYuYueViewController */,
 				13C8D0C31D2EC20800527489 /* OneYuYueViewController */,
@@ -956,6 +963,23 @@
 			path = AddServiceViewController;
 			sourceTree = "<group>";
 		};
+		13E8C8F81D37761A00BA0F58 /* NullSafe */ = {
+			isa = PBXGroup;
+			children = (
+				13E8C8F91D37761A00BA0F58 /* NullSafe.m */,
+			);
+			path = NullSafe;
+			sourceTree = "<group>";
+		};
+		13E8C8FB1D378C2200BA0F58 /* FourYuYueViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13E8C8FC1D378C5200BA0F58 /* FourYuYueViewController.h */,
+				13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */,
+			);
+			name = FourYuYueViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1104,6 +1128,7 @@
 				1362475B1D24FF9D00190DCF /* MJRefreshFooter.m in Sources */,
 				1384A6391D27D2DB00D74892 /* AFURLConnectionOperation.m in Sources */,
 				13C52DC41D26AD13009429C2 /* HomeSlideCell.m in Sources */,
+				13E8C8FA1D37761A00BA0F58 /* NullSafe.m in Sources */,
 				1362475C1D24FF9D00190DCF /* MJRefreshGifFooter.m in Sources */,
 				1384A6191D27C65E00D74892 /* NetWorking.m in Sources */,
 				1362476A1D24FFF800190DCF /* MyProgressHUD.m in Sources */,
@@ -1137,6 +1162,7 @@
 				1362475F1D24FF9D00190DCF /* MJRefreshLegendFooter.m in Sources */,
 				139C54FF1D2D462D000A7C8E /* CarTableViewCell.m in Sources */,
 				1362475E1D24FF9D00190DCF /* MJRefreshHeader.m in Sources */,
+				13E8C8FE1D378C5200BA0F58 /* FourYuYueViewController.m in Sources */,
 				136246B91D24C35200190DCF /* AppDelegate.mm in Sources */,
 				1362472F1D24FDB100190DCF /* UIImageView+WebCache.m in Sources */,
 				136247241D24FDB100190DCF /* SDWebImageCompat.m in Sources */,

@@ -43,6 +43,10 @@
     _serviceTable.dataSource = self;
     
     
+    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(addserviceNotice:) name:kAddServieNotice object:nil];
+    
+    
+    
 
 }
 
@@ -50,7 +54,12 @@
 {
     _ordermodel = ordermodel;
     
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_ordermodel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+    
+    if (_ordermodel.usermodel.avatar) {
+        
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_ordermodel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+    }
+    
     
     _realnameLabel.text = ordermodel.usermodel.user_real_name;
     
@@ -144,9 +153,9 @@
 - (IBAction)checkAction:(id)sender {
     
     
-    if ([self.delegate respondsToSelector:@selector(didSelectedCarCheck)]) {
+    if ([self.delegate respondsToSelector:@selector(didSelectedCarCheck:)]) {
         
-        [self.delegate didSelectedCarCheck];
+        [self.delegate didSelectedCarCheck:_ordermodel];
         
     }
  
@@ -155,6 +164,8 @@
 }
 - (IBAction)sendAction:(id)sender {
     
+    
+
     
     if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
         
@@ -171,12 +182,49 @@
 - (IBAction)addServiceAction:(id)sender {
     
    
+    
+    
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
+    
+    [mudict setObject:@(_ordermodel.store_id) forKey:@"store_id"];
+    [mudict setObject:@(_ordermodel.user_id) forKey:@"user_id"];
+    [mudict setObject:@(_ordermodel.id) forKey:@"service_order_id"];
+    [mudict setObject:@(_ordermodel.car_id) forKey:@"user_car_id"];
+    
+    
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kOrderInfo];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"AddServiceNav"];
     
     
     [self.superViewController presentViewController:nav animated:YES completion:nil];
     
     
+    
+    
+}
+
+
+#pragma mark - 接收添加服务通知
+-(void)addserviceNotice:(NSNotification*)note
+{
+    NSLog(@"object:%@",note.object);
+    
+    NSMutableArray *muarray = [[NSMutableArray alloc]init];
+    
+    [muarray addObjectsFromArray:_ordermodel.services];
+    
+    [muarray addObjectsFromArray:note.object];
+    
+    _ordermodel.services = muarray;
+    
+    
+    [_serviceTable reloadData];
     
     
 }

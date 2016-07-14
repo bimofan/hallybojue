@@ -323,7 +323,7 @@
 
     else if(_type == 2)
     {
-        cell.textLabel.text = [dict objectForKey:@"real_name"];
+        cell.textLabel.text = [dict objectForKey:@"worker_real_name"];
         
         if ([[dict objectForKey:@"selected"]boolValue]) {
             

@@ -385,28 +385,32 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     
-    if (tableView == _leftTableView) {
-        if (_yuyueArray.count == 0) {
-            
-            return 0;
-            
-        }
-        
-        if (section == _yuyueArray.count -1) {
-            
-            return 0;
-            
-        }
-        
-        return  5;
-        
-        
-    }
-    else
-    {
-        return  5;
-        
-    }
+    
+    return  0;
+    
+    
+//    if (tableView == _leftTableView) {
+//        if (_yuyueArray.count == 0) {
+//            
+//            return 0;
+//            
+//        }
+//        
+//        if (section == _yuyueArray.count -1) {
+//            
+//            return 0;
+//            
+//        }
+//        
+//        return  5;
+//        
+//        
+//    }
+//    else
+//    {
+//        return  5;
+//        
+//    }
  
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
@@ -430,7 +434,7 @@
             return 44;
             
         }
-        return 245;
+        return 250;
         
     }
     else

@@ -53,7 +53,7 @@
     self.navigationItem.leftBarButtonItem = dismisButton;
     
     
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(dismisVC)];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(summitData)];
     
     self.navigationItem.rightBarButtonItem = doneButton;
     
@@ -70,6 +70,89 @@
 -(void)dismisVC
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark - 提交数据
+-(void)summitData
+{
+    if (_selecteServicelist.count ==0) {
+        
+        [CommonMethods showDefaultErrorString:@"请添加服务"];
+        
+        return;
+    }
+    
+    NSDictionary *orderinfo = [[NSUserDefaults standardUserDefaults] objectForKey:kOrderInfo];
+    
+    
+    NSMutableArray *noticearray = [[NSMutableArray array]init];
+    
+    NSMutableArray *summitArray = [[NSMutableArray alloc]init];
+    
+    
+    int order_id = [[orderinfo objectForKey:@"service_order_id"]intValue];
+    
+    
+    for (int i = 0; i < _selecteServicelist.count; i++) {
+        
+        NSDictionary *selectedDict = [_selecteServicelist objectAtIndex:i];
+        
+        int service_id = [[selectedDict objectForKey:@"id"]intValue];
+        
+        NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
+        
+        [mudict setObject:@(service_id) forKey:@"service_id"];
+        [mudict setObject:@(order_id) forKey:@"order_id"];
+        
+        [summitArray addObject:mudict];
+        
+        
+        NSMutableDictionary *munotidict = [[NSMutableDictionary alloc]init];
+        
+        [munotidict setObject:@(service_id) forKey:@"id"];
+        
+        NSString *name = [selectedDict objectForKey:@"name"];
+        
+        [munotidict setObject:name forKey:@"name"];
+        NSString * price = [selectedDict objectForKey:@"price"];
+        
+        [munotidict setObject:price forKey:@"price"];
+        
+        int category_id = [[selectedDict objectForKey:@"category_id"]intValue];
+        
+        [munotidict setObject:@(category_id) forKey:@"category_id"];
+        
+        [noticearray addObject:munotidict];
+        
+        
+    }
+    
+    
+    //发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddServieNotice object:noticearray];
+    
+    
+    
+    //提交数据
+    NSData *summitData = [NSJSONSerialization dataWithJSONObject:summitArray options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *summitString = [[NSString alloc]initWithData:summitData encoding:NSUTF8StringEncoding];
+    
+    NSDictionary *params = @{@"services":summitString};
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kAddService Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            [CommonMethods showDefaultErrorString:@"服务提交成功"];
+            
+            [self dismissViewControllerAnimated:YES completion:nil];
+            
+        }
+    }];
+
+    
     
 }
 

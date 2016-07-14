@@ -12,7 +12,7 @@
 
 @protocol OneYuyueDelegate <NSObject>
 
--(void)didSelectedCarCheck;
+-(void)didSelectedCarCheck:(OrderModel*)model;
 
 -(void)startSendWorders:(OrderModel*)model;
 

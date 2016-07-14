@@ -38,6 +38,10 @@
 //当前操作的订单
 #define kOrderInfo       @"OrderInfo"
 
+//添加服务内容通知
+#define kAddServieNotice   @"AddServiceNotice"
+
+
 
 
 

@@ -40,6 +40,11 @@ NetWorking *netWorking;
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     
+    AFJSONResponseSerializer *response = [AFJSONResponseSerializer serializer];
+    response.removesKeysWithNullValues = YES;
+    manager.responseSerializer = response;
+//    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
   
     [MyProgressHUD showProgress];
     
@@ -90,7 +95,7 @@ NetWorking *netWorking;
                 
                 
               
-             }
+              }
             else
             {
                     block(YES,data);

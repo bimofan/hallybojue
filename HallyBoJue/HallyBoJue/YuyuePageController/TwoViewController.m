@@ -191,6 +191,11 @@
             
              cell.workerLabel.text = [workplace objectForKey:@"name"];
         }
+        else
+        {
+            cell.workerLabel.text = @"";
+            
+        }
        
         
         
@@ -217,8 +222,13 @@
                 
                 NSDictionary *workerDict = [workers objectAtIndex:i];
                 
-                [workerStr appendString:[NSString stringWithFormat:@"  %@",[workerDict objectForKey:@"real_name"]]];
-                
+                if ([workerDict objectForKey:@"worker_real_name"]) {
+                    
+                      [workerStr appendString:[NSString stringWithFormat:@"  %@",[workerDict objectForKey:@"worker_real_name"]]];
+                }
+              
+              
+            
                 
                 
             }
@@ -456,7 +466,15 @@
        
         if (isSuccess) {
             
+            _orderModel.status = 3;
+            _orderModel.status_str = @"服务中";
+            _orderModel.services = _servicesArray;
             
+            if ([self.delegate respondsToSelector:@selector(didStartService:)]) {
+                
+                [self.delegate didStartService:_orderModel];
+                
+            }
         }
     }];
     

@@ -16,10 +16,13 @@
 
 
 
-@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate>
+@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate>
 {
     int pagesize;
     int page;
+    
+    NSInteger selectedIndexSection;
+    
     
 }
 @property(nonatomic,strong) NSMutableArray*myYuyueArray;
@@ -52,6 +55,8 @@
     _leftTableView.delegate = self;
     
   
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addnewservicenotice:) name:kAddServieNotice object:nil];
+    
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(yuyueHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(yuyueFooterRefresh)];
@@ -64,7 +69,7 @@
 }
 
 
-#pragma mark - 服务中
+#pragma mark - 派工中
 -(ThirdYuYueViewController*)thirdYuYueViewController
 {
     if (!_thirdYuYueViewController) {
@@ -271,12 +276,15 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
-    if (section == _myYuyueArray.count -1) {
-        
-        return 0;
-        
-    }
-    return  5;
+    
+    return 0;
+    
+//    if (section == _myYuyueArray.count -1) {
+//        
+//        return 0;
+//        
+//    }
+//    return  5;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
@@ -304,6 +312,8 @@
     
     
     if (_myYuyueArray.count > indexPath.section) {
+        
+        selectedIndexSection = indexPath.section;
         
         OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
@@ -334,6 +344,7 @@
             {
                 self.twoViewController.orderModel = model;
                 
+                self.twoViewController.delegate = self;
                 
                 [self.rightView addSubview:self.twoViewController.view];
                 
@@ -387,13 +398,35 @@
 
 
 #pragma mark - OneYuyueDelegate
--(void)didSelectedCarCheck
+-(void)didSelectedCarCheck:(OrderModel*)ordermodel
 {
+    
+
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
+    
+    [mudict setObject:@(ordermodel.store_id) forKey:@"store_id"];
+    [mudict setObject:@(ordermodel.user_id) forKey:@"user_id"];
+    [mudict setObject:@(ordermodel.id) forKey:@"service_order_id"];
+    [mudict setObject:@(ordermodel.car_id) forKey:@"user_car_id"];
+    
+    
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kOrderInfo];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
     UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"CarCheckNav"];
     
     [self.superViewController presentViewController:nav animated:YES completion:nil];
+    
+    
 }
 
+
+
+#pragma mark -  预约确认 或者 开始派工
 -(void)startSendWorders:(OrderModel*)model
 {
     
@@ -406,15 +439,72 @@
     else if (model.status == 2) //预约确认 开始派工
     {
         
+        [self startSend:model];
+        
+        
     }
 
+}
+
+#pragma mark - 开始派工
+-(void)startSend:(OrderModel*)model
+{
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(3)} itemModel:nil result:^(BOOL isSuccess, id data) {
+        
+        if (isSuccess) {
+            
+            
+            for (int i = 0; i < _myYuyueArray.count; i++) {
+                
+                OrderModel *temmodel = [_myYuyueArray objectAtIndex:i];
+                
+                if (temmodel.id == model.id) {
+                    
+                    
+                    temmodel.status = 3;
+                    
+                    temmodel.status_str = @"派工中";
+                    
+                    [_myYuyueArray replaceObjectAtIndex:i withObject:temmodel];
+                    
+                    [_leftTableView reloadData];
+                    
+                    
+                }
+            }
+            
+            
+            
+            
+            model.status_str = @"派工中";
+            model.status = 3;
+            
+            self.twoViewController.delegate = self;
+            
+            self.twoViewController.orderModel = model;
+            
+            [self.oneYuyueViewController.view removeFromSuperview];
+            
+            [self.rightView addSubview:self.twoViewController.view];
+            
+            
+            
+        }
+        
+    }];
+    
+    
+    
+   
 }
 
 #pragma mark - 确认预约
 -(void)checkappoint:(OrderModel*)model
 {
-    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id)} itemModel:nil result:^(BOOL isSuccess, id data) {
-      
+
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(2)} itemModel:nil result:^(BOOL isSuccess, id data) {
+        
         if (isSuccess) {
             
             
@@ -435,26 +525,24 @@
                     
                     
                 }
-             }
+            }
             
             
             
             
-                 model.status_str = @"预约确认";
-                 model.status = 2;
+            model.status_str = @"预约确认";
+            model.status = 2;
             
-                 self.twoViewController.orderModel = model;
+            self.oneYuyueViewController.superViewController = self.superViewController;
             
-                [self.oneYuyueViewController.view removeFromSuperview];
+            self.oneYuyueViewController.ordermodel = model;
             
-                [self.rightView addSubview:self.twoViewController.view];
             
             
             
         }
         
     }];
-    
 }
 
 
@@ -463,6 +551,49 @@
 {
     
 }
+
+
+
+#pragma mark -添加服务通知
+-(void)addnewservicenotice:(NSNotification*)note
+{
+    
+//    OrderModel *model = [_myYuyueArray objectAtIndex:selectedIndexSection];
+//    
+//    NSMutableArray *muArray = [[NSMutableArray alloc]init];
+//    
+//    [muArray addObjectsFromArray:model.services];
+//    
+//    [muArray addObjectsFromArray:note.object];
+//    
+//    model.services = muArray;
+//    
+//    
+//    [_myYuyueArray replaceObjectAtIndex:selectedIndexSection withObject:model];
+    
+    [_leftTableView reloadData];
+    
+}
+
+
+#pragma mark - TwoViewDelegate
+-(void)didStartService:(OrderModel *)ordermodel
+{
+    
+    self.thirdYuYueViewController.orderModel = ordermodel;
+    
+    self.thirdYuYueViewController.superViewController = self.superViewController;
+    
+    [self.twoViewController.view removeFromSuperview];
+    
+    [self.rightView addSubview:self.thirdYuYueViewController.view];
+    
+    
+    [_leftTableView reloadData];
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

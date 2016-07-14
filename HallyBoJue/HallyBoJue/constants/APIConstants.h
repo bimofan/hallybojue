@@ -120,9 +120,10 @@
 #define kSummitcarcheck    @"korder/summitcarcheck"
 
 
-/**  确认预约
+/**  修改预约状态
  *
  *  order_id
+ *   status   1预约中  2预约确认  3派工中 4服务中 5待支付 6待评价 7订单完成 8支付异常
  */
 #define kCheckappoint     @"korder/checkappoint"
 
@@ -131,6 +132,16 @@
  *
  */
 #define kServiceList    @"kservice/servicelist"
+
+
+/*  添加服务
+ *  jsonString=
+    "service_id
+ *  add_time
+ *  order_id"
+ */
+#define kAddService     @"kservice/addservice"
+
 
 
 

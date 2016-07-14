@@ -47,7 +47,11 @@
     
     _statusLabel.text = _orderModel.status_str;
     
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+    if (_orderModel.usermodel.avatar) {
+        
+        [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+    }
+    
     
     _realNameLabel.text = _orderModel.usermodel.user_real_name;
     
@@ -107,7 +111,15 @@
         
         if (mustring.length == 0) {
             
-            [mustring appendString:[worker objectForKey:@"worker_real_name"]];
+            if ([worker objectForKey:@"worker_real_name"] ) {
+                
+                [mustring appendString:[worker objectForKey:@"worker_real_name"]];
+            }
+            else
+            {
+                
+            }
+         
             
         }
         else
@@ -171,8 +183,6 @@
     [mudict setObject:@(_orderModel.car_id) forKey:@"user_car_id"];
     
     
-
-    
     [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kOrderInfo];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -188,6 +198,9 @@
 
 
 - (IBAction)doneAction:(id)sender {
+    
+    
+    
     
     
 }

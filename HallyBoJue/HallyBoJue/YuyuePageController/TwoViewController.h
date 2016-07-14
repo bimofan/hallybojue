@@ -9,10 +9,19 @@
 #import "BaseViewController.h"
 #import "OrderModel.h"
 
+@protocol TwoViewDelegate <NSObject>
+
+-(void)didStartService:(OrderModel*)ordermodel;
+
+
+@end
+
+
 @interface TwoViewController : BaseViewController
 
 
 
+@property (nonatomic,assign) id <TwoViewDelegate> delegate;
 
 @property (nonatomic,strong) OrderModel *orderModel;
 
