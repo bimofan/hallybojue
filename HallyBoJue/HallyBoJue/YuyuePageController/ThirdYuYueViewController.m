@@ -200,8 +200,31 @@
 - (IBAction)doneAction:(id)sender {
     
     
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(_orderModel.id),@"status":@(5)} itemModel:nil result:^(BOOL isSuccess, id data) {
+        
+        if (isSuccess) {
+            
+            
+            _orderModel.status = 5;
+            _orderModel.status_str = @"待支付";
+            
+            if ([self.delegate respondsToSelector:@selector(didDoneService:)]) {
+                
+                [self.delegate didDoneService:_orderModel];
+                
+            }
+            
+            
+        }
     
+        
+        
+    }];
     
+
     
 }
+
+
+
 @end

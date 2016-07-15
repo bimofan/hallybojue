@@ -3,6 +3,7 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "qidong.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
       "scale" : "1x"
@@ -10,21 +11,9 @@
     {
       "orientation" : "landscape",
       "idiom" : "ipad",
+      "filename" : "qidong@2x.png",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "minimum-system-version" : "7.0",
-      "scale" : "2x"
-    },
-    {
-      "orientation" : "portrait",
-      "idiom" : "iphone",
-      "minimum-system-version" : "7.0",
-      "subtype" : "retina4",
       "scale" : "2x"
     }
   ],

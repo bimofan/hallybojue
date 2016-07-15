@@ -128,6 +128,8 @@
 		13E8C8F71D366C0500BA0F58 /* AddServiceThirdCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8F61D366C0500BA0F58 /* AddServiceThirdCell.m */; };
 		13E8C8FA1D37761A00BA0F58 /* NullSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8F91D37761A00BA0F58 /* NullSafe.m */; };
 		13E8C8FE1D378C5200BA0F58 /* FourYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */; };
+		13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C9401D3891A500BA0F58 /* FourServiceCell.m */; };
+		13E8C9441D3891B900BA0F58 /* FourVIPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C9431D3891B900BA0F58 /* FourVIPCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -378,6 +380,10 @@
 		13E8C8F91D37761A00BA0F58 /* NullSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NullSafe.m; sourceTree = "<group>"; };
 		13E8C8FC1D378C5200BA0F58 /* FourYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourYuYueViewController.h; sourceTree = "<group>"; };
 		13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourYuYueViewController.m; sourceTree = "<group>"; };
+		13E8C93F1D3891A500BA0F58 /* FourServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourServiceCell.h; sourceTree = "<group>"; };
+		13E8C9401D3891A500BA0F58 /* FourServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourServiceCell.m; sourceTree = "<group>"; };
+		13E8C9421D3891B900BA0F58 /* FourVIPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourVIPCell.h; sourceTree = "<group>"; };
+		13E8C9431D3891B900BA0F58 /* FourVIPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourVIPCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -976,6 +982,10 @@
 			children = (
 				13E8C8FC1D378C5200BA0F58 /* FourYuYueViewController.h */,
 				13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */,
+				13E8C93F1D3891A500BA0F58 /* FourServiceCell.h */,
+				13E8C9401D3891A500BA0F58 /* FourServiceCell.m */,
+				13E8C9421D3891B900BA0F58 /* FourVIPCell.h */,
+				13E8C9431D3891B900BA0F58 /* FourVIPCell.m */,
 			);
 			name = FourYuYueViewController;
 			sourceTree = "<group>";
@@ -1170,6 +1180,7 @@
 				1384A6381D27D2DB00D74892 /* AFSecurityPolicy.m in Sources */,
 				1384A6351D27D2DB00D74892 /* AFHTTPRequestOperationManager.m in Sources */,
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
+				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
 				136247251D24FDB100190DCF /* SDWebImageDecoder.m in Sources */,
 				13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */,
 				1362472C1D24FDB100190DCF /* UIImage+MultiFormat.m in Sources */,
@@ -1196,6 +1207,7 @@
 				1384A67C1D2861A700D74892 /* YuyueViewController.m in Sources */,
 				136247231D24FDB100190DCF /* SDImageCache.m in Sources */,
 				1384A6611D281B0A00D74892 /* JSONModelClassProperty.m in Sources */,
+				13E8C9441D3891B900BA0F58 /* FourVIPCell.m in Sources */,
 				138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */,
 				1362472A1D24FDB100190DCF /* UIButton+WebCache.m in Sources */,
 				1384A6661D281B0A00D74892 /* JSONModel+networking.m in Sources */,

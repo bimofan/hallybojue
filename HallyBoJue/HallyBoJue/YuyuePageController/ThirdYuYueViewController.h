@@ -9,12 +9,22 @@
 #import "BaseViewController.h"
 #import "OrderModel.h"
 
+@protocol ThirdViewDelegate <NSObject>
+
+-(void)didDoneService:(OrderModel*)orderModel;
+
+
+@end
+
 @interface ThirdYuYueViewController : BaseViewController
 
 
 @property (nonatomic,strong) UIViewController*superViewController;
 
 @property (nonatomic,strong) OrderModel *orderModel;
+
+@property (nonatomic,assign) id <ThirdViewDelegate> delegate;
+
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 

@@ -10,7 +10,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.101/api/"
+#define kRequestHeader  @"http://192.168.0.107/api/"
 
 //#define kRequestHeader  @"http://114.55.42.248/public/api/user/login"
 
@@ -141,6 +141,13 @@
  *  order_id"
  */
 #define kAddService     @"kservice/addservice"
+
+/*  获取用户会员卡
+ *  user_id
+ *  car_id
+ *
+ */
+#define kGetUserVipCard   @"kuser/getvipcard"
 
 
 

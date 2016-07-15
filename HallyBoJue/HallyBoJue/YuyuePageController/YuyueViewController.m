@@ -13,10 +13,11 @@
 #import "OneYuyueViewController.h"
 #import "TwoViewController.h"
 #import "ThirdYuYueViewController.h"
+#import "FourYuYueViewController.h"
 
 
 
-@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate>
+@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate,ThirdViewDelegate>
 {
     int pagesize;
     int page;
@@ -29,6 +30,8 @@
 @property (nonatomic,strong)OneYuyueViewController *oneYuyueViewController;
 @property (nonatomic,strong) TwoViewController *twoViewController;  //开始派工
 @property (nonatomic,strong) ThirdYuYueViewController *thirdYuYueViewController;
+@property (nonatomic,strong) FourYuYueViewController *fourYuYueViewController;
+
 
 
 
@@ -69,6 +72,23 @@
 }
 
 
+#pragma mark - 待支付
+-(FourYuYueViewController*)fourYuYueViewController
+{
+    if (!_fourYuYueViewController) {
+        
+        _fourYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FourYuYueViewController"];
+        
+        _fourYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+        
+    }
+    
+    return  _fourYuYueViewController;
+    
+}
+
 #pragma mark - 派工中
 -(ThirdYuYueViewController*)thirdYuYueViewController
 {
@@ -78,6 +98,7 @@
         
         _thirdYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
         
+        _thirdYuYueViewController.delegate =self;
         
         
     }
@@ -97,6 +118,8 @@
         _twoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TwoViewController"];
         
         _twoViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        _twoViewController.delegate = self;
         
         
         
@@ -366,7 +389,11 @@
                 break;
             case 5: //服务结束 - 未支付
             {
+                self.fourYuYueViewController.orderModel = model;
                 
+                [self.thirdYuYueViewController.view removeFromSuperview];
+                
+                [self.rightView addSubview:self.fourYuYueViewController.view];
             }
                 break;
             case 6: // 已支付 -未评价
@@ -594,6 +621,22 @@
     
 }
 
+
+#pragma mark - ThirdViewDelegate
+-(void)didDoneService:(OrderModel *)orderModel
+{
+  
+    
+    self.fourYuYueViewController.orderModel = orderModel;
+    
+    [self.thirdYuYueViewController.view removeFromSuperview];
+    
+    [self.rightView addSubview:self.fourYuYueViewController.view];
+    
+    
+    [_leftTableView reloadData];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
