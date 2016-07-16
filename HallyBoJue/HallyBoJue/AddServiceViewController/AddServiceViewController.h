@@ -9,9 +9,21 @@
 #import "BaseViewController.h"
 #import "OrderModel.h"
 
+@protocol AddNewServiceDelegate <NSObject>
+
+-(void)didSelectedNewService:(NSArray*)array;
+
+
+@end
+
+
 @interface AddServiceViewController : BaseViewController
 
 
+@property (nonatomic,assign) id <AddNewServiceDelegate> delegate;
+
+
+@property (nonatomic,assign) NSInteger showType;  // 1预约中添加服务  2待客下单添加服务
 
 @property (nonatomic,strong) OrderModel *orderModel;
 

@@ -150,6 +150,12 @@
 #define kGetUserVipCard   @"kuser/getvipcard"
 
 
+/*  结算
+ *  order_id
+ *  services (jsonstring,array)
+ */
+#define kSummitOrder    @"korder/summitorder"
+
 
 
 

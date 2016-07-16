@@ -10,6 +10,7 @@
 #import "CustomerCell.h"
 #import "AddCustomerController.h"
 #import "CUserInfoController.h"
+#import "AddYuYueViewController.h"
 
 
 @interface CustomerViewController ()<AddCustomerDelegate>
@@ -21,6 +22,8 @@
 
 @property (nonatomic,strong) AddCustomerController*addCustomerController;
 @property (nonatomic,strong) CUserInfoController *cUserInfoController;
+@property (nonatomic,strong) AddYuYueViewController *addYuYueViewController;
+
 
 
 @property (nonatomic,strong) NSMutableArray *customerArray;
@@ -57,6 +60,20 @@
     [_leftTableView.header beginRefreshing];
     
     
+    
+}
+
+#pragma mark - 添加预约
+-(AddYuYueViewController*)addYuYueViewController
+{
+    if (!_addYuYueViewController) {
+        
+        _addYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddYuYueViewController"];
+        
+        _addYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+    }
+    
+    return  _addYuYueViewController;
     
 }
 
@@ -209,7 +226,10 @@
         cell.lastserviceLabel.text = [NSString stringWithFormat:@"最近一次服务时间:%@",[firstservice objectForKey:@"order_time" ]?[firstservice objectForKey:@"order_time" ]:@""];
         
         
-    
+        cell.addApointButton.tag = indexPath.section;
+        
+        [cell.addApointButton addTarget:self action:@selector(addYuYueAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         cell.viplabel.text = model.level_name;
         
         
@@ -312,6 +332,28 @@
     
   
     
+    
+}
+
+
+#pragma mark - 添加预约
+-(void)addYuYueAction:(UIButton*)sender
+{
+    
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    
+     CUserModel  *model = [_customerArray objectAtIndex:sender.tag];
+    
+    
+    self.addYuYueViewController.cUserModel = model;
+    
+    
+    [_rightView addSubview:self.addYuYueViewController.view];
     
 }
 @end

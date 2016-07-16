@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132BBB151D39F49100B887FC /* PayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB141D39F49100B887FC /* PayTypeView.m */; };
+		132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132BBB161D39F5A700B887FC /* PayTypeView.xib */; };
+		132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB1A1D3A247D00B887FC /* FiveYuYueViewController.m */; };
+		132BBB1E1D3A27D100B887FC /* FiveYuYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB1D1D3A27D100B887FC /* FiveYuYueCell.m */; };
+		132BBB221D3A365C00B887FC /* AddYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB211D3A365C00B887FC /* AddYuYueViewController.m */; };
+		132BBB251D3A3F8200B887FC /* AddYuYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB241D3A3F8200B887FC /* AddYuYueCell.m */; };
 		132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F4B1D3079F400163F55 /* CarCheckViewController.m */; };
 		132C2F501D323B6C00163F55 /* TwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F4F1D323B6C00163F55 /* TwoViewController.m */; };
 		132C2F531D32413000163F55 /* WorkerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F521D32413000163F55 /* WorkerCell.m */; };
@@ -150,6 +156,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		132BBB131D39F49100B887FC /* PayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayTypeView.h; sourceTree = "<group>"; };
+		132BBB141D39F49100B887FC /* PayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayTypeView.m; sourceTree = "<group>"; };
+		132BBB161D39F5A700B887FC /* PayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayTypeView.xib; sourceTree = "<group>"; };
+		132BBB191D3A247D00B887FC /* FiveYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveYuYueViewController.h; sourceTree = "<group>"; };
+		132BBB1A1D3A247D00B887FC /* FiveYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiveYuYueViewController.m; sourceTree = "<group>"; };
+		132BBB1C1D3A27D100B887FC /* FiveYuYueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiveYuYueCell.h; sourceTree = "<group>"; };
+		132BBB1D1D3A27D100B887FC /* FiveYuYueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiveYuYueCell.m; sourceTree = "<group>"; };
+		132BBB201D3A365C00B887FC /* AddYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddYuYueViewController.h; sourceTree = "<group>"; };
+		132BBB211D3A365C00B887FC /* AddYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddYuYueViewController.m; sourceTree = "<group>"; };
+		132BBB231D3A3F8200B887FC /* AddYuYueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddYuYueCell.h; sourceTree = "<group>"; };
+		132BBB241D3A3F8200B887FC /* AddYuYueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddYuYueCell.m; sourceTree = "<group>"; };
 		132C2F4A1D3079F400163F55 /* CarCheckViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarCheckViewController.h; sourceTree = "<group>"; };
 		132C2F4B1D3079F400163F55 /* CarCheckViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCheckViewController.m; sourceTree = "<group>"; };
 		132C2F4E1D323B6C00163F55 /* TwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoViewController.h; sourceTree = "<group>"; };
@@ -428,6 +445,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		132BBB181D3A245200B887FC /* FithYuYueViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132BBB191D3A247D00B887FC /* FiveYuYueViewController.h */,
+				132BBB1A1D3A247D00B887FC /* FiveYuYueViewController.m */,
+				132BBB1C1D3A27D100B887FC /* FiveYuYueCell.h */,
+				132BBB1D1D3A27D100B887FC /* FiveYuYueCell.m */,
+			);
+			name = FithYuYueViewController;
+			sourceTree = "<group>";
+		};
+		132BBB1F1D3A362C00B887FC /* AddYuYueViewController */ = {
+			isa = PBXGroup;
+			children = (
+				132BBB201D3A365C00B887FC /* AddYuYueViewController.h */,
+				132BBB211D3A365C00B887FC /* AddYuYueViewController.m */,
+				132BBB231D3A3F8200B887FC /* AddYuYueCell.h */,
+				132BBB241D3A3F8200B887FC /* AddYuYueCell.m */,
+			);
+			name = AddYuYueViewController;
+			sourceTree = "<group>";
+		};
 		132C2F491D30799400163F55 /* CarCheckViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,6 +497,9 @@
 				13E8C8EA1D35E51E00BA0F58 /* SingleTableSelectView.h */,
 				13E8C8EB1D35E51E00BA0F58 /* SingleTableSelectView.m */,
 				13E8C8ED1D35E53400BA0F58 /* SingleTableSelectView.xib */,
+				132BBB131D39F49100B887FC /* PayTypeView.h */,
+				132BBB141D39F49100B887FC /* PayTypeView.m */,
+				132BBB161D39F5A700B887FC /* PayTypeView.xib */,
 			);
 			path = popViews;
 			sourceTree = "<group>";
@@ -813,6 +855,7 @@
 		1384A6791D28619200D74892 /* AppointmentControllers */ = {
 			isa = PBXGroup;
 			children = (
+				132BBB181D3A245200B887FC /* FithYuYueViewController */,
 				13E8C8FB1D378C2200BA0F58 /* FourYuYueViewController */,
 				13E8C8C41D348AC300BA0F58 /* ThirdYuYueViewController */,
 				132C2F4D1D323B4200163F55 /* TwoYuYueViewController */,
@@ -855,6 +898,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				132BBB1F1D3A362C00B887FC /* AddYuYueViewController */,
 				13C0C13B1D2BB06F003419C6 /* AddCustomerViewController */,
 				138EEA311D29BD87005D4A00 /* CustomerCell.h */,
 				138EEA321D29BD87005D4A00 /* CustomerCell.m */,
@@ -1097,6 +1141,7 @@
 				136246C71D24C35200190DCF /* LaunchScreen.storyboard in Resources */,
 				136246C41D24C35200190DCF /* Assets.xcassets in Resources */,
 				1384A66E1D281E5500D74892 /* HomeHeaderView.xib in Resources */,
+				132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */,
 				136247581D24FF9D00190DCF /* MJRefresh.bundle in Resources */,
 				1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */,
 				1362476B1D24FFF800190DCF /* ProgressHUD.bundle in Resources */,
@@ -1132,6 +1177,7 @@
 				138EEA031D296298005D4A00 /* CUserModel.m in Sources */,
 				1384A6341D27D2DB00D74892 /* AFHTTPRequestOperation.m in Sources */,
 				132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */,
+				132BBB1E1D3A27D100B887FC /* FiveYuYueCell.m in Sources */,
 				1384A6441D28139A00D74892 /* UserInfo.m in Sources */,
 				1362475D1D24FF9D00190DCF /* MJRefreshGifHeader.m in Sources */,
 				139C54FC1D2D20BD000A7C8E /* CUserInfoController.m in Sources */,
@@ -1145,6 +1191,7 @@
 				1384A6781D28491100D74892 /* FirstRightCell.m in Sources */,
 				136247591D24FF9D00190DCF /* MJRefreshComponent.m in Sources */,
 				1384A6681D281B0A00D74892 /* JSONValueTransformer.m in Sources */,
+				132BBB251D3A3F8200B887FC /* AddYuYueCell.m in Sources */,
 				1384A6601D281B0A00D74892 /* JSONModelArray.m in Sources */,
 				1384A6151D27A49600D74892 /* LoginViewController.m in Sources */,
 				1384A67F1D28620300D74892 /* YuyueLeftCell.m in Sources */,
@@ -1182,10 +1229,12 @@
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
 				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
 				136247251D24FDB100190DCF /* SDWebImageDecoder.m in Sources */,
+				132BBB221D3A365C00B887FC /* AddYuYueViewController.m in Sources */,
 				13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */,
 				1362472C1D24FDB100190DCF /* UIImage+MultiFormat.m in Sources */,
 				1362472D1D24FDB100190DCF /* UIImage+WebP.m in Sources */,
 				136247271D24FDB100190DCF /* SDWebImageDownloaderOperation.m in Sources */,
+				132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */,
 				13BCF3C71D26920D0058D5C1 /* BaseNavigationController.m in Sources */,
 				1362476C1D24FFF800190DCF /* ProgressHUD.m in Sources */,
 				136247301D24FDB100190DCF /* UIView+WebCacheOperation.m in Sources */,
@@ -1206,6 +1255,7 @@
 				136247631D24FF9D00190DCF /* UIView+MJExtension.m in Sources */,
 				1384A67C1D2861A700D74892 /* YuyueViewController.m in Sources */,
 				136247231D24FDB100190DCF /* SDImageCache.m in Sources */,
+				132BBB151D39F49100B887FC /* PayTypeView.m in Sources */,
 				1384A6611D281B0A00D74892 /* JSONModelClassProperty.m in Sources */,
 				13E8C9441D3891B900BA0F58 /* FourVIPCell.m in Sources */,
 				138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */,

@@ -42,6 +42,14 @@
 #define kAddServieNotice   @"AddServiceNotice"
 
 
+//新增预约 添加服务内容通知
+#define kAddYuYueServiceNotice @"AddYuYueServiceNotice"
+
+//增加服务内容 类型
+#define kAddNewServiceType    @"AddNewServiceType"
+
+
+
 
 
 

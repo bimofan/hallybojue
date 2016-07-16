@@ -9,9 +9,18 @@
 #import "BaseViewController.h"
 #import "OrderModel.h"
 
+@protocol FourYuYueDelegate <NSObject>
+
+-(void)didSummitOrder:(OrderModel*)orderModel;
+
+
+@end
+
+
 @interface FourYuYueViewController : BaseViewController
 
 
+@property (nonatomic,assign) id <FourYuYueDelegate> delegate;
 
 @property (nonatomic,strong) OrderModel *orderModel;
 

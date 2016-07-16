@@ -10,14 +10,25 @@
 #import "FourVIPCell.h"
 #import "FourServiceCell.h"
 #import "NetWorking.h"
+#import "PayTypeView.h"
+#import "UserInfo.h"
 
 
 
-@interface FourYuYueViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+
+
+@interface FourYuYueViewController ()<UITableViewDelegate,UITableViewDataSource,PayTypeDelegate>
 
 @property (nonatomic,strong) NSMutableArray *vipArray;
 
 @property (nonatomic,assign) CGFloat totalMoney;
+
+@property (nonatomic,strong) PayTypeView *payTypeView;
+
+@property (nonatomic,assign) int payType;
+
+
 
 @end
 
@@ -27,15 +38,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    _statusLabel.clipsToBounds = YES;
+    _statusLabel.layer.cornerRadius = kCornerRadous;
+    
+    _summitButton.clipsToBounds = YES;
+    _summitButton.layer.cornerRadius = kCornerRadous;
+    
+    
     _serviceTable.delegate = self;
     _serviceTable.dataSource = self;
 
     
     
-   
+    _payType = 1;
+    
     
 }
 
+#pragma mark - PayTypeView
+-(PayTypeView*)payTypeView
+{
+    if (!_payTypeView) {
+        
+        _payTypeView = [[[NSBundle mainBundle] loadNibNamed:@"PayTypeView" owner:self options:nil] firstObject];
+        
+        _payTypeView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        
+        _payTypeView.delegate = self;
+        
+    }
+    
+    return _payTypeView;
+    
+    
+}
 
 -(void)setOrderModel:(OrderModel *)orderModel
 {
@@ -85,32 +122,37 @@
        
         if (isSuccess) {
             
-            DataModel *model = (DataModel*)data;
             
-            _vipArray = [[NSMutableArray alloc]init];
-            
-            for (int i = 0; i < model.items.count; i++) {
+            if (data) {
                 
-                NSDictionary *dict = [model.items objectAtIndex:i];
-                int temservice_id = [[dict objectForKey:@"service_id"]intValue];
+                DataModel *model = (DataModel*)data;
                 
-                for (int d = 0; d < _orderModel.services.count; d++) {
+                _vipArray = [[NSMutableArray alloc]init];
+                
+                for (int i = 0; i < model.items.count; i++) {
                     
-                    NSDictionary *service = [_orderModel.services objectAtIndex:d];
+                    NSDictionary *dict = [model.items objectAtIndex:i];
+                    int temservice_id = [[dict objectForKey:@"service_id"]intValue];
                     
-                    int service_id = [[service objectForKey:@"id"]intValue];
-                    
-                    if (service_id == temservice_id) {
+                    for (int d = 0; d < _orderModel.services.count; d++) {
                         
-                        [_vipArray addObject:dict];
+                        NSDictionary *service = [_orderModel.services objectAtIndex:d];
+                        
+                        int service_id = [[service objectForKey:@"id"]intValue];
+                        
+                        if (service_id == temservice_id) {
+                            
+                            [_vipArray addObject:dict];
+                            
+                        }
                         
                     }
-                    
                 }
+                
+                
+                [_serviceTable reloadData];
             }
-            
-            
-            [_serviceTable reloadData];
+    
             
         }
         
@@ -299,11 +341,56 @@
         
         NSDictionary *vipDict = [_vipArray objectAtIndex:indexPath.row];
         
+        int vip_id = [[vipDict objectForKey:@"id"]intValue];
+        
+        int vipservice_id = [[vipDict objectForKey:@"service_id"]intValue];
+        
         NSInteger service_count = [[vipDict objectForKey:@"service_count"]integerValue];
+        
+        BOOL selected = [[vipDict objectForKey:@"selected"]boolValue];
         
         if (service_count > 0) {
             
-            BOOL selected = ![[vipDict objectForKey:@"selected"]boolValue];
+        
+        if (!selected) {
+            
+        //先把其他相同的变成未选中
+        for (int i = 0 ; i < _vipArray.count; i++) {
+            
+            NSDictionary *temdict = [_vipArray objectAtIndex:i];
+            
+            int temService_id = [[temdict objectForKey:@"service_id"]intValue];
+            
+            int tem_id = [[temdict objectForKey:@"id"]intValue];
+            
+            
+            if (vipservice_id == temService_id && vip_id != tem_id) {
+                
+                NSMutableDictionary *mutemdict = [[NSMutableDictionary alloc]initWithDictionary:temdict];
+                
+                [mutemdict setObject:@(0) forKey:@"selected"];
+                
+                
+                [_vipArray replaceObjectAtIndex:i withObject:mutemdict];
+                
+                
+            }
+            
+        }
+            
+        }
+            
+        
+        
+            //替换 选中的 _vipArray
+        NSMutableDictionary *mutemdict = [[NSMutableDictionary alloc]initWithDictionary:vipDict];
+            
+        [mutemdict setObject:@(!selected) forKey:@"selected"];
+            
+            
+        [_vipArray replaceObjectAtIndex:indexPath.row withObject:mutemdict];
+    
+            
             
             
             NSMutableArray *muArray = [[NSMutableArray alloc]init];
@@ -315,19 +402,71 @@
                 
                 NSMutableDictionary  *mudict = [[NSMutableDictionary alloc]initWithDictionary:oneServiceDict];
                 
-                if (selected) {
+                int oneService_id = [[oneServiceDict objectForKey:@"id"]intValue];
+                
+                
+                id insideDict = [oneServiceDict objectForKey:@"vipdict"];
+                
+                int inside_id = 0;
+                
+                if ([insideDict isKindOfClass:[NSDictionary class]]) {
                     
-                    [mudict setObject:vipDict forKey:@"vipdict"];
+                    inside_id = [[insideDict objectForKey:@"id"]intValue];
                     
                 }
-                else
-                {
-                    [mudict setObject:@"" forKey:@"vipdict"];
+                
+                for (int d = 0; d < _vipArray.count; d++) {
+                    
+                    NSDictionary *temvipDict = [_vipArray objectAtIndex:d];
+                    
+                    int temvipService_id =[[temvipDict objectForKey:@"service_id"]intValue];
+                    
+                    BOOL selected = [[temvipDict objectForKey:@"selected"]boolValue];
+                    
+                   
+
+                    int outside_id = [[temvipDict objectForKey:@"id"]intValue];
+                    
+                    
+                    if (temvipService_id == oneService_id ) {
+                        
+                        if (selected) {
+                            
+                            [mudict setObject:temvipDict forKey:@"vipdict"];
+                            
+                            [muArray replaceObjectAtIndex:i withObject:mudict];
+                            
+                            inside_id = [[temvipDict objectForKey:@"id"]intValue];
+                            
+                            
+                        }
+                        else
+                        {
+                            
+                            if (inside_id == outside_id) {
+                                
+                                 [mudict setObject:@"" forKey:@"vipdict"];
+                                
+                                
+                                 [muArray replaceObjectAtIndex:i withObject:mudict];
+                            }
+                           
+                            
+                        }
+                        
+                        
+                       
+                        
+                     }
+                    
                     
                 }
                 
             }
         
+            
+            _orderModel.services = muArray;
+            
             
             [self caculeteMoney];
             
@@ -351,40 +490,26 @@
     _totalMoney = 0.0;
     
     
-  
-    
-    
     for (int i = 0 ; i < _orderModel.services.count; i++) {
         
         NSDictionary *oneService = [_orderModel.services objectAtIndex:i];
-        
-        int temservice_id = [[oneService objectForKey:@"id"]intValue];
+    
         
         CGFloat onePrice = [[oneService objectForKey:@"price"]floatValue];
         
         BOOL contented = NO;
         
-        for (int d = 0; d < _vipArray.count; d++) {
-            
+        id vipdict = [oneService objectForKey:@"vipdict"];
         
-            NSDictionary *vipdict = [_vipArray objectAtIndex:d];
+        if ([vipdict isKindOfClass:[NSDictionary class]]) {
             
-            int service_id = [[vipdict objectForKey:@"service_id"]intValue];
-            
-            BOOL selected = [[vipdict objectForKey:@"selected"]boolValue];
-            
-            
-            
-            
-            if (service_id == temservice_id && selected ) {
-                
-                contented = YES;
-            
-                
-                
-            float discount = [[vipdict objectForKey:@"discount"]floatValue];
+            contented = YES;
             
             int type = [[vipdict objectForKey:@"service_type"]intValue];
+            
+            CGFloat discount = [[vipdict objectForKey:@"discount"]floatValue];
+            
+         
             
             switch (type) {
                 case 1:  //折扣
@@ -408,27 +533,29 @@
                     
                 default:
                 {
-                      _totalMoney +=onePrice;
+                    _totalMoney +=onePrice;
                 }
                     break;
-              }
+            }
             
+         }
+       
              
             
                 
                 
-            
-            }
-            
-        }
-        
-        
         if (!contented) {
             
             _totalMoney +=onePrice;
             
         }
-    }
+        
+        
+            
+       }
+        
+    
+ 
     
     [self setTotalMoneyLabel];
     
@@ -448,7 +575,109 @@
     
     
     
+    self.payTypeView.totalMoney = _totalMoney;
     
     
+     [[UIApplication sharedApplication].keyWindow addSubview:self.payTypeView];
+    
+    
+}
+
+-(NSDictionary*)getparams
+{
+    int order_id = _orderModel.id;
+    
+    int keeper_id = [UserInfo getkeeperid];
+    
+    NSMutableArray *services = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < _orderModel.services.count; i++) {
+        
+        NSDictionary *oneService = [_orderModel.services objectAtIndex:i];
+        
+        NSMutableDictionary *muservice = [[NSMutableDictionary alloc]init];
+        
+        int serviceId = [[oneService objectForKey:@"id"]intValue];
+        
+        [muservice setObject:@(serviceId) forKey:@"service_id"];
+        
+        id vipdict = [oneService objectForKey:@"vipdict"];
+        
+        if ([vipdict isKindOfClass:[NSDictionary class]]) {
+            
+            int vip_id = [[vipdict objectForKey:@"id"]intValue];
+            
+            int card_id = [[vipdict objectForKey:@"card_id"]intValue];
+            
+            [muservice setObject:@(card_id) forKey:@"card_id"];
+            
+            [muservice setObject:@(vip_id) forKey:@"vip_service_id"];
+            
+            [muservice setObject:@(1) forKey:@"used_vip"];
+            
+            
+            
+        }
+        else
+        {
+            [muservice setObject:@(0) forKey:@"used_vip"];
+        }
+        
+        [services addObject:muservice];
+        
+        
+    }
+    
+    NSData *jsondata = [NSJSONSerialization dataWithJSONObject:services options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSString *services_string = [[NSString alloc]initWithData:jsondata encoding:NSUTF8StringEncoding];
+    
+    
+    NSString *keeper_note = _payTypeView.noteTextView.text;
+    
+    if (!keeper_note) {
+        keeper_note = @"";
+        
+    }
+    
+    return @{@"order_id":@(order_id),@"keeper_id":@(keeper_id),@"services":services_string,@"total_price":@(_totalMoney),@"pay_type":@(_payType),@"keeper_note":keeper_note};
+    
+    
+    
+    
+    
+    
+}
+
+
+#pragma mark - PayTypeDelegate
+-(void)didSelectedPayType:(int)payType
+{
+    _payType = payType;
+    
+    
+}
+
+-(void)doneSelectedPayType
+{
+    NSDictionary *params = [self getparams];
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSummitOrder Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            _orderModel.status = 6;
+            _orderModel.status_str = @"待评价";
+            
+            if ([self.delegate respondsToSelector:@selector(didSummitOrder:)]) {
+                
+                [self.delegate didSummitOrder:_orderModel];
+                
+                
+            }
+            
+            
+        }
+    }];
 }
 @end

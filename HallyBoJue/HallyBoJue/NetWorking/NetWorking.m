@@ -85,9 +85,18 @@ NetWorking *netWorking;
                 else
                 {
                     
-                    [model setValuesForKeysWithDictionary:data];
-                    
-                     block(YES,model);
+                    if (model) {
+                        
+                        [model setValuesForKeysWithDictionary:data];
+                        
+                        block(YES,model);
+                    }
+                    else
+                    {
+                        block(YES,nil);
+                        
+                    }
+                  
                     
                     
                   }
@@ -98,7 +107,7 @@ NetWorking *netWorking;
               }
             else
             {
-                    block(YES,data);
+                    block(YES,nil);
             }
             
     

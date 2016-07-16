@@ -50,7 +50,7 @@
 -(void)setCUserModel:(CUserModel *)cUserModel
 {
     
-    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[cUserModel.avatar objectForKey:@"avatar"]] placeholderImage:kDefaultHeadImage];
+    [_headImageView sd_setImageWithURL:[NSURL URLWithString:[cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
     _nameLabel.text = cUserModel.user_real_name;
     

@@ -52,10 +52,13 @@
     
     self.navigationItem.leftBarButtonItem = dismisButton;
     
-    
+
+        
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]initWithTitle:@"提交" style:UIBarButtonItemStylePlain target:self action:@selector(summitData)];
-    
-    self.navigationItem.rightBarButtonItem = doneButton;
+        
+        self.navigationItem.rightBarButtonItem = doneButton;
+  
+
     
     
 }
@@ -63,6 +66,9 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    _showType = [[[NSUserDefaults standardUserDefaults] objectForKey:kAddNewServiceType]integerValue];
+    
     
     [self getData];
 }
@@ -82,6 +88,45 @@
         
         return;
     }
+    
+    
+
+    if (_showType == 1) {
+        
+        [self addmoreservice];
+        
+    }
+    
+    else if (_showType == 2)
+    {
+        [self addnewservice];
+        
+    }
+
+    
+    
+}
+
+-(void)addnewservice
+{
+//    if ([self.delegate respondsToSelector:@selector(didSelectedNewService:)]) {
+//        
+//        
+//        [self.delegate didSelectedNewService:_selecteServicelist];
+//        
+//    }
+    
+    //发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddServieNotice object:_selecteServicelist];
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+}
+
+
+-(void)addmoreservice
+{
     
     NSDictionary *orderinfo = [[NSUserDefaults standardUserDefaults] objectForKey:kOrderInfo];
     
@@ -142,7 +187,7 @@
     NSDictionary *params = @{@"services":summitString};
     
     [[NetWorking shareNetWorking] RequestWithAction:kAddService Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
-       
+        
         if (isSuccess) {
             
             [CommonMethods showDefaultErrorString:@"服务提交成功"];
@@ -151,9 +196,6 @@
             
         }
     }];
-
-    
-    
 }
 
 -(void)getData

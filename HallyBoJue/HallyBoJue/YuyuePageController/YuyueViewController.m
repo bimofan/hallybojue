@@ -14,10 +14,12 @@
 #import "TwoViewController.h"
 #import "ThirdYuYueViewController.h"
 #import "FourYuYueViewController.h"
+#import "FiveYuYueViewController.h"
 
 
 
-@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate,ThirdViewDelegate>
+
+@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate,ThirdViewDelegate,FourYuYueDelegate>
 {
     int pagesize;
     int page;
@@ -31,6 +33,8 @@
 @property (nonatomic,strong) TwoViewController *twoViewController;  //开始派工
 @property (nonatomic,strong) ThirdYuYueViewController *thirdYuYueViewController;
 @property (nonatomic,strong) FourYuYueViewController *fourYuYueViewController;
+@property (nonatomic,strong) FiveYuYueViewController *fiveYuYueViewController;
+
 
 
 
@@ -71,6 +75,22 @@
     
 }
 
+#pragma mark - 完成
+-(FiveYuYueViewController*)fiveYuYueViewController
+{
+    
+    if (!_fiveYuYueViewController) {
+        
+        _fiveYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FiveYuYueViewController"];
+        
+        _fiveYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+    }
+    
+    return _fiveYuYueViewController;
+    
+}
+
 
 #pragma mark - 待支付
 -(FourYuYueViewController*)fourYuYueViewController
@@ -80,6 +100,8 @@
         _fourYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FourYuYueViewController"];
         
         _fourYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        _fourYuYueViewController.delegate = self;
         
         
         
@@ -398,7 +420,10 @@
                 break;
             case 6: // 已支付 -未评价
             {
+                self.fiveYuYueViewController.orderModel = model;
                 
+                
+                [self.rightView addSubview:self.fiveYuYueViewController.view];
             }
                 break;
             case 7: //完全结束
@@ -635,6 +660,21 @@
     
     
     [_leftTableView reloadData];
+    
+}
+
+
+#pragma mark - FourYuYueDelegate
+-(void)didSummitOrder:(OrderModel *)orderModel
+{
+    self.fiveYuYueViewController.orderModel = orderModel;
+    
+    [self.fourYuYueViewController.view removeFromSuperview];
+    
+    [self.rightView addSubview:self.fiveYuYueViewController.view];
+    
+    [_leftTableView reloadData];
+    
     
 }
 
