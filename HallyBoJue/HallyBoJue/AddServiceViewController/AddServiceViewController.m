@@ -69,6 +69,18 @@
     
     _showType = [[[NSUserDefaults standardUserDefaults] objectForKey:kAddNewServiceType]integerValue];
     
+    if (_showType == 2) {
+        
+        _selecteServicelist = [[NSMutableArray alloc]init];
+        
+        NSArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:kAddNewServiceSelectedList];
+        
+        [_selecteServicelist addObjectsFromArray:array];
+        
+        
+    }
+   
+    
     
     [self getData];
 }
@@ -220,22 +232,116 @@
             [_serviceslist replaceObjectAtIndex:0 withObject:mudict];
             
             
-            _rightServicelist = [[NSMutableArray alloc]init];
-            
-            [_rightServicelist addObjectsFromArray:[firstcat objectForKey:@"items"]];
+
             
             _leftSelectedIndex = 0;
             
+            if (_showType == 2) {
+                
+                  [self sortRightSelected];
+                
+                
+            }
+            else if (_showType == 1)
+            {
+                
+                _rightServicelist = [[NSMutableArray alloc]init];
+                
+                [_rightServicelist addObjectsFromArray:[firstcat objectForKey:@"items"]];
+                
+                [_firstTableView reloadData];
+                [_secondTableView reloadData];
+            }
+          
             
-            
-            [_firstTableView reloadData];
-            [_secondTableView reloadData];
+      
             
             
         }
     }];
 }
 
+
+#pragma mark - _showType ==2 sort right selected
+-(void)sortRightSelected
+{
+    
+    
+         NSLog(@"_serviceslist:%@",_serviceslist);
+    
+    for (int d = 0; d < _selecteServicelist.count; d++) {
+        
+        NSDictionary *dict = [_selecteServicelist objectAtIndex:d];
+        
+        int temcategory_id = [[dict objectForKey:@"category_id"]intValue];
+        
+        int temservice_id = [[dict objectForKey:@"id"]intValue];
+        
+        for (int i = 0; i < _serviceslist.count; i ++) {
+            
+            NSDictionary *leftDict = [_serviceslist objectAtIndex:i];
+            
+       
+            
+            NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:leftDict];
+            
+            int category_id = [[mudict objectForKey:@"id"]intValue];
+            
+            
+            NSArray *rightitems = [mudict objectForKey:@"items"];
+            
+            NSMutableArray *murightitems = [[NSMutableArray alloc]init];
+            [murightitems addObjectsFromArray:rightitems];
+            
+            if (category_id == temcategory_id) {
+                
+                for (int h = 0; h < rightitems.count; h++) {
+                    
+                    NSDictionary *itemDict = [rightitems objectAtIndex:h];
+                    
+                    NSMutableDictionary *muitemdict = [[NSMutableDictionary alloc]initWithDictionary:itemDict];
+                    
+                    int service_id = [[muitemdict objectForKey:@"id"]intValue];
+                    
+                    if (service_id == temservice_id) {
+                        
+                        [muitemdict setObject:@(1) forKey:@"selected"];
+                        
+                        [murightitems replaceObjectAtIndex:h withObject:muitemdict];
+                    }
+                }
+                
+            }
+            
+            [mudict setObject:murightitems forKey:@"items"];
+            
+            
+            
+            [_serviceslist replaceObjectAtIndex:i withObject:mudict];
+//            
+        
+            
+        }
+        
+    
+        
+    }
+    
+    
+    
+        NSDictionary *firstcat = [_serviceslist firstObject];
+    
+    _rightServicelist = [[NSMutableArray alloc]init];
+    
+    [_rightServicelist addObjectsFromArray:[firstcat objectForKey:@"items"]];
+    
+    [_firstTableView reloadData];
+    [_secondTableView reloadData];
+    
+    
+    
+
+}
 
 #pragma mark - UITableViewDataSource
 

@@ -17,7 +17,7 @@
     // Initialization code
     
     _headImageView.clipsToBounds = YES;
-    _headImageView.layer.cornerRadius = kCornerRadous;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
     _addApointButton.clipsToBounds = YES;
     _addApointButton.layer.cornerRadius = kCornerRadous;

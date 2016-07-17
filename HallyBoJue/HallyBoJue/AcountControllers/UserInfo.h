@@ -16,6 +16,8 @@
 +(Usermodel*)getUserModel;
 +(BOOL)hadLogin;
 +(int)getkeeperid;
++(int)getstoreid;
+
 
 
 

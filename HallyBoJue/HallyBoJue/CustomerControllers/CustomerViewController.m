@@ -347,10 +347,11 @@
     }
     
     
-     CUserModel  *model = [_customerArray objectAtIndex:sender.tag];
+    CUserModel  *model = [_customerArray objectAtIndex:sender.tag];
     
     
     self.addYuYueViewController.cUserModel = model;
+    
     
     
     [_rightView addSubview:self.addYuYueViewController.view];

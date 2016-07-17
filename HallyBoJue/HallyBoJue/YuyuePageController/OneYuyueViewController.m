@@ -193,6 +193,8 @@
     
     
     
+    [[NSUserDefaults standardUserDefaults] setObject:@(1) forKey:kAddNewServiceType];
+
     
     [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kOrderInfo];
     

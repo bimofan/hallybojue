@@ -19,6 +19,10 @@
     
     _contentLabel.layer.cornerRadius = kCornerRadous;
     
+    _backView.clipsToBounds = YES;
+    _backView.layer.cornerRadius = kCornerRadous;
+    
+    
     
 }
 

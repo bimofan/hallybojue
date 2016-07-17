@@ -49,6 +49,9 @@
 #define kAddNewServiceType    @"AddNewServiceType"
 
 
+//服务类型
+#define kAddNewServiceSelectedList   @"AddNewServiceSelectedList"
+
 
 
 

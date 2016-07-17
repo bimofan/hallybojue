@@ -77,9 +77,17 @@
             
              [self getdata];
         }
-        else
+        else if(_type == 2)
         {
             [self getworkerlist];
+            
+        }
+        else if (_type == 3)
+        {
+            
+        }
+        else if (_type == 4)
+        {
             
         }
         
@@ -109,6 +117,50 @@
             
         }
  
+        else if (_type == 4)
+        {
+            _titleLabel.text = @"选择车辆";
+            
+            NSMutableArray *muArray  = [[NSMutableArray alloc]init];
+            
+            [muArray addObjectsFromArray:_workDataSource];
+            
+            for (int i = 0; i < muArray.count; i++) {
+                
+                NSDictionary *temdict = [muArray objectAtIndex:i];
+                
+                NSMutableDictionary *mutemdict = [[NSMutableDictionary alloc]initWithDictionary:temdict];
+                
+                int tem_id = [[mutemdict objectForKey:@"id"]intValue];
+                
+                int selected_id = [[_selectedDict objectForKey:@"id"]intValue];
+                
+                if (tem_id == selected_id ) {
+                    
+                    
+                    BOOL selected = [[mutemdict objectForKey:@"selected"]boolValue];
+                    
+                    [mutemdict setObject:@(!selected) forKey:@"selected"];
+                    
+                    
+                }
+                else
+                {
+                    [mutemdict setObject:@(0) forKey:@"selected"];
+                    
+                }
+                
+                
+                [muArray replaceObjectAtIndex:i  withObject:mutemdict];
+                
+                
+             }
+            
+            
+            _workDataSource = muArray;
+            
+            
+        }
         
         [_workTableView reloadData];
         
@@ -356,6 +408,23 @@
         
         
     }
+    else if (_type == 4)
+    {
+        
+        cell.textLabel.text = [NSString stringWithFormat:@"%@   %@",[dict objectForKey:@"brand_name"],[dict objectForKey:@"plate_number"]];
+        
+        
+        if ([[dict objectForKey:@"selected"]boolValue]) {
+            
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            
+        }
+        else
+        {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            
+        }
+    }
     
     
     return cell;
@@ -486,6 +555,38 @@
         
     }
     
+    else if (_type == 4)
+    {
+        for (int i = 0; i < muArray.count; i++) {
+            
+            NSDictionary *temdict = [muArray objectAtIndex:i];
+            
+            NSMutableDictionary *mutemdict = [[NSMutableDictionary alloc]initWithDictionary:temdict];
+            
+            if (i == indexPath.section) {
+                
+                
+                BOOL selected = [[mutemdict objectForKey:@"selected"]boolValue];
+                
+                [mutemdict setObject:@(!selected) forKey:@"selected"];
+                
+                
+            }
+            else
+            {
+                [mutemdict setObject:@(0) forKey:@"selected"];
+                
+            }
+            
+            
+            [muArray replaceObjectAtIndex:i  withObject:mutemdict];
+            
+            
+        }
+        
+        
+        _workDataSource = muArray;
+    }
 
     
     
@@ -558,7 +659,15 @@
             {
                 alertStr = @"请选择技师";
             }
-            
+            else if (_type == 3)
+
+            {
+                
+            }
+            else if (_type == 4)
+            {
+                 alertStr = @"请选择车辆";
+            }
             [CommonMethods showDefaultErrorString:alertStr];
             
             return;

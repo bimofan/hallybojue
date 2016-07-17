@@ -156,6 +156,23 @@
  */
 #define kSummitOrder    @"korder/summitorder"
 
+/*  获取用户汽车
+ *  user_id
+ *
+ */
+#define kGetUserCars     @"kcustomer/getusercars"
+
+
+
+
+/* 代客下单
+ *  user_id
+ *  store_id
+ *  keeper_id
+ *  car_id
+ *  services (jsonstring,array)
+ */
+#define kAddUserAppoint   @"kcustomer/adduserappoint"
 
 
 

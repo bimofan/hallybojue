@@ -23,6 +23,13 @@
     
 }
 
++(int)getstoreid
+{
+    Usermodel *model = [self getUserModel];
+    
+    return model.store_id;
+    
+}
 +(BOOL)saveUserInfo:(Usermodel *)user
 {
     
