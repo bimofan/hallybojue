@@ -65,6 +65,9 @@
 //圆角大小
 #define kCornerRadous      6.0
 
+//offset
+#define kViewOffset      8.0
+
 //每页数量
 #define kPageSize      15
 

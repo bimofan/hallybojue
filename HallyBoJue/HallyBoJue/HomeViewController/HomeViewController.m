@@ -13,6 +13,7 @@
 #import "FirstPageViewController.h"
 #import "YuyueViewController.h"
 #import "CustomerViewController.h"
+#import "FollowUserController.h"
 
 
 
@@ -32,6 +33,8 @@ CGFloat cellHeight = 70;
 @property(nonatomic,strong) FirstPageViewController *firstpageController;
 @property(nonatomic,strong) YuyueViewController*yuyuepageController;
 @property (nonatomic,strong) CustomerViewController *customerViewController;
+@property (nonatomic,strong) FollowUserController *followUserController;
+
 
 
 
@@ -179,6 +182,21 @@ CGFloat cellHeight = 70;
     
 }
 
+#pragma mark - 跟进提醒
+-(FollowUserController*)followUserController
+{
+    if (!_followUserController) {
+        
+        _followUserController = [self.storyboard instantiateViewControllerWithIdentifier:@"FollowUserController"];
+        
+        _followUserController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+        
+    }
+    
+    return _followUserController;
+    
+}
+
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -300,8 +318,10 @@ CGFloat cellHeight = 70;
             
         }
             break;
-        case 3:
+        case 3:  //跟进提醒
         {
+            [self.contentView addSubview:self.followUserController.view];
+            
             
         }
             break;

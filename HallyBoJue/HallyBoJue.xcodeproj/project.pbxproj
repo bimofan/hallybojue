@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1320847A1D3B5FA900EDA00A /* SelectTimeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084791D3B5FA900EDA00A /* SelectTimeView.m */; };
 		1320847C1D3B5FB900EDA00A /* SelectTimeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1320847B1D3B5FB900EDA00A /* SelectTimeView.xib */; };
+		132084811D3B9B2900EDA00A /* FollowUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084801D3B9B2900EDA00A /* FollowUserController.m */; };
+		132084841D3B9E0200EDA00A /* FollowUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084831D3B9E0200EDA00A /* FollowUserCell.m */; };
+		132084871D3BA55600EDA00A /* FollowModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084861D3BA55600EDA00A /* FollowModel.m */; };
+		1320848A1D3BB51000EDA00A /* FollowServiceListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084891D3BB51000EDA00A /* FollowServiceListCell.m */; };
+		1320848E1D3BCFF800EDA00A /* KeeperSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1320848D1D3BCFF800EDA00A /* KeeperSortViewController.m */; };
+		132084911D3BD14A00EDA00A /* KeepersortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084901D3BD14A00EDA00A /* KeepersortCell.m */; };
+		132084931D3BD15C00EDA00A /* KeepersortCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132084921D3BD15C00EDA00A /* KeepersortCell.xib */; };
 		132BBB151D39F49100B887FC /* PayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB141D39F49100B887FC /* PayTypeView.m */; };
 		132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132BBB161D39F5A700B887FC /* PayTypeView.xib */; };
 		132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB1A1D3A247D00B887FC /* FiveYuYueViewController.m */; };
@@ -161,6 +168,19 @@
 		132084781D3B5FA900EDA00A /* SelectTimeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectTimeView.h; sourceTree = "<group>"; };
 		132084791D3B5FA900EDA00A /* SelectTimeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectTimeView.m; sourceTree = "<group>"; };
 		1320847B1D3B5FB900EDA00A /* SelectTimeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectTimeView.xib; sourceTree = "<group>"; };
+		1320847F1D3B9B2900EDA00A /* FollowUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowUserController.h; sourceTree = "<group>"; };
+		132084801D3B9B2900EDA00A /* FollowUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowUserController.m; sourceTree = "<group>"; };
+		132084821D3B9E0200EDA00A /* FollowUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowUserCell.h; sourceTree = "<group>"; };
+		132084831D3B9E0200EDA00A /* FollowUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowUserCell.m; sourceTree = "<group>"; };
+		132084851D3BA55600EDA00A /* FollowModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowModel.h; sourceTree = "<group>"; };
+		132084861D3BA55600EDA00A /* FollowModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowModel.m; sourceTree = "<group>"; };
+		132084881D3BB51000EDA00A /* FollowServiceListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FollowServiceListCell.h; sourceTree = "<group>"; };
+		132084891D3BB51000EDA00A /* FollowServiceListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FollowServiceListCell.m; sourceTree = "<group>"; };
+		1320848C1D3BCFF800EDA00A /* KeeperSortViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeeperSortViewController.h; sourceTree = "<group>"; };
+		1320848D1D3BCFF800EDA00A /* KeeperSortViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeeperSortViewController.m; sourceTree = "<group>"; };
+		1320848F1D3BD14A00EDA00A /* KeepersortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeepersortCell.h; sourceTree = "<group>"; };
+		132084901D3BD14A00EDA00A /* KeepersortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeepersortCell.m; sourceTree = "<group>"; };
+		132084921D3BD15C00EDA00A /* KeepersortCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepersortCell.xib; sourceTree = "<group>"; };
 		132BBB131D39F49100B887FC /* PayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayTypeView.h; sourceTree = "<group>"; };
 		132BBB141D39F49100B887FC /* PayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayTypeView.m; sourceTree = "<group>"; };
 		132BBB161D39F5A700B887FC /* PayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayTypeView.xib; sourceTree = "<group>"; };
@@ -450,6 +470,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1320847E1D3B9B0300EDA00A /* FollowUser */ = {
+			isa = PBXGroup;
+			children = (
+				1320847F1D3B9B2900EDA00A /* FollowUserController.h */,
+				132084801D3B9B2900EDA00A /* FollowUserController.m */,
+				132084821D3B9E0200EDA00A /* FollowUserCell.h */,
+				132084831D3B9E0200EDA00A /* FollowUserCell.m */,
+				132084881D3BB51000EDA00A /* FollowServiceListCell.h */,
+				132084891D3BB51000EDA00A /* FollowServiceListCell.m */,
+			);
+			name = FollowUser;
+			path = followUser;
+			sourceTree = "<group>";
+		};
+		1320848B1D3BCF9700EDA00A /* KeeperSort */ = {
+			isa = PBXGroup;
+			children = (
+				1320848C1D3BCFF800EDA00A /* KeeperSortViewController.h */,
+				1320848D1D3BCFF800EDA00A /* KeeperSortViewController.m */,
+				1320848F1D3BD14A00EDA00A /* KeepersortCell.h */,
+				132084901D3BD14A00EDA00A /* KeepersortCell.m */,
+				132084921D3BD15C00EDA00A /* KeepersortCell.xib */,
+			);
+			path = KeeperSort;
+			sourceTree = "<group>";
+		};
 		132BBB181D3A245200B887FC /* FithYuYueViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,7 +585,9 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.mm */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
+				1320848B1D3BCF9700EDA00A /* KeeperSort */,
 				132C2F541D32567200163F55 /* popViews */,
+				1320847E1D3B9B0300EDA00A /* FollowUser */,
 				13E8C8F11D3669FA00BA0F58 /* AddServiceViewController */,
 				132C2F491D30799400163F55 /* CarCheckViewController */,
 				138EEA301D29BD87005D4A00 /* CustomerControllers */,
@@ -773,6 +821,8 @@
 				138EE9FE1D295002005D4A00 /* ModelHeaders.h */,
 				138EEA011D296298005D4A00 /* CUserModel.h */,
 				138EEA021D296298005D4A00 /* CUserModel.m */,
+				132084851D3BA55600EDA00A /* FollowModel.h */,
+				132084861D3BA55600EDA00A /* FollowModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1149,6 +1199,7 @@
 				136246C71D24C35200190DCF /* LaunchScreen.storyboard in Resources */,
 				136246C41D24C35200190DCF /* Assets.xcassets in Resources */,
 				1384A66E1D281E5500D74892 /* HomeHeaderView.xib in Resources */,
+				132084931D3BD15C00EDA00A /* KeepersortCell.xib in Resources */,
 				132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */,
 				136247581D24FF9D00190DCF /* MJRefresh.bundle in Resources */,
 				1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */,
@@ -1202,6 +1253,7 @@
 				1384A6681D281B0A00D74892 /* JSONValueTransformer.m in Sources */,
 				132BBB251D3A3F8200B887FC /* AddYuYueCell.m in Sources */,
 				1384A6601D281B0A00D74892 /* JSONModelArray.m in Sources */,
+				1320848A1D3BB51000EDA00A /* FollowServiceListCell.m in Sources */,
 				1384A6151D27A49600D74892 /* LoginViewController.m in Sources */,
 				1384A67F1D28620300D74892 /* YuyueLeftCell.m in Sources */,
 				136247211D24FDB100190DCF /* MKAnnotationView+WebCache.m in Sources */,
@@ -1228,6 +1280,7 @@
 				1362475F1D24FF9D00190DCF /* MJRefreshLegendFooter.m in Sources */,
 				139C54FF1D2D462D000A7C8E /* CarTableViewCell.m in Sources */,
 				1362475E1D24FF9D00190DCF /* MJRefreshHeader.m in Sources */,
+				132084811D3B9B2900EDA00A /* FollowUserController.m in Sources */,
 				13E8C8FE1D378C5200BA0F58 /* FourYuYueViewController.m in Sources */,
 				136246B91D24C35200190DCF /* AppDelegate.mm in Sources */,
 				1362472F1D24FDB100190DCF /* UIImageView+WebCache.m in Sources */,
@@ -1236,9 +1289,11 @@
 				1384A6381D27D2DB00D74892 /* AFSecurityPolicy.m in Sources */,
 				1384A6351D27D2DB00D74892 /* AFHTTPRequestOperationManager.m in Sources */,
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
+				132084841D3B9E0200EDA00A /* FollowUserCell.m in Sources */,
 				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
 				136247251D24FDB100190DCF /* SDWebImageDecoder.m in Sources */,
 				132BBB221D3A365C00B887FC /* AddYuYueViewController.m in Sources */,
+				132084911D3BD14A00EDA00A /* KeepersortCell.m in Sources */,
 				13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */,
 				1362472C1D24FDB100190DCF /* UIImage+MultiFormat.m in Sources */,
 				1362472D1D24FDB100190DCF /* UIImage+WebP.m in Sources */,
@@ -1254,6 +1309,7 @@
 				1362472B1D24FDB100190DCF /* UIImage+GIF.m in Sources */,
 				1330D44A1D33309600CF4723 /* ChoseWorkPlaceView.m in Sources */,
 				1362475A1D24FF9D00190DCF /* MJRefreshConst.m in Sources */,
+				1320848E1D3BCFF800EDA00A /* KeeperSortViewController.m in Sources */,
 				13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */,
 				136247701D25003700190DCF /* Reachability.m in Sources */,
 				1384A63C1D27D2DB00D74892 /* AFURLSessionManager.m in Sources */,
@@ -1263,6 +1319,7 @@
 				136246B61D24C35200190DCF /* main.m in Sources */,
 				1362472E1D24FDB100190DCF /* UIImageView+HighlightedWebCache.m in Sources */,
 				136247631D24FF9D00190DCF /* UIView+MJExtension.m in Sources */,
+				132084871D3BA55600EDA00A /* FollowModel.m in Sources */,
 				1384A67C1D2861A700D74892 /* YuyueViewController.m in Sources */,
 				136247231D24FDB100190DCF /* SDImageCache.m in Sources */,
 				132BBB151D39F49100B887FC /* PayTypeView.m in Sources */,

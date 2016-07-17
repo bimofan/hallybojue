@@ -175,6 +175,15 @@
 #define kAddUserAppoint   @"kcustomer/adduserappoint"
 
 
+/*  跟进列表
+ *
+ *  keeper_id
+ *   pagesize
+ *   page
+ */
+#define kGetFollowlist    @"kfollow/followlist"
+
+
 
 
 
