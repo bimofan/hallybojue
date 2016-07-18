@@ -14,6 +14,10 @@
 #import "YuyueViewController.h"
 #import "CustomerViewController.h"
 #import "FollowUserController.h"
+#import "KeeperSortViewController.h"
+#import "FAQViewController.h"
+#import "SettingViewController.h"
+
 
 
 
@@ -34,6 +38,12 @@ CGFloat cellHeight = 70;
 @property(nonatomic,strong) YuyueViewController*yuyuepageController;
 @property (nonatomic,strong) CustomerViewController *customerViewController;
 @property (nonatomic,strong) FollowUserController *followUserController;
+@property (nonatomic,strong) KeeperSortViewController *keeperSortViewController;
+@property (nonatomic,strong) FAQViewController *faqViewController;
+@property (nonatomic,strong) SettingViewController *settingViewController;
+
+
+
 
 
 
@@ -56,6 +66,10 @@ CGFloat cellHeight = 70;
 
     
     
+    
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successCatchOrder:) name:kSuccesCatchOrder object:nil];
+    
     [self.headerView addSubview:self.homeHeaderView];
     
     
@@ -71,6 +85,20 @@ CGFloat cellHeight = 70;
 {
     [super viewWillAppear:animated];
     
+
+    
+    
+    //test
+//    [[NetWorking shareNetWorking] RequestWithAction:@"" Params:@{@"mobile":@"123456",@"password":@"123456"} itemModel:nil result:^(BOOL isSuccess, id data) {
+//        
+//    }];
+    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     if (![[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin]) {
         
         UINavigationController *loginNav = [self.storyboard instantiateViewControllerWithIdentifier:@"loginNav"];
@@ -85,13 +113,6 @@ CGFloat cellHeight = 70;
         [self.homeHeaderView setdata];
         
     }
-    
-    
-    //test
-//    [[NetWorking shareNetWorking] RequestWithAction:@"" Params:@{@"mobile":@"123456",@"password":@"123456"} itemModel:nil result:^(BOOL isSuccess, id data) {
-//        
-//    }];
-    
 }
 
 -(HomeHeaderView*)homeHeaderView
@@ -129,6 +150,9 @@ CGFloat cellHeight = 70;
     return _slideTitles;
     
 }
+
+
+
 
 #pragma mark － 首页子页面
 -(FirstPageViewController*)firstpageController
@@ -197,6 +221,47 @@ CGFloat cellHeight = 70;
     
 }
 
+#pragma mark - 排行榜
+-(KeeperSortViewController*)keeperSortViewController
+{
+    if (!_keeperSortViewController) {
+        
+        _keeperSortViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"KeeperSortViewController"];
+        
+        _keeperSortViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+    }
+    
+    return _keeperSortViewController;
+    
+}
+
+#pragma mark - FAQ
+-(FAQViewController*)faqViewController
+{
+    if (!_faqViewController) {
+        
+        _faqViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"FAQViewController"];
+        
+        _faqViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+    }
+    
+    return _faqViewController;
+    
+}
+
+#pragma mark - 设置
+-(SettingViewController*)settingViewController
+{
+    if (!_settingViewController) {
+        
+        _settingViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingViewController"];
+        
+        _settingViewController.view.frame = CGRectMake(0, 0, _contentView.frame.size.width, _contentView.frame.size.height);
+    }
+    
+    return _settingViewController;
+    
+}
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -266,9 +331,6 @@ CGFloat cellHeight = 70;
     
     
     
-    [self setselected:indexPath.section];
-    
-    
     [self switchSubPage:indexPath.section];
     
     
@@ -281,6 +343,7 @@ CGFloat cellHeight = 70;
 -(void)switchSubPage:(NSInteger)section
 {
     
+    [self setselected:section];
     
     if (section == selectedSection) {
         
@@ -325,16 +388,24 @@ CGFloat cellHeight = 70;
             
         }
             break;
-        case 4:
+        case 4: //排行榜
         {
+            [self.contentView addSubview:self.keeperSortViewController.view];
             
         }
             break;
-        case 5:
+        case 5: //faq
         {
+            [self.contentView addSubview:self.faqViewController.view];
             
         }
             break;
+        case 6:
+        {
+            [self.contentView addSubview:self.settingViewController.view];
+            
+            
+        }
             
             
         default:
@@ -376,6 +447,20 @@ CGFloat cellHeight = 70;
     
 
       [_slideTabelView reloadData];
+    
+    
+    
+}
+
+
+#pragma mark -抢单成功 
+-(void)successCatchOrder:(NSNotification*)note
+{
+    
+    
+    
+    [self switchSubPage:1];
+    
     
     
     

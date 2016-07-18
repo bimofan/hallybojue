@@ -31,6 +31,8 @@
    
     
     
+     application.applicationIconBadgeNumber = 0;
+    
     [XGPush startApp:kXingePush_ACCESSID appKey:kXingePush_ACCESSKEY];
     
     [XGPush handleLaunching:launchOptions];
@@ -197,6 +199,7 @@
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     
     
+    application.applicationIconBadgeNumber = 0;
     
 }
 

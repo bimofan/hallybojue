@@ -16,6 +16,8 @@
 		1320848E1D3BCFF800EDA00A /* KeeperSortViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1320848D1D3BCFF800EDA00A /* KeeperSortViewController.m */; };
 		132084911D3BD14A00EDA00A /* KeepersortCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084901D3BD14A00EDA00A /* KeepersortCell.m */; };
 		132084931D3BD15C00EDA00A /* KeepersortCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132084921D3BD15C00EDA00A /* KeepersortCell.xib */; };
+		132084971D3C834500EDA00A /* FAQViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132084961D3C834500EDA00A /* FAQViewController.m */; };
+		1320849B1D3C96D900EDA00A /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1320849A1D3C96D900EDA00A /* SettingViewController.m */; };
 		132BBB151D39F49100B887FC /* PayTypeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB141D39F49100B887FC /* PayTypeView.m */; };
 		132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 132BBB161D39F5A700B887FC /* PayTypeView.xib */; };
 		132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 132BBB1A1D3A247D00B887FC /* FiveYuYueViewController.m */; };
@@ -181,6 +183,10 @@
 		1320848F1D3BD14A00EDA00A /* KeepersortCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeepersortCell.h; sourceTree = "<group>"; };
 		132084901D3BD14A00EDA00A /* KeepersortCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeepersortCell.m; sourceTree = "<group>"; };
 		132084921D3BD15C00EDA00A /* KeepersortCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepersortCell.xib; sourceTree = "<group>"; };
+		132084951D3C834500EDA00A /* FAQViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FAQViewController.h; sourceTree = "<group>"; };
+		132084961D3C834500EDA00A /* FAQViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FAQViewController.m; sourceTree = "<group>"; };
+		132084991D3C96D900EDA00A /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		1320849A1D3C96D900EDA00A /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		132BBB131D39F49100B887FC /* PayTypeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayTypeView.h; sourceTree = "<group>"; };
 		132BBB141D39F49100B887FC /* PayTypeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayTypeView.m; sourceTree = "<group>"; };
 		132BBB161D39F5A700B887FC /* PayTypeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PayTypeView.xib; sourceTree = "<group>"; };
@@ -496,6 +502,24 @@
 			path = KeeperSort;
 			sourceTree = "<group>";
 		};
+		132084941D3C832A00EDA00A /* FAQ */ = {
+			isa = PBXGroup;
+			children = (
+				132084951D3C834500EDA00A /* FAQViewController.h */,
+				132084961D3C834500EDA00A /* FAQViewController.m */,
+			);
+			path = FAQ;
+			sourceTree = "<group>";
+		};
+		132084981D3C96BA00EDA00A /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				132084991D3C96D900EDA00A /* SettingViewController.h */,
+				1320849A1D3C96D900EDA00A /* SettingViewController.m */,
+			);
+			path = "设置";
+			sourceTree = "<group>";
+		};
 		132BBB181D3A245200B887FC /* FithYuYueViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -585,6 +609,8 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.mm */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
+				132084981D3C96BA00EDA00A /* 设置 */,
+				132084941D3C832A00EDA00A /* FAQ */,
 				1320848B1D3BCF9700EDA00A /* KeeperSort */,
 				132C2F541D32567200163F55 /* popViews */,
 				1320847E1D3B9B0300EDA00A /* FollowUser */,
@@ -1245,6 +1271,8 @@
 				1384A6391D27D2DB00D74892 /* AFURLConnectionOperation.m in Sources */,
 				13C52DC41D26AD13009429C2 /* HomeSlideCell.m in Sources */,
 				13E8C8FA1D37761A00BA0F58 /* NullSafe.m in Sources */,
+				132084971D3C834500EDA00A /* FAQViewController.m in Sources */,
+				1320849B1D3C96D900EDA00A /* SettingViewController.m in Sources */,
 				1362475C1D24FF9D00190DCF /* MJRefreshGifFooter.m in Sources */,
 				1384A6191D27C65E00D74892 /* NetWorking.m in Sources */,
 				1362476A1D24FFF800190DCF /* MyProgressHUD.m in Sources */,
@@ -1486,6 +1514,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HallyBoJue/Third/BaiduMap",
@@ -1510,8 +1539,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Haikun Zhu (K5443SNRTU)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Haikun Zhu (K5443SNRTU)";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HallyBoJue/Third/BaiduMap",
@@ -1526,7 +1556,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "8b4eeab4-728e-4cad-b432-4d35dea8a559";
 			};
 			name = Release;
 		};

@@ -38,6 +38,16 @@
 //当前操作的订单
 #define kOrderInfo       @"OrderInfo"
 
+//增加服务内容 类型
+#define kAddNewServiceType    @"AddNewServiceType"
+
+
+//服务类型
+#define kAddNewServiceSelectedList   @"AddNewServiceSelectedList"
+
+
+
+//** 通知 ***/
 //添加服务内容通知
 #define kAddServieNotice   @"AddServiceNotice"
 
@@ -45,12 +55,16 @@
 //新增预约 添加服务内容通知
 #define kAddYuYueServiceNotice @"AddYuYueServiceNotice"
 
-//增加服务内容 类型
-#define kAddNewServiceType    @"AddNewServiceType"
+
+//抢单成功
+#define kSuccesCatchOrder     @"SuccessCatchOrder"
 
 
-//服务类型
-#define kAddNewServiceSelectedList   @"AddNewServiceSelectedList"
+
+/***********/
+
+
+
 
 
 

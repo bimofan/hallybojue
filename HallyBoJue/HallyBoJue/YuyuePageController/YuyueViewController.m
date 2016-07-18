@@ -64,6 +64,8 @@
   
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addnewservicenotice:) name:kAddServieNotice object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(catchOrderSucces:) name:kSuccesCatchOrder object:nil];
+    
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(yuyueHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(yuyueFooterRefresh)];
@@ -349,7 +351,7 @@
     
     OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
     
-    return 215 + 50 *model.services.count;
+    return 165 + 50 *model.services.count;
     
 }
 
@@ -360,89 +362,10 @@
     
     if (_myYuyueArray.count > indexPath.section) {
         
-        selectedIndexSection = indexPath.section;
+        [self setorderview:indexPath.section];
         
-        OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
-        for (UIView *view in _rightView.subviews) {
-            
-            [view removeFromSuperview];
-            
-        }
-        
-        switch (model.status) {
-            case 1: //预约中
-            {
-                self.oneYuyueViewController.ordermodel = model;
-                
-                [self.rightView addSubview:self.oneYuyueViewController.view];
-            }
-                break;
-            case 2://预约确认
-            {
-                self.oneYuyueViewController.ordermodel = model;
-                self.oneYuyueViewController.superViewController = self.superViewController;
-                
-                [self.rightView addSubview:self.oneYuyueViewController.view];
-                
-            }
-                break;
-            case 3: //派工中
-            {
-                self.twoViewController.orderModel = model;
-                
-                self.twoViewController.delegate = self;
-                
-                [self.rightView addSubview:self.twoViewController.view];
-                
-                
-            }
-                break;
-            case 4: //服务中
-            {
-                self.thirdYuYueViewController.orderModel = model;
-                
-                self.thirdYuYueViewController.superViewController = self.superViewController;
-                
-                
-                [self.rightView addSubview:self.thirdYuYueViewController.view];
-                
-                
-                
-            }
-                break;
-            case 5: //服务结束 - 未支付
-            {
-                self.fourYuYueViewController.orderModel = model;
-                
-                [self.thirdYuYueViewController.view removeFromSuperview];
-                
-                [self.rightView addSubview:self.fourYuYueViewController.view];
-            }
-                break;
-            case 6: // 已支付 -未评价
-            {
-                self.fiveYuYueViewController.orderModel = model;
-                
-                
-                [self.rightView addSubview:self.fiveYuYueViewController.view];
-            }
-                break;
-            case 7: //完全结束
-            {
-                
-            }
-                break;
-            case 8:  //异常支付
-            {
-                
-            }
-                break;
-                
-                
-            default:
-                break;
-        }
+
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -450,6 +373,94 @@
     
 }
 
+#pragma mark - setorderview
+-(void)setorderview:(NSInteger)section
+{
+    
+      selectedIndexSection = section;
+    
+    OrderModel *model = [_myYuyueArray objectAtIndex:section];
+    
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    switch (model.status) {
+        case 1: //预约中
+        {
+            self.oneYuyueViewController.ordermodel = model;
+            
+            [self.rightView addSubview:self.oneYuyueViewController.view];
+        }
+            break;
+        case 2://预约确认
+        {
+            self.oneYuyueViewController.ordermodel = model;
+            self.oneYuyueViewController.superViewController = self.superViewController;
+            
+            [self.rightView addSubview:self.oneYuyueViewController.view];
+            
+        }
+            break;
+        case 3: //派工中
+        {
+            self.twoViewController.orderModel = model;
+            
+            self.twoViewController.delegate = self;
+            
+            [self.rightView addSubview:self.twoViewController.view];
+            
+            
+        }
+            break;
+        case 4: //服务中
+        {
+            self.thirdYuYueViewController.orderModel = model;
+            
+            self.thirdYuYueViewController.superViewController = self.superViewController;
+            
+            
+            [self.rightView addSubview:self.thirdYuYueViewController.view];
+            
+            
+            
+        }
+            break;
+        case 5: //服务结束 - 未支付
+        {
+            self.fourYuYueViewController.orderModel = model;
+            
+            [self.thirdYuYueViewController.view removeFromSuperview];
+            
+            [self.rightView addSubview:self.fourYuYueViewController.view];
+        }
+            break;
+        case 6: // 已支付 -未评价
+        {
+            self.fiveYuYueViewController.orderModel = model;
+            
+            
+            [self.rightView addSubview:self.fiveYuYueViewController.view];
+        }
+            break;
+        case 7: //完全结束
+        {
+            
+        }
+            break;
+        case 8:  //异常支付
+        {
+            
+        }
+            break;
+            
+            
+        default:
+            break;
+    }
+}
 
 #pragma mark - OneYuyueDelegate
 -(void)didSelectedCarCheck:(OrderModel*)ordermodel
@@ -680,6 +691,22 @@
     
 }
 
+
+#pragma mark - 抢单成功
+-(void)catchOrderSucces:(NSNotification*)note
+{
+    
+    NSMutableArray *muarray = [[NSMutableArray alloc]init];
+    
+    [muarray addObject:note.object];
+    [muarray addObjectsFromArray:_myYuyueArray];
+    
+    [_leftTableView reloadData];
+    
+    [self setorderview:0];
+    
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

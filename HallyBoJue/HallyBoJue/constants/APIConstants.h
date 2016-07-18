@@ -10,10 +10,9 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.107/api/"
+#define kRequestHeader  @"http://192.168.0.122/api/"
 
-//#define kRequestHeader  @"http://114.55.42.248/public/api/user/login"
-
+//#define kRequestHeader  @"http://120.55.86.7/api/"
 
 
 #pragma mark - 接口
@@ -182,6 +181,15 @@
  *   page
  */
 #define kGetFollowlist    @"kfollow/followlist"
+
+
+/**  FAQ
+ *
+ *
+ *
+ */
+#define  kKeeperfaq       @"kservice/keeperfaq"
+
 
 
 

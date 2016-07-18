@@ -18,12 +18,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *serviceViewHeight;
+
+
 @property (weak, nonatomic) IBOutlet UIView *serviceView;
 @property (weak, nonatomic) IBOutlet UILabel *serviceLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIButton *catchButton;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *orderHeight;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *serviceBackViewHeight;
+
 
 - (IBAction)catchAction:(id)sender;
 

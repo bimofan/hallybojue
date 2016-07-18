@@ -74,14 +74,21 @@
 {
     [super viewWillAppear:animated];
     
-    if ([[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin] && !hadFirstRequest) {
-        
-        [self firstHeaderRefresh];
-        hadFirstRequest = YES;
-    }
+
     
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear: animated];
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin] &&_yuyueArray.count == 0) {
+        
+        [_leftTableView.header beginRefreshing];
+        
+       
+    }
+}
 
 -(void)viewWillLayoutSubviews
 {
@@ -124,9 +131,10 @@
 #pragma mark - 获取数据
 -(void)getneworder
 {
+    int store_id = [UserInfo getstoreid];
     
    
-    [[NetWorking shareNetWorking] RequestWithAction:kNewOrder Params:@{@"page":@(page),@"pagesize":@(pagesize)} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kNewOrder Params:@{@"page":@(page),@"pagesize":@(pagesize),@"store_id":@(store_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
         
        
         [_leftTableView.header endRefreshing];
@@ -272,36 +280,57 @@
             float lat = [[model.address_location objectForKey:@"lat"]floatValue];
             float lon = [[model.address_location objectForKey:@"lon"]floatValue];
             
-            [[BaiduMapHelper shareHelper]getLocationAddressWithLat:31.3534 Lon:121.34234 resutl:^(NSString *address) {
-                
-                cell.addressLabel.text = address;
-                
-            }];
-            
-            cell.serviceLabel.text = @"哈里伯爵至尊洗车";
-            
-            
-//            if (lat > 0) {
-//                
 //            [[BaiduMapHelper shareHelper]getLocationAddressWithLat:31.3534 Lon:121.34234 resutl:^(NSString *address) {
-//              
+//                
 //                cell.addressLabel.text = address;
 //                
 //            }];
-//                
-//                
-//            }
-//            
-            
-
-//            cell.addressLabel.text = model.order_address;
             
             
             
+         
+            
+            
+            if (lat > 0) {
+                
+            [[BaiduMapHelper shareHelper]getLocationAddressWithLat:31.3534 Lon:121.34234 resutl:^(NSString *address) {
+              
+                cell.addressLabel.text = address;
+                
+            }];
+                
+                
+            }
+            
+            
+            
+            NSMutableString *muserviceString = [[NSMutableString alloc]init];
+            
+            
+            for (int i = 0; i < model.services.count; i++) {
+                
+                NSDictionary *dict = [model.services objectAtIndex:i];
+                
+                NSString *service_name = [dict objectForKey:@"name"];
+                
+                if (muserviceString.length == 0) {
+                    
+                    [muserviceString appendString:service_name];
+                }
+                else
+                {
+                    [muserviceString appendFormat:@"\n \n%@",service_name];
+                    
+                }
+            }
+            cell.serviceLabel.text = muserviceString;
+            
+            cell.orderHeight.constant = 50 * model.services.count;
+            
+            cell.serviceBackViewHeight.constant = 50 * model.services.count;
             
             cell.timeLabel.text = model.order_time;
             
-//            cell.serviceLabel.text = model.service_name;
             
             cell.catchButton.tag = indexPath.section;
             
@@ -434,7 +463,11 @@
             return 44;
             
         }
-        return 250;
+        
+          OrderModel *model = [_yuyueArray objectAtIndex:indexPath.section];
+        
+          
+        return 195 + 50 * model.services.count;
         
     }
     else
@@ -477,6 +510,12 @@
             [CommonMethods showDefaultErrorString:@"抢单成功"];
             
             [_leftTableView reloadData];
+            
+            order.status = 2;
+            order.status_str = @"预约确认";
+            
+            [[NSNotificationCenter defaultCenter] postNotificationName:kSuccesCatchOrder object:order];
+            
             
             
             

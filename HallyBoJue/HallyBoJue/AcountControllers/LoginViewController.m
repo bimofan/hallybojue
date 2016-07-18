@@ -13,7 +13,7 @@
 
 
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UITextFieldDelegate>
 
 @end
 
@@ -26,6 +26,10 @@
     
     _usernameTF.clipsToBounds = YES;
     _usernameTF.layer.cornerRadius = 6.0;
+    
+    _usernameTF.delegate = self;
+    _codeTF.delegate = self;
+    
     
     _codeTF.clipsToBounds = YES;
     _codeTF.layer.cornerRadius = 6.0;
@@ -107,5 +111,24 @@
     
     
     
+}
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.3 animations:^{
+       
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 200);
+        
+    }];
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 200);
+        
+    }];
 }
 @end

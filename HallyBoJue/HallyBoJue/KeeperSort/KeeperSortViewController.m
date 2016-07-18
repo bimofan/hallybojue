@@ -27,17 +27,34 @@
     [super viewDidLoad];
    
     
+
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     _tableWidth = (self.view.frame.size.width - 2*kViewOffset)/3.0;
     
     _tableHeight = self.view.frame.size.height;
     
-
-     [self.view addSubview:self.firstTableView];
+    
+    self.firstTableView.clipsToBounds = YES;
+    self.firstTableView.layer.cornerRadius = kCornerRadous;
+    
+    self.secondTableView.clipsToBounds = YES;
+    self.secondTableView.layer.cornerRadius = kCornerRadous;
+    
+    self.thirdTableView.clipsToBounds= YES;
+    self.thirdTableView.layer.cornerRadius = kCornerRadous;
+    
+    
+    [self.view addSubview:self.firstTableView];
     
     [self.view addSubview:self.secondTableView];
     [self.view addSubview:self.thirdTableView];
-    
-    
 }
 
 -(UITableView*)firstTableView
@@ -51,6 +68,9 @@
         _firstTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         _firstTableView.backgroundColor = [UIColor whiteColor];
+        
+        _firstTableView.showsVerticalScrollIndicator = NO;
+        
         
        
         
@@ -73,6 +93,8 @@
         
         _secondTableView.backgroundColor = [UIColor whiteColor];
         
+        _secondTableView.showsVerticalScrollIndicator = NO;
+        
         
     }
     
@@ -93,6 +115,9 @@
         
         _thirdTableView.backgroundColor = [UIColor whiteColor];
         
+        _thirdTableView.showsVerticalScrollIndicator = NO;
+        
+        
     }
     
     return _thirdTableView;
@@ -100,20 +125,76 @@
 }
 
 
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    
+    return 60;
+}
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
+    
+    headerView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel *line = [[UILabel alloc]initWithFrame:CGRectMake(0, 59, tableView.frame.size.width, 1)];
+    line.backgroundColor = kGrayBackColor;
+    
+  
+    
+    UILabel *titleLable = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 60)];
+    titleLable.text = @"";
+    
+    titleLable.textColor = kDarkTextColor;
+    
+    titleLable.font = FONT_17;
+    
+    titleLable.textAlignment = NSTextAlignmentCenter;
+    
+    
+    if (tableView == _firstTableView) {
+        
+        titleLable.text = @"今日业绩";
+    }
+    
+    if (tableView == _secondTableView) {
+        
+        titleLable.text = @"今日新增客户排行";
+    }
+    
+    if (tableView == _thirdTableView) {
+        
+        titleLable.text = @"本月业绩排行";
+    }
+    
+    
+    [headerView addSubview:titleLable];
+    
+    
+    [headerView addSubview:line];
+    
+    
+    return headerView;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
-    return 1;
+    return 10;
     
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 10;
+    return 1;
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 80;
+    
+}
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -125,6 +206,8 @@
         
         
     }
+    
+    cell.numLabel.text = [NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
     
     
     return cell;
