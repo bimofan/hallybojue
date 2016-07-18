@@ -181,6 +181,10 @@
 {
     NSLog(@"did receiveRemoteNotification:%@",userInfo);
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:kRecevieNewOrderNoti object:nil];
+    
+    
+    
     [XGPush handleReceiveNotification:userInfo];
     
 }

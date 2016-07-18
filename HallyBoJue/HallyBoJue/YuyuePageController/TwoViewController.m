@@ -43,6 +43,8 @@
     _startService.clipsToBounds =  YES;
     _startService.layer.cornerRadius = kCornerRadous;
     
+    _headImageView.clipsToBounds = YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
     _timeTextField.delegate = self;
     
@@ -466,7 +468,7 @@
        
         if (isSuccess) {
             
-            _orderModel.status = 3;
+            _orderModel.status = 4;
             _orderModel.status_str = @"服务中";
             _orderModel.services = _servicesArray;
             

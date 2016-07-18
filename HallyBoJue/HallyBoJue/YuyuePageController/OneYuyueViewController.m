@@ -38,6 +38,10 @@
     _addServiceButton.clipsToBounds = YES;
     _addServiceButton.layer.cornerRadius = kCornerRadous;
     
+    _headImageView.clipsToBounds=  YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
+    
     
     _serviceTable.delegate = self;
     _serviceTable.dataSource = self;

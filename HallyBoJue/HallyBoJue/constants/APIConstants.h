@@ -9,10 +9,18 @@
 #import <Foundation/Foundation.h>
 
 
-//本地
-#define kRequestHeader  @"http://192.168.0.122/api/"
 
+//本地
+#define kRequestHeader  @"http://192.168.0.101/api/"
+
+
+//old
 //#define kRequestHeader  @"http://120.55.86.7/api/"
+
+
+//new
+//#define kRequestHeader  @"http://120.76.207.52/api/"
+
 
 
 #pragma mark - 接口

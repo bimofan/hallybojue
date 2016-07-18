@@ -36,6 +36,8 @@
 @property (nonatomic,strong) NSArray *cars;
 @property (nonatomic,strong) NSArray *service_orders;
 @property (nonatomic,strong) NSString *add_time;
+@property (nonatomic,strong) NSString *vip_address;
+
 
 
 

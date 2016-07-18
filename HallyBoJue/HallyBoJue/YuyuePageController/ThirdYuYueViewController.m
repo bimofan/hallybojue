@@ -29,6 +29,9 @@
     _statusLabel.clipsToBounds = YES;
     _statusLabel.layer.cornerRadius = kCornerRadous;
     
+    _headImageView.clipsToBounds= YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
     _checkCarButton.clipsToBounds = YES;
     _checkCarButton.layer.cornerRadius = kCornerRadous;
     
@@ -99,6 +102,10 @@
     
     cell.serviceNameLabel.text = [service objectForKey:@"name"];
     
+    
+//    if ([workplace objectForKey:@"name"];) {
+//        <#statements#>
+//    }
     cell.workplaceLabel.text = [service objectForKey:@"workplace_name"];
     
     NSMutableString *mustring = [[NSMutableString alloc]init];

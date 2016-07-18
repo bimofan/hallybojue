@@ -52,6 +52,11 @@
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
     
+    _levelNameLabel.clipsToBounds = YES;
+    _levelNameLabel.layer.cornerRadius = kCornerRadous;
+    
+    
+    
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = CGRectGetHeight(_headImageView.frame)/2;
     
@@ -149,7 +154,8 @@
     
     _realNameLabel.text = _cUserModel.user_real_name;
     
-    _levelNameLabel.text = _cUserModel.level_str;
+    _levelNameLabel.text = _cUserModel.level_name;
+    _vipAddressLabel.text = _cUserModel.vip_address;
     
 
     

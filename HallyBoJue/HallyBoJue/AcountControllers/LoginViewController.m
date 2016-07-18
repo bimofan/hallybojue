@@ -92,6 +92,7 @@
             }];
       
            
+                 model.vip_address = @"";
                 [UserInfo saveUserInfo:model];
             
                 

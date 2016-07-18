@@ -701,6 +701,8 @@
     [muarray addObject:note.object];
     [muarray addObjectsFromArray:_myYuyueArray];
     
+    _myYuyueArray = muarray;
+    
     [_leftTableView reloadData];
     
     [self setorderview:0];

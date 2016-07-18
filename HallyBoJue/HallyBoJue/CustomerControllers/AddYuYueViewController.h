@@ -24,6 +24,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *summitButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipAddressLabel;
 
 - (IBAction)summitAction:(id)sender;
 

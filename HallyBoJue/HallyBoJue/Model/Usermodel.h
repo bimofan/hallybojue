@@ -20,6 +20,8 @@
 @property (nonatomic,assign) int level;
 @property(nonatomic,strong) NSString *level_name;
 @property (nonatomic,strong) NSString *level_desc;
+@property (nonatomic,strong) NSString *vip_address;
+
 
 
 

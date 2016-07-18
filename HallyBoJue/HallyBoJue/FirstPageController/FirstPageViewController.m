@@ -51,6 +51,9 @@
     _leftTableView.dataSource = self;
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recevieNewOrder:) name:kRecevieNewOrderNoti object:nil];
+    
+    
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(firstHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(firstFooterRefresh)];
@@ -548,6 +551,13 @@
     
 }
 
+
+#pragma mark - 新订单推送
+-(void)recevieNewOrder:(NSNotification*)note
+{
+    [_leftTableView.header beginRefreshing];
+    
+}
 
 
 

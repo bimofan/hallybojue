@@ -38,6 +38,10 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *registCard;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipaddresslabel;
+
+
+
 
 - (IBAction)registCardAction:(id)sender;
 

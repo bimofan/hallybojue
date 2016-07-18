@@ -59,7 +59,8 @@
 //抢单成功
 #define kSuccesCatchOrder     @"SuccessCatchOrder"
 
-
+//收到新订单通知
+#define kRecevieNewOrderNoti    @"RecevieNewOrderNoti"
 
 /***********/
 

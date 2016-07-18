@@ -45,6 +45,10 @@
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
     
+    _headImageView.clipsToBounds= YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
+    
     
     _serviceTable.delegate = self;
     _serviceTable.dataSource = self;
@@ -586,6 +590,8 @@
 -(NSDictionary*)getparams
 {
     int order_id = _orderModel.id;
+    int user_id = _orderModel.user_id;
+    
     
     int keeper_id = [UserInfo getkeeperid];
     
@@ -640,7 +646,7 @@
         
     }
     
-    return @{@"order_id":@(order_id),@"keeper_id":@(keeper_id),@"services":services_string,@"total_price":@(_totalMoney),@"pay_type":@(_payType),@"keeper_note":keeper_note};
+    return @{@"order_id":@(order_id),@"user_id":@(user_id),@"keeper_id":@(keeper_id),@"services":services_string,@"total_price":@(_totalMoney),@"pay_type":@(_payType),@"keeper_note":keeper_note};
     
     
     

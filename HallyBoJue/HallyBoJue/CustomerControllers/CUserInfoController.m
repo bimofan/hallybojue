@@ -38,6 +38,11 @@
     _registCard.clipsToBounds = YES;
     _registCard.layer.cornerRadius = kCornerRadous;
     
+    _headImageView.clipsToBounds = YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
+    
+    
 
     
     
@@ -62,6 +67,7 @@
     
     _addTimeLabel.text = cUserModel.add_time;
     
+    _vipaddresslabel.text = cUserModel.vip_address;
     
     _cUserModel = cUserModel;
     
@@ -113,7 +119,7 @@
 {
     
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, ScreenWidth, 50)];
-    label.backgroundColor = [UIColor clearColor];
+    label.backgroundColor = [UIColor whiteColor];
     label.textColor = kDarkTextColor;
     label.font = FONT_15;
     
