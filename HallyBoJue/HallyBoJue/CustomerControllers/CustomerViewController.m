@@ -11,6 +11,8 @@
 #import "AddCustomerController.h"
 #import "CUserInfoController.h"
 #import "AddYuYueViewController.h"
+#import "ServiceHistoryViewController.h"
+
 
 
 @interface CustomerViewController ()<AddCustomerDelegate>
@@ -23,8 +25,7 @@
 @property (nonatomic,strong) AddCustomerController*addCustomerController;
 @property (nonatomic,strong) CUserInfoController *cUserInfoController;
 @property (nonatomic,strong) AddYuYueViewController *addYuYueViewController;
-
-
+@property (nonatomic,strong) ServiceHistoryViewController *serviceHistoryViewController;
 
 @property (nonatomic,strong) NSMutableArray *customerArray;
 
@@ -110,6 +111,21 @@
     }
     
     return _addCustomerController;
+    
+}
+
+#pragma mark - 服务记录
+-(ServiceHistoryViewController*)serviceHistoryViewController
+{
+    if (!_serviceHistoryViewController) {
+        
+        _serviceHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ServiceHistoryViewController"];
+        
+        _serviceHistoryViewController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+    }
+    
+    return _serviceHistoryViewController;
     
 }
 
@@ -226,14 +242,21 @@
         cell.lastserviceLabel.text = [NSString stringWithFormat:@"最近一次服务时间:%@",[firstservice objectForKey:@"order_time" ]?[firstservice objectForKey:@"order_time" ]:@""];
         
         
-        cell.addApointButton.tag = indexPath.section;
-        
-        [cell.addApointButton addTarget:self action:@selector(addYuYueAction:) forControlEvents:UIControlEventTouchUpInside];
+  
         
         cell.viplabel.text = model.level_name;
         
         
         cell.realnameLabel.text = model.user_real_name;
+        
+        cell.addApointButton.tag = indexPath.section;
+        
+        [cell.addApointButton addTarget:self action:@selector(addYuYueAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        cell.servicelistButton.tag = indexPath.section;
+        
+        [cell.servicelistButton addTarget:self action:@selector(showservicehistory:) forControlEvents:UIControlEventTouchUpInside];
+        
         
         
         
@@ -355,6 +378,24 @@
     
     
     [_rightView addSubview:self.addYuYueViewController.view];
+    
+}
+
+#pragma mark - 显示服务记录
+-(void)showservicehistory:(UIButton*)sender
+{
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+      CUserModel  *model = [_customerArray objectAtIndex:sender.tag];
+    
+    self.serviceHistoryViewController.cUsermodel = model;
+    
+    [_rightView addSubview:self.serviceHistoryViewController.view];
+    
     
 }
 @end

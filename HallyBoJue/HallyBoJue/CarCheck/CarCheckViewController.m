@@ -813,7 +813,7 @@
     NSData *photo = [firstproblem objectForKey:@"photo"];
     
     
-    [[NetWorking shareNetWorking] RequestWithAction:kSummitcarcheck Params:params Data:photo filename:@"photo.png" result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kSummitcarcheck Params:params Data:photo name:@"photo" filename:@"photo.png" result:^(BOOL isSuccess, id data) {
         
         if (isSuccess) {
             

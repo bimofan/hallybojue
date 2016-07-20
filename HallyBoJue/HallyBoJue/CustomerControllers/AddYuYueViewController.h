@@ -26,6 +26,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *vipAddressLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *setRemindButton;
+
+- (IBAction)setRemindAction:(id)sender;
+
+
 - (IBAction)summitAction:(id)sender;
 
 @end

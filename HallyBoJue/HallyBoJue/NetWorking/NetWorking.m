@@ -149,7 +149,7 @@ NetWorking *netWorking;
     
 }
 
--(void)RequestWithAction:(NSString *)action Params:(NSDictionary *)param Data:(NSData *)data filename:(NSString*)fileName  result:(RequestResultBlock)block
+-(void)RequestWithAction:(NSString*)action Params:(NSDictionary *)param Data:(NSData *)data name:(NSString *)name filename:(NSString *)fileName result:(RequestResultBlock)block
 {
     NSString *url = [NSString stringWithFormat:@"%@%@",kRequestHeader,action];
     
@@ -162,7 +162,7 @@ NetWorking *netWorking;
         
         if (data) {
             
-            [formData appendPartWithFileData:data name:@"photo" fileName:fileName mimeType:@"png"];
+            [formData appendPartWithFileData:data name:name fileName:fileName mimeType:@"png"];
             
         }
         

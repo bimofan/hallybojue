@@ -17,6 +17,9 @@
 +(BOOL)hadLogin;
 +(int)getkeeperid;
 +(int)getstoreid;
++(void)saveAvatar:(NSDictionary*)avatar;
+
+
 
 
 

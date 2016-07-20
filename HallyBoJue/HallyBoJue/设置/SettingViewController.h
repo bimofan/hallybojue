@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *settingTableView;
 
+@property (weak, nonatomic) IBOutlet UIView *rightView;
 
 
 @end

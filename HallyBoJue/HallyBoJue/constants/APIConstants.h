@@ -199,6 +199,48 @@
 #define  kKeeperfaq       @"kservice/keeperfaq"
 
 
+/**  添加跟进提醒
+ *   user_id
+ *   car_id
+ *   next_time
+ *   next_service
+ *   keeper_id
+ */
+#define kAddFollow      @"kfollow/addfollow"
+
+
+/*  获取会员卡列表
+ *
+ *
+ */
+#define kGetVipCardTemplates @"kcustomer/getvipcardtemplate"
+
+
+/*  添加会籍卡
+ *  user_id
+ *  vipcard_template_id
+ *   amount
+ *  keeper_id
+ *  car_id
+ */
+#define kAddVipCard     @"kcustomer/addvipcard"
+
+
+/*  修改头像
+ *  keeper_id
+ *  avatar
+ *
+ */
+#define  kChangeAvatar   @"kuser/changeavatar"
+
+
+/*  修改密码
+ *  oldpass
+ *   newpass
+ *   keeper_id
+ */
+#define kChangePassWord  @"kuser/changepassword"
+
 
 
 

@@ -11,6 +11,8 @@
 #import "FollowModel.h"
 #import "CommonMethods.h"
 #import "FollowServiceListCell.h"
+#import "SetRemindViewController.h"
+
 
 @interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -21,6 +23,9 @@
 @property (nonatomic,strong)NSMutableArray *followsArray;
 
 @property (nonatomic,strong) FollowModel *selectedModel;
+
+
+@property (nonatomic,strong) SetRemindViewController *setRemindViewController;
 
 
 
@@ -71,6 +76,7 @@
     
 }
 
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -80,6 +86,22 @@
         [_userTableView.header beginRefreshing];
         
     }
+}
+
+
+-(SetRemindViewController*)setRemindViewController
+{
+    if (!_setRemindViewController) {
+        
+        _setRemindViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"SetRemindViewController"];
+        
+        _setRemindViewController.view.frame = _rightView.frame;
+        
+        
+    }
+    
+    return _setRemindViewController;
+    
 }
 
 -(void)headerRefresh
@@ -367,6 +389,13 @@
 
 -(void)setHeader
 {
+    
+    
+    _rightView.hidden = NO;
+    
+    [self.setRemindViewController.view removeFromSuperview];
+    
+    
     if (_selectedModel.cUserModel.avatar) {
         
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_selectedModel.cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
@@ -386,5 +415,14 @@
 
 
 - (IBAction)setAction:(id)sender {
+    
+    
+    _rightView.hidden = YES;
+    
+    self.setRemindViewController.cUserModel = _selectedModel.cUserModel;
+    
+    [self.view addSubview:self.setRemindViewController.view];
+    
+    
 }
 @end

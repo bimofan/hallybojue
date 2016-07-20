@@ -8,8 +8,17 @@
 
 #import "CUserInfoController.h"
 #import "CarTableViewCell.h"
+#import "SetRemindViewController.h"
+#import "AddVipCardViewController.h"
+
 
 @interface CUserInfoController ()<UITableViewDelegate,UITableViewDataSource>
+
+
+@property (nonatomic,strong) SetRemindViewController *setRemindViewController;
+@property (nonatomic,strong) AddVipCardViewController *addVipCardViewController;
+
+
 
 @end
 
@@ -41,6 +50,8 @@
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
+    _RemindButton.clipsToBounds = YES;
+    _RemindButton.layer.cornerRadius = kCornerRadous;
     
     
 
@@ -51,6 +62,21 @@
     
 }
 
+#pragma mark - AddVipCardViewController
+-(AddVipCardViewController*)addVipCardViewController
+{
+    if (!_addVipCardViewController) {
+        
+        _addVipCardViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddVipCardViewController"];
+        
+        _addVipCardViewController.view.frame = self.view.frame;
+        
+    }
+    
+    
+    return _addVipCardViewController;
+    
+}
 
 -(void)setCUserModel:(CUserModel *)cUserModel
 {
@@ -71,7 +97,18 @@
     
     _cUserModel = cUserModel;
     
+    
+    [_setRemindViewController.view removeFromSuperview];
+    
+    [_addVipCardViewController.view removeFromSuperview];
+    
+    _setRemindViewController = nil;
+    _addVipCardViewController = nil;
+    
+    
     [_carTableView reloadData];
+    
+    
     
      
 }
@@ -205,12 +242,45 @@
 
 
 
+-(SetRemindViewController*)setRemindViewController
+{
+    if (!_setRemindViewController) {
+        
+        _setRemindViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"SetRemindViewController"];
+        
+        _setRemindViewController.view.frame = self.view.frame;
+        
+    }
+    
+    return _setRemindViewController;
+    
+}
+
+#pragma mark - 设置跟进提醒
+
+- (IBAction)setRemindAction:(id)sender {
+    
+    
+    
+    self.setRemindViewController.cUserModel =_cUserModel;
+    
+    [self.view.superview addSubview:self.setRemindViewController.view];
+    
+    [self.view removeFromSuperview];
+    
+    
+}
+
 
 #pragma mark - 开卡
-
 - (IBAction)registCardAction:(id)sender {
     
     
+    self.addVipCardViewController.cUserModel = _cUserModel;
+    
+    [self.view.superview addSubview:self.addVipCardViewController.view];
+    
+    [self.view removeFromSuperview];
     
     
     

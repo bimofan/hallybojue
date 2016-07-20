@@ -31,7 +31,7 @@
    
     
     
-     application.applicationIconBadgeNumber = 0;
+   
     
     [XGPush startApp:kXingePush_ACCESSID appKey:kXingePush_ACCESSKEY];
     
@@ -69,31 +69,14 @@
     //注册推送
     if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
         
-        UIMutableUserNotificationAction *action = [[UIMutableUserNotificationAction alloc] init];
-        action.identifier = @"action";//按钮的标示
-        action.title=@"Accept";//按钮的标题
-        action.activationMode = UIUserNotificationActivationModeForeground;//当点击的时候启动程序
-        //    action.authenticationRequired = YES;
-        //    action.destructive = YES;
-        
-        UIMutableUserNotificationAction *action2 = [[UIMutableUserNotificationAction alloc] init];  //第二按钮
-        action2.identifier = @"action2";
-        action2.title=@"Reject";
-        action2.activationMode = UIUserNotificationActivationModeBackground;//当点击的时候不启动程序，在后台处理
-        action.authenticationRequired = YES;//需要解锁才能处理，如果action.activationMode = UIUserNotificationActivationModeForeground;则这个属性被忽略；
-        action.destructive = YES;
-        
-        UIMutableUserNotificationCategory *categorys = [[UIMutableUserNotificationCategory alloc] init];
-        categorys.identifier = @"alert";//这组动作的唯一标示
-        [categorys setActions:@[action,action2] forContext:(UIUserNotificationActionContextMinimal)];
         
         
-         NSSet *categories = [NSSet setWithObjects:categorys, nil];
-        
-        
-        UIUserNotificationSettings *uns = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:categories];
+        UIUserNotificationSettings *uns = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeAlert|UIUserNotificationTypeBadge|UIUserNotificationTypeSound) categories:nil];
         
         [[UIApplication sharedApplication] registerUserNotificationSettings:uns];
+        
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
         
 
         
@@ -114,8 +97,7 @@
         
         
         [XGPush setAccount:[NSString stringWithFormat:@"%@",[UserInfo getUserModel].mobile]];
-        
-        
+
         NSData *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
         
         if (deviceToken) {
@@ -140,9 +122,14 @@
     
     NSLog(@"isUnregist:%d",unregist);
     
+    NSLog( @"%d" ,[UIApplication sharedApplication].isRegisteredForRemoteNotifications);
+    
+    
+      application.applicationIconBadgeNumber = 0;
     
     return YES;
  }
+
 
 #ifdef __IPHONE_8_0
 
@@ -157,6 +144,8 @@
     
 }
 #endif
+
+
 
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -174,6 +163,12 @@
 
     
     
+    
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    NSLog(@"fail remote push error:%@",error);
     
 }
 

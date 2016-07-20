@@ -597,13 +597,22 @@
     
     NSMutableArray *services = [[NSMutableArray alloc]init];
     
+    
+    CGFloat old_Amount = 0;
+    
     for (int i = 0; i < _orderModel.services.count; i++) {
         
         NSDictionary *oneService = [_orderModel.services objectAtIndex:i];
         
+        
         NSMutableDictionary *muservice = [[NSMutableDictionary alloc]init];
         
         int serviceId = [[oneService objectForKey:@"id"]intValue];
+        
+        CGFloat price = [[oneService objectForKey:@"price"]floatValue];
+        
+        old_Amount += price;
+        
         
         [muservice setObject:@(serviceId) forKey:@"service_id"];
         
@@ -646,7 +655,7 @@
         
     }
     
-    return @{@"order_id":@(order_id),@"user_id":@(user_id),@"keeper_id":@(keeper_id),@"services":services_string,@"total_price":@(_totalMoney),@"pay_type":@(_payType),@"keeper_note":keeper_note};
+    return @{@"order_id":@(order_id),@"user_id":@(user_id),@"keeper_id":@(keeper_id),@"services":services_string,@"total_price":@(_totalMoney),@"old_amount":@(old_Amount),@"pay_type":@(_payType),@"keeper_note":keeper_note};
     
     
     

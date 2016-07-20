@@ -62,6 +62,15 @@
 //收到新订单通知
 #define kRecevieNewOrderNoti    @"RecevieNewOrderNoti"
 
+
+//选择了会员卡
+#define kDidSelectedVipCardNoti    @"DidSelectedVipCardNoti"
+
+
+//更换了头像
+#define kChangedAvatarNoti     @"ChangedAvatarNoti"
+
+
 /***********/
 
 

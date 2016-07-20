@@ -585,6 +585,9 @@
     
 }
 
+- (IBAction)setRemindAction:(id)sender {
+}
+
 - (IBAction)summitAction:(id)sender {
     
     

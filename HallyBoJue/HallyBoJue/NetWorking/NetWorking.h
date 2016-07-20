@@ -21,7 +21,7 @@ typedef void (^RequestResultBlock)(BOOL isSuccess,id data);
 
 -(void)RequestWithAction:(NSString*)action  Params:(NSDictionary*)param   itemModel:(id)model result:(RequestResultBlock)block;
 
--(void)RequestWithAction:(NSString*)action Params:(NSDictionary*)param  Data:(NSData*)data filename:(NSString*)fileName  result:(RequestResultBlock)block;
+-(void)RequestWithAction:(NSString*)action Params:(NSDictionary*)param  Data:(NSData*)data  name:(NSString*)name filename:(NSString*)fileName  result:(RequestResultBlock)block;
 
 
 @end

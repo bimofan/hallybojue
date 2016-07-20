@@ -29,6 +29,11 @@
 		132C2F531D32413000163F55 /* WorkerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 132C2F521D32413000163F55 /* WorkerCell.m */; };
 		1330D44A1D33309600CF4723 /* ChoseWorkPlaceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1330D4491D33309600CF4723 /* ChoseWorkPlaceView.m */; };
 		1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1330D44B1D3330B800CF4723 /* ChoseWorkPlaceView.xib */; };
+		133A53AE1D3F66B000C0C899 /* ChoseVipCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A53AD1D3F66B000C0C899 /* ChoseVipCardViewController.m */; };
+		133A53B11D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A53B01D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.m */; };
+		133A53B41D3F6EE400C0C899 /* ChoseVipRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A53B31D3F6EE400C0C899 /* ChoseVipRightCell.m */; };
+		133A53B71D3FAF0B00C0C899 /* ChangeAvatarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A53B61D3FAF0B00C0C899 /* ChangeAvatarViewController.m */; };
+		133A53BA1D3FB06C00C0C899 /* ChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 133A53B91D3FB06C00C0C899 /* ChangePasswordViewController.m */; };
 		136246B61D24C35200190DCF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 136246B51D24C35200190DCF /* main.m */; };
 		136246B91D24C35200190DCF /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 136246B81D24C35200190DCF /* AppDelegate.mm */; };
 		136246C21D24C35200190DCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 136246C01D24C35200190DCF /* Main.storyboard */; };
@@ -126,6 +131,8 @@
 		139DF3FF1D2AD2680082DF16 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF3FE1D2AD2680082DF16 /* CFNetwork.framework */; };
 		139DF4011D2AD2870082DF16 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF4001D2AD2870082DF16 /* libz.tbd */; };
 		13A3F1EA1D3CC6D800C79B17 /* ServiceHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13A3F1E91D3CC6D800C79B17 /* ServiceHistoryViewController.m */; };
+		13B57C2A1D3E1CCB0042EE71 /* SetRemindViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B57C291D3E1CCB0042EE71 /* SetRemindViewController.m */; };
+		13B57C2D1D3E27D90042EE71 /* RemindCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B57C2C1D3E27D90042EE71 /* RemindCell.m */; };
 		13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */; };
 		13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3BF1D26920D0058D5C1 /* BaseViewController.m */; };
 		13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BCF3C11D26920D0058D5C1 /* BaseHomeTableViewController.m */; };
@@ -148,6 +155,8 @@
 		13E8C8FE1D378C5200BA0F58 /* FourYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8FD1D378C5200BA0F58 /* FourYuYueViewController.m */; };
 		13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C9401D3891A500BA0F58 /* FourServiceCell.m */; };
 		13E8C9441D3891B900BA0F58 /* FourVIPCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C9431D3891B900BA0F58 /* FourVIPCell.m */; };
+		13FA59AF1D3F25AB0041790F /* AddVipCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FA59AE1D3F25AB0041790F /* AddVipCardViewController.m */; };
+		13FA59B21D3F28600041790F /* AddVipCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13FA59B11D3F28600041790F /* AddVipCardCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +217,16 @@
 		1330D4481D33309600CF4723 /* ChoseWorkPlaceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseWorkPlaceView.h; sourceTree = "<group>"; };
 		1330D4491D33309600CF4723 /* ChoseWorkPlaceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseWorkPlaceView.m; sourceTree = "<group>"; };
 		1330D44B1D3330B800CF4723 /* ChoseWorkPlaceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChoseWorkPlaceView.xib; sourceTree = "<group>"; };
+		133A53AC1D3F66B000C0C899 /* ChoseVipCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseVipCardViewController.h; sourceTree = "<group>"; };
+		133A53AD1D3F66B000C0C899 /* ChoseVipCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseVipCardViewController.m; sourceTree = "<group>"; };
+		133A53AF1D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseVipLeftCellTableViewCell.h; sourceTree = "<group>"; };
+		133A53B01D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseVipLeftCellTableViewCell.m; sourceTree = "<group>"; };
+		133A53B21D3F6EE400C0C899 /* ChoseVipRightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChoseVipRightCell.h; sourceTree = "<group>"; };
+		133A53B31D3F6EE400C0C899 /* ChoseVipRightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChoseVipRightCell.m; sourceTree = "<group>"; };
+		133A53B51D3FAF0B00C0C899 /* ChangeAvatarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeAvatarViewController.h; sourceTree = "<group>"; };
+		133A53B61D3FAF0B00C0C899 /* ChangeAvatarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeAvatarViewController.m; sourceTree = "<group>"; };
+		133A53B81D3FB06C00C0C899 /* ChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewController.h; sourceTree = "<group>"; };
+		133A53B91D3FB06C00C0C899 /* ChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewController.m; sourceTree = "<group>"; };
 		136246B11D24C35200190DCF /* HallyBoJue.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HallyBoJue.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		136246B51D24C35200190DCF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		136246B71D24C35200190DCF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -389,6 +408,10 @@
 		139DF4001D2AD2870082DF16 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		13A3F1E81D3CC6D800C79B17 /* ServiceHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServiceHistoryViewController.h; sourceTree = "<group>"; };
 		13A3F1E91D3CC6D800C79B17 /* ServiceHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServiceHistoryViewController.m; sourceTree = "<group>"; };
+		13B57C281D3E1CCB0042EE71 /* SetRemindViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetRemindViewController.h; sourceTree = "<group>"; };
+		13B57C291D3E1CCB0042EE71 /* SetRemindViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetRemindViewController.m; sourceTree = "<group>"; };
+		13B57C2B1D3E27D90042EE71 /* RemindCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemindCell.h; sourceTree = "<group>"; };
+		13B57C2C1D3E27D90042EE71 /* RemindCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemindCell.m; sourceTree = "<group>"; };
 		13BCF3B81D2691910058D5C1 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		13BCF3BC1D26920D0058D5C1 /* BaseTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewController.h; sourceTree = "<group>"; };
 		13BCF3BD1D26920D0058D5C1 /* BaseTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewController.m; sourceTree = "<group>"; };
@@ -435,6 +458,10 @@
 		13E8C9401D3891A500BA0F58 /* FourServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourServiceCell.m; sourceTree = "<group>"; };
 		13E8C9421D3891B900BA0F58 /* FourVIPCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FourVIPCell.h; sourceTree = "<group>"; };
 		13E8C9431D3891B900BA0F58 /* FourVIPCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FourVIPCell.m; sourceTree = "<group>"; };
+		13FA59AD1D3F25AB0041790F /* AddVipCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVipCardViewController.h; sourceTree = "<group>"; };
+		13FA59AE1D3F25AB0041790F /* AddVipCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVipCardViewController.m; sourceTree = "<group>"; };
+		13FA59B01D3F28600041790F /* AddVipCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddVipCardCell.h; sourceTree = "<group>"; };
+		13FA59B11D3F28600041790F /* AddVipCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddVipCardCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -519,6 +546,10 @@
 			children = (
 				132084991D3C96D900EDA00A /* SettingViewController.h */,
 				1320849A1D3C96D900EDA00A /* SettingViewController.m */,
+				133A53B51D3FAF0B00C0C899 /* ChangeAvatarViewController.h */,
+				133A53B61D3FAF0B00C0C899 /* ChangeAvatarViewController.m */,
+				133A53B81D3FB06C00C0C899 /* ChangePasswordViewController.h */,
+				133A53B91D3FB06C00C0C899 /* ChangePasswordViewController.m */,
 			);
 			path = "设置";
 			sourceTree = "<group>";
@@ -612,6 +643,7 @@
 				136246B71D24C35200190DCF /* AppDelegate.h */,
 				136246B81D24C35200190DCF /* AppDelegate.mm */,
 				136246C01D24C35200190DCF /* Main.storyboard */,
+				13B57C271D3E1CAE0042EE71 /* SetRemindViewController */,
 				132084981D3C96BA00EDA00A /* 设置 */,
 				132084941D3C832A00EDA00A /* FAQ */,
 				1320848B1D3BCF9700EDA00A /* KeeperSort */,
@@ -985,6 +1017,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13FA59AC1D3F25800041790F /* AddVipCardViewController */,
 				13A3F1E71D3CC64700C79B17 /* ServiceHistory */,
 				132BBB1F1D3A362C00B887FC /* AddYuYueViewController */,
 				13C0C13B1D2BB06F003419C6 /* AddCustomerViewController */,
@@ -1025,6 +1058,17 @@
 				13A3F1E91D3CC6D800C79B17 /* ServiceHistoryViewController.m */,
 			);
 			name = ServiceHistory;
+			sourceTree = "<group>";
+		};
+		13B57C271D3E1CAE0042EE71 /* SetRemindViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13B57C281D3E1CCB0042EE71 /* SetRemindViewController.h */,
+				13B57C291D3E1CCB0042EE71 /* SetRemindViewController.m */,
+				13B57C2B1D3E27D90042EE71 /* RemindCell.h */,
+				13B57C2C1D3E27D90042EE71 /* RemindCell.m */,
+			);
+			path = SetRemindViewController;
 			sourceTree = "<group>";
 		};
 		13BCF3B71D2690A90058D5C1 /* constants */ = {
@@ -1131,6 +1175,23 @@
 			name = FourYuYueViewController;
 			sourceTree = "<group>";
 		};
+		13FA59AC1D3F25800041790F /* AddVipCardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13FA59AD1D3F25AB0041790F /* AddVipCardViewController.h */,
+				13FA59AE1D3F25AB0041790F /* AddVipCardViewController.m */,
+				13FA59B01D3F28600041790F /* AddVipCardCell.h */,
+				13FA59B11D3F28600041790F /* AddVipCardCell.m */,
+				133A53AC1D3F66B000C0C899 /* ChoseVipCardViewController.h */,
+				133A53AD1D3F66B000C0C899 /* ChoseVipCardViewController.m */,
+				133A53AF1D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.h */,
+				133A53B01D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.m */,
+				133A53B21D3F6EE400C0C899 /* ChoseVipRightCell.h */,
+				133A53B31D3F6EE400C0C899 /* ChoseVipRightCell.m */,
+			);
+			name = AddVipCardViewController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1198,7 +1259,12 @@
 				TargetAttributes = {
 					136246B01D24C35200190DCF = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = K5443SNRTU;
+						DevelopmentTeam = 4DW4SAZ5H2;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					136246CC1D24C35300190DCF = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -1296,9 +1362,13 @@
 				1384A6601D281B0A00D74892 /* JSONModelArray.m in Sources */,
 				1320848A1D3BB51000EDA00A /* FollowServiceListCell.m in Sources */,
 				1384A6151D27A49600D74892 /* LoginViewController.m in Sources */,
+				133A53B11D3F6ECF00C0C899 /* ChoseVipLeftCellTableViewCell.m in Sources */,
+				13B57C2A1D3E1CCB0042EE71 /* SetRemindViewController.m in Sources */,
+				13FA59AF1D3F25AB0041790F /* AddVipCardViewController.m in Sources */,
 				1384A67F1D28620300D74892 /* YuyueLeftCell.m in Sources */,
 				136247211D24FDB100190DCF /* MKAnnotationView+WebCache.m in Sources */,
 				1384A6411D28112700D74892 /* Usermodel.m in Sources */,
+				133A53B71D3FAF0B00C0C899 /* ChangeAvatarViewController.m in Sources */,
 				13E8C8F41D366A1300BA0F58 /* AddServiceViewController.m in Sources */,
 				13BCF3C41D26920D0058D5C1 /* BaseTableViewController.m in Sources */,
 				13E8C8CA1D348DD200BA0F58 /* ThirdYuYueCell.m in Sources */,
@@ -1308,8 +1378,11 @@
 				132C2F531D32413000163F55 /* WorkerCell.m in Sources */,
 				136247621D24FF9D00190DCF /* UIScrollView+MJRefresh.m in Sources */,
 				1384A6631D281B0A00D74892 /* NSArray+JSONModel.m in Sources */,
+				133A53AE1D3F66B000C0C899 /* ChoseVipCardViewController.m in Sources */,
+				133A53B41D3F6EE400C0C899 /* ChoseVipRightCell.m in Sources */,
 				13BCF3CA1D2692620058D5C1 /* CommonMethods.m in Sources */,
 				138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */,
+				13FA59B21D3F28600041790F /* AddVipCardCell.m in Sources */,
 				1384A63A1D27D2DB00D74892 /* AFURLRequestSerialization.m in Sources */,
 				136247611D24FF9D00190DCF /* UIScrollView+MJExtension.m in Sources */,
 				13C0C13E1D2BB098003419C6 /* AddCustomerController.m in Sources */,
@@ -1340,11 +1413,13 @@
 				1362472C1D24FDB100190DCF /* UIImage+MultiFormat.m in Sources */,
 				1362472D1D24FDB100190DCF /* UIImage+WebP.m in Sources */,
 				136247271D24FDB100190DCF /* SDWebImageDownloaderOperation.m in Sources */,
+				13B57C2D1D3E27D90042EE71 /* RemindCell.m in Sources */,
 				132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */,
 				13BCF3C71D26920D0058D5C1 /* BaseNavigationController.m in Sources */,
 				1362476C1D24FFF800190DCF /* ProgressHUD.m in Sources */,
 				136247301D24FDB100190DCF /* UIView+WebCacheOperation.m in Sources */,
 				13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */,
+				133A53BA1D3FB06C00C0C899 /* ChangePasswordViewController.m in Sources */,
 				1320847A1D3B5FA900EDA00A /* SelectTimeView.m in Sources */,
 				136247261D24FDB100190DCF /* SDWebImageDownloader.m in Sources */,
 				1384A6621D281B0A00D74892 /* JSONModelError.m in Sources */,
@@ -1544,7 +1619,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "942a7747-8bd2-45d9-98fa-ad9433c97aa5";
+				PROVISIONING_PROFILE = "19e521a6-683b-4e0d-93b3-00a56241ed78";
 			};
 			name = Debug;
 		};
@@ -1553,8 +1628,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Haikun Zhu (K5443SNRTU)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Haikun Zhu (K5443SNRTU)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

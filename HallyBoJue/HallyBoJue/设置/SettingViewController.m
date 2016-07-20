@@ -7,10 +7,16 @@
 //
 
 #import "SettingViewController.h"
+#import "ChangeAvatarViewController.h"
+#import "ChangePasswordViewController.h"
+
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @property (nonatomic,strong) NSArray *titles;
+@property (nonatomic,strong) ChangeAvatarViewController *changeAvatarViewController;
+@property (nonatomic,strong) ChangePasswordViewController *changePasswordViewController;
+
 
 
 @end
@@ -33,17 +39,47 @@
     
 }
 
+-(ChangePasswordViewController*)changePasswordViewController
+{
+    if (!_changePasswordViewController) {
+        
+        _changePasswordViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewController"];
+        
+        _changePasswordViewController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+    }
+    
+    return _changePasswordViewController;
+    
+}
+
+
+-(ChangeAvatarViewController*)changeAvatarViewController
+{
+    if (!_changeAvatarViewController) {
+        
+        _changeAvatarViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangeAvatarViewController"];
+        
+        _changeAvatarViewController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+    }
+    
+    return _changeAvatarViewController;
+    
+}
 
 -(NSArray*)titles
 {
     if (!_titles) {
         
-        _titles = @[@"更换头像",@"修改密码",@"修改昵称",@"退出登录"];
+        _titles = @[@"更换头像",@"修改密码",@"退出登录"];
     }
     
     return _titles;
     
 }
+
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
@@ -107,25 +143,33 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
     switch (indexPath.section) {
         case 0:
         {
+            [self.rightView addSubview:self.changeAvatarViewController.view];
             
         }
             break;
         case 1:
         {
+            [self.rightView addSubview:self.changePasswordViewController.view];
             
         }
             break;
         case 2:
         {
-            
+             [self logout];
         }
             break;
         case 3:
         {
-            [self logout];
+           
         }
             break;
             

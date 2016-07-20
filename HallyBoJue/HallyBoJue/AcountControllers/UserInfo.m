@@ -51,6 +51,20 @@
     
 }
 
++(void)saveAvatar:(NSDictionary *)avatar
+{
+    NSDictionary *userinfo = [[NSUserDefaults standardUserDefaults ] objectForKey:kUserInfo];
+    
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:userinfo];
+    
+    [mudict setObject:avatar forKey:@"avatar_img"];
+    
+    [[NSUserDefaults standardUserDefaults] setObject:mudict forKey:kUserInfo];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
 +(Usermodel*)getUserModel
 {
     Usermodel *model = [[Usermodel alloc]init];

@@ -66,6 +66,7 @@ CGFloat cellHeight = 70;
 
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changedAvatar:) name:kChangedAvatarNoti object:nil];
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successCatchOrder:) name:kSuccesCatchOrder object:nil];
@@ -109,6 +110,14 @@ CGFloat cellHeight = 70;
         [self.homeHeaderView setdata];
         
     }
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter ]removeObserver:self name:kChangedAvatarNoti object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kSuccesCatchOrder object:nil];
+    
+    
 }
 
 -(HomeHeaderView*)homeHeaderView
@@ -459,6 +468,14 @@ CGFloat cellHeight = 70;
     
     
     
+    
+}
+
+
+#pragma mark - 修改了头像 
+-(void)changedAvatar:(NSNotification*)noti
+{
+    self.homeHeaderView.headImageView.image = [UIImage imageWithData:noti.object];
     
 }
 - (void)didReceiveMemoryWarning {

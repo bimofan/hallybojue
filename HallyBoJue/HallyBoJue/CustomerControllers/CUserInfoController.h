@@ -39,7 +39,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *registCard;
 
 @property (weak, nonatomic) IBOutlet UILabel *vipaddresslabel;
+@property (weak, nonatomic) IBOutlet UIButton *RemindButton;
 
+- (IBAction)setRemindAction:(id)sender;
 
 
 
