@@ -17,6 +17,8 @@
 
 @property (nonatomic,strong) SetRemindViewController *setRemindViewController;
 @property (nonatomic,strong) AddVipCardViewController *addVipCardViewController;
+@property (nonatomic,strong) NSArray *services;
+
 
 
 
@@ -97,6 +99,10 @@
     
     _cUserModel = cUserModel;
     
+    NSDictionary *dict  = [_cUserModel.service_orders firstObject];
+    
+    _services = [dict objectForKey:@"services"];
+    
     
     [_setRemindViewController.view removeFromSuperview];
     
@@ -132,7 +138,7 @@
             break;
         case 1:
         {
-            return _cUserModel.service_orders.count;
+            return _services.count;
         }
             break;
             
@@ -147,7 +153,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 1;
 }
 
 
@@ -224,9 +230,9 @@
         cell.oneLabel.text = nil;
         cell.twoLabel.text = nil;
         
-        if (_cUserModel.service_orders.count > indexPath.row) {
+        if (_services.count > indexPath.row) {
             
-            NSDictionary *serviceDict = [_cUserModel.service_orders objectAtIndex:indexPath.row];
+            NSDictionary *serviceDict = [_services objectAtIndex:indexPath.row];
             
             cell.oneLabel.text = [serviceDict objectForKey:@"service_name"] ? [serviceDict objectForKey:@"service_name"] :@"";
             

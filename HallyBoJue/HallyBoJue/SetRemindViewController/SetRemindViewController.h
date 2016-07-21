@@ -7,23 +7,26 @@
 //
 
 #import "BaseViewController.h"
-
 #import "CUserModel.h"
+
+@protocol SetRemindViewDelegate <NSObject>
+
+-(void)didSetRemind;
+
+
+@end
 
 @interface SetRemindViewController : BaseViewController
 
+@property (nonatomic,assign)id<SetRemindViewDelegate>delegate;
 
 @property (nonatomic,strong) CUserModel *cUserModel;
-
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
-
 @property (weak, nonatomic) IBOutlet UILabel *realnameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vipnameLabel;
-
 @property (weak, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UITableView *remindTableView;
 @property (weak, nonatomic) IBOutlet UITextField *remindcontentTextField;
-
 @property (weak, nonatomic) IBOutlet UIButton *summitButton;
 
 

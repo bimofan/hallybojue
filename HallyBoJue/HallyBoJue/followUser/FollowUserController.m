@@ -14,7 +14,7 @@
 #import "SetRemindViewController.h"
 
 
-@interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource>
+@interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource,SetRemindViewDelegate>
 {
     NSInteger page ;
     NSInteger pagesize;
@@ -96,6 +96,8 @@
         _setRemindViewController  = [self.storyboard instantiateViewControllerWithIdentifier:@"SetRemindViewController"];
         
         _setRemindViewController.view.frame = _rightView.frame;
+        
+        _setRemindViewController.delegate = self;
         
         
     }
@@ -425,4 +427,12 @@
     
     
 }
+
+#pragma mark - SetRemindViewDelegate
+-(void)didSetRemind
+{
+      [_userTableView.header beginRefreshing];
+}
+
+
 @end

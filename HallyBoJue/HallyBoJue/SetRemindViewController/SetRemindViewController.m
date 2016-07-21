@@ -21,6 +21,10 @@
 @property (nonatomic,strong) NSMutableArray *carsArray;
 @property (nonatomic,strong) NSDate *order_time;
 @property (nonatomic,strong) SelectTimeView *selectTimeView;
+@property (nonatomic,strong) NSDate *remindTime;
+@property (nonatomic,assign) NSInteger showType;
+
+
 
 
 
@@ -37,7 +41,6 @@
     _remindTableView.delegate = self;
     
     _remindTableView.dataSource = self;
-    
     
     _remindcontentTextField.delegate = self;
     
@@ -57,9 +60,7 @@
     _summitButton.layer.cornerRadius = kCornerRadous;
     
     
-    
-    
-    
+
     
 }
 
@@ -151,6 +152,12 @@
     
     _vipnameLabel.text = _cUserModel.level_name;
     
+    _selectedCarDict = nil;
+    _order_time = nil;
+    _remindTime = nil;
+    
+    [_remindTableView reloadData];
+    
     
 }
 
@@ -163,7 +170,7 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 3;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -192,13 +199,29 @@
         
         
     }
-    else
+    else if(indexPath.section == 1)
     {
-        cell.placeholderLabel.text = @"选择时间";
+        cell.placeholderLabel.text = @"下次服务时间";
         
         if (_order_time) {
             
             cell.contentLabel.text = [CommonMethods getYYYYMMddhhmmDateStr:_order_time];
+            
+        }
+        else
+        {
+            cell.contentLabel.text = @"";
+            
+            
+        }
+    }
+    else if (indexPath.section == 2)
+    {
+        cell.placeholderLabel.text = @"提醒时间";
+        
+        if (_remindTime) {
+            
+            cell.contentLabel.text = [CommonMethods getYYYYMMddhhmmDateStr:_remindTime];
             
         }
         else
@@ -266,11 +289,26 @@
         }
 
     }
-    else
+    else if(indexPath.section == 1)
     {
+        
+        _showType = 1;
+        
         if (_order_time) {
             
             self.selectTimeView.selectedDate = _order_time;
+        }
+        
+        
+        [[UIApplication sharedApplication].keyWindow addSubview:self.selectTimeView];
+    }
+    else if(indexPath.section == 2)
+    {
+        _showType = 2;
+        
+        if (_remindTime) {
+            
+            self.selectTimeView.selectedDate = _remindTime;
         }
         
         
@@ -295,7 +333,17 @@
 #pragma mark - SelectTimeViewDelegate
 -(void)didSelectedDate:(NSDate *)selectedDate
 {
-    _order_time = selectedDate;
+    
+    if (_showType == 1) {
+        
+         _order_time = selectedDate;
+    }
+    else
+    {
+        _remindTime = selectedDate;
+        
+    }
+   
     
     [_remindTableView reloadData];
     
@@ -333,7 +381,7 @@
     
     if (!_order_time) {
         
-        [CommonMethods showDefaultErrorString:@"请选择提醒时间"];
+        [CommonMethods showDefaultErrorString:@"请选择下次服务时间"];
         
         return;
     }
@@ -352,16 +400,28 @@
         return;
     }
     
+    if (!_remindTime) {
+        
+        [CommonMethods showDefaultErrorString:@"请填写提醒时间"];
+        
+        return;
+        
+    }
+    
     int keeper_id = [UserInfo getkeeperid];
+    
     NSString * user_id = _cUserModel.user_id;
     
     NSString *next_time =  [CommonMethods getYYYYMMddhhmmDateStr:_order_time];
     
     NSString *car_id = [_selectedCarDict objectForKey:@"id"];
     
+    NSString *remind_time = [CommonMethods getYYYYMMddHHmmssDateStr:_remindTime];
     
     
-    NSDictionary *params = @{@"user_id":user_id,@"keeper_id":@(keeper_id),@"car_id":car_id,@"next_service":_remindcontentTextField.text,@"next_time":next_time};
+    
+    NSDictionary *params = @{@"user_id":user_id,@"keeper_id":@(keeper_id),@"car_id":car_id,@"next_service":_remindcontentTextField.text,@"next_time":next_time,@"remind_time":remind_time};
+    
     
     [[NetWorking shareNetWorking] RequestWithAction:kAddFollow Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
        
@@ -370,6 +430,11 @@
             [CommonMethods showDefaultErrorString:@"跟进提醒提交成功"];
             
             
+            if ([self.delegate respondsToSelector:@selector(didSetRemind)]) {
+                
+                [self.delegate didSetRemind];
+                
+            }
         }
         
     }];

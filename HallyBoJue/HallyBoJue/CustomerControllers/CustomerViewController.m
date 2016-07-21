@@ -109,8 +109,6 @@
         _cUserInfoController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
         
     
-    
-        
         
         
     }
