@@ -46,6 +46,10 @@
 #define kAddNewServiceSelectedList   @"AddNewServiceSelectedList"
 
 
+//推送服务内容
+#define kPushServiceSelectedService    @"PushServcieSelectedService"
+
+
 
 //** 通知 ***/
 //添加服务内容通知
@@ -54,6 +58,9 @@
 
 //新增预约 添加服务内容通知
 #define kAddYuYueServiceNotice @"AddYuYueServiceNotice"
+
+//推送服务选择了服务
+#define kPushServiceSelectedNoti       @"PushServiceSelectedNoti"
 
 
 //抢单成功

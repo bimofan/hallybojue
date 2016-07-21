@@ -13,7 +13,7 @@
 
 
 
-@interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 
 @end
@@ -65,7 +65,7 @@
     }
     
     
-    _realnameLabel.text = ordermodel.usermodel.user_real_name;
+    _realnameLabel.text = ordermodel.usermodel.nickname;
     
     _plateLabel.text = ordermodel.car_plate_num;
     
@@ -168,16 +168,29 @@
 }
 - (IBAction)sendAction:(id)sender {
     
-    
+   
+ 
+    if (_ordermodel.status == 1)//预约中
+    {
+        if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
+            
+            
+            [self.delegate startSendWorders:_ordermodel];
+            
+            
+        }
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确定开始派工吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        
+        alert.tag = 9999;
+        
+        [alert show];
+    }
 
     
-    if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
-        
-        
-        [self.delegate startSendWorders:_ordermodel];
-        
-        
-    }
+    
     
     
     
@@ -225,7 +238,40 @@
     
     [muarray addObjectsFromArray:_ordermodel.services];
     
-    [muarray addObjectsFromArray:note.object];
+    
+    
+    NSArray *newservices = note.object;
+    
+    for (int i = 0; i < newservices.count; i++) {
+        
+        NSDictionary *dict  = [newservices objectAtIndex:i];
+        
+        BOOL contented = NO;
+        
+        int service_id = [[dict objectForKey:@"id"]intValue];
+        
+        for (int d = 0; d < _ordermodel.services.count; d++) {
+            
+            NSDictionary *temdict = [_ordermodel.services objectAtIndex:d];
+            
+            int temid = [[temdict objectForKey:@"id"]intValue];
+            
+            if (temid == service_id) {
+                
+                contented = YES;
+            }
+        }
+        
+        if (!contented) {
+            
+            [muarray addObject:dict];
+            
+        }
+    }
+    
+    
+    
+    
     
     _ordermodel.services = muarray;
     
@@ -233,5 +279,22 @@
     [_serviceTable reloadData];
     
     
+}
+
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 9999  && buttonIndex == 1) {
+        
+        if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
+            
+            
+            [self.delegate startSendWorders:_ordermodel];
+            
+            
+        }
+        
+    }
 }
 @end

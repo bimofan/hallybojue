@@ -79,6 +79,17 @@
         
         
     }
+    else if (_showType == 3)
+    {
+        _selectedService = [[NSUserDefaults standardUserDefaults] objectForKey:kPushServiceSelectedService];
+        
+        if (_selectedService) {
+            
+            [_selecteServicelist addObject:_selectedService];
+            
+        }
+        
+    }
    
     
     
@@ -96,7 +107,7 @@
 {
     if (_selecteServicelist.count ==0) {
         
-        [CommonMethods showDefaultErrorString:@"请添加服务"];
+        [CommonMethods showDefaultErrorString:@"请选择服务"];
         
         return;
     }
@@ -114,19 +125,28 @@
         [self addnewservice];
         
     }
+    else if(_showType == 3)
+    {
+        
+        [self addPushService];
+        
+    }
 
     
     
 }
 
+-(void)addPushService
+{
+    //发送通知
+    [[NSNotificationCenter defaultCenter] postNotificationName:kPushServiceSelectedNoti object:_selectedService];
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(void)addnewservice
 {
-//    if ([self.delegate respondsToSelector:@selector(didSelectedNewService:)]) {
-//        
-//        
-//        [self.delegate didSelectedNewService:_selecteServicelist];
-//        
-//    }
+
     
     //发送通知
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddServieNotice object:_selecteServicelist];
@@ -231,6 +251,7 @@
             
             [_serviceslist replaceObjectAtIndex:0 withObject:mudict];
             
+            _selectedLeftDict = firstcat;
             
 
             
@@ -242,7 +263,7 @@
                 
                 
             }
-            else if (_showType == 1)
+            else if (_showType == 1 )
             {
                 
                 _rightServicelist = [[NSMutableArray alloc]init];
@@ -252,13 +273,66 @@
                 [_firstTableView reloadData];
                 [_secondTableView reloadData];
             }
-          
+            else if (_showType == 3)
+            {
+              
+                [self sortShowTypeThirdData];
+                
+            }
+     
+    
             
       
             
             
         }
     }];
+}
+
+#pragma mark - _showType == 3 sortdata
+-(void)sortShowTypeThirdData
+{
+    for (int i = 0 ; i <_serviceslist.count ; i++) {
+        
+        NSDictionary *temleftDict = [_serviceslist objectAtIndex:i];
+        
+        NSMutableDictionary *mutemleftDict = [[NSMutableDictionary alloc]initWithDictionary:temleftDict];
+        
+        NSString *category_name = [mutemleftDict objectForKey:@"category_name"];
+        
+        NSArray *items = [temleftDict objectForKey:@"items"];
+        
+        NSMutableArray *muitems = [[NSMutableArray alloc]init];
+        
+        [muitems addObjectsFromArray:items];
+        
+        for (int d = 0;  d < muitems.count; d++) {
+            
+            NSDictionary *temrightdict = [muitems objectAtIndex:d];
+            NSMutableDictionary *mutemrightdict = [[NSMutableDictionary alloc]initWithDictionary:temrightdict];
+            
+            [mutemrightdict setObject:category_name forKey:@"category_name"];
+            
+            [muitems replaceObjectAtIndex:d withObject:mutemrightdict];
+            
+        }
+        
+        [mutemleftDict setObject:muitems forKey:@"items"];
+        
+        [_serviceslist replaceObjectAtIndex:i withObject:mutemleftDict];
+        
+    }
+    
+    NSDictionary *firstcat = [_serviceslist firstObject];
+    
+    _rightServicelist = [[NSMutableArray alloc]init];
+    
+    [_rightServicelist addObjectsFromArray:[firstcat objectForKey:@"items"]];
+    
+    
+    [_firstTableView reloadData];
+    [_secondTableView reloadData];
+    
 }
 
 
@@ -311,7 +385,7 @@
                     }
                 }
                 
-            }
+             }
             
             [mudict setObject:murightitems forKey:@"items"];
             
@@ -504,8 +578,8 @@
     if (tableView == _firstTableView) {
         
      
-        
         _leftSelectedIndex = indexPath.section;
+        
         
         NSMutableArray *muArray = [[NSMutableArray alloc]init];
         
@@ -553,79 +627,142 @@
     
     if (_secondTableView == tableView) {
         
-        NSMutableArray *murightArray = [[NSMutableArray alloc]init];
-        
-        for (int i = 0; i < _rightServicelist.count; i++) {
+
+        if (_showType == 1  ||_showType == 2) {
             
-            NSDictionary *dict = [_rightServicelist objectAtIndex:i];
-            
-            NSMutableDictionary *muDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
-            
-            
-            if (i == indexPath.section) {
-                
-                BOOL selected = [[dict objectForKey:@"selected"]boolValue];
-                
-                [muDict setObject:@(!selected) forKey:@"selected"];
-                
-            }
-            
-            [murightArray addObject:muDict];
-            
-         }
-        
-        _rightServicelist = murightArray;
-        
-        
-          NSDictionary *dict = [_rightServicelist objectAtIndex:indexPath.section];
-        
-        NSInteger category_id = [[dict objectForKey:@"category_id"]integerValue];
-        
-        NSMutableArray *muservicelist = [[NSMutableArray alloc]init];
-        [muservicelist addObjectsFromArray:_serviceslist];
-        
-        for (int i = 0; i < muservicelist.count; i++) {
-            
-            NSDictionary *leftdict = [muservicelist objectAtIndex:i];
-            
-            NSInteger id = [[leftdict objectForKey:@"id"]integerValue];
-            
-            if (id == category_id) {
-                
-                NSMutableDictionary *muleftDict = [[NSMutableDictionary alloc]init];
-                
-                NSString *category_name = [leftdict objectForKey:@"category_name"];
-                int cate_id = [[leftdict objectForKey:@"id"]intValue];
-                
-                
-                [muleftDict setObject:category_name forKey:@"category_name"];
-                [muleftDict setObject:@(cate_id) forKey:@"id"];
-                
-                [muleftDict setObject:_rightServicelist forKey:@"items"];
-                
-                
-                [muservicelist replaceObjectAtIndex:i withObject:muleftDict];
-                
-                
-            }
+            [self mutilSelected:indexPath.section];
             
         }
         
-        _serviceslist = muservicelist;
-        
-        
-
-        
-        [self sortSelectedData];
-        
-        [_secondTableView reloadData];
-        
+        if (_showType == 3) {
+            
+            [self singleSelected:indexPath.section];
+            
+        }
         
     }
     
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+}
+
+#pragma mark - 单选
+-(void)singleSelected:(NSInteger)index
+{
+    
+    _selectedService = [_rightServicelist objectAtIndex:index];
+    
+    for (int i = 0; i < _rightServicelist.count; i++) {
+        
+        NSDictionary *dict = [_rightServicelist objectAtIndex:i];
+        
+        NSMutableDictionary *muDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+        
+      
+        
+        int service_id = [[muDict objectForKey:@"id"]intValue];
+        
+        int selected_id = [[_selectedService objectForKey:@"id"]intValue];
+        
+        if (service_id == selected_id) {
+            
+            [muDict setObject:@(1) forKey:@"selected"];
+        }
+        else
+        {
+            [muDict setObject:@(0) forKey:@"selected"];
+            
+        }
+        
+        [_rightServicelist replaceObjectAtIndex:i withObject:muDict];
+        
+    }
+    
+    
+    _selecteServicelist = [[NSMutableArray array]init];
+    
+    
+    [_selecteServicelist addObject:_selectedService];
+    
+    [_secondTableView reloadData];
+    
+    [_thirdTableView reloadData];
+    
+    
+    
+    
+}
+
+#pragma mark - 多选
+-(void)mutilSelected:(NSInteger)index
+{
+    NSMutableArray *murightArray = [[NSMutableArray alloc]init];
+    
+    for (int i = 0; i < _rightServicelist.count; i++) {
+        
+        NSDictionary *dict = [_rightServicelist objectAtIndex:i];
+        
+        NSMutableDictionary *muDict = [[NSMutableDictionary alloc]initWithDictionary:dict];
+        
+        
+        if (i == index) {
+            
+            BOOL selected = [[dict objectForKey:@"selected"]boolValue];
+            
+            [muDict setObject:@(!selected) forKey:@"selected"];
+            
+        }
+        
+        [murightArray addObject:muDict];
+        
+    }
+    
+    _rightServicelist = murightArray;
+    
+    
+    NSDictionary *dict = [_rightServicelist objectAtIndex:index];
+    
+    NSInteger category_id = [[dict objectForKey:@"category_id"]integerValue];
+    
+    NSMutableArray *muservicelist = [[NSMutableArray alloc]init];
+    [muservicelist addObjectsFromArray:_serviceslist];
+    
+    for (int i = 0; i < muservicelist.count; i++) {
+        
+        NSDictionary *leftdict = [muservicelist objectAtIndex:i];
+        
+        NSInteger id = [[leftdict objectForKey:@"id"]integerValue];
+        
+        if (id == category_id) {
+            
+            NSMutableDictionary *muleftDict = [[NSMutableDictionary alloc]init];
+            
+            NSString *category_name = [leftdict objectForKey:@"category_name"];
+            int cate_id = [[leftdict objectForKey:@"id"]intValue];
+            
+            
+            [muleftDict setObject:category_name forKey:@"category_name"];
+            [muleftDict setObject:@(cate_id) forKey:@"id"];
+            
+            [muleftDict setObject:_rightServicelist forKey:@"items"];
+            
+            
+            [muservicelist replaceObjectAtIndex:i withObject:muleftDict];
+            
+            
+        }
+        
+    }
+    
+    _serviceslist = muservicelist;
+    
+    
+    
+    
+    [self sortSelectedData];
+    
+    [_secondTableView reloadData];
 }
 
 

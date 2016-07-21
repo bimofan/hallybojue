@@ -147,7 +147,7 @@
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
-    _realnameLabel.text = _cUserModel.user_real_name;
+    _realnameLabel.text = _cUserModel.nickname;
     
     _vipnameLabel.text = _cUserModel.level_name;
     

@@ -83,11 +83,11 @@
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
-    _nameLabel.text = cUserModel.user_real_name;
+    _nameLabel.text = cUserModel.nickname;
     
     _vipLabel.text = cUserModel.level_name;
     
-    _realNameLabel.text = cUserModel.user_real_name;
+    _realNameLabel.text = cUserModel.nickname;
     
     _phoneLabel.text = [NSString stringWithFormat:@"%@",cUserModel.mobile];
     
@@ -197,9 +197,9 @@
     
     if (indexPath.section == 0) {
         
-        if (_cUserModel.cars.count > indexPath.section) {
+        if (_cUserModel.cars.count > indexPath.row) {
             
-            NSDictionary *carDict = [_cUserModel.cars objectAtIndex:indexPath.section];
+            NSDictionary *carDict = [_cUserModel.cars objectAtIndex:indexPath.row];
             
             cell.oneLabel.text = [carDict objectForKey:@"brand_name"];
             
@@ -224,9 +224,9 @@
         cell.oneLabel.text = nil;
         cell.twoLabel.text = nil;
         
-        if (_cUserModel.service_orders.count > indexPath.section) {
+        if (_cUserModel.service_orders.count > indexPath.row) {
             
-            NSDictionary *serviceDict = [_cUserModel.service_orders objectAtIndex:indexPath.section];
+            NSDictionary *serviceDict = [_cUserModel.service_orders objectAtIndex:indexPath.row];
             
             cell.oneLabel.text = [serviceDict objectForKey:@"service_name"] ? [serviceDict objectForKey:@"service_name"] :@"";
             

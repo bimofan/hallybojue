@@ -268,7 +268,7 @@
         
         OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
-        cell.namecarnumLabel.text = model.usermodel.user_real_name;
+        cell.namecarnumLabel.text = model.usermodel.nickname;
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
@@ -428,7 +428,7 @@
             
         }
             break;
-        case 5: //服务结束 - 未支付
+        case 5: //服务结束
         {
             self.fourYuYueViewController.orderModel = model;
             
@@ -437,7 +437,7 @@
             [self.rightView addSubview:self.fourYuYueViewController.view];
         }
             break;
-        case 6: // 已支付 -未评价
+        case 6: //  - 待支付
         {
             self.fiveYuYueViewController.orderModel = model;
             
@@ -445,16 +445,22 @@
             [self.rightView addSubview:self.fiveYuYueViewController.view];
         }
             break;
-        case 7: //完全结束
+        case 7:
         {
             
         }
             break;
-        case 8:  //异常支付
+        case 8: //完全结束
         {
             
         }
             break;
+        case 9: //异常支付
+        {
+            
+        }
+            break;
+            
             
             
         default:

@@ -90,7 +90,7 @@
     _statusLabel.text = orderModel.status_str;
     
     
-    _realNameLabel.text = orderModel.usermodel.user_real_name;
+    _realNameLabel.text = orderModel.usermodel.nickname;
     
     _plateNumLabel.text = orderModel.car_plate_num;
     
@@ -351,6 +351,8 @@
             NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:dict];
             
             [mudict setObject:selectedworkplace forKey:@"workplace"];
+            NSString *workplacename = [selectedworkplace objectForKey:@"name"];
+            [mudict setObject:workplacename forKey:@"workplace_name"];
             
             
             [_servicesArray replaceObjectAtIndex:_selectedSection withObject:mudict];

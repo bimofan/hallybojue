@@ -11,7 +11,7 @@
 #import "Constants.h"
 
 
-@interface ThirdYuYueViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ThirdYuYueViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
 @end
 
@@ -56,7 +56,7 @@
     }
     
     
-    _realNameLabel.text = _orderModel.usermodel.user_real_name;
+    _realNameLabel.text = _orderModel.usermodel.nickname;
     
     _plateNumLabel.text = _orderModel.car_plate_num;
     
@@ -207,31 +207,44 @@
 - (IBAction)doneAction:(id)sender {
     
     
-    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(_orderModel.id),@"status":@(5)} itemModel:nil result:^(BOOL isSuccess, id data) {
-        
-        if (isSuccess) {
-            
-            
-            _orderModel.status = 5;
-            _orderModel.status_str = @"待支付";
-            
-            if ([self.delegate respondsToSelector:@selector(didDoneService:)]) {
-                
-                [self.delegate didDoneService:_orderModel];
-                
-            }
-            
-            
-        }
+
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确定完成吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
     
-        
-        
-    }];
+    alert.tag = 9999;
     
+    [alert show];
 
     
 }
 
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 9999 && buttonIndex == 1) {
+        
+        
+        
+        [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(_orderModel.id),@"status":@(5)} itemModel:nil result:^(BOOL isSuccess, id data) {
+            
+            if (isSuccess) {
+                
+                
+                _orderModel.status = 5;
+                _orderModel.status_str = @"待支付";
+                
+                if ([self.delegate respondsToSelector:@selector(didDoneService:)]) {
+                    
+                    [self.delegate didDoneService:_orderModel];
+                    
+                }
+                
+                
+            }
+            
+            
+            
+        }];
+    }
+}
 
 
 @end

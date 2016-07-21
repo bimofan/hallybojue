@@ -125,6 +125,8 @@
 		138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA251D298B64005D4A00 /* BaiduMapHelper.m */; };
 		138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA321D29BD87005D4A00 /* CustomerCell.m */; };
 		138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA341D29BD87005D4A00 /* CustomerViewController.m */; };
+		139705701D40714E00EBD326 /* PushServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1397056F1D40714E00EBD326 /* PushServiceViewController.m */; };
+		139705731D4079AB00EBD326 /* PushServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139705721D4079AB00EBD326 /* PushServiceCell.m */; };
 		139C54FC1D2D20BD000A7C8E /* CUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139C54FB1D2D20BD000A7C8E /* CUserInfoController.m */; };
 		139C54FF1D2D462D000A7C8E /* CarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139C54FE1D2D462D000A7C8E /* CarTableViewCell.m */; };
 		139DF3FC1D2AD2440082DF16 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF3F81D2AD2440082DF16 /* libXG-SDK.a */; };
@@ -397,6 +399,10 @@
 		138EEA321D29BD87005D4A00 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
 		138EEA331D29BD87005D4A00 /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
 		138EEA341D29BD87005D4A00 /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
+		1397056E1D40714E00EBD326 /* PushServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceViewController.h; sourceTree = "<group>"; };
+		1397056F1D40714E00EBD326 /* PushServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceViewController.m; sourceTree = "<group>"; };
+		139705711D4079AB00EBD326 /* PushServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceCell.h; sourceTree = "<group>"; };
+		139705721D4079AB00EBD326 /* PushServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceCell.m; sourceTree = "<group>"; };
 		139C54FA1D2D20BD000A7C8E /* CUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUserInfoController.h; sourceTree = "<group>"; };
 		139C54FB1D2D20BD000A7C8E /* CUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUserInfoController.m; sourceTree = "<group>"; };
 		139C54FD1D2D462D000A7C8E /* CarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTableViewCell.h; sourceTree = "<group>"; };
@@ -1017,6 +1023,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1397056D1D40712900EBD326 /* PushServiceViewController */,
 				13FA59AC1D3F25800041790F /* AddVipCardViewController */,
 				13A3F1E71D3CC64700C79B17 /* ServiceHistory */,
 				132BBB1F1D3A362C00B887FC /* AddYuYueViewController */,
@@ -1031,6 +1038,17 @@
 				139C54FE1D2D462D000A7C8E /* CarTableViewCell.m */,
 			);
 			path = CustomerControllers;
+			sourceTree = "<group>";
+		};
+		1397056D1D40712900EBD326 /* PushServiceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1397056E1D40714E00EBD326 /* PushServiceViewController.h */,
+				1397056F1D40714E00EBD326 /* PushServiceViewController.m */,
+				139705711D4079AB00EBD326 /* PushServiceCell.h */,
+				139705721D4079AB00EBD326 /* PushServiceCell.m */,
+			);
+			name = PushServiceViewController;
 			sourceTree = "<group>";
 		};
 		139DF3F61D2AD2370082DF16 /* XG-Push */ = {
@@ -1403,6 +1421,7 @@
 				1384A6381D27D2DB00D74892 /* AFSecurityPolicy.m in Sources */,
 				1384A6351D27D2DB00D74892 /* AFHTTPRequestOperationManager.m in Sources */,
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
+				139705731D4079AB00EBD326 /* PushServiceCell.m in Sources */,
 				13A3F1EA1D3CC6D800C79B17 /* ServiceHistoryViewController.m in Sources */,
 				132084841D3B9E0200EDA00A /* FollowUserCell.m in Sources */,
 				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
@@ -1415,6 +1434,7 @@
 				136247271D24FDB100190DCF /* SDWebImageDownloaderOperation.m in Sources */,
 				13B57C2D1D3E27D90042EE71 /* RemindCell.m in Sources */,
 				132BBB1B1D3A247D00B887FC /* FiveYuYueViewController.m in Sources */,
+				139705701D40714E00EBD326 /* PushServiceViewController.m in Sources */,
 				13BCF3C71D26920D0058D5C1 /* BaseNavigationController.m in Sources */,
 				1362476C1D24FFF800190DCF /* ProgressHUD.m in Sources */,
 				136247301D24FDB100190DCF /* UIView+WebCacheOperation.m in Sources */,
@@ -1619,7 +1639,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "19e521a6-683b-4e0d-93b3-00a56241ed78";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};

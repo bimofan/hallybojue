@@ -152,7 +152,7 @@
         
     }
     
-    _realNameLabel.text = _cUserModel.user_real_name;
+    _realNameLabel.text = _cUserModel.nickname;
     
     _levelNameLabel.text = _cUserModel.level_name;
     _vipAddressLabel.text = _cUserModel.vip_address;

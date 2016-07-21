@@ -18,7 +18,7 @@
 
 
 
-@interface FourYuYueViewController ()<UITableViewDelegate,UITableViewDataSource,PayTypeDelegate>
+@interface FourYuYueViewController ()<UITableViewDelegate,UITableViewDataSource,PayTypeDelegate,UIAlertViewDelegate>
 
 @property (nonatomic,strong) NSMutableArray *vipArray;
 
@@ -89,7 +89,7 @@
         
     }
     
-    _realnameLabel.text = _orderModel.usermodel.user_real_name;
+    _realnameLabel.text = _orderModel.usermodel.nickname;
     
     _plate_numLabel.text = _orderModel.car_plate_num;
     
@@ -582,9 +582,15 @@
     self.payTypeView.totalMoney = _totalMoney;
     
     
-     [[UIApplication sharedApplication].keyWindow addSubview:self.payTypeView];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.payTypeView];
     
     
+}
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+
 }
 
 -(NSDictionary*)getparams

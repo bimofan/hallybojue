@@ -11,7 +11,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.101/api/"
+#define kRequestHeader  @"http://192.168.0.120/api/"
 
 
 //old
@@ -240,6 +240,20 @@
  *   keeper_id
  */
 #define kChangePassWord  @"kuser/changepassword"
+
+
+/** 推荐服务
+ *  keeper_id
+ *   user_id
+ *  user_car_id
+ *  service_id
+ *  service_name
+ *  notes
+ *
+ *
+ */
+#define kPushService     @"kcustomer/pushservice"
+
 
 
 

@@ -45,7 +45,7 @@
         
     }
     
-    _realNameLabel.text = _orderModel.usermodel.user_real_name;
+    _realNameLabel.text = _orderModel.usermodel.nickname;
     
     _plate_numLabel.text = _orderModel.car_plate_num;
     

@@ -43,7 +43,7 @@
     _cUsermodel = cUsermodel;
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_cUsermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
-    _realNameLabel.text = _cUsermodel.user_real_name;
+    _realNameLabel.text = _cUsermodel.nickname;
     
     _vipNameLabel.text = _cUsermodel.level_name;
     _vipAddressLabel.text = _cUsermodel.vip_address;
@@ -100,7 +100,7 @@
         
         NSString *servcie_name = [dict objectForKey:@"service_name"];
         
-        if (muString.length == 0) {
+        if (muString.length == 0 && servcie_name) {
             
             [muString appendString:servcie_name];
         }

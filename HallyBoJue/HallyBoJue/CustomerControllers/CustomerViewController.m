@@ -12,6 +12,8 @@
 #import "CUserInfoController.h"
 #import "AddYuYueViewController.h"
 #import "ServiceHistoryViewController.h"
+#import "PushServiceViewController.h"
+
 
 
 
@@ -26,6 +28,8 @@
 @property (nonatomic,strong) CUserInfoController *cUserInfoController;
 @property (nonatomic,strong) AddYuYueViewController *addYuYueViewController;
 @property (nonatomic,strong) ServiceHistoryViewController *serviceHistoryViewController;
+@property (nonatomic,strong) PushServiceViewController *pushServiceViewController;
+
 
 @property (nonatomic,strong) NSMutableArray *customerArray;
 
@@ -63,6 +67,23 @@
     
     
 }
+
+
+#pragma mark - 推送服务消息
+-(PushServiceViewController*)pushServiceViewController
+{
+    if (!_pushServiceViewController) {
+        
+        _pushServiceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PushServiceViewController"];
+        
+        _pushServiceViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        
+    }
+    
+    return _pushServiceViewController;
+}
+
 
 #pragma mark - 添加预约
 -(AddYuYueViewController*)addYuYueViewController
@@ -247,7 +268,7 @@
         cell.viplabel.text = model.level_name;
         
         
-        cell.realnameLabel.text = model.user_real_name;
+        cell.realnameLabel.text = model.nickname;
         
         cell.addApointButton.tag = indexPath.section;
         
@@ -257,6 +278,9 @@
         
         [cell.servicelistButton addTarget:self action:@selector(showservicehistory:) forControlEvents:UIControlEventTouchUpInside];
         
+        
+        cell.sendMessageButton.tag = indexPath.section;
+        [cell.sendMessageButton addTarget:self action:@selector(pushservice:) forControlEvents:UIControlEventTouchUpInside];
         
         
         
@@ -331,6 +355,9 @@
 
 
 
+
+
+
 #pragma mark - 添加客户 action
 - (IBAction)addCustomAction:(id)sender {
     
@@ -396,6 +423,23 @@
     
     [_rightView addSubview:self.serviceHistoryViewController.view];
     
+    
+}
+
+#pragma mark - 推送服务消息
+-(void)pushservice:(UIButton*)sender
+{
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    CUserModel  *model = [_customerArray objectAtIndex:sender.tag];
+    
+    self.pushServiceViewController.cUserModel = model;
+    
+    [_rightView addSubview:self.pushServiceViewController.view];
     
 }
 @end

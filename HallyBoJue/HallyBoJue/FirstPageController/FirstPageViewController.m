@@ -277,7 +277,7 @@
             
             OrderModel *model = [_yuyueArray objectAtIndex:indexPath.section];
             
-            cell.nameLabel.text = model.usermodel.user_real_name;
+            cell.nameLabel.text = model.usermodel.nickname;
     
             [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar  objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
             float lat = [[model.address_location objectForKey:@"lat"]floatValue];
@@ -357,7 +357,7 @@
             
             [rightcell.headImageView sd_setImageWithURL:[NSURL URLWithString:[_cusermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
             
-            rightcell.nameLabel.text = _cusermodel.user_real_name;
+            rightcell.nameLabel.text = _cusermodel.nickname;
             
             NSDictionary *firstcar = [_cusermodel.cars firstObject];
             

@@ -296,7 +296,7 @@
         }
   
         
-        cell.realNameLabel.text = model.cUserModel.user_real_name;
+        cell.realNameLabel.text = model.cUserModel.nickname;
         
         cell.vipCardLabel.text = model.cUserModel.level_name;
         
@@ -402,7 +402,7 @@
         
     }
     
-    _realNameLabel.text = _selectedModel.cUserModel.user_real_name;
+    _realNameLabel.text = _selectedModel.cUserModel.nickname;
     
     _vipNameLabel.text = _selectedModel.cUserModel.level_name;
     
