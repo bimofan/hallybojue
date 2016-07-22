@@ -742,15 +742,15 @@
             
             if (selected) {
                 
-                if (![subcheck objectForKey:@"photo"]) {
-                    
-                    [CommonMethods showDefaultErrorString:[NSString stringWithFormat: @"请上传 %@-%@ 的描述图片",position,[subcheck objectForKey:@"desc"]]];
-                    
-                    return;
-                    
-                    
-                    
-                }
+//                if (![subcheck objectForKey:@"photo"]) {
+//                    
+//                    [CommonMethods showDefaultErrorString:[NSString stringWithFormat: @"请上传 %@-%@ 的描述图片",position,[subcheck objectForKey:@"desc"]]];
+//                    
+//                    return;
+//                    
+//                    
+//                    
+//                }
                 
                 
                 NSMutableDictionary *musubcheck = [[NSMutableDictionary alloc]initWithDictionary:subcheck];
@@ -810,6 +810,7 @@
     [params setObject:position_problem forKey:@"position_problem"];
     [params setObject:advise forKey:@"advise"];
     [params setObject:suggest forKey:@"suggest"];
+    
     
     
     
