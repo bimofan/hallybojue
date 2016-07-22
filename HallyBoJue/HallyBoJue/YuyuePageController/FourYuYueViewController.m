@@ -44,6 +44,9 @@
     
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
+    _summitButton.layer.borderColor = kBorderColor.CGColor;
+    _summitButton.layer.borderWidth = 1;
+    
     
     _headImageView.clipsToBounds= YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
@@ -690,7 +693,7 @@
         if (isSuccess) {
             
             _orderModel.status = 6;
-            _orderModel.status_str = @"待评价";
+            _orderModel.status_str = @"待支付";
             
             if ([self.delegate respondsToSelector:@selector(didSummitOrder:)]) {
                 

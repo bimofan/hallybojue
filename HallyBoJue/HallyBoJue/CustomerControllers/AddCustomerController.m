@@ -21,6 +21,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+    
     _nameBackView.clipsToBounds = YES;
     _nameBackView.layer.cornerRadius = kCornerRadous;
     
@@ -29,6 +31,9 @@
     
     _nextButton.clipsToBounds = YES;
     _nextButton.layer.cornerRadius = kCornerRadous;
+    _nextButton.layer.borderWidth = 1;
+    _nextButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     
     _carSearchBar.delegate = self;
@@ -114,7 +119,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 50;
+    return 60;
     
 }
 

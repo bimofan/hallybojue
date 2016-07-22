@@ -48,6 +48,9 @@
     
     _addCustomButton.clipsToBounds = YES;
     _addCustomButton.layer.cornerRadius = kCornerRadous;
+    _addCustomButton.layer.borderWidth = 1;
+    _addCustomButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     _leftView.clipsToBounds = YES;
     _leftView.layer.cornerRadius = kCornerRadous;
@@ -303,13 +306,15 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
+      return 0;
     
-    if (section == _customerArray.count -1) {
-        
-        return 0;
-        
-    }
-    return  5;
+    
+//    if (section == _customerArray.count -1) {
+//        
+//        return 0;
+//        
+//    }
+//    return  5;
 }
 -(UIView*)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
@@ -324,7 +329,7 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 170;
+    return 160;
     
 }
 

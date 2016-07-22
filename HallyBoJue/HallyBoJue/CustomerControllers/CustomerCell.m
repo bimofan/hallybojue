@@ -22,11 +22,21 @@
     _addApointButton.clipsToBounds = YES;
     _addApointButton.layer.cornerRadius = kCornerRadous;
     
+    _addApointButton.layer.borderColor = kBorderColor.CGColor;
+    _addApointButton.layer.borderWidth = 1;
+    
+    
     _servicelistButton.clipsToBounds = YES;
     _servicelistButton.layer.cornerRadius = kCornerRadous;
+    _servicelistButton.layer.borderWidth = 1;
+    _servicelistButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     _sendMessageButton.clipsToBounds = YES;
     _sendMessageButton.layer.cornerRadius = kCornerRadous;
+    _sendMessageButton.layer.borderColor = kBorderColor.CGColor;
+    _sendMessageButton.layer.borderWidth = 1;
+    
     
     _viplabel.clipsToBounds = YES;
     _viplabel.layer.cornerRadius = kCornerRadous;

@@ -48,12 +48,18 @@
     
     _registCard.clipsToBounds = YES;
     _registCard.layer.cornerRadius = kCornerRadous;
+    _registCard.layer.borderWidth = 1;
+    _registCard.layer.borderColor = kBorderColor.CGColor;
+    
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
     _RemindButton.clipsToBounds = YES;
     _RemindButton.layer.cornerRadius = kCornerRadous;
+    _RemindButton.layer.borderColor = kBorderColor.CGColor;
+    _RemindButton.layer.borderWidth = 1;
+    
     
     
 

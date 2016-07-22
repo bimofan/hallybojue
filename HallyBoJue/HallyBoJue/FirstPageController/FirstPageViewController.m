@@ -260,6 +260,7 @@
             blankCell.textLabel.text = @"暂无数据";
             blankCell.textLabel.textAlignment = NSTextAlignmentCenter;
             blankCell.textLabel.textColor = kBackgroundColor;
+            blankCell.textLabel.font = FONT_14;
             
             blankCell.userInteractionEnabled = NO;
             
@@ -329,9 +330,9 @@
             }
             cell.serviceLabel.text = muserviceString;
             
-            cell.orderHeight.constant = 50 * model.services.count;
+            cell.orderHeight.constant = 40 * model.services.count;
             
-            cell.serviceBackViewHeight.constant = 50 * model.services.count;
+            cell.serviceBackViewHeight.constant = 40 * model.services.count;
             
             cell.timeLabel.text = model.order_time;
             
@@ -471,7 +472,7 @@
           OrderModel *model = [_yuyueArray objectAtIndex:indexPath.section];
         
           
-        return 195 + 50 * model.services.count;
+        return 165 + 40 * model.services.count;
         
     }
     else

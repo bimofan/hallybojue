@@ -14,6 +14,7 @@
 
 #import "UIImageView+WebCache.h"
 
+static CGFloat lineWith = 2;
 
 
 
@@ -23,9 +24,9 @@
 
 -(void)layoutSubviews
 {
-    CGFloat firstwith = 200;
+    CGFloat firstwith = 180;
     
-    CGFloat with = (ScreenWidth - 6 - firstwith)/6;
+    CGFloat with = (ScreenWidth - 6*lineWith - firstwith)/6;
     
     _oneWith.constant = firstwith;
     _twoWith.constant = with;

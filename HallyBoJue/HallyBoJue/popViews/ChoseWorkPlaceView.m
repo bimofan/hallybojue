@@ -65,6 +65,11 @@
 {
     
     
+    _okButton.clipsToBounds = YES;
+    _okButton.layer.cornerRadius = kCornerRadous;
+    _okButton.layer.borderWidth = 1;
+    _okButton.layer.borderColor = kBorderColor.CGColor;
+    
     self.alpha = 1;
    
   

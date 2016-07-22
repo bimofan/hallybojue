@@ -60,6 +60,7 @@
     _vipNameLabel.clipsToBounds= YES;
     _vipNameLabel.layer.cornerRadius = kCornerRadous;
     
+    _rightView.hidden = YES;
     
     
     _historyserviceTable.delegate = self;
@@ -191,13 +192,24 @@
                 
                 _selectedModel = [_followsArray firstObject];
                 
-                
+                if (_followsArray.count == 0) {
+                    
+                    _rightView.hidden = YES;
+                    
+                }
+                else
+                {
+                    _rightView.hidden = NO;
+                    
+                }
                 
                 [self setHeader];
                 
                 
             }
             
+            
+          
             
             [_userTableView reloadData];
             

@@ -150,7 +150,7 @@
 "Vz6-dh-zBB.normalTitle" = "添加预约";
 
 /* Class = "UILabel"; text = "添加客户:"; ObjectID = "W3v-GR-C6z"; */
-"W3v-GR-C6z.text" = "添加客户:";
+"W3v-GR-C6z.text" = "添加客户";
 
 /* Class = "UILabel"; text = "车牌号:"; ObjectID = "WVz-DW-tWi"; */
 "WVz-DW-tWi.text" = "车牌号:";

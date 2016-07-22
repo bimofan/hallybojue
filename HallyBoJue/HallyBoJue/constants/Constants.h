@@ -22,13 +22,13 @@
 
 #define kNavigationTintColor      [UIColor whiteColor]
 
-#define kNavigationBarColor       [UIColor colorWithRed:6/255.0 green:30/255.0 blue:126/255.0 alpha:0.9]
+#define kNavigationBarColor       [UIColor colorWithRed:6/255.0 green:60/255.0 blue:126/255.0 alpha:0.9]
 
 #define kDarkGrayColor             [UIColor darkGrayColor]
 
 #define kTabbarBarTintColor        RGB(0,0,0,0.9)
 
-#define kBackgroundColor           RGB(240,240,240,1)
+#define kBackgroundColor           RGB(222,222,222,1)
 
 #define kLineColor               RGB(220,220,220,1)
 
@@ -46,6 +46,7 @@
 #define kGrayBackColor          RGB(207,207,211,1)
 
 #define kDarkTextColor        RGB(53,53,53,1)
+#define kBorderColor          RGB(207,207,211,1)
 
 #define kLighGrayBackColor      [UIColor colorWithWhite:0.3 alpha:0.1]
 

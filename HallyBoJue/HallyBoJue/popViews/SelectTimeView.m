@@ -38,6 +38,10 @@
     _okButton.clipsToBounds=  YES;
     _okButton.layer.cornerRadius = kCornerRadous;
     
+    _okButton.layer.borderColor = kBorderColor.CGColor;
+    _okButton.layer.borderWidth = 1;
+    
+    
     _datePicker.minimumDate = [NSDate date];
     
     

@@ -268,7 +268,7 @@
         
         OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
         
-        cell.namecarnumLabel.text = model.usermodel.nickname;
+        cell.namecarnumLabel.text = [NSString stringWithFormat:@"%@   %@",model.usermodel.nickname,model.car_plate_num];
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
@@ -351,7 +351,7 @@
     
     OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
     
-    return 165 + 50 *model.services.count;
+    return 150 + 40 *model.services.count;
     
 }
 

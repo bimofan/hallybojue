@@ -52,6 +52,10 @@
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
     
+    _summitButton.layer.borderColor = kBorderColor.CGColor;
+    _summitButton.layer.borderWidth = 1;
+    
+    
     _levelNameLabel.clipsToBounds = YES;
     _levelNameLabel.layer.cornerRadius = kCornerRadous;
     

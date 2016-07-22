@@ -32,8 +32,15 @@
     _checkButton.clipsToBounds = YES;
     _checkButton.layer.cornerRadius = kCornerRadous;
     
+    _checkButton.layer.borderColor = kBorderColor.CGColor;
+    _checkButton.layer.borderWidth = 1;
+    
+    
     _sendButton.clipsToBounds = YES;
     _sendButton.layer.cornerRadius = kCornerRadous;
+    _sendButton.layer.borderWidth = 1;
+    _sendButton.layer.borderColor =kBorderColor.CGColor;
+    
     
     _addServiceButton.clipsToBounds = YES;
     _addServiceButton.layer.cornerRadius = kCornerRadous;

@@ -34,9 +34,15 @@
     
     _checkCarButton.clipsToBounds = YES;
     _checkCarButton.layer.cornerRadius = kCornerRadous;
+    _checkCarButton.layer.borderColor = kBorderColor.CGColor;
+    _checkCarButton.layer.borderWidth = 1;
+    
     
     _doneButton.clipsToBounds = YES;
     _doneButton.layer.cornerRadius = kCornerRadous;
+    _doneButton.layer.borderWidth = 1;
+    _doneButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     
     

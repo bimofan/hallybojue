@@ -22,7 +22,7 @@
 
 
 
-CGFloat cellHeight = 70;
+CGFloat cellHeight = 45;
 
 @interface HomeViewController ()
 {
