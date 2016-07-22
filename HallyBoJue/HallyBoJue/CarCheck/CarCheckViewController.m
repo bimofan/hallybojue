@@ -722,6 +722,9 @@
 
 - (IBAction)summitAction:(id)sender {
     
+    
+    [self.view endEditing:YES];
+    
     car_check_result = [[NSMutableArray alloc]init];
     
     for (int i = 0; i < _leftDataArray.count; i++) {

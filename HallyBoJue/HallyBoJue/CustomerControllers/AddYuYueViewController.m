@@ -506,7 +506,7 @@
             self.choseWorkPlaceView.selectedDict = _selectedCarDict;
             
             self.choseWorkPlaceView.workDataSource = _carsArray;
-            
+            self.choseWorkPlaceView.titleLabel.text = @"车辆选择";
          
             
             [[UIApplication sharedApplication].keyWindow addSubview:self.choseWorkPlaceView];

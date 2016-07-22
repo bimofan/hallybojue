@@ -80,7 +80,7 @@
                             </constraints>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                             <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="免单支付" image="jiesuan_weixuanz">
+                            <state key="normal" title="异常支付" image="jiesuan_weixuanz">
                                 <color key="titleColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>

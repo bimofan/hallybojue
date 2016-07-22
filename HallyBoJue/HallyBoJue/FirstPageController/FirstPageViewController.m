@@ -85,6 +85,7 @@
 {
     [super viewDidAppear: animated];
     
+  
     if ([[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin] &&_yuyueArray.count == 0) {
         
         [_leftTableView.header beginRefreshing];

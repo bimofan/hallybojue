@@ -229,7 +229,7 @@
                 
                 
                 _orderModel.status = 5;
-                _orderModel.status_str = @"待支付";
+                _orderModel.status_str = @"服务完成";
                 
                 if ([self.delegate respondsToSelector:@selector(didDoneService:)]) {
                     

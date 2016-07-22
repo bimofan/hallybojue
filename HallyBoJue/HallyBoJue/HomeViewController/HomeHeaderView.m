@@ -62,5 +62,15 @@
     
 }
 
+-(void)setRankData:(NSDictionary *)rankData
+{
+    _todayNumLabel.text = [NSString stringWithFormat:@"%@",[rankData objectForKey:@"newuser_today"]];
+    _monthNumLabel.text = [NSString stringWithFormat:@"%@",[rankData objectForKey:@"newuser_month"]];
+    _todayTotalLabel.text = [NSString stringWithFormat:@"%@",[rankData objectForKey:@"today_money"]];
+    _monthTotalLabel.text = [NSString stringWithFormat:@"%@", [rankData objectForKey:@"month_money"]];
+    _shopRankLabel.text =  [NSString stringWithFormat:@"%@",[rankData objectForKey:@"store_rank"]];
+    _areaRankLabel.text =  [NSString stringWithFormat:@"%@",[rankData objectForKey:@"area_rank"]];
+ }
+
 
 @end

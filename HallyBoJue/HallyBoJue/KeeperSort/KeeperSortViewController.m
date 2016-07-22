@@ -17,6 +17,10 @@
 @property (nonatomic,strong) UITableView *thirdTableView;
 @property (nonatomic,assign) CGFloat tableWidth;
 @property (nonatomic,assign) CGFloat tableHeight;
+@property (nonatomic,strong) NSArray *money_today;
+@property (nonatomic,strong) NSArray *money_month;
+@property (nonatomic,strong) NSArray *users_today;
+
 
 
 @end
@@ -27,7 +31,7 @@
     [super viewDidLoad];
    
     
-
+ 
     
     
 }
@@ -55,6 +59,34 @@
     
     [self.view addSubview:self.secondTableView];
     [self.view addSubview:self.thirdTableView];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kUpdateKeeperRankNoti object:nil];
+    
+    [self getranklist];
+    
+
+}
+
+
+-(void)getranklist
+{
+    [[NetWorking shareNetWorking] RequestWithAction:kRankList Params:nil itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            if ([data isKindOfClass:[NSDictionary class]]) {
+                
+                _money_today = [data objectForKey:@"today"];
+                _money_month  = [data objectForKey:@"month"];
+                _users_today = [data objectForKey:@"newuser_today"];
+                
+                [_firstTableView reloadData];
+                [_secondTableView reloadData];
+                [_thirdTableView reloadData];
+                
+            }
+        }
+    }];
 }
 
 -(UITableView*)firstTableView
@@ -179,8 +211,24 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (tableView == _firstTableView) {
+        
+        return _money_today.count;
+    }
+    if (tableView == _secondTableView) {
+        
+        return _users_today.count;
+    }
     
-    return 10;
+    if (tableView == _thirdTableView) {
+        
+        return _money_month.count;
+        
+    }
+    
+    return 0;
+    
+  
     
 }
 
@@ -208,6 +256,43 @@
     }
     
     cell.numLabel.text = [NSString stringWithFormat:@"%ld",(long)(indexPath.row+1)];
+    
+    NSDictionary *dict = nil;
+    
+    
+    if (tableView == _firstTableView) {
+        
+        dict = [_money_today objectAtIndex:indexPath.row];
+        
+        
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dict objectForKey:@"order_old_amount"]];
+        
+
+    }
+    else if (tableView == _secondTableView)
+    {
+        dict = [_users_today objectAtIndex:indexPath.row];
+        
+        cell.moneyLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"countuser"]];
+        
+    }
+    else if (tableView == _thirdTableView)
+    {
+        dict = [_money_month objectAtIndex:indexPath.row];
+        
+        
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dict objectForKey:@"order_old_amount"]];
+        
+    }
+    
+    
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[[dict objectForKey:@"avatar"]objectForKey:@
+                                            "origin"]] placeholderImage:kDefaultHeadImage];
+    
+    cell.keeperNameLabel.text = [dict objectForKey:@"real_name"];
+    
+    cell.moneyLabel.adjustsFontSizeToFitWidth = YES;
+    
     
     
     return cell;

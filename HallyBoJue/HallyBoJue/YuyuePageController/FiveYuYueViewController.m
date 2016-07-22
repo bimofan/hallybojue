@@ -55,6 +55,9 @@
     
     _statusLabel.text = _orderModel.status_str;
     
+    _orderSNLabel.text = [NSString stringWithFormat:@"订单号:%@",_orderModel.so_number];
+    _orderSNLabel.adjustsFontSizeToFitWidth =YES;
+    
     [_serviceTableView reloadData];
     
     

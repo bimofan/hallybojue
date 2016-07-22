@@ -53,6 +53,18 @@ NetWorking *netWorking;
         [MyProgressHUD dismiss];
         
   
+        if (![responseObject isKindOfClass:[NSDictionary class]]) {
+            
+            
+            block(NO,nil);
+            
+            NSLog(@"url:%@,param:%@",url,param);
+            
+            NSLog(@"++++++++++Data is not Dictionary:%@",responseObject);
+
+            return ;
+            
+        }
         
         int status = [[responseObject objectForKey:@"status"]intValue];
         
@@ -93,7 +105,7 @@ NetWorking *netWorking;
                     }
                     else
                     {
-                        block(YES,nil);
+                        block(YES,data);
                         
                     }
                   
@@ -104,7 +116,7 @@ NetWorking *netWorking;
                 
                 
               
-              }
+               }
             else
             {
                     block(YES,nil);

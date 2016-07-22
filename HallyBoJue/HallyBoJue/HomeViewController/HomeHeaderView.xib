@@ -279,20 +279,20 @@
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="areaRankLabel" destination="BXS-gL-7Pw" id="MgE-HW-Cm3"/>
+                <outlet property="areaRankLabel" destination="BXS-gL-7Pw" id="gWc-BF-VlP"/>
                 <outlet property="fiveWith" destination="aBs-fF-r9u" id="6PT-Uz-pKC"/>
                 <outlet property="fourWith" destination="oZu-4Y-joQ" id="9yO-Fn-8el"/>
                 <outlet property="headImageView" destination="jEe-uF-I1j" id="Woj-dY-3H8"/>
                 <outlet property="levelLabel" destination="WdI-bu-wQD" id="zcb-rd-8qQ"/>
                 <outlet property="monthNumLabel" destination="P1Q-CS-Aag" id="Tkp-de-rfr"/>
-                <outlet property="monthTotalLabel" destination="OXy-zy-i7K" id="jQC-6G-veY"/>
+                <outlet property="monthTotalLabel" destination="OXy-zy-i7K" id="aHB-VD-xvd"/>
                 <outlet property="oneWith" destination="nM0-EN-0ol" id="xc5-lO-ucI"/>
                 <outlet property="realnameLabel" destination="v8G-rP-Nfc" id="Go2-lf-p0W"/>
-                <outlet property="shopRankLabel" destination="VJ8-vc-lsL" id="144-qx-7MV"/>
+                <outlet property="shopRankLabel" destination="VJ8-vc-lsL" id="EQS-7d-QtM"/>
                 <outlet property="sixWith" destination="q4O-7U-zgo" id="TPI-rE-hg5"/>
                 <outlet property="threeWith" destination="lxG-CZ-2ch" id="iQ4-86-6qM"/>
-                <outlet property="todayNumLabel" destination="oeN-S6-eUC" id="dmv-Ot-wn7"/>
-                <outlet property="todayTotalLabel" destination="h6I-QG-6Et" id="jaJ-t3-Vpu"/>
+                <outlet property="todayNumLabel" destination="oeN-S6-eUC" id="yuy-UZ-ooN"/>
+                <outlet property="todayTotalLabel" destination="h6I-QG-6Et" id="evi-fx-5tJ"/>
                 <outlet property="twoWith" destination="UQm-wA-91H" id="PaD-lT-6BT"/>
             </connections>
             <point key="canvasLocation" x="809" y="206"/>

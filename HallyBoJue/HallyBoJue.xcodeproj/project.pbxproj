@@ -1639,7 +1639,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "03e4201c-74c9-41d3-8271-93e2cb22fa74";
 			};
 			name = Debug;
 		};

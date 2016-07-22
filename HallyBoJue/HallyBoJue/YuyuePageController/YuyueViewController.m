@@ -447,17 +447,34 @@
             break;
         case 7:
         {
+            self.fiveYuYueViewController.orderModel = model;
             
+            
+            [self.rightView addSubview:self.fiveYuYueViewController.view];
         }
             break;
         case 8: //完全结束
         {
+            self.fiveYuYueViewController.orderModel = model;
             
+            
+            [self.rightView addSubview:self.fiveYuYueViewController.view];
         }
             break;
         case 9: //异常支付
         {
+            self.fiveYuYueViewController.orderModel = model;
             
+            
+            [self.rightView addSubview:self.fiveYuYueViewController.view];
+        }
+            break;
+        case 10: //订单取消
+        {
+            self.fiveYuYueViewController.orderModel = model;
+            
+            
+            [self.rightView addSubview:self.fiveYuYueViewController.view];
         }
             break;
             

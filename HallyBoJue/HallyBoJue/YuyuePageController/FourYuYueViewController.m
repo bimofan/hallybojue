@@ -99,6 +99,8 @@
     
     _statusLabel.text = _orderModel.status_str;
     
+    
+    
     _totalMoney = 0.0;
     
     for (int i =0; i < _orderModel.services.count; i++) {

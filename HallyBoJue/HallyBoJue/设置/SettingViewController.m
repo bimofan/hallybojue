@@ -205,6 +205,9 @@
 {
     if (buttonIndex == 1) {
         
+        int beforeKeeper_id = [UserInfo getkeeperid];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@(beforeKeeper_id) forKey:kBeforeKeeperID];
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHadLogin];
         [[NSUserDefaults standardUserDefaults] synchronize];

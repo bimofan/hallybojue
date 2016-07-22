@@ -33,6 +33,8 @@ CGFloat cellHeight = 70;
 @property (nonatomic,strong) NSArray *slideTitles;
 @property(nonatomic,strong) HomeHeaderView *homeHeaderView;
 @property(nonatomic,strong) UIView*selectedBackView;
+@property (nonatomic,strong) NSDictionary *keeperRankData;
+
 
 @property(nonatomic,strong) FirstPageViewController *firstpageController;
 @property(nonatomic,strong) YuyueViewController*yuyuepageController;
@@ -71,6 +73,9 @@ CGFloat cellHeight = 70;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(successCatchOrder:) name:kSuccesCatchOrder object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getKeeperRank) name:kUpdateKeeperRankNoti object:nil];
+    
+    
     [self.headerView addSubview:self.homeHeaderView];
     
     
@@ -86,7 +91,7 @@ CGFloat cellHeight = 70;
 {
     [super viewWillAppear:animated];
     
-
+  
     
 
 
@@ -108,6 +113,10 @@ CGFloat cellHeight = 70;
     else
     {
         [self.homeHeaderView setdata];
+        
+        [self getKeeperRank];
+        
+        
         
     }
 }
@@ -157,7 +166,38 @@ CGFloat cellHeight = 70;
 }
 
 
-
+#pragma mark - 获取头部排行
+-(void)getKeeperRank
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHadLogin]) {
+        
+        int keeper_id = [UserInfo getkeeperid];
+        int store_id = [UserInfo getstoreid];
+        
+        [[NetWorking shareNetWorking] RequestWithAction:kMyRank Params:@{@"keeper_id":@(keeper_id),@"store_id":@(store_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+            
+            
+            if (isSuccess) {
+                
+             
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [self.homeHeaderView setRankData:data];
+                        
+                        _keeperRankData = data;
+                        
+                    });
+                  
+                    
+                 
+                    
+                
+            }
+        }];
+    }
+ 
+}
 
 #pragma mark － 首页子页面
 -(FirstPageViewController*)firstpageController

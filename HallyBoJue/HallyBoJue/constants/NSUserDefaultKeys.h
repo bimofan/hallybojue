@@ -14,6 +14,9 @@
 // 是否登录
 #define kHadLogin     @"HadLogin"
 
+//之前管家账号
+#define kBeforeKeeperID   @"BeforeKeeperID"
+
 //是否第一次打开
 #define kIsFirstLaunch   @"IsFirstLaunch"
 
@@ -76,6 +79,9 @@
 
 //更换了头像
 #define kChangedAvatarNoti     @"ChangedAvatarNoti"
+
+//更新统计信息
+#define kUpdateKeeperRankNoti    @"UpdateKeeperRankNoti"
 
 
 /***********/

@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *areaRankLabel;
 
 -(void)setdata;
+-(void)setRankData:(NSDictionary*)rankData;
 
 
 @end

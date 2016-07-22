@@ -11,7 +11,7 @@
 
 
 //本地
-#define kRequestHeader  @"http://192.168.0.120/api/"
+//#define kRequestHeader  @"http://192.168.0.120/api/"
 
 
 //old
@@ -19,7 +19,7 @@
 
 
 //new
-//#define kRequestHeader  @"http://120.76.207.52/api/"
+#define kRequestHeader  @"http://120.76.207.52/api/"
 
 
 
@@ -253,6 +253,21 @@
  *
  */
 #define kPushService     @"kcustomer/pushservice"
+
+
+/*  自己的排行信息
+ *  keeper_id
+ *  store_id
+ */
+#define kMyRank    @"kuser/moneycount"
+
+
+/*  排行榜
+ *
+ *
+ *
+ */
+#define kRankList   @"kuser/ranklist"
 
 
 
