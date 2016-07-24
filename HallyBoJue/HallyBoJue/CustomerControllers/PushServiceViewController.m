@@ -307,12 +307,7 @@
         [CommonMethods showDefaultErrorString:@"请选择车辆"];
         return;
     }
-    if (_selectedService == nil) {
-        
-        [CommonMethods showDefaultErrorString:@"请选择服务"];
-        
-        return;
-    }
+ 
     
     if (_noteLabel.text.length == 0) {
         
