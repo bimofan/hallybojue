@@ -68,6 +68,11 @@ CGFloat cellHeight = 45;
 
     
     
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"logo"] style:UIBarButtonItemStylePlain target:self action:nil];
+    
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changedAvatar:) name:kChangedAvatarNoti object:nil];
     
     
@@ -154,7 +159,7 @@ CGFloat cellHeight = 45;
 {
     if (!_slideTitles) {
         
-        _slideTitles = @[@{@"selected":@(1),@"title":@"首页",@"imageName":@""},@{@"selected":@(0),@"title":@"预约管理"},@{@"selected":@(0),@"title":@"客户管理"},@{@"selected":@(0),@"title":@"跟进管理"},@{@"selected":@(0),@"title":@"排行榜"},@{@"selected":@(0),@"title":@"FAQ"},@{@"selected":@(0),@"title":@"设置"}];
+        _slideTitles = @[@{@"selected":@(1),@"title":@"首页",@"image":@"zhuye2",@"image2":@"zhuye"},@{@"selected":@(0),@"title":@"预约管理",@"image":@"pinglun",@"image2":@"pinglun33"},@{@"selected":@(0),@"title":@"客户管理",@"image":@"kehu2",@"image2":@"kehu"},@{@"selected":@(0),@"title":@"跟进管理",@"image":@"gengjin2",@"image2":@"gengjin"},@{@"selected":@(0),@"title":@"排行榜",@"image":@"paihangbang2",@"image2":@"paihangbang"},@{@"selected":@(0),@"title":@"FAQ",@"image":@"faq2",@"image2":@"faq"},@{@"selected":@(0),@"title":@"设置",@"image":@"shezhi",@"image2":@"shezhi11"}];
         
         
         
@@ -323,6 +328,7 @@ CGFloat cellHeight = 45;
         
         cell.backgroundColor = kLightBlueColor;
         cell.titlelabel.textColor = [UIColor whiteColor];
+        cell.slideimageview.image =  [UIImage imageNamed:[dict objectForKey:@"image2"]];
         
     }
     else
@@ -330,7 +336,7 @@ CGFloat cellHeight = 45;
         cell.backgroundColor = [UIColor whiteColor];
         cell.titlelabel.textColor = kDarkGrayColor;
         
-        
+        cell.slideimageview.image = [UIImage imageNamed:[dict objectForKey:@"image"]];
     }
     
     

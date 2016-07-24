@@ -43,7 +43,9 @@
 
 - (IBAction)setRemindAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *updateCarInfo;
 
+- (IBAction)updateCarInfoAction:(id)sender;
 
 - (IBAction)registCardAction:(id)sender;
 

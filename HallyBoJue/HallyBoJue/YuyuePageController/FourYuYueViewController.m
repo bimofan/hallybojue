@@ -159,8 +159,11 @@
                 }
                 
                 
-                [_serviceTable reloadData];
+                
             }
+            
+            [_serviceTable reloadData];
+            
     
             
         }
@@ -217,6 +220,7 @@
 {
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 30)];
     label.backgroundColor = [UIColor whiteColor];
+ 
     
     if (section == 0) {
         
@@ -231,7 +235,7 @@
     
     label.textAlignment = NSTextAlignmentLeft;
     
-    label.font = FONT_17;
+    label.font = FONT_14;
     
     return label;
 }
@@ -253,7 +257,6 @@
                 serviceCell.servicenameLabel.text = [dict objectForKey:@"name"];
                 
                 serviceCell.priceLabel.text = [NSString stringWithFormat:@"￥%@",[dict objectForKey:@"price"]];
-                
                 
                 
             }

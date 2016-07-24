@@ -42,6 +42,8 @@
     
     _startService.clipsToBounds =  YES;
     _startService.layer.cornerRadius = kCornerRadous;
+    _startService.layer.borderColor = kBorderColor.CGColor;
+    _startService.layer.borderWidth = 1;
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
@@ -224,9 +226,23 @@
                 
                 NSDictionary *workerDict = [workers objectAtIndex:i];
                 
-                if ([workerDict objectForKey:@"worker_real_name"]) {
+                if (workerStr.length == 0) {
+                    if ([workerDict objectForKey:@"worker_real_name"]) {
+                        
+                        [workerStr appendString:[NSString stringWithFormat:@"%@",[workerDict objectForKey:@"worker_real_name"]]];
+                    }
                     
-                      [workerStr appendString:[NSString stringWithFormat:@"  %@",[workerDict objectForKey:@"worker_real_name"]]];
+                }
+                else
+                {
+                    
+                    if ([workerDict objectForKey:@"worker_real_name"]) {
+                        
+                        [workerStr appendString:[NSString stringWithFormat:@"  %@",[workerDict objectForKey:@"worker_real_name"]]];
+                    }
+                    
+                    
+                
                 }
               
               

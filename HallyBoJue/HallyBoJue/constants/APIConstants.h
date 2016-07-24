@@ -63,6 +63,7 @@
  * 默认密码 123456
  *  plate_number
  *  brand_id
+ *  code
  */
 #define kAddCustomer        @"kcustomer/addcustomer"
 
@@ -269,6 +270,22 @@
  */
 #define kRankList   @"kuser/ranklist"
 
+/* 获取短息验证码
+ *  mobile
+ *
+ */
+#define kSendSMSCode   @"kcustomer/sendsmscode"
+
+
+
+/*  保存车辆信息
+ *  
+ *  id
+ *  mileage
+ *  vi_number
+ *  engine_number
+ */
+#define kChangedcarinfo   @"kcustomer/changedcarinfo"
 
 
 

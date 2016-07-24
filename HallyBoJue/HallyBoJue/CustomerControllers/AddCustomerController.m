@@ -8,7 +8,7 @@
 
 #import "AddCustomerController.h"
 
-@interface AddCustomerController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
+@interface AddCustomerController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UITextFieldDelegate>
 
 @property (nonatomic,strong) NSMutableArray *searchResults;
 @property (nonatomic,strong) NSString *brand_id;
@@ -34,16 +34,40 @@
     _nextButton.layer.borderWidth = 1;
     _nextButton.layer.borderColor = kBorderColor.CGColor;
     
+    _countDownLabel.hidden = YES;
     
+
     
     _carSearchBar.delegate = self;
     
     _carTableView.delegate = self;
     _carTableView.dataSource = self;
     
+    _codeTF.delegate = self;
+    _mobileTF.delegate = self;
+    _carnunTF.delegate = self;
+
     
     
     
+    
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear: animated];
+    
+    _codeTF.text = nil;
+    _userrealnameTF.text = nil;
+    _mobileTF.text = nil;
+    _carnunTF.text = nil;
+    
+    [_searchResults removeAllObjects];
+    
+    [_countDownButton setTitle:@"发送验证码" forState:UIControlStateNormal];
+    _countDownButton.hidden = NO;
+    _countDownLabel.hidden  =YES;
     
 }
 
@@ -59,7 +83,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
        
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 120);
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 300);
         
         
     }];
@@ -68,7 +92,7 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
         
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 120);
+        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 300);
         
         
     }];
@@ -169,7 +193,7 @@
     
     int keeper_id = [UserInfo getkeeperid];
     
-    [[NetWorking shareNetWorking] RequestWithAction:kAddCustomer Params:@{@"mobile":_mobileTF.text,@"user_real_name":_userrealnameTF.text,@"keeper_id":@(keeper_id),@"plate_number":_carnunTF.text,@"brand_id":_brand_id} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kAddCustomer Params:@{@"mobile":_mobileTF.text,@"nickname":_userrealnameTF.text,@"keeper_id":@(keeper_id),@"plate_number":_carnunTF.text,@"brand_id":_brand_id,@"code":_codeTF.text} itemModel:nil result:^(BOOL isSuccess, id data) {
        
         
         if (isSuccess) {
@@ -230,4 +254,104 @@
     
     
 }
+- (IBAction)countDownAction:(id)sender {
+    
+    
+    if (![CommonMethods checkTel:_mobileTF.text]) {
+        
+        return [CommonMethods showDefaultErrorString:@"请填写正确的手机号码"];
+    }
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSendSMSCode Params:@{@"mobile":_mobileTF.text} itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+        
+              [self getAutoCodeTime];
+            
+            
+        }
+        
+        
+        
+    }];
+    
+    
+  
+    
+    
+    
+}
+
+
+#pragma mark - 倒计时
+-(void)getAutoCodeTime{
+    __block int timeout=180;
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
+    dispatch_source_t _timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0,queue);
+    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, 0),1.0*NSEC_PER_SEC, 0);
+    dispatch_source_set_event_handler(_timer, ^{
+        if(timeout<=0){
+            dispatch_source_cancel(_timer);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [_countDownButton setTitle:@"发送验证码" forState:UIControlStateNormal] ;
+                _countDownButton.enabled = YES;
+                _countDownButton.hidden = NO;
+                
+                _countDownLabel.text = nil;
+                _countDownLabel.hidden = YES;
+                
+                
+            });
+        }else{
+            int seconds = timeout % 181;
+            NSString *strTime = [NSString stringWithFormat:@"%.2d", seconds];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                //                NSLog(@"____%@",strTime);
+                
+                _countDownButton.hidden = YES;
+                
+                _countDownLabel.hidden = NO;
+                
+                _countDownLabel.text = [NSString stringWithFormat:@"%@s",strTime];
+                
+                //                [_sendCodeButton setTitle:[NSString stringWithFormat:@"%@s",strTime] forState:UIControlStateNormal] ;
+                
+                
+                
+                
+            });
+            timeout--;
+        }
+    });
+    dispatch_resume(_timer);
+}
+
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+
+
+        
+        [UIView animateWithDuration:0.3 animations:^{
+           
+            self.view.center = CGPointMake(self.view.center.x, self.view.center.y -190);
+            
+        }];
+    
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField != _userrealnameTF) {
+        
+        [UIView animateWithDuration:0.3 animations:^{
+            
+            self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 190);
+            
+        }];
+    }
+}
+
+
 @end

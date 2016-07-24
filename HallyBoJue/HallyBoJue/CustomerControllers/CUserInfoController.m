@@ -10,6 +10,9 @@
 #import "CarTableViewCell.h"
 #import "SetRemindViewController.h"
 #import "AddVipCardViewController.h"
+#import "EditCarInfoViewController.h"
+
+
 
 
 @interface CUserInfoController ()<UITableViewDelegate,UITableViewDataSource>
@@ -18,6 +21,9 @@
 @property (nonatomic,strong) SetRemindViewController *setRemindViewController;
 @property (nonatomic,strong) AddVipCardViewController *addVipCardViewController;
 @property (nonatomic,strong) NSArray *services;
+@property (nonatomic,strong) EditCarInfoViewController *editCarInfoViewController;
+
+
 
 
 
@@ -38,6 +44,12 @@
     
     _secondBackView.clipsToBounds = YES;
     _secondBackView.layer.cornerRadius = kCornerRadous;
+    
+    _updateCarInfo.clipsToBounds = YES;
+    _updateCarInfo.layer.cornerRadius = kCornerRadous;
+    _updateCarInfo.layer.borderColor = kBorderColor.CGColor;
+    _updateCarInfo.layer.borderWidth = 1;
+    
     
     
     _thirdBackView.clipsToBounds = YES;
@@ -67,6 +79,24 @@
     
     
     
+    
+}
+
+#pragma makr - EditCarInfoViewController
+-(EditCarInfoViewController*)editCarInfoViewController
+{
+    if (!_editCarInfoViewController) {
+        
+        _editCarInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EditCarInfoViewController"];
+        
+        _editCarInfoViewController.view.frame =self.view.frame;
+        
+       
+        
+        
+    }
+    
+    return _editCarInfoViewController;
     
 }
 
@@ -283,8 +313,22 @@
     
 }
 
-
+#pragma mark - 修改车辆信息
+- (IBAction)updateCarInfoAction:(id)sender {
+    
+    
+    self.editCarInfoViewController.cUserModel = _cUserModel;
+    
+    [self.view.superview addSubview:self.editCarInfoViewController.view];
+    
+    [self.view removeFromSuperview];
+    
+    
+    
+}
 #pragma mark - 开卡
+
+
 - (IBAction)registCardAction:(id)sender {
     
     

@@ -32,6 +32,17 @@
     
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
+    _summitButton.layer.borderColor = kBorderColor.CGColor;
+    _summitButton.layer.borderWidth = 1;
+    
+    
+    _headImageView.clipsToBounds = YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
+    _vipCardLabel.clipsToBounds= YES;
+    _vipCardLabel.layer.cornerRadius = kCornerRadous;
+    
+    
     
     _serviceTableView.delegate = self;
     _serviceTableView.dataSource = self;
@@ -84,6 +95,10 @@
     
     _vipCardLabel.text = _cUserModel.level_name;
     
+    _vipcardAddresslabel.text = _cUserModel.vip_address;
+    
+    
+  
     _selectedService = nil;
     _selectedCarDict = nil;
     _noteLabel.text = nil;
@@ -313,6 +328,15 @@
     NSString *service_name = [_selectedService objectForKey:@"name"];
     NSString *notes = _noteLabel.text;
     NSString *car_id = [_selectedCarDict objectForKey:@"id"];
+    
+    if (!service_id) {
+        
+        service_id = @"";
+    }
+    if (!service_name) {
+        
+        service_name = @"";
+    }
     
     NSDictionary *params = @{@"keeper_id":@(keeper_id),@"user_id":user_id,@"service_id":service_id,@"service_name":service_name,@"notes":notes,@"user_car_id":car_id};
     

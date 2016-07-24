@@ -61,7 +61,7 @@
     
     NSArray *services = [oneService_order objectForKey:@"services"];
     
-    return 130 + services.count *38 ;
+    return 100 + services.count *28 ;
     
 }
 
@@ -90,7 +90,7 @@
     
     NSArray *services = [oneService_order objectForKey:@"services"];
     
-    servicelistCell.servicesLabelHeigh.constant = 38 * services.count;
+    servicelistCell.servicesLabelHeigh.constant = 28 * services.count;
     
     NSMutableString *muString = [[NSMutableString alloc]init];
     

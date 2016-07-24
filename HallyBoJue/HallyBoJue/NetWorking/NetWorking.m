@@ -43,6 +43,8 @@ NetWorking *netWorking;
     AFJSONResponseSerializer *response = [AFJSONResponseSerializer serializer];
     response.removesKeysWithNullValues = YES;
     manager.responseSerializer = response;
+    manager.requestSerializer.timeoutInterval = 20;
+    
 //    manager.requestSerializer = [AFJSONRequestSerializer serializer];
     
   

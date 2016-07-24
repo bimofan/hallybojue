@@ -15,6 +15,7 @@
 
 @property (nonatomic,strong) CUserModel *cUserModel;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipCardAddressLabel;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;

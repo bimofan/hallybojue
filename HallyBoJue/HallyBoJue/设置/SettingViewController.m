@@ -205,9 +205,13 @@
 {
     if (buttonIndex == 1) {
         
-        int beforeKeeper_id = [UserInfo getkeeperid];
+    
         
-        [[NSUserDefaults standardUserDefaults] setObject:@(beforeKeeper_id) forKey:kBeforeKeeperID];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setObject:@{} forKey:kUserInfo];
+        
         
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kHadLogin];
         [[NSUserDefaults standardUserDefaults] synchronize];

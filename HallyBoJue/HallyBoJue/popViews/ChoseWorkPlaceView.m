@@ -431,6 +431,8 @@
         }
     }
     
+    cell.textLabel.font = FONT_14;
+    cell.textLabel.textColor = kDarkTextColor;
     
     return cell;
 }

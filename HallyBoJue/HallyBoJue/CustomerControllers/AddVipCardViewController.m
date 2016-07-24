@@ -138,6 +138,9 @@
     
     _vipLabel.text = _cUserModel.level_name;
     
+    _vipCardAddressLabel.text = _cUserModel.vip_address;
+    
+    
     if (_vipCardTemplates.count == 0) {
         
         [self getvipcards];

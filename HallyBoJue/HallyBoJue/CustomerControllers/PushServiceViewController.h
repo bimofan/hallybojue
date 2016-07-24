@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *realNameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *vipCardLabel;
+@property (weak, nonatomic) IBOutlet UILabel *vipcardAddresslabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *noteLabel;
 

@@ -13,6 +13,9 @@
 #import "AddYuYueViewController.h"
 #import "ServiceHistoryViewController.h"
 #import "PushServiceViewController.h"
+#import "BlankCell.h"
+#import "EditCarInfoViewController.h"
+
 
 
 
@@ -46,6 +49,9 @@
 
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNoti:) name:kLogoutNotification object:nil];
+    [[NSNotificationCenter defaultCenter ] addObserver:self selector:@selector(successupdatecarinfo:) name:kSuccessUpdateCarInfo object:nil];
+    
     _addCustomButton.clipsToBounds = YES;
     _addCustomButton.layer.cornerRadius = kCornerRadous;
     _addCustomButton.layer.borderWidth = 1;
@@ -70,6 +76,17 @@
     
     
 }
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (_customerArray.count == 0) {
+        
+        [_leftTableView.header beginRefreshing];
+    }
+}
+
 
 
 #pragma mark - 推送服务消息
@@ -237,6 +254,23 @@
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    
+    if (_customerArray.count == 0) {
+        
+        
+        BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+        
+        _blankCell.userInteractionEnabled = NO;
+        
+        return _blankCell;
+        
+        
+        
+    }
+    
+    
     CustomerCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CustomerCell"];
     
     if (_customerArray.count > indexPath.section) {
@@ -299,7 +333,11 @@
 {
     
     
-    
+    if (self.customerArray.count == 0) {
+        
+        return 1;
+        
+    }
     return self.customerArray.count;
     
 }
@@ -329,7 +367,13 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 160;
+    
+    if (_customerArray.count == 0) {
+        
+        return 60;
+        
+    }
+    return 170;
     
 }
 
@@ -445,4 +489,29 @@
     [_rightView addSubview:self.pushServiceViewController.view];
     
 }
+
+#pragma mark - 退出登录
+-(void)logoutNoti:(NSNotification*)note
+{
+    [_customerArray removeAllObjects];
+    
+    [_leftTableView reloadData];
+    
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    
+}
+
+#pragma mark - 成功更新车辆信息
+-(void)successupdatecarinfo:(NSNotification*)noti
+{
+    [_leftTableView.header beginRefreshing];
+    
+}
+
+
 @end

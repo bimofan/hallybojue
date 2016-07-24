@@ -15,6 +15,8 @@
 #import "ThirdYuYueViewController.h"
 #import "FourYuYueViewController.h"
 #import "FiveYuYueViewController.h"
+#import "BlankCell.h"
+
 
 
 
@@ -65,7 +67,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addnewservicenotice:) name:kAddServieNotice object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(catchOrderSucces:) name:kSuccesCatchOrder object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNoti:) name:kLogoutNotification object:nil];
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(yuyueHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(yuyueFooterRefresh)];
@@ -75,6 +77,16 @@
     
     
     
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (_myYuyueArray.count == 0) {
+        
+        [_leftTableView.header beginRefreshing];
+    }
 }
 
 #pragma mark - 完成
@@ -262,6 +274,21 @@
 #pragma mark - UITableViewDataSource
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    
+    if (_myYuyueArray.count == 0) {
+        
+        
+        BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+        
+             _blankCell.userInteractionEnabled = NO;
+        
+        return _blankCell;
+        
+        
+        
+    }
+    
     YuyueLeftCell *cell = [tableView dequeueReusableCellWithIdentifier:@"YuyueLeftCell"];
     
     if (_myYuyueArray.count > indexPath.section) {
@@ -294,8 +321,8 @@
 
         }
         
-        cell.serivceviewheight.constant = 50 *model.services.count;
-        cell.serviceLabelHeigh.constant = 50*model.services.count;
+        cell.serivceviewheight.constant = 40 *model.services.count;
+        cell.serviceLabelHeigh.constant = 40*model.services.count;
         
         
         cell.timeLabel.text = model.order_time;
@@ -318,6 +345,11 @@
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     
+    if (self.myYuyueArray.count == 0) {
+        
+        return 1;
+        
+    }
     
     return self.myYuyueArray.count;
     
@@ -348,6 +380,12 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    if (_myYuyueArray.count == 0) {
+        
+        return 60;
+    
+    }
     
     OrderModel *model = [_myYuyueArray objectAtIndex:indexPath.section];
     
@@ -732,6 +770,24 @@
     
     
 }
+
+#pragma mark - 退出登录
+-(void)logoutNoti:(NSNotification*)note
+{
+    [_myYuyueArray removeAllObjects];
+    
+    [_leftTableView reloadData];
+    
+    for (UIView *view in _rightView.subviews) {
+        
+        [view removeFromSuperview];
+        
+    }
+    
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

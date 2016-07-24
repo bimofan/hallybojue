@@ -83,6 +83,13 @@
 //更新统计信息
 #define kUpdateKeeperRankNoti    @"UpdateKeeperRankNoti"
 
+//退出登录
+#define kLogoutNotification      @"LogoutNotification"
+
+
+//车辆信息更新成功
+#define kSuccessUpdateCarInfo   @"SuccessUpdateCarInfo"
+
 
 /***********/
 

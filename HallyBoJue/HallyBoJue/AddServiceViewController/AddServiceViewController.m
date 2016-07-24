@@ -512,7 +512,8 @@
         cell.textLabel.text = [firstdict objectForKey:@"category_name"];
         
         
-        
+        cell.textLabel.font = FONT_14;
+        cell.textLabel.textColor = kDarkTextColor;
         
         return cell;
         
@@ -547,7 +548,8 @@
         
         
         cell.textLabel.text = [second objectForKey:@"name"];
-        
+        cell.textLabel.font = FONT_14;
+        cell.textLabel.textColor = kDarkTextColor;
         
         
         return cell;
@@ -564,6 +566,7 @@
         thirdCell.serviceNameLabel.text =  [NSString stringWithFormat:@"%@-%@",[dict objectForKey:@"category_name"],[dict objectForKey:@"name"]];
         
         thirdCell.servicePriceLabel.text = [NSString stringWithFormat:@"%@元",[dict objectForKey:@"price"]];
+        
         
         return thirdCell;
         

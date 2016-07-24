@@ -57,6 +57,9 @@
     
     _suggestTextView.delegate = self;
     
+    _rightView.hidden = YES;
+    
+    
     
     [self getchecklist];
     
@@ -302,6 +305,8 @@
     
     
     
+    cell.textLabel.textColor = kDarkTextColor;
+    cell.textLabel.font = FONT_14;
     
     
     
@@ -374,62 +379,74 @@
 {
     
 
-    
-     NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
-    
-    NSString *lefttitle = [leftdict objectForKey:@"desc"];
-    
-    NSString *righttitle = [dict objectForKey:@"desc"];
-    
-    _problemNameLabel.text = [NSString stringWithFormat:@" %@-%@",lefttitle,righttitle];
-    
-    
-    NSString *advise = [dict objectForKey:@"advise"];
-    
-    NSString *suggest = [dict objectForKey:@"suggest"];
-    
-    NSData *photo = [dict objectForKey:@"photo"];
-    
-    if (advise.length >0) {
+    if (![[dict objectForKey:@"selected"]boolValue]) {
         
-        [_advisButton setTitle:advise forState:UIControlStateNormal];
-        
-        
-    }
-    else
-    {
-        [_advisButton setTitle:@"点击添加" forState:UIControlStateNormal];
-        
-    }
-    
-    if (suggest.length > 0) {
-        
-        _suggestLabel.hidden = YES;
-        
-        _suggestTextView.text = suggest;
+        _rightView.hidden =YES;
         
     }
     else{
+        _rightView.hidden = NO;
         
-        _suggestTextView.text = nil;
         
-        _suggestLabel.hidden = NO;
+        NSDictionary *leftdict = [_leftDataArray objectAtIndex:_leftSelectedindex];
         
-    }
+        NSString *lefttitle = [leftdict objectForKey:@"desc"];
+        
+        NSString *righttitle = [dict objectForKey:@"desc"];
+        
+        _problemNameLabel.text = [NSString stringWithFormat:@" %@-%@",lefttitle,righttitle];
+        
+        
+        NSString *advise = [dict objectForKey:@"advise"];
+        
+        NSString *suggest = [dict objectForKey:@"suggest"];
+        
+        NSData *photo = [dict objectForKey:@"photo"];
+        
+        if (advise.length >0) {
+            
+            [_advisButton setTitle:advise forState:UIControlStateNormal];
+            
+            
+        }
+        else
+        {
+            [_advisButton setTitle:@"点击添加" forState:UIControlStateNormal];
+            
+        }
+        
+        if (suggest.length > 0) {
+            
+            _suggestLabel.hidden = YES;
+            
+            _suggestTextView.text = suggest;
+            
+        }
+        else{
+            
+            _suggestTextView.text = nil;
+            
+            _suggestLabel.hidden = NO;
+            
+        }
+        
+        if (photo) {
+            
+            [_photoButton setBackgroundImage:[UIImage imageWithData:photo] forState:UIControlStateNormal];
+            [_photoButton setTitle:nil forState:UIControlStateNormal];
+        }
+        else
+        {
+            
+            [_photoButton setBackgroundImage:nil forState:UIControlStateNormal];
+            
+            [_photoButton setTitle:@"点击添加" forState:UIControlStateNormal];
+        }
     
-    if (photo) {
         
-        [_photoButton setBackgroundImage:[UIImage imageWithData:photo] forState:UIControlStateNormal];
-        [_photoButton setTitle:nil forState:UIControlStateNormal];
+        
     }
-    else
-    {
-        
-         [_photoButton setBackgroundImage:nil forState:UIControlStateNormal];
-        
-         [_photoButton setTitle:@"点击添加" forState:UIControlStateNormal];
-    }
-    
+
     
     
     
@@ -803,6 +820,22 @@
     NSString *position_problem = [firstproblem objectForKey:@"desc"];
     NSString *advise = [firstproblem objectForKey:@"advise"];
     NSString *suggest = [firstproblem objectForKey:@"suggest"];
+    
+    
+    if (advise.length == 0) {
+        
+        [CommonMethods showDefaultErrorString:@"请选择服务建议"];
+        return;
+        
+    }
+    
+    if (suggest.length == 0) {
+        
+        [CommonMethods showDefaultErrorString:@"请填写管家建议"];
+        
+        return;
+        
+    }
     
     [params setObject:@(keeper_id) forKey:@"keeper_id"];
     

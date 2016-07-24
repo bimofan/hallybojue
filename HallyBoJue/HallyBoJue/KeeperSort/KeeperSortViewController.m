@@ -9,6 +9,7 @@
 #import "KeeperSortViewController.h"
 #import "KeepersortCell.h"
 #import "Constants.h"
+#import "BlankCell.h"
 
 @interface KeeperSortViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -213,14 +214,30 @@
 {
     if (tableView == _firstTableView) {
         
+        if (_money_today.count == 0) {
+            
+            return 1;
+            
+        }
         return _money_today.count;
     }
     if (tableView == _secondTableView) {
+        
+        if (_users_today.count == 0) {
+            return 1;
+            
+        }
         
         return _users_today.count;
     }
     
     if (tableView == _thirdTableView) {
+        
+        if (_money_month.count == 0) {
+            
+            return 1;
+            
+        }
         
         return _money_month.count;
         
@@ -262,6 +279,19 @@
     
     if (tableView == _firstTableView) {
         
+        
+        if (_money_today.count == 0) {
+            
+            
+            BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+            
+            return _blankCell;
+            
+            
+            
+        }
+        
+        
         dict = [_money_today objectAtIndex:indexPath.row];
         
         
@@ -271,6 +301,17 @@
     }
     else if (tableView == _secondTableView)
     {
+        
+        if (_users_today.count == 0) {
+            
+            
+            BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+            
+            return _blankCell;
+            
+            
+            
+        }
         dict = [_users_today objectAtIndex:indexPath.row];
         
         cell.moneyLabel.text = [NSString stringWithFormat:@"%@",[dict objectForKey:@"countuser"]];
@@ -278,6 +319,20 @@
     }
     else if (tableView == _thirdTableView)
     {
+        
+        if (_money_month.count == 0) {
+            
+            
+            BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+            
+            return _blankCell;
+            
+            
+            
+        }
+        
+        
+        
         dict = [_money_month objectAtIndex:indexPath.row];
         
         
@@ -290,6 +345,8 @@
                                             "origin"]] placeholderImage:kDefaultHeadImage];
     
     cell.keeperNameLabel.text = [dict objectForKey:@"real_name"];
+    
+    cell.keeperLevelLabel.text = [dict objectForKey:@"level_name"];
     
     cell.moneyLabel.adjustsFontSizeToFitWidth = YES;
     

@@ -7,12 +7,17 @@
 //
 
 #import "KeepersortCell.h"
+#import "Constants.h"
 
 @implementation KeepersortCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    _headImageView.clipsToBounds = YES;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -127,6 +127,9 @@
 		138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA341D29BD87005D4A00 /* CustomerViewController.m */; };
 		139705701D40714E00EBD326 /* PushServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1397056F1D40714E00EBD326 /* PushServiceViewController.m */; };
 		139705731D4079AB00EBD326 /* PushServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139705721D4079AB00EBD326 /* PushServiceCell.m */; };
+		13989C0C1D4336F100BDF16B /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13989C0B1D4336F100BDF16B /* BlankCell.m */; };
+		13989C0E1D43370100BDF16B /* BlankCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13989C0D1D43370100BDF16B /* BlankCell.xib */; };
+		13989C121D44BEE900BDF16B /* EditCarInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13989C111D44BEE900BDF16B /* EditCarInfoViewController.m */; };
 		139C54FC1D2D20BD000A7C8E /* CUserInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139C54FB1D2D20BD000A7C8E /* CUserInfoController.m */; };
 		139C54FF1D2D462D000A7C8E /* CarTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139C54FE1D2D462D000A7C8E /* CarTableViewCell.m */; };
 		139DF3FC1D2AD2440082DF16 /* libXG-SDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139DF3F81D2AD2440082DF16 /* libXG-SDK.a */; };
@@ -403,6 +406,11 @@
 		1397056F1D40714E00EBD326 /* PushServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceViewController.m; sourceTree = "<group>"; };
 		139705711D4079AB00EBD326 /* PushServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceCell.h; sourceTree = "<group>"; };
 		139705721D4079AB00EBD326 /* PushServiceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceCell.m; sourceTree = "<group>"; };
+		13989C0A1D4336F100BDF16B /* BlankCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlankCell.h; sourceTree = "<group>"; };
+		13989C0B1D4336F100BDF16B /* BlankCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlankCell.m; sourceTree = "<group>"; };
+		13989C0D1D43370100BDF16B /* BlankCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlankCell.xib; sourceTree = "<group>"; };
+		13989C101D44BEE900BDF16B /* EditCarInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditCarInfoViewController.h; sourceTree = "<group>"; };
+		13989C111D44BEE900BDF16B /* EditCarInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditCarInfoViewController.m; sourceTree = "<group>"; };
 		139C54FA1D2D20BD000A7C8E /* CUserInfoController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CUserInfoController.h; sourceTree = "<group>"; };
 		139C54FB1D2D20BD000A7C8E /* CUserInfoController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CUserInfoController.m; sourceTree = "<group>"; };
 		139C54FD1D2D462D000A7C8E /* CarTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarTableViewCell.h; sourceTree = "<group>"; };
@@ -618,6 +626,9 @@
 				132084781D3B5FA900EDA00A /* SelectTimeView.h */,
 				132084791D3B5FA900EDA00A /* SelectTimeView.m */,
 				1320847B1D3B5FB900EDA00A /* SelectTimeView.xib */,
+				13989C0A1D4336F100BDF16B /* BlankCell.h */,
+				13989C0B1D4336F100BDF16B /* BlankCell.m */,
+				13989C0D1D43370100BDF16B /* BlankCell.xib */,
 			);
 			path = popViews;
 			sourceTree = "<group>";
@@ -1023,6 +1034,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				13989C0F1D44BEA100BDF16B /* EditCarInfoViewController */,
 				1397056D1D40712900EBD326 /* PushServiceViewController */,
 				13FA59AC1D3F25800041790F /* AddVipCardViewController */,
 				13A3F1E71D3CC64700C79B17 /* ServiceHistory */,
@@ -1049,6 +1061,15 @@
 				139705721D4079AB00EBD326 /* PushServiceCell.m */,
 			);
 			name = PushServiceViewController;
+			sourceTree = "<group>";
+		};
+		13989C0F1D44BEA100BDF16B /* EditCarInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				13989C101D44BEE900BDF16B /* EditCarInfoViewController.h */,
+				13989C111D44BEE900BDF16B /* EditCarInfoViewController.m */,
+			);
+			name = EditCarInfoViewController;
 			sourceTree = "<group>";
 		};
 		139DF3F61D2AD2370082DF16 /* XG-Push */ = {
@@ -1325,6 +1346,7 @@
 				132084931D3BD15C00EDA00A /* KeepersortCell.xib in Resources */,
 				132BBB171D39F5A700B887FC /* PayTypeView.xib in Resources */,
 				136247581D24FF9D00190DCF /* MJRefresh.bundle in Resources */,
+				13989C0E1D43370100BDF16B /* BlankCell.xib in Resources */,
 				1330D44C1D3330B800CF4723 /* ChoseWorkPlaceView.xib in Resources */,
 				1362476B1D24FFF800190DCF /* ProgressHUD.bundle in Resources */,
 				13E8C8EE1D35E53400BA0F58 /* SingleTableSelectView.xib in Resources */,
@@ -1393,6 +1415,7 @@
 				13BCF3C51D26920D0058D5C1 /* BaseViewController.m in Sources */,
 				13BCF3C61D26920D0058D5C1 /* BaseHomeTableViewController.m in Sources */,
 				13E8C8F71D366C0500BA0F58 /* AddServiceThirdCell.m in Sources */,
+				13989C0C1D4336F100BDF16B /* BlankCell.m in Sources */,
 				132C2F531D32413000163F55 /* WorkerCell.m in Sources */,
 				136247621D24FF9D00190DCF /* UIScrollView+MJRefresh.m in Sources */,
 				1384A6631D281B0A00D74892 /* NSArray+JSONModel.m in Sources */,
@@ -1469,6 +1492,7 @@
 				136247601D24FF9D00190DCF /* MJRefreshLegendHeader.m in Sources */,
 				138EE9FD1D294E49005D4A00 /* DataModel.m in Sources */,
 				1384A6751D28490100D74892 /* FirstLeftCell.m in Sources */,
+				13989C121D44BEE900BDF16B /* EditCarInfoViewController.m in Sources */,
 				1384A63B1D27D2DB00D74892 /* AFURLResponseSerialization.m in Sources */,
 				1384A65F1D281B0A00D74892 /* JSONModel.m in Sources */,
 				138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */,
@@ -1639,7 +1663,8 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "03e4201c-74c9-41d3-8271-93e2cb22fa74";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -1666,6 +1691,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hallybojue;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

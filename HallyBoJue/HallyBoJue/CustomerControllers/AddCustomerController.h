@@ -42,5 +42,12 @@
 
 - (IBAction)nextAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *countDownButton;
+@property (weak, nonatomic) IBOutlet UILabel *countDownLabel;
+- (IBAction)countDownAction:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *codeTF;
+
+
+
 
 @end

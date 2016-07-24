@@ -52,6 +52,7 @@
     
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(recevieNewOrder:) name:kRecevieNewOrderNoti object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNoti:) name:kLogoutNotification object:nil];
     
     
     
@@ -68,6 +69,7 @@
     
     hadFirstRequest = NO;
     
+    [_leftTableView.header beginRefreshing];
     
     
     
@@ -86,7 +88,7 @@
     [super viewDidAppear: animated];
     
   
-    if ([[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin] &&_yuyueArray.count == 0) {
+    if (_yuyueArray.count == 0) {
         
         [_leftTableView.header beginRefreshing];
         
@@ -259,7 +261,7 @@
             
             blankCell.textLabel.text = @"暂无数据";
             blankCell.textLabel.textAlignment = NSTextAlignmentCenter;
-            blankCell.textLabel.textColor = kBackgroundColor;
+            blankCell.textLabel.textColor = kSecondeDarkTextColor;
             blankCell.textLabel.font = FONT_14;
             
             blankCell.userInteractionEnabled = NO;
@@ -298,7 +300,7 @@
             
             if (lat > 0) {
                 
-            [[BaiduMapHelper shareHelper]getLocationAddressWithLat:31.3534 Lon:121.34234 resutl:^(NSString *address) {
+            [[BaiduMapHelper shareHelper]getLocationAddressWithLat:lat Lon:lon resutl:^(NSString *address) {
               
                 cell.addressLabel.text = address;
                 
@@ -558,6 +560,15 @@
 -(void)recevieNewOrder:(NSNotification*)note
 {
     [_leftTableView.header beginRefreshing];
+    
+}
+
+#pragma mark - 退出登录
+-(void)logoutNoti:(NSNotification*)note
+{
+    [_yuyueArray removeAllObjects];
+    
+    [_leftTableView reloadData];
     
 }
 

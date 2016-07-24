@@ -28,33 +28,33 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultHead" translatesAutoresizingMaskIntoConstraints="NO" id="MXA-pF-291">
-                                <rect key="frame" x="56" y="9" width="60" height="60"/>
+                                <rect key="frame" x="56" y="12" width="55" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="JMc-oj-IdL"/>
-                                    <constraint firstAttribute="width" constant="60" id="h8c-b8-QPd"/>
+                                    <constraint firstAttribute="height" constant="55" id="JMc-oj-IdL"/>
+                                    <constraint firstAttribute="width" constant="55" id="h8c-b8-QPd"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="汪管家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1FT-EP-39j">
-                                <rect key="frame" x="124" y="9" width="175" height="21"/>
+                                <rect key="frame" x="119" y="14" width="175" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="HO0-TT-0e3"/>
                                     <constraint firstAttribute="height" constant="21" id="a7U-dG-zTA"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.23529411759999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一级管家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-8Q-GSX">
-                                <rect key="frame" x="124" y="43" width="139" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5y9-8Q-GSX">
+                                <rect key="frame" x="119" y="43" width="139" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="DsE-u6-9qp"/>
                                     <constraint firstAttribute="width" constant="139" id="YD2-uf-w4W"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id5-SA-Kc9">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id5-SA-Kc9">
                                 <rect key="frame" x="522" y="11" width="161" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="ep1-Zs-Mi9"/>
@@ -83,7 +83,7 @@
                             <constraint firstItem="RhQ-nr-uEl" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="9kc-XK-d9h"/>
                             <constraint firstItem="6ML-tK-nCp" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="B2a-Ot-j4w"/>
                             <constraint firstAttribute="bottom" secondItem="6ML-tK-nCp" secondAttribute="bottom" id="H1m-cN-tCw"/>
-                            <constraint firstItem="1FT-EP-39j" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-19" id="JKx-s9-Ad5"/>
+                            <constraint firstItem="1FT-EP-39j" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" constant="-15" id="JKx-s9-Ad5"/>
                             <constraint firstItem="Id5-SA-Kc9" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Mxp-0l-GWf"/>
                             <constraint firstItem="RhQ-nr-uEl" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="OOD-JP-Gav"/>
                             <constraint firstAttribute="trailing" secondItem="Id5-SA-Kc9" secondAttribute="trailing" constant="8" id="Rjq-vo-xvC"/>
@@ -117,6 +117,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="defaultHead" width="60" height="60"/>
+        <image name="defaultHead" width="52" height="52"/>
     </resources>
 </document>

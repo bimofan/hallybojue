@@ -12,6 +12,8 @@
 #import "CommonMethods.h"
 #import "FollowServiceListCell.h"
 #import "SetRemindViewController.h"
+#import "BlankCell.h"
+
 
 
 @interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource,SetRemindViewDelegate>
@@ -41,6 +43,8 @@
     pagesize = 15;
     
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNoti:) name:kLogoutNotification object:nil];
+    
     _userTableView.delegate = self;
     _userTableView.dataSource = self;
     
@@ -51,11 +55,17 @@
     _rightView.clipsToBounds = YES;
     _rightView.layer.cornerRadius = kCornerRadous;
     
+    _rightView.hidden = YES;
+    
+    
     _setButton.clipsToBounds = YES;
     _setButton.layer.cornerRadius = kCornerRadous;
+    _setButton.layer.borderColor = kBorderColor.CGColor;
+    _setButton.layer.borderWidth = 1;
+    
     
     _headImageView.clipsToBounds = YES;
-    _headImageView.layer.cornerRadius = kCornerRadous;
+    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
     _vipNameLabel.clipsToBounds= YES;
     _vipNameLabel.layer.cornerRadius = kCornerRadous;
@@ -224,9 +234,15 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
+    if (_followsArray.count == 0) {
+        
+        
+        return 60;
+    }
+    
     if (tableView == _userTableView) {
         
-         return 170;
+         return 160;
     }
     else
     {
@@ -239,7 +255,7 @@
         
 
         
-        return 120 + services.count * 40;
+        return 100 + services.count * 28;
         
         
     }
@@ -275,6 +291,12 @@
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    
+    if (_followsArray.count == 0) {
+        
+        return 1;
+        
+    }
     if (tableView == _userTableView) {
         
         
@@ -293,6 +315,22 @@
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
    
+    
+    
+    if (_followsArray.count == 0) {
+        
+        
+        BlankCell *_blankCell = [[[NSBundle mainBundle] loadNibNamed:@"BlankCell" owner:self options:nil]firstObject];
+        
+        _blankCell.userInteractionEnabled = NO;
+        
+        return _blankCell;
+        
+        
+        
+    }
+    
+    
     
     if (tableView == _userTableView) {
         
@@ -320,7 +358,7 @@
         
         NSString *nextdateString = [CommonMethods getYYYYMMddFromDefaultDateStr:date];
         
-        cell.nextServcietimeLabel.text = [NSString stringWithFormat:@"下次服务时间: %@", nextdateString];
+        cell.nextServcietimeLabel.text = [NSString stringWithFormat:@"下次服务时间:   %@", nextdateString];
         
         cell.nextserviceNameLabel.text = model.next_service;
         
@@ -363,7 +401,7 @@
         
         FollowServiceListCell *servicelistCell = [tableView dequeueReusableCellWithIdentifier:@"FollowServiceListCell"];
         
-        servicelistCell.servicesLabelHeigh.constant = 40 * services.count;
+        servicelistCell.servicesLabelHeigh.constant = 28* services.count;
         
         servicelistCell.servicesLabel.text = muStrig;
         
@@ -388,6 +426,8 @@
         
         _selectedModel = [_followsArray objectAtIndex:indexPath.section];
         
+        _rightView.hidden = NO;
+        
         
         [self setHeader];
         
@@ -405,7 +445,6 @@
 {
     
     
-    _rightView.hidden = NO;
     
     [self.setRemindViewController.view removeFromSuperview];
     
@@ -444,6 +483,19 @@
 -(void)didSetRemind
 {
       [_userTableView.header beginRefreshing];
+}
+
+#pragma mark - 退出登录
+-(void)logoutNoti:(NSNotification*)note
+{
+    [_followsArray removeAllObjects];
+    
+    [_userTableView reloadData];
+    
+    _rightView.hidden = YES;
+    
+    
+    
 }
 
 

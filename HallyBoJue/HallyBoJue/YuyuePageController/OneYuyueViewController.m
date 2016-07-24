@@ -44,6 +44,9 @@
     
     _addServiceButton.clipsToBounds = YES;
     _addServiceButton.layer.cornerRadius = kCornerRadous;
+    _addServiceButton.layer.borderWidth = 1;
+    _addServiceButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     _headImageView.clipsToBounds=  YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;

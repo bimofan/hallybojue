@@ -44,11 +44,11 @@
     
     _remindcontentTextField.delegate = self;
     
-    _remindcontentTextField.clipsToBounds = YES;
-    _remindcontentTextField.layer.cornerRadius = kCornerRadous;
-    
-    _remindcontentTextField.layer.borderColor = kGrayBackColor.CGColor;
-    _remindcontentTextField.layer.borderWidth = 1;
+//    _remindcontentTextField.clipsToBounds = YES;
+//    _remindcontentTextField.layer.cornerRadius = kCornerRadous;
+//    
+//    _remindcontentTextField.layer.borderColor = kGrayBackColor.CGColor;
+//    _remindcontentTextField.layer.borderWidth = 1;
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
@@ -58,6 +58,9 @@
     
     _summitButton.clipsToBounds = YES;
     _summitButton.layer.cornerRadius = kCornerRadous;
+    _summitButton.layer.borderWidth = 1;
+    _summitButton.layer.borderColor = kBorderColor.CGColor;
+    
     
     
 
