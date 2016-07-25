@@ -39,6 +39,10 @@
     _carSelectTableView.delegate= self;
     _carSelectTableView.dataSource = self;
     
+    _vipCarLabel.clipsToBounds = YES;
+    _vipCarLabel.layer.cornerRadius = kCornerRadous;
+    
+    
     _vi_numberTF.delegate = self;
     _engine_numberTF.delegate = self;
     _mileage_TF.delegate = self;
