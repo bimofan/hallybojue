@@ -283,7 +283,7 @@
     
     _vipDescLabel.text = [_selectedVipDict objectForKey:@"template_desc"];
     
-    _vipPriceLabel.text = [NSString stringWithFormat:@"￥%@",[_selectedVipDict objectForKey:@"template_desc"]];
+    _vipPriceLabel.text = [NSString stringWithFormat:@"￥%@",[_selectedVipDict objectForKey:@"price"]];
     
     _expirDayLabel.text = [NSString stringWithFormat:@"%@天",[_selectedVipDict objectForKey:@"exp_day"]];
     

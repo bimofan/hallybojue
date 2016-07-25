@@ -66,7 +66,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _vipNameLabel.clipsToBounds= YES;
     _vipNameLabel.layer.cornerRadius = kCornerRadous;
     
@@ -448,6 +448,8 @@
     
     [self.setRemindViewController.view removeFromSuperview];
     
+    
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     if (_selectedModel.cUserModel.avatar) {
         

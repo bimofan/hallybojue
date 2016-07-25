@@ -29,6 +29,8 @@
 - (IBAction)summitAction:(id)sender;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *historyButton;
 
+- (IBAction)historyAction:(id)sender;
 
 @end

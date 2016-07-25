@@ -38,6 +38,7 @@
     
     _headImageView.clipsToBounds= YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     _vipLabel.clipsToBounds = YES;
     _vipLabel.layer.cornerRadius = kCornerRadous;
@@ -131,6 +132,8 @@
 {
     
     _cUserModel = cUserModel;
+    
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     

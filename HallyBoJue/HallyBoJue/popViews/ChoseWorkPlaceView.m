@@ -659,7 +659,7 @@
             
             if (_type == 1) {
                 
-                alertStr = @"请选择工位";
+                alertStr = @"请选择车位";
                 
             }
             else if (_type == 2)

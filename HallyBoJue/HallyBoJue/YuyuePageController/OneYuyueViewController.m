@@ -68,10 +68,17 @@
 {
     _ordermodel = ordermodel;
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     
     if (_ordermodel.usermodel.avatar) {
         
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_ordermodel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
+    }
+    else
+    {
+        _headImageView.image = kDefaultHeadImage;
+        
     }
     
     

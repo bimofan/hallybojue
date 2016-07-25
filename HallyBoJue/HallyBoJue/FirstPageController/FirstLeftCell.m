@@ -15,6 +15,8 @@
     [super awakeFromNib];
     // Initialization code
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
     _serviceView.clipsToBounds = YES;

@@ -17,7 +17,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _vipCardLabel.clipsToBounds = YES;
     _vipCardLabel.layer.cornerRadius = kCornerRadous;
     

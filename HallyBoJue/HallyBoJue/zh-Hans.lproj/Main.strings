@@ -176,8 +176,8 @@
 /* Class = "UITextField"; placeholder = "请输入车牌号"; ObjectID = "Zrt-Bc-owJ"; */
 "Zrt-Bc-owJ.placeholder" = "请输入车牌号";
 
-/* Class = "UILabel"; text = "工位:"; ObjectID = "brT-U5-CHk"; */
-"brT-U5-CHk.text" = "工位:";
+/* Class = "UILabel"; text = "车位:"; ObjectID = "brT-U5-CHk"; */
+"brT-U5-CHk.text" = "车位:";
 
 /* Class = "UILabel"; text = "客户姓名:"; ObjectID = "c3r-Sv-qce"; */
 "c3r-Sv-qce.text" = "客户姓名:";

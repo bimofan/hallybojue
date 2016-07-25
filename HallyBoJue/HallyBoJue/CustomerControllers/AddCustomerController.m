@@ -267,6 +267,8 @@
         if (isSuccess) {
             
         
+            [CommonMethods showDefaultErrorString:@"短信验证码已成功发送到客户手机"];
+            
               [self getAutoCodeTime];
             
             
@@ -335,7 +337,7 @@
         
         [UIView animateWithDuration:0.3 animations:^{
            
-            self.view.center = CGPointMake(self.view.center.x, self.view.center.y -190);
+            self.view.center = CGPointMake(self.view.center.x, self.view.center.y -180);
             
         }];
     
@@ -347,7 +349,7 @@
         
         [UIView animateWithDuration:0.3 animations:^{
             
-            self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 190);
+            self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 180);
             
         }];
     }

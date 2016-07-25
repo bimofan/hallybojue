@@ -37,7 +37,7 @@ static CGFloat lineWith = 2;
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 -(void)setdata

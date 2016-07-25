@@ -90,7 +90,7 @@
  */
 #define kChecklist       @"korder/checklist"
 
-/*  工位列表
+/*  车位列表
  *  store_id
  */
 
@@ -287,6 +287,14 @@
  */
 #define kChangedcarinfo   @"kcustomer/changedcarinfo"
 
+
+/*  推送列表
+ *  page
+ *  pagesize
+ *  user_id
+ *  keeper_id
+ */
+#define kPushHistorey      @"kcustomer/pushhistory"
 
 
 

@@ -17,7 +17,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
-    
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _levelLabel.clipsToBounds = YES;
     _levelLabel.layer.cornerRadius = 6.0;
     _levelLabel.layer.borderWidth = 1.0;

@@ -53,6 +53,8 @@
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     _vipnameLabel.clipsToBounds = YES;
     _vipnameLabel.layer.cornerRadius = kCornerRadous;
     

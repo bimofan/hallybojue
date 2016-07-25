@@ -1,23 +1,18 @@
 //
-//  KeepersortCell.m
+//  PushHistoryCell.m
 //  HallyBoJue
 //
-//  Created by Haikun Zhu on 16/7/17.
+//  Created by Haikun Zhu on 16/7/25.
 //  Copyright © 2016年 Haikun Zhu. All rights reserved.
 //
 
-#import "KeepersortCell.h"
-#import "Constants.h"
+#import "PushHistoryCell.h"
 
-@implementation KeepersortCell
+@implementation PushHistoryCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    
-    _headImageView.clipsToBounds = YES;
-    _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

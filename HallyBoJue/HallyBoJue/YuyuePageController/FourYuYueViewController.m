@@ -85,12 +85,20 @@
 {
     _orderModel = orderModel;
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     if (_orderModel.usermodel.avatar) {
         
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
         
     }
+    else
+    {
+        _headImageView.image = kDefaultHeadImage;
+        
+    }
+    
     
     _realnameLabel.text = _orderModel.usermodel.nickname;
     
@@ -131,12 +139,13 @@
        
         if (isSuccess) {
             
+               _vipArray = [[NSMutableArray alloc]init];
             
             if (data) {
                 
                 DataModel *model = (DataModel*)data;
                 
-                _vipArray = [[NSMutableArray alloc]init];
+             
                 
                 for (int i = 0; i < model.items.count; i++) {
                     
@@ -160,7 +169,7 @@
                 
                 
                 
-            }
+             }
             
             [_serviceTable reloadData];
             

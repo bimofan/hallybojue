@@ -87,6 +87,8 @@
     _orderModel = orderModel;
     
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
     _statusLabel.text = orderModel.status_str;
@@ -203,7 +205,7 @@
        
         
         
-        cell.placeholderLabel.text = @"选择工位";
+        cell.placeholderLabel.text = @"选择车位";
              
       
         
@@ -456,7 +458,7 @@
         
         if (!workplace) {
             
-            [CommonMethods showDefaultErrorString:@"请选择服务工位"];
+            [CommonMethods showDefaultErrorString:@"请选择服务车位"];
             
             return;
         }

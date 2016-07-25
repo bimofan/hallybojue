@@ -66,7 +66,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _RemindButton.clipsToBounds = YES;
     _RemindButton.layer.cornerRadius = kCornerRadous;
     _RemindButton.layer.borderColor = kBorderColor.CGColor;
@@ -119,6 +119,7 @@
 -(void)setCUserModel:(CUserModel *)cUserModel
 {
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
     _nameLabel.text = cUserModel.nickname;
@@ -129,7 +130,7 @@
     
     _phoneLabel.text = [NSString stringWithFormat:@"%@",cUserModel.mobile];
     
-    _addTimeLabel.text = cUserModel.add_time;
+    _addTimeLabel.text = cUserModel.reg_time;
     
     _vipaddresslabel.text = cUserModel.vip_address;
     

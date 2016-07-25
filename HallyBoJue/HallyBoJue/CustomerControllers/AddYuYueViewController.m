@@ -63,7 +63,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = CGRectGetHeight(_headImageView.frame)/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _serviceTableView.delegate = self;
     _serviceTableView.dataSource = self;
     

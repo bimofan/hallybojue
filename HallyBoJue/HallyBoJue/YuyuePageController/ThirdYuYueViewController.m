@@ -56,10 +56,18 @@
     
     _statusLabel.text = _orderModel.status_str;
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     if (_orderModel.usermodel.avatar) {
         
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     }
+    else
+    {
+        _headImageView.image = kDefaultHeadImage;
+        
+    }
+    
     
     
     _realNameLabel.text = _orderModel.usermodel.nickname;

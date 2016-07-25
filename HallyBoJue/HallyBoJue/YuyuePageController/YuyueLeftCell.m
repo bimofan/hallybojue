@@ -17,7 +17,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.height/2;
-    
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _serviceview.clipsToBounds = YES;
     _serviceview.layer.cornerRadius = kCornerRadous;
     

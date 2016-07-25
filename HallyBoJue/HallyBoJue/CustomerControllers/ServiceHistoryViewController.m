@@ -42,6 +42,8 @@
 {
     _cUsermodel = cUsermodel;
     
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
+    
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_cUsermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     _realNameLabel.text = _cUsermodel.nickname;
     
@@ -61,7 +63,7 @@
     
     NSArray *services = [oneService_order objectForKey:@"services"];
     
-    return 100 + services.count *28 ;
+    return 100 + services.count *35 ;
     
 }
 
@@ -90,7 +92,7 @@
     
     NSArray *services = [oneService_order objectForKey:@"services"];
     
-    servicelistCell.servicesLabelHeigh.constant = 28 * services.count;
+    servicelistCell.servicesLabelHeigh.constant = 35 * services.count;
     
     NSMutableString *muString = [[NSMutableString alloc]init];
     

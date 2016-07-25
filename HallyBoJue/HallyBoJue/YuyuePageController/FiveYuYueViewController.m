@@ -26,7 +26,7 @@
     
     _headImageView.clipsToBounds = YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _serviceTableView.delegate = self;
     _serviceTableView.dataSource = self;
     
@@ -42,6 +42,11 @@
         
         [_headImageView sd_setImageWithURL:[NSURL URLWithString:[_orderModel.usermodel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
+        
+    }
+    else
+    {
+        _headImageView.image = kDefaultHeadImage;
         
     }
     

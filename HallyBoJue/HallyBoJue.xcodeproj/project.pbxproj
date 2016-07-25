@@ -150,6 +150,8 @@
 		13C8D0BF1D2E53D400527489 /* ServiceCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0BE1D2E53D400527489 /* ServiceCategoryViewController.m */; };
 		13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */; };
 		13C8D0C61D2EC23100527489 /* OneYuyueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13C8D0C51D2EC23100527489 /* OneYuyueCell.m */; };
+		13D4C27B1D45E42A001432D3 /* PushHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D4C27A1D45E42A001432D3 /* PushHistoryViewController.m */; };
+		13D4C27E1D45EC12001432D3 /* PushHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13D4C27D1D45EC12001432D3 /* PushHistoryCell.m */; };
 		13E8C8C71D348B2100BA0F58 /* ThirdYuYueViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8C61D348B2100BA0F58 /* ThirdYuYueViewController.m */; };
 		13E8C8CA1D348DD200BA0F58 /* ThirdYuYueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8C91D348DD200BA0F58 /* ThirdYuYueCell.m */; };
 		13E8C8EC1D35E51E00BA0F58 /* SingleTableSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 13E8C8EB1D35E51E00BA0F58 /* SingleTableSelectView.m */; };
@@ -452,6 +454,10 @@
 		13C8D0C11D2EC0A900527489 /* OneYuyueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueViewController.m; sourceTree = "<group>"; };
 		13C8D0C41D2EC23100527489 /* OneYuyueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneYuyueCell.h; sourceTree = "<group>"; };
 		13C8D0C51D2EC23100527489 /* OneYuyueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneYuyueCell.m; sourceTree = "<group>"; };
+		13D4C2791D45E42A001432D3 /* PushHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushHistoryViewController.h; sourceTree = "<group>"; };
+		13D4C27A1D45E42A001432D3 /* PushHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushHistoryViewController.m; sourceTree = "<group>"; };
+		13D4C27C1D45EC12001432D3 /* PushHistoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushHistoryCell.h; sourceTree = "<group>"; };
+		13D4C27D1D45EC12001432D3 /* PushHistoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushHistoryCell.m; sourceTree = "<group>"; };
 		13E8C8C51D348B2100BA0F58 /* ThirdYuYueViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdYuYueViewController.h; sourceTree = "<group>"; };
 		13E8C8C61D348B2100BA0F58 /* ThirdYuYueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdYuYueViewController.m; sourceTree = "<group>"; };
 		13E8C8C81D348DD200BA0F58 /* ThirdYuYueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdYuYueCell.h; sourceTree = "<group>"; };
@@ -1059,6 +1065,10 @@
 				1397056F1D40714E00EBD326 /* PushServiceViewController.m */,
 				139705711D4079AB00EBD326 /* PushServiceCell.h */,
 				139705721D4079AB00EBD326 /* PushServiceCell.m */,
+				13D4C2791D45E42A001432D3 /* PushHistoryViewController.h */,
+				13D4C27A1D45E42A001432D3 /* PushHistoryViewController.m */,
+				13D4C27C1D45EC12001432D3 /* PushHistoryCell.h */,
+				13D4C27D1D45EC12001432D3 /* PushHistoryCell.m */,
 			);
 			name = PushServiceViewController;
 			sourceTree = "<group>";
@@ -1448,6 +1458,7 @@
 				13A3F1EA1D3CC6D800C79B17 /* ServiceHistoryViewController.m in Sources */,
 				132084841D3B9E0200EDA00A /* FollowUserCell.m in Sources */,
 				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
+				13D4C27B1D45E42A001432D3 /* PushHistoryViewController.m in Sources */,
 				136247251D24FDB100190DCF /* SDWebImageDecoder.m in Sources */,
 				132BBB221D3A365C00B887FC /* AddYuYueViewController.m in Sources */,
 				132084911D3BD14A00EDA00A /* KeepersortCell.m in Sources */,
@@ -1463,6 +1474,7 @@
 				136247301D24FDB100190DCF /* UIView+WebCacheOperation.m in Sources */,
 				13C8D0C21D2EC0A900527489 /* OneYuyueViewController.m in Sources */,
 				133A53BA1D3FB06C00C0C899 /* ChangePasswordViewController.m in Sources */,
+				13D4C27E1D45EC12001432D3 /* PushHistoryCell.m in Sources */,
 				1320847A1D3B5FA900EDA00A /* SelectTimeView.m in Sources */,
 				136247261D24FDB100190DCF /* SDWebImageDownloader.m in Sources */,
 				1384A6621D281B0A00D74892 /* JSONModelError.m in Sources */,

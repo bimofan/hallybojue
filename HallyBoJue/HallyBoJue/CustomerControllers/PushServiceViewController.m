@@ -10,6 +10,8 @@
 #import "PushServiceCell.h"
 #import "AddServiceViewController.h"
 #import "ChoseWorkPlaceView.h"
+#import "PushHistoryViewController.h"
+
 
 
 @interface PushServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,ChoseWorkPlaceDelegate>
@@ -21,6 +23,9 @@
 @property (nonatomic,strong) NSDictionary *selectedCarDict;
 
 @property (nonatomic,strong) NSMutableArray *carsArray;
+
+@property (nonatomic,strong) PushHistoryViewController *pushHistoryViewController;
+
 
 @end
 
@@ -34,6 +39,12 @@
     _summitButton.layer.cornerRadius = kCornerRadous;
     _summitButton.layer.borderColor = kBorderColor.CGColor;
     _summitButton.layer.borderWidth = 1;
+    
+    _historyButton.clipsToBounds = YES;
+    _historyButton.layer.cornerRadius = kCornerRadous;
+    _historyButton.layer.borderColor = kBorderColor.CGColor;
+    _historyButton.layer.borderWidth = 1;
+    
     
     
     _headImageView.clipsToBounds = YES;
@@ -65,6 +76,20 @@
     
 }
 
+#pragma mark - pushHistoryViewController
+-(PushHistoryViewController*)pushHistoryViewController
+{
+    if (!_pushHistoryViewController) {
+        
+        _pushHistoryViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PushHistoryViewController"];
+        
+        _pushHistoryViewController.view.frame = self.view.frame;
+        
+    }
+    
+    return _pushHistoryViewController;
+}
+
 
 #pragma mark - 获取用户汽车
 -(void)getusercars
@@ -88,6 +113,8 @@
 -(void)setCUserModel:(CUserModel *)cUserModel
 {
     _cUserModel = cUserModel;
+    
+     _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     
     [_headImageView sd_setImageWithURL:[NSURL URLWithString:[cUserModel.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
     
@@ -344,6 +371,17 @@
         }
     }];
     
+    
+}
+- (IBAction)historyAction:(id)sender {
+    
+
+    
+    [self.view.superview addSubview:self.pushHistoryViewController.view];
+    
+    self.pushHistoryViewController.cUserModel = _cUserModel;
+    
+    [self.view removeFromSuperview];
     
 }
 @end

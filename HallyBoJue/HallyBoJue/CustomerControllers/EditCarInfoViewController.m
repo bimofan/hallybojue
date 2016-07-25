@@ -27,7 +27,7 @@
     
     _headImageView.clipsToBounds= YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
-    
+    _headImageView.contentMode = UIViewContentModeScaleAspectFill;
     _saveCarInfoButton.clipsToBounds= YES;
     _saveCarInfoButton.layer.cornerRadius = kCornerRadous;
     

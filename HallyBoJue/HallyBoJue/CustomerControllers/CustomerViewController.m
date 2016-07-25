@@ -280,6 +280,8 @@
         
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:[model.avatar objectForKey:@"origin"]] placeholderImage:kDefaultHeadImage];
         
+        cell.headImageView.contentMode = UIViewContentModeScaleAspectFill;
+        
         NSDictionary *firstcar = [model.cars firstObject];
         
         if (firstcar) {
