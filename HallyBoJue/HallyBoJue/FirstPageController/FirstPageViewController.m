@@ -79,6 +79,10 @@
 {
     [super viewWillAppear:animated];
     
+    [_searchArray removeAllObjects];
+    
+    [_rightTableView reloadData];
+    
 
     
 }
@@ -365,7 +369,7 @@
             
             NSDictionary *firstcar = [_cusermodel.cars firstObject];
             
-            rightcell.carLabel.text = [firstcar objectForKey:@"brand_name"];
+            rightcell.carLabel.text =  [NSString stringWithFormat:@"%@  %@",[firstcar objectForKey:@"brand_name"],[firstcar objectForKey:@"plate_number"]];
             
             rightcell.levelLabel.text = _cusermodel.level_name;
             
@@ -374,7 +378,31 @@
             
             rightcell.lastTimeLabel.text = [NSString stringWithFormat:@"最近一次服务时间:%@",[firstservice objectForKey:@"order_time"]?[firstservice objectForKey:@"order_time"]:@""];
             
-            rightcell.lastServiceLabel.text = [NSString stringWithFormat:@"服务名称:%@",[firstservice objectForKey:@"service_name"]?[firstservice objectForKey:@"service_name"]:@""];
+            NSArray *services = [firstservice objectForKey:@"services"];
+            NSDictionary *first = [services firstObject];
+            
+            rightcell.lastServiceLabel.text = [NSString stringWithFormat:@"服务名称:%@",[first objectForKey:@"service_name"]?[first objectForKey:@"service_name"]:@""];
+            
+            
+            if (_cusermodel.keeper) {
+                rightcell.keeperView.hidden = NO;
+                
+                rightcell.keeperName.text = [_cusermodel.keeper objectForKey:@"real_name"];
+                
+                [rightcell.keeperHeadImageView sd_setImageWithURL:[NSURL URLWithString:[[_cusermodel.keeper objectForKey:@"avatar_img"] objectForKey:@"origin" ]] placeholderImage:kDefaultHeadImage];
+                
+            }
+            else
+            {
+                rightcell.keeperView.hidden = YES;
+                
+            }
+       
+            
+            
+            
+            
+
             
             
         

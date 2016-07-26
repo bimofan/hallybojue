@@ -44,8 +44,27 @@
     
     
     _vi_numberTF.delegate = self;
+    _vi_numberTF.tag = 1;
+    
     _engine_numberTF.delegate = self;
+    _engine_numberTF.tag = 2;
+    
     _mileage_TF.delegate = self;
+    _mileage_TF.tag = 3;
+    
+    _color_TextField.delegate = self;
+    _color_TextField.tag = 4;
+    
+    _tire_TextField.delegate = self;
+    _tire_TextField.tag = 5;
+    
+    _car_license_TextField.delegate = self;
+    _car_license_TextField.tag = 6;
+    
+    _driver_license_TextField.delegate = self;
+    _driver_license_TextField.tag = 7;
+    
+    
     
     
 }
@@ -65,6 +84,11 @@
     _vi_numberTF.text = nil;
     _engine_numberTF.text = nil;
     _mileage_TF.text = nil;
+    _car_license_TextField.text = nil;
+    _driver_license_TextField.text = nil;
+    _color_TextField.text = nil;
+    _tire_TextField.text = nil;
+    
     
     _selectedCarDict = nil;
     
@@ -177,6 +201,15 @@
     
     _engine_numberTF.text = [_selectedCarDict objectForKey:@"engine_number"];
     
+    _tire_TextField.text = [_selectedCarDict objectForKey:@"tire_model"];
+    
+    _color_TextField.text = [_selectedCarDict objectForKey:@"car_color"];
+    
+    _driver_license_TextField.text = [_selectedCarDict objectForKey:@"driver_license"];
+    
+    _car_license_TextField.text  = [_selectedCarDict objectForKey:@"car_license"];
+    
+    
     
     
     
@@ -187,7 +220,11 @@
 {
     [UIView animateWithDuration:0.3 animations:^{
        
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y - 150);
+        
+        self.view.bounds = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y + 50*textField.tag, self.view.bounds.size.width, self.view.bounds.size.height);
+        
+
+        
     }];
 }
 
@@ -195,8 +232,10 @@
 {
     
     [UIView animateWithDuration:0.3 animations:^{
+       
+       self.view.bounds =  CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y - 50*textField.tag, self.view.bounds.size.width, self.view.bounds.size.height);
         
-        self.view.center = CGPointMake(self.view.center.x, self.view.center.y + 150);
+      
     }];
     
     
@@ -235,6 +274,25 @@
         
         
     }
+    
+    if (_color_TextField.text.length > 0) {
+        
+        [mudict setObject:_color_TextField.text forKey:@"car_color"];
+    }
+    if (_car_license_TextField.text.length  > 0) {
+        
+        [mudict setObject:_car_license_TextField.text forKey:@"car_license"];
+    }
+    if (_driver_license_TextField.text.length > 0) {
+        
+        [mudict setObject:_driver_license_TextField.text forKey:@"driver_license"];
+    }
+    
+    if (_tire_TextField.text.length > 0) {
+        
+        [mudict setObject:_tire_TextField.text forKey:@"tire_model"];
+    }
+    
     
     [[NetWorking shareNetWorking] RequestWithAction:kChangedcarinfo Params:mudict itemModel:nil result:^(BOOL isSuccess, id data) {
        

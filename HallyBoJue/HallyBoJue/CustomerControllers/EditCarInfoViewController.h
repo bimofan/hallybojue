@@ -29,4 +29,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveCarInfoButton;
 - (IBAction)saveCarInfoAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UITextField *color_TextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *tire_TextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *car_license_TextField;
+
+
+@property (weak, nonatomic) IBOutlet UITextField *driver_license_TextField;
+
+
 @end

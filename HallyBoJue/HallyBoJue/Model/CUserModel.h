@@ -38,6 +38,8 @@
 @property (nonatomic,strong) NSString *add_time;
 @property (nonatomic,strong) NSString *vip_address;
 @property (nonatomic,strong) NSString *reg_time;
+@property (nonatomic,strong)  NSDictionary *keeper;
+
 
 
 
