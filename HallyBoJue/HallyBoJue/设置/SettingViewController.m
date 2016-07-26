@@ -37,7 +37,12 @@
     _settingTableView.dataSource = self;
     
     
+    [self updatekeeperinfo];
+    
+    
+    
 }
+
 
 -(ChangePasswordViewController*)changePasswordViewController
 {
@@ -78,6 +83,7 @@
     return _titles;
     
 }
+
 
 
 
@@ -224,6 +230,29 @@
         
     }
 }
+
+#pragma mark - 更新管家信息
+-(void)updatekeeperinfo
+{
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:kHadLogin]) {
+        
+        Usermodel *model = [[Usermodel alloc]init];
+        
+        [[NetWorking shareNetWorking] RequestWithAction:kGetKeeperInfo Params:@{@"keeper_id":@(0)} itemModel:model result:^(BOOL isSuccess, id data) {
+            
+            if (isSuccess) {
+                
+                model.vip_address = @"";
+                [UserInfo saveUserInfo:model];
+            }
+        }];
+        
+    }
+    
+}
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

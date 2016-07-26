@@ -297,6 +297,13 @@
 #define kPushHistorey      @"kcustomer/pushhistory"
 
 
+/*  获取管家信息
+ *  keeper_id
+ *
+ */
+#define kGetKeeperInfo    @"kuser/getkeeperinfo"
+
+
 
 
 
