@@ -69,6 +69,11 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(catchOrderSucces:) name:kSuccesCatchOrder object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNoti:) name:kLogoutNotification object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(yuyueHeaderRefresh) name:kRecevieNewOrderNoti object:nil];
+    
+    
+    
+    
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(yuyueHeaderRefresh)];
     [_leftTableView addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(yuyueFooterRefresh)];
     
@@ -253,6 +258,15 @@
                     
                     [ordermodel.usermodel setValuesForKeysWithDictionary:ordermodel.user];
                     
+                    if (!ordermodel.usermodel.vip_address) {
+                        
+                        ordermodel.usermodel.vip_address = @"";
+                    }
+                    
+                    if (!ordermodel.usermodel.vipcard_name) {
+                        
+                        ordermodel.usermodel.vipcard_name = @"";
+                    }
                     [_myYuyueArray addObject:ordermodel];
                     
                     
@@ -562,7 +576,7 @@
         [self checkappoint:model];
         
     }
-    else if (model.status == 2) //预约确认 开始派工
+    else if (model.status == 2) //预约确认 开始服务
     {
         
         [self startSend:model];
@@ -572,11 +586,11 @@
 
 }
 
-#pragma mark - 开始派工
+#pragma mark - 开始服务
 -(void)startSend:(OrderModel*)model
 {
     
-    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(3)} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(4)} itemModel:nil result:^(BOOL isSuccess, id data) {
         
         if (isSuccess) {
             
@@ -588,9 +602,9 @@
                 if (temmodel.id == model.id) {
                     
                     
-                    temmodel.status = 3;
+                    temmodel.status = 4;
                     
-                    temmodel.status_str = @"派工中";
+                    temmodel.status_str = @"服务中";
                     
                     [_myYuyueArray replaceObjectAtIndex:i withObject:temmodel];
                     
@@ -603,8 +617,8 @@
             
             
             
-            model.status_str = @"派工中";
-            model.status = 3;
+            model.status_str = @"服务中";
+            model.status = 4;
             
             self.twoViewController.delegate = self;
             

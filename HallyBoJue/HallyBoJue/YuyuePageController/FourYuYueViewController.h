@@ -19,6 +19,7 @@
 
 @interface FourYuYueViewController : BaseViewController
 
+@property (nonatomic,assign)NSInteger pay_type;
 
 @property (nonatomic,assign) id <FourYuYueDelegate> delegate;
 
@@ -42,6 +43,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *serviceTable;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipcard_Label;
 
 @property (weak, nonatomic) IBOutlet UIButton *summitButton;
 - (IBAction)summitAction:(id)sender;

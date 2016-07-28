@@ -254,6 +254,7 @@
     
     if (indexPath.section == 1) {
         
+        self.choseWorkPlaceView.titleLabel.text = @"选择车辆";
         self.choseWorkPlaceView.type = 4;
         
         self.choseWorkPlaceView.selectedDict = _selectedCarDict;
@@ -327,6 +328,9 @@
         if (isSuccess) {
             
             [CommonMethods showDefaultErrorString:@"会籍卡申请提交成功"];
+            
+            [self.view removeFromSuperview];
+            
             
         }
     }];

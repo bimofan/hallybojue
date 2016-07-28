@@ -24,11 +24,18 @@
 @property (weak, nonatomic) IBOutlet UILabel *mobileLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipcard_Label;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderSNLabel;
+@property (weak, nonatomic) IBOutlet UIButton *changepaytypeButton;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *order_amount_Label;
+@property (weak, nonatomic) IBOutlet UILabel *order_old_amount_Label;
+
+- (IBAction)changepaytypeAction:(id)sender;
 
 
 

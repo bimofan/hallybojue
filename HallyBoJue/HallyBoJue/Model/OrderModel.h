@@ -42,6 +42,14 @@
 
 @property (nonatomic,assign) int  car_id;
 
+@property (nonatomic,assign ) float order_amount;
+@property (nonatomic,assign ) float  order_old_amount;
+
+@property (nonatomic,assign) NSInteger pay_type;
+
+
+
+
 
 
 

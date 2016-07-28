@@ -102,7 +102,7 @@
     
     _timeLabel.text = orderModel.order_time;
     
-    
+        _vipcard_Label.text = [NSString stringWithFormat:@" %@ %@",orderModel.usermodel.vipcard_name,orderModel.usermodel.vip_address];
     _servicesArray = [[NSMutableArray alloc]init];
     
     [_servicesArray addObjectsFromArray:_orderModel.services];

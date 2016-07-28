@@ -12,6 +12,7 @@
 #import "Constants.h"
 #import "NSUserDefaultKeys.h"
 #import "UserInfo.h"
+#import "GetIPAddress.h"
 
 
 
@@ -126,6 +127,12 @@
     
     
       application.applicationIconBadgeNumber = 0;
+  
+    
+    NSString *ip = [GetIPAddress newIpAddress];
+    
+    NSLog(@"ip:%@",ip);
+    
     
     return YES;
  }

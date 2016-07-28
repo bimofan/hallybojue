@@ -42,6 +42,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *timeTwoLabel;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *vipcard_Label;
+
 @property (weak, nonatomic) IBOutlet UITableView *serviceTable;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;

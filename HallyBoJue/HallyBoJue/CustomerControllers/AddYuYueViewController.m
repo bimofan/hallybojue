@@ -642,6 +642,9 @@
             
             [CommonMethods showDefaultErrorString:@"预约提交成功"];
             
+            [self.view removeFromSuperview];
+            
+            
             
         }
     }];

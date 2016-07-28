@@ -11,7 +11,7 @@
 @interface Usermodel : JSONModel
 
 @property (nonatomic) NSDictionary * avatar_img;
-@property (nonatomic,strong) NSString *create_time;
+@property (nonatomic,strong) NSString *add_time;
 @property(nonatomic,strong) NSString *desc;
 @property (nonatomic,assign) int keeper_id;
 @property (nonatomic,strong) NSString *mobile;

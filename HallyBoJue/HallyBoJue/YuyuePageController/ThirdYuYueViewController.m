@@ -78,7 +78,7 @@
     
     _timeLabel.text = _orderModel.order_time;
     
-    
+     _vipcard_Label.text = [NSString stringWithFormat:@" %@ %@",orderModel.usermodel.vipcard_name,orderModel.usermodel.vip_address];
     [_serviceTableView reloadData];
     
     

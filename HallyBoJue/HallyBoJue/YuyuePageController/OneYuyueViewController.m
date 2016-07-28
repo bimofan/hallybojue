@@ -94,6 +94,9 @@
     
     _timeTwoLabel.text = ordermodel.order_time;
     
+    _vipcard_Label.text = [NSString stringWithFormat:@" %@ %@",ordermodel.usermodel.vipcard_name,ordermodel.usermodel.vip_address];
+    
+    
     if (_ordermodel.status == 1)//预约中
     {
         
@@ -109,7 +112,7 @@
         _checkButton.hidden = NO;
         _addServiceButton.hidden = NO;
         
-        [_sendButton setTitle:@"开始派工" forState:UIControlStateNormal];
+        [_sendButton setTitle:@"开始服务" forState:UIControlStateNormal];
     }
     
     

@@ -237,9 +237,11 @@
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kHadLogin]) {
         
+        int keeper_id = [UserInfo getkeeperid];
+        
         Usermodel *model = [[Usermodel alloc]init];
         
-        [[NetWorking shareNetWorking] RequestWithAction:kGetKeeperInfo Params:@{@"keeper_id":@(0)} itemModel:model result:^(BOOL isSuccess, id data) {
+        [[NetWorking shareNetWorking] RequestWithAction:kGetKeeperInfo Params:@{@"keeper_id":@(keeper_id)} itemModel:model result:^(BOOL isSuccess, id data) {
             
             if (isSuccess) {
                 

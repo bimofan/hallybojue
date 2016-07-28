@@ -13,22 +13,27 @@
 #import "OrderModel.h"
 #import "UserInfo.h"
 #import "BaiduMapHelper.h"
+#import "AddYuYueViewController.h"
 
 
 
 
 
 
-@interface FirstPageViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate>
+
+@interface FirstPageViewController ()<UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate,UIAlertViewDelegate>
 {
     int pagesize;
     int page;
     
     BOOL hadFirstRequest;
     
+    NSString *selected_user_id;
+    
+    
     
 }
-
+@property (nonatomic,strong) AddYuYueViewController *addYuYueViewController;
 @property (nonatomic,strong) NSMutableArray *yuyueArray;
 @property (nonatomic,strong) NSMutableArray *searchArray;
 
@@ -343,6 +348,7 @@
             cell.timeLabel.text = model.order_time;
             
             
+      
             cell.catchButton.tag = indexPath.section;
             
             [cell.catchButton addTarget:self action:@selector(catchorder:) forControlEvents:UIControlEventTouchUpInside];
@@ -398,6 +404,26 @@
                 
             }
        
+            
+            
+            int keeper_id = [UserInfo getkeeperid];
+            if (keeper_id != _cusermodel.keeper_id) {
+                
+                rightcell.changedButton.hidden = NO;
+                rightcell.changedButton.tag = indexPath.section;
+                [rightcell.changedButton addTarget:self action:@selector(changedKeeper:) forControlEvents:UIControlEventTouchUpInside];
+            }
+            else
+            {
+                rightcell.changedButton.hidden = YES;
+          
+            }
+            
+            
+            rightcell.addAppointButton.tag = indexPath.section;
+            [rightcell.addAppointButton addTarget:self action:@selector(addYuYueAction:) forControlEvents:UIControlEventTouchUpInside];
+            
+            
             
             
             
@@ -582,6 +608,97 @@
     
     
 }
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 999 && buttonIndex == 1) {
+        
+        [self changkeeper];
+        
+    }
+}
+
+
+#pragma mark - 点击变更管家
+-(void)changedKeeper:(UIButton*)sender
+{
+        CUserModel *_cusermodel = [_searchArray objectAtIndex:sender.tag];
+    
+    selected_user_id = _cusermodel.user_id;
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确定变更管家吗?" delegate:self  cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    alert.tag = 999;
+    
+    [alert show];
+    
+    
+    
+}
+
+#pragma mark - 变更管家
+-(void)changkeeper
+{
+    
+    int keeper_id = [UserInfo getkeeperid];
+    
+    NSDictionary *param = @{@"keeper_id":@(keeper_id),@"user_id":selected_user_id};
+    
+    [[NetWorking shareNetWorking]RequestWithAction:kChangedKeeper Params:param itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            [CommonMethods showDefaultErrorString:@"管家变更成功,请到【预约管理】查看新的预约"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:kRecevieNewOrderNoti object:nil];
+            
+            if (_rightSearchBar.text.length > 0) {
+                
+                [self searchCustomer];
+                
+            }
+        }
+    }];
+}
+
+#pragma mark - 添加预约动作
+-(void)addYuYueAction:(UIButton*)sender
+{
+    
+    
+//    for (UIView *view in _rightView.subviews) {
+//        
+//        [view removeFromSuperview];
+//        
+//    }
+    
+    
+    CUserModel *_cusermodel = [_searchArray objectAtIndex:sender.tag];
+    
+    
+    self.addYuYueViewController.cUserModel = _cusermodel;
+    
+    
+    
+    [_rightView addSubview:self.addYuYueViewController.view];
+    
+    
+    
+
+}
+#pragma mark - 添加预约界面
+-(AddYuYueViewController*)addYuYueViewController
+{
+    if (!_addYuYueViewController) {
+        
+        _addYuYueViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddYuYueViewController"];
+        
+        _addYuYueViewController.view.frame = CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+    }
+    
+    return  _addYuYueViewController;
+    
+}
+
 
 
 #pragma mark - 新订单推送

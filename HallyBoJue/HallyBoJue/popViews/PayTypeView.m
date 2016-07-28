@@ -58,18 +58,81 @@
     _cancelButton.clipsToBounds = YES;
     _cancelButton.layer.cornerRadius = kCornerRadous;
     
+ 
     
-     [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
     
+//     [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+    
+  
+    
+    
+}
+
+-(void)layoutSubviews
+{
+      [self changebuttonselected];
+}
+
+
+-(void)setPay_type:(NSInteger)pay_type
+{
+    _pay_type = pay_type;
+    
+    if (_pay_type == 0 && _pay_type > 3) {
+        
+        _pay_type = 1;
+        
+    }
+    
+  [self changebuttonselected];
+    
+    
+ 
+}
+
+-(void)changebuttonselected
+{
+    switch (_pay_type) {
+        case 1:
+        {
+            [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+            
+            [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+            
+            [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+        }
+        break;
+        case 2:
+        {
+            [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+            
+            [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+            
+            [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+        }
+        break;
+       case 3:
+        {
+            [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+            
+            [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+            
+            [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+        }
+        break;
+        
+        
+        default:
+        break;
+    }
 }
 
 - (IBAction)onelinePayAction:(id)sender {
     
-    [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+ 
     
-    [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
     
-    [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+    _pay_type = 1;
     
     
     if ([self.delegate respondsToSelector:@selector(didSelectedPayType:)]) {
@@ -79,15 +142,17 @@
         
     }
     
+    [self changebuttonselected];
+    
+    
     
 }
 - (IBAction)offlinePayAction:(id)sender {
     
-    [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
     
-    [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
+      _pay_type = 2;
     
-    [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
+   
     
     if ([self.delegate respondsToSelector:@selector(didSelectedPayType:)]) {
         
@@ -96,16 +161,16 @@
         
     }
     
+        [self changebuttonselected];
+    
+    
     
 }
 - (IBAction)freePayAction:(id)sender {
     
-    [_onelinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
     
-    [_offlinePayButton setImage:[UIImage imageNamed:@"jiesuan_weixuanz"] forState:UIControlStateNormal];
-    
-    [_freePayButton setImage:[UIImage imageNamed:@"jiesuan_xuanz"] forState:UIControlStateNormal];
-    
+     _pay_type = 3;
+
     
     if ([self.delegate respondsToSelector:@selector(didSelectedPayType:)]) {
         
@@ -114,15 +179,24 @@
         
     }
     
+        [self changebuttonselected];
+    
     
 }
 - (IBAction)okAction:(id)sender {
     
     [self endEdite];
     
-    if ([self.delegate respondsToSelector:@selector(doneSelectedPayType)]) {
+    if ([self.delegate respondsToSelector:@selector(doneSelectedPayType:)]) {
         
-        [self.delegate doneSelectedPayType];
+        
+        NSString *note = _noteTextView.text;
+        if (!note) {
+            
+            note = @"";
+        }
+        NSDictionary *param = @{@"note":note,@"paytype":@(_pay_type)};
+        [self.delegate doneSelectedPayType:param];
         
         
         [self dismiss];

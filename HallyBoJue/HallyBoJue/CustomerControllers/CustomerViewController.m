@@ -20,7 +20,7 @@
 
 
 
-@interface CustomerViewController ()<AddCustomerDelegate>
+@interface CustomerViewController ()<AddCustomerDelegate,UISearchBarDelegate>
 {
     int page;
     
@@ -33,7 +33,7 @@
 @property (nonatomic,strong) ServiceHistoryViewController *serviceHistoryViewController;
 @property (nonatomic,strong) PushServiceViewController *pushServiceViewController;
 
-
+@property (nonatomic,strong) NSMutableArray *searchResults;
 @property (nonatomic,strong) NSMutableArray *customerArray;
 
 @end
@@ -66,6 +66,10 @@
     
     _rightView.clipsToBounds = YES;
     _rightView.layer.cornerRadius = kCornerRadous;
+    
+    
+    _cusSearchBar.delegate = self;
+    
     
     
     [_leftTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(customerHeaderRefresh)];
@@ -246,6 +250,41 @@
 }
 
 
+#pragma mark - 搜索用户
+-(void)searchMyCustomer
+{
+    
+    int keeper_id = [UserInfo getkeeperid];
+    NSString *keyword = _cusSearchBar.text;
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSearchMyCustomer Params:@{@"keeper_id":@(keeper_id),@"keyword":keyword} itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            _customerArray  = [[NSMutableArray alloc]init];
+            
+            DataModel *model = (DataModel*)data;
+            
+            for (int i = 0; i <model.items.count; i++) {
+                
+                NSDictionary *dict = [model.items objectAtIndex:i];
+                
+                CUserModel *usermodel = [[CUserModel alloc]init];
+                
+                [usermodel setValuesForKeysWithDictionary:dict];
+                
+                
+                [_customerArray addObject:usermodel];
+                
+            }
+            
+            [_leftTableView reloadData];
+            
+            
+        }
+        
+    }];
+}
 
 
 
@@ -515,5 +554,21 @@
     
 }
 
+
+#pragma mark - UISearchBarDelegate
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self.view endEditing:YES];
+    
+    [self searchMyCustomer];
+    
+}
+
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [_leftTableView.header beginRefreshing];
+    
+}
 
 @end

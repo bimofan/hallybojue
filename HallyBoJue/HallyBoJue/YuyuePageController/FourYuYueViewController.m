@@ -110,7 +110,7 @@
     
     _statusLabel.text = _orderModel.status_str;
     
-    
+     _vipcard_Label.text = [NSString stringWithFormat:@" %@ %@",orderModel.usermodel.vipcard_name,orderModel.usermodel.vip_address];
     
     _totalMoney = 0.0;
     
@@ -540,8 +540,10 @@
                     break;
                 case 2:  //抵扣金额
                 {
-                    _totalMoney -= discount;
                     
+                    _totalMoney = _totalMoney - discount + onePrice;
+                    
+                
                 }
                     break;
                 case 3:  //买一送一
@@ -559,7 +561,7 @@
                     break;
             }
             
-         }
+          }
        
              
             
@@ -573,7 +575,7 @@
         
         
             
-       }
+        }
         
     
  
@@ -586,6 +588,12 @@
 
 -(void)setTotalMoneyLabel
 {
+    
+    if (_totalMoney < 0) {
+        
+        _totalMoney = 0.00;
+        
+    }
     _totalMoneyLabel.text = [NSString stringWithFormat:@"￥%.2f",_totalMoney];
     
 }
@@ -595,6 +603,8 @@
 - (IBAction)summitAction:(id)sender {
     
     
+    
+    self.payTypeView.pay_type = _pay_type;
     
     self.payTypeView.totalMoney = _totalMoney;
     
@@ -696,16 +706,38 @@
     
 }
 
--(void)doneSelectedPayType
+-(void)doneSelectedPayType:(NSDictionary*)dict
 {
+    
+    CGFloat order_old_amount = 0;
+    
+    for (int i = 0; i < _orderModel.services.count; i++) {
+        
+        NSDictionary *oneService = [_orderModel.services objectAtIndex:i];
+    
+        CGFloat price = [[oneService objectForKey:@"price"]floatValue];
+        
+        order_old_amount += price;
+        
+    }
+    
+    
     NSDictionary *params = [self getparams];
     
-    [[NetWorking shareNetWorking] RequestWithAction:kSummitOrder Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:params];
+    
+    [mudict setObject:@"keeper_note" forKey:[dict objectForKey:@"note"]];
+   
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kSummitOrder Params:mudict itemModel:nil result:^(BOOL isSuccess, id data) {
        
         if (isSuccess) {
             
             _orderModel.status = 6;
             _orderModel.status_str = @"待支付";
+            _orderModel.order_amount = _totalMoney;
+            _orderModel.order_old_amount =order_old_amount;
+            
             
             if ([self.delegate respondsToSelector:@selector(didSummitOrder:)]) {
                 

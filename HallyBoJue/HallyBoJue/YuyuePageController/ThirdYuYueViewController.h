@@ -40,6 +40,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *serviceTableView;
 
+@property (weak, nonatomic) IBOutlet UILabel *vipcard_Label;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkCarButton;
 

@@ -23,6 +23,12 @@
     _levelLabel.layer.borderWidth = 1.0;
     _levelLabel.layer.borderColor = kLineColor.CGColor;
     
+    _changedButton.clipsToBounds= YES;
+    _changedButton.layer.cornerRadius = kCornerRadous;
+    _changedButton.layer.borderColor = kBorderColor.CGColor;
+    _changedButton.layer.borderWidth  = 1;
+    
+    
     _keeperView.clipsToBounds = YES;
     _keeperView.layer.cornerRadius = 6.0;
     
@@ -31,6 +37,12 @@
     
     _keeperHeadImageView.clipsToBounds = YES;
     _keeperHeadImageView.layer.cornerRadius = _keeperHeadImageView.frame.size.height/2;
+    
+    _addAppointButton.clipsToBounds=  YES;
+    _addAppointButton.layer.cornerRadius = kCornerRadous;
+    _addAppointButton.layer.borderColor = kBorderColor.CGColor;
+    _addAppointButton.layer.borderWidth = 1;
+    
     
     
     

@@ -12,7 +12,7 @@
 
 -(void)didSelectedPayType:(int)payType;
 
--(void)doneSelectedPayType;
+-(void)doneSelectedPayType:(NSDictionary*)dict;
 
 
 
@@ -21,6 +21,7 @@
 
 @interface PayTypeView : UIView<UITextViewDelegate>
 
+@property (nonatomic,assign) NSInteger pay_type;
 
 @property (nonatomic,assign) CGFloat totalMoney;
 

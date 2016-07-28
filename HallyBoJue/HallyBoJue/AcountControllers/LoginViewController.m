@@ -10,6 +10,8 @@
 #import "CommonMethods.h"
 #import "UserInfo.h"
 #import "XGPush.h"
+#import "GetIPAddress.h"
+
 
 
 
@@ -62,7 +64,9 @@
         return;
     }
     
-    NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text};
+    NSString *ip = [GetIPAddress getIPAddress:YES];
+    
+    NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text,@"ip":ip};
     
      Usermodel *model = [[Usermodel alloc]init];
     

@@ -16,7 +16,7 @@
 
 
 
-@interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource,SetRemindViewDelegate>
+@interface FollowUserController ()<UITableViewDelegate,UITableViewDataSource,SetRemindViewDelegate,UISearchBarDelegate>
 {
     NSInteger page ;
     NSInteger pagesize;
@@ -25,6 +25,7 @@
 @property (nonatomic,strong)NSMutableArray *followsArray;
 
 @property (nonatomic,strong) FollowModel *selectedModel;
+
 
 
 @property (nonatomic,strong) SetRemindViewController *setRemindViewController;
@@ -76,6 +77,8 @@
     _historyserviceTable.delegate = self;
     _historyserviceTable.dataSource = self;
     
+    
+    _searchBar.delegate = self;
     
     
     [_userTableView addLegendHeaderWithRefreshingTarget:self refreshingAction:@selector(headerRefresh)];
@@ -230,6 +233,54 @@
         
     }];
     
+}
+
+
+#pragma mark - 搜索我的跟进
+-(void)getmyfollowsearch
+{
+    int keeper_id = [UserInfo getkeeperid];
+    
+    NSString *keyword = _searchBar.text;
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kMyFollowSearch Params:@{@"keeper_id":@(keeper_id),@"keyword":keyword} itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            _followsArray = [[NSMutableArray alloc]init];
+            
+             DataModel *dataModel = (DataModel*)data;
+            
+            for (int i = 0; i < dataModel.items.count; i++) {
+                
+                NSDictionary *dict = [dataModel.items objectAtIndex:i];
+                
+                FollowModel *model = [[FollowModel alloc]init];
+                
+                [model setValuesForKeysWithDictionary:dict];
+                
+                CUserModel *cuserModel = [[CUserModel alloc]init];
+                
+                if ([[dict objectForKey:@"user"] isKindOfClass:[NSDictionary class]]) {
+                    
+                    NSDictionary *cUserDict = [dict objectForKey:@"user"];
+                    
+                    [cuserModel setValuesForKeysWithDictionary:cUserDict];
+                    
+                    model.cUserModel = cuserModel;
+                }
+                
+                
+                [_followsArray addObject:model];
+                
+                
+             }
+            
+            
+            [_userTableView reloadData];
+            
+        }
+    }];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -407,7 +458,7 @@
         
         servicelistCell.storeNameLabel.text = model.store_name;
         servicelistCell.keeper_nameLabel.text = model.keeper_name;
-        servicelistCell.timeLabel.text = model.order_time;
+        servicelistCell.timeLabel.text = [service objectForKey:@"order_time"];
         
         
         
@@ -461,12 +512,29 @@
     
     _vipNameLabel.text = _selectedModel.cUserModel.level_name;
     
+    _vipAddressLabel.text = _selectedModel.cUserModel.vip_address;
+    
+    _phoneLabel.text = [NSString stringWithFormat:@" 联系电话:%@",_selectedModel.cUserModel.mobile];
+    
     
     [_historyserviceTable reloadData];
     
     
 }
 
+
+#pragma mark - UISearchBarDelegate
+-(void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    
+}
+
+-(void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    
+    [self getmyfollowsearch];
+    
+}
 
 
 - (IBAction)setAction:(id)sender {

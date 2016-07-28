@@ -304,6 +304,36 @@
 #define kGetKeeperInfo    @"kuser/getkeeperinfo"
 
 
+/*   搜索我的用户
+ *   keeper_id
+ *   keyword
+ */
+#define kSearchMyCustomer    @"kcustomer/searchmycustomer"
+
+
+/*  搜搜我的跟进提醒
+ *  keeper_id
+ *   keyword
+ */
+#define kMyFollowSearch      @"kfollow/searchmyfollow"
+
+
+/* 变更管家
+ *  keeper_id
+ *  user_id
+ *
+ */
+#define  kChangedKeeper     @"kcustomer/changedkeeper"
+
+
+/*  修改支付方式
+ *  keeper_id
+ *  pay_type
+ *  note
+ */
+#define kChangePayType       @"korder/changedpaytype"
+
+
 
 
 

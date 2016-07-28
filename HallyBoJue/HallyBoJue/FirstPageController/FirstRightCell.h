@@ -22,6 +22,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *keeperName;
 @property (weak, nonatomic) IBOutlet UILabel *lastTimeLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *changedButton;
+
+@property (weak, nonatomic) IBOutlet UIButton *addAppointButton;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *lastServiceLabel;
 
