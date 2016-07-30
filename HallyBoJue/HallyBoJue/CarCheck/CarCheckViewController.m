@@ -824,16 +824,14 @@
     
     if (advise.length == 0) {
         
-        [CommonMethods showDefaultErrorString:@"请选择服务建议"];
-        return;
-        
+       
+        advise = @"";
     }
     
     if (suggest.length == 0) {
         
-        [CommonMethods showDefaultErrorString:@"请填写管家建议"];
+       suggest = @"";
         
-        return;
         
     }
     

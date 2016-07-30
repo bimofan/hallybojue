@@ -37,6 +37,10 @@
 
 - (IBAction)changepaytypeAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *sendWorkerButton;
+
+- (IBAction)sendWorkerAction:(id)sender;
+
 
 
 @end

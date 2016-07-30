@@ -47,6 +47,12 @@
 
 @property (nonatomic,assign) NSInteger pay_type;
 
+@property (nonatomic,assign) int service_time;
+
+@property (nonatomic,assign) BOOL sendworker;
+
+
+
 
 
 

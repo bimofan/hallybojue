@@ -29,6 +29,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *setButton;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
 
+@property (weak, nonatomic) IBOutlet UIButton *setfollowButton;
+- (IBAction)setfollowAction:(id)sender;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *vipAddressLabel;
 
 - (IBAction)setAction:(id)sender;

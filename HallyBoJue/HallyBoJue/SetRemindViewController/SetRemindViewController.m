@@ -434,6 +434,10 @@
             
             [CommonMethods showDefaultErrorString:@"跟进提醒提交成功"];
             
+            [[NSNotificationCenter defaultCenter] postNotificationName:kHadUpdateFollowNoti object:nil];
+            
+            [self.view removeFromSuperview];
+            
             
             if ([self.delegate respondsToSelector:@selector(didSetRemind)]) {
                 

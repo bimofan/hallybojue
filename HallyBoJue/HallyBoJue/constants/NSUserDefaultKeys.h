@@ -91,6 +91,10 @@
 #define kSuccessUpdateCarInfo   @"SuccessUpdateCarInfo"
 
 
+//已跟进提醒
+#define kHadUpdateFollowNoti     @"HadUpdateFollowNoti"
+
+
 /***********/
 
 

@@ -132,7 +132,17 @@
     
     _addTimeLabel.text = cUserModel.reg_time;
     
-    _vipaddresslabel.text = cUserModel.vip_address;
+    NSString *vipname = cUserModel.vipcard_name;
+    NSString *vipaddress = cUserModel.vip_address;
+    if (!vipname) {
+        
+        vipname = @"";
+    }
+    if (!vipaddress) {
+        
+        vipaddress = @"";
+    }
+    _vipaddresslabel.text = [NSString stringWithFormat:@" %@  %@",vipname,vipaddress];
     
     _cUserModel = cUserModel;
     

@@ -10,7 +10,7 @@
 #import "WorkerCell.h"
 #import "ChoseWorkPlaceView.h"
 
-@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,ChoseWorkPlaceDelegate,UITextFieldDelegate>
+@interface TwoViewController ()<UITableViewDelegate,UITableViewDataSource,ChoseWorkPlaceDelegate,UITextFieldDelegate,UIAlertViewDelegate>
 
 
 @property (nonatomic,strong) ChoseWorkPlaceView *choseWorkPlaceView;
@@ -101,6 +101,9 @@
     _mobileLabel.text = orderModel.usermodel.mobile;
     
     _timeLabel.text = orderModel.order_time;
+    
+    [_startService setTitle:@"提交" forState:UIControlStateNormal];
+    
     
         _vipcard_Label.text = [NSString stringWithFormat:@" %@ %@",orderModel.usermodel.vipcard_name,orderModel.usermodel.vip_address];
     _servicesArray = [[NSMutableArray alloc]init];
@@ -229,7 +232,8 @@
                 NSDictionary *workerDict = [workers objectAtIndex:i];
                 
                 if (workerStr.length == 0) {
-                    if ([workerDict objectForKey:@"worker_real_name"]) {
+                    if ([workerDict objectForKey:@"worker_real_name"])
+                    {
                         
                         [workerStr appendString:[NSString stringWithFormat:@"%@",[workerDict objectForKey:@"worker_real_name"]]];
                     }
@@ -435,17 +439,16 @@
 - (IBAction)startServiceAction:(id)sender {
     
     
-    if (_timeTextField.text.length == 0  || [_timeTextField.text integerValue] == 0) {
-        
-        
-        [CommonMethods showDefaultErrorString:@"请填写预估服务时间"];
-        
-        return ;
-        
-        
-    }
-    
-    
+//    if (_timeTextField.text.length == 0  || [_timeTextField.text integerValue] == 0) {
+//        
+//        
+//        [CommonMethods showDefaultErrorString:@"请填写预估服务时间"];
+//        
+//        return ;
+//        
+//        
+//    }
+
     
     for (int i = 0; i < _servicesArray.count; i++) {
         
@@ -484,24 +487,35 @@
     NSLog(@"jsonString:%@",jsonString);
     
     
-    [[NetWorking shareNetWorking] RequestWithAction:kOrderStartService Params:@{@"order_id":@(_orderModel.id),@"services":jsonString,@"expecte_time":_timeTextField.text} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kOrderSendWorkers Params:@{@"order_id":@(_orderModel.id),@"services":jsonString} itemModel:nil result:^(BOOL isSuccess, id data) {
        
         if (isSuccess) {
             
-            _orderModel.status = 4;
-            _orderModel.status_str = @"服务中";
-            _orderModel.services = _servicesArray;
             
-            if ([self.delegate respondsToSelector:@selector(didStartService:)]) {
-                
-                [self.delegate didStartService:_orderModel];
-                
-            }
+            [CommonMethods showDefaultErrorString:@"技师分派成功"];
+            
+            _orderModel.sendworker =  1;
+            
+            [self.view removeFromSuperview];
+            
+//            _orderModel.services = _servicesArray;
+//            
+//            if ([self.delegate respondsToSelector:@selector(didStartService:)]) {
+//                
+//                [self.delegate didStartService:_orderModel];
+//                
+//            }
         }
     }];
     
 }
 
+
+#pragma mark - UIAlertViewDelegate
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    
+}
 
 
 @end

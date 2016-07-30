@@ -10,16 +10,22 @@
 #import "AddVipCardCell.h"
 #import "ChoseWorkPlaceView.h"
 #import "AddVipCardViewController.h"
+#import "PayTypeView.h"
 
 
 
-@interface AddVipCardViewController ()<UITableViewDelegate,UITableViewDataSource,ChoseWorkPlaceDelegate>
+@interface AddVipCardViewController ()<UITableViewDelegate,UITableViewDataSource,ChoseWorkPlaceDelegate,PayTypeDelegate>
 
 @property (nonatomic,strong) NSMutableArray *vipCardTemplates;
 @property (nonatomic,strong) NSMutableArray *carsArray;
 @property (nonatomic,strong) ChoseWorkPlaceView *choseWorkPlaceView;
 @property (nonatomic,strong) NSDictionary *selectedCarDict;
 @property (nonatomic,strong) NSDictionary *vipCardDict;
+@property (nonatomic,assign) NSInteger payType;
+@property (nonatomic,strong) NSString *note;
+@property (nonatomic,strong) PayTypeView *payTypeView;
+
+
 
 
 
@@ -308,6 +314,25 @@
         return;
     }
     
+    
+     float amount = [[_vipCardDict objectForKey:@"price"]floatValue];
+    
+    self.payTypeView.pay_type = _payType;
+
+    
+    self.payTypeView.totalMoney = amount;
+    
+    
+    [[UIApplication sharedApplication].keyWindow addSubview:self.payTypeView];
+    
+    
+    
+    
+}
+
+#pragma mark - 提交数据 
+-(void)summitdata
+{
     NSString *user_id = _cUserModel.user_id;
     
     int vipcard_template_id = [[_vipCardDict objectForKey:@"template_id"]intValue];
@@ -321,10 +346,10 @@
     int store_id = [UserInfo getstoreid];
     
     
-    NSDictionary *params = @{@"user_id":user_id,@"vipcard_template_id":@(vipcard_template_id),@"amount":@(amount),@"keeper_id":@(keeper_id),@"car_id":@(car_id),@"store_id":@(store_id)};
+    NSDictionary *params = @{@"user_id":user_id,@"vipcard_template_id":@(vipcard_template_id),@"amount":@(amount),@"keeper_id":@(keeper_id),@"car_id":@(car_id),@"store_id":@(store_id),@"pay_type":@(_payType),@"note":_note};
     
     [[NetWorking shareNetWorking] RequestWithAction:kAddVipCard Params:params itemModel:nil result:^(BOOL isSuccess, id data) {
-       
+        
         if (isSuccess) {
             
             [CommonMethods showDefaultErrorString:@"会籍卡申请提交成功"];
@@ -335,6 +360,52 @@
         }
     }];
     
+}
+
+
+#pragma mark - PayTypeView
+-(PayTypeView*)payTypeView
+{
+    if (!_payTypeView) {
+        
+        _payTypeView = [[[NSBundle mainBundle] loadNibNamed:@"PayTypeView" owner:self options:nil] firstObject];
+        
+        _payTypeView.frame = CGRectMake(0, 0, ScreenWidth, ScreenHeight);
+        
+        _payTypeView.delegate = self;
+        
+    }
+    
+    return _payTypeView;
+    
+    
+}
+
+
+#pragma mark - PayTypeDelegate
+-(void)didSelectedPayType:(int)payType
+{
+    _payType = payType;
+    
+
+    
+}
+
+-(void)doneSelectedPayType:(NSDictionary*)dict
+{
+    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
+    
+    [mudict setObject:@"keeper_note" forKey:[dict objectForKey:@"note"]];
+    
+    if ([dict objectForKey:@"note"]) {
+      _note  = [dict objectForKey:@"note"];
+    }
+    else
+    {
+        _note = @"";
+    }
+    
+    [self summitdata];
     
     
     

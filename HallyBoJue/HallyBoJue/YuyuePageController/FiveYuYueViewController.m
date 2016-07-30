@@ -9,12 +9,16 @@
 #import "FiveYuYueViewController.h"
 #import "FiveYuYueCell.h"
 #import "PayTypeView.h"
+#import "TwoViewController.h"
 
 
 @interface FiveYuYueViewController ()<UITableViewDelegate,UITableViewDataSource,PayTypeDelegate>
 
 @property (nonatomic,strong) PayTypeView *payTypeView;
 @property (nonatomic,assign) NSInteger payType;
+
+@property (nonatomic,strong) TwoViewController *twoViewController;
+
 
 
 @end
@@ -38,6 +42,12 @@
     _changepaytypeButton.layer.cornerRadius = kCornerRadous;
     _changepaytypeButton.layer.borderColor = kBorderColor.CGColor;
     _changepaytypeButton.layer.borderWidth = 1;
+    
+    _sendWorkerButton.clipsToBounds  = YES;
+    _sendWorkerButton.layer.cornerRadius = kCornerRadous;
+    _sendWorkerButton.layer.borderColor = kBorderColor.CGColor;
+    _sendWorkerButton.layer.borderWidth = 1;
+    
     
     
     
@@ -93,6 +103,17 @@
     _orderSNLabel.text = [NSString stringWithFormat:@"订单号:%@",_orderModel.so_number];
     _orderSNLabel.adjustsFontSizeToFitWidth =YES;
     
+    
+    if (_orderModel.sendworker) {
+        
+        _sendWorkerButton.hidden = YES;
+        
+    }
+    else
+    {
+        _sendWorkerButton.hidden = NO;
+        
+    }
     [_serviceTableView reloadData];
     
     
@@ -139,7 +160,18 @@
 
 
 
-
+#pragma mark - twoViewController
+-(TwoViewController*)twoViewController
+{
+    if (!_twoViewController) {
+        
+        _twoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"TwoViewController"];
+        _twoViewController.view.frame = self.view.frame;
+    }
+    
+    return _twoViewController;
+    
+}
 
 #pragma mark - PayTypeView
 -(PayTypeView*)payTypeView
@@ -208,6 +240,19 @@
     
     
     [[UIApplication sharedApplication].keyWindow addSubview:self.payTypeView];
+    
+}
+- (IBAction)sendWorkerAction:(id)sender {
+    
+    self.twoViewController.orderModel = _orderModel;
+    
+    [self.view.superview addSubview:self.twoViewController.view];
+    
+    [self.view removeFromSuperview];
+    
+    
+
+    
     
 }
 @end

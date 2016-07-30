@@ -15,4 +15,9 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titlelabel;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+
+
+
 @end

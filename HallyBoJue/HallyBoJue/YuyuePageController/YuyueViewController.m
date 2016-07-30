@@ -16,12 +16,14 @@
 #import "FourYuYueViewController.h"
 #import "FiveYuYueViewController.h"
 #import "BlankCell.h"
+#import "InServiceViewController.h"
 
 
 
 
 
-@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate,ThirdViewDelegate,FourYuYueDelegate>
+
+@interface YuyueViewController ()<UITableViewDelegate,UITableViewDataSource,OneYuyueDelegate,TwoViewDelegate,ThirdViewDelegate,FourYuYueDelegate,InServiceDelegate>
 {
     int pagesize;
     int page;
@@ -36,6 +38,8 @@
 @property (nonatomic,strong) ThirdYuYueViewController *thirdYuYueViewController;
 @property (nonatomic,strong) FourYuYueViewController *fourYuYueViewController;
 @property (nonatomic,strong) FiveYuYueViewController *fiveYuYueViewController;
+@property (nonatomic,strong) InServiceViewController *inServiceViewController;
+
 
 
 
@@ -92,6 +96,24 @@
         
         [_leftTableView.header beginRefreshing];
     }
+}
+
+
+#pragma mark - 新服务中
+-(InServiceViewController*)inServiceViewController
+{
+    if (!_inServiceViewController) {
+        
+        _inServiceViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"InServiceViewController"];
+        _inServiceViewController.view.frame =CGRectMake(0, 0, _rightView.frame.size.width, _rightView.frame.size.height);
+        
+        _inServiceViewController.delegate = self;
+        
+    }
+    
+    return _inServiceViewController;
+    
+    
 }
 
 #pragma mark - 完成
@@ -469,12 +491,18 @@
             break;
         case 4: //服务中
         {
-            self.thirdYuYueViewController.orderModel = model;
             
-            self.thirdYuYueViewController.superViewController = self.superViewController;
+//            self.thirdYuYueViewController.orderModel = model;
+//            
+//            self.thirdYuYueViewController.superViewController = self.superViewController;
+//            
+//            
+//            [self.rightView addSubview:self.thirdYuYueViewController.view];
+//
             
+            self.inServiceViewController.orderModel = model;
             
-            [self.rightView addSubview:self.thirdYuYueViewController.view];
+            [self.rightView addSubview:self.inServiceViewController.view];
             
             
             
@@ -566,7 +594,7 @@
 
 
 
-#pragma mark -  预约确认 或者 开始派工
+#pragma mark -  预约确认 或者 开始服务
 -(void)startSendWorders:(OrderModel*)model
 {
     
@@ -590,7 +618,7 @@
 -(void)startSend:(OrderModel*)model
 {
     
-    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(4)} itemModel:nil result:^(BOOL isSuccess, id data) {
+    [[NetWorking shareNetWorking] RequestWithAction:kCheckappoint Params:@{@"order_id":@(model.id),@"status":@(4),@"expecte_time":@(model.service_time)} itemModel:nil result:^(BOOL isSuccess, id data) {
         
         if (isSuccess) {
             
@@ -620,13 +648,13 @@
             model.status_str = @"服务中";
             model.status = 4;
             
-            self.twoViewController.delegate = self;
+            self.inServiceViewController.delegate = self;
             
-            self.twoViewController.orderModel = model;
+            self.inServiceViewController.orderModel = model;
             
             [self.oneYuyueViewController.view removeFromSuperview];
             
-            [self.rightView addSubview:self.twoViewController.view];
+            [self.rightView addSubview:self.inServiceViewController.view];
             
             
             
@@ -751,7 +779,20 @@
     
 }
 
-
+#pragma mark - InServiceDelegate
+-(void)newDoneService:(OrderModel *)orderModel
+{
+    self.fourYuYueViewController.orderModel = orderModel;
+    
+    [self.inServiceViewController.view removeFromSuperview];
+    
+    [self.rightView addSubview:self.fourYuYueViewController.view];
+    
+    
+    [_leftTableView reloadData];
+    
+    
+}
 #pragma mark - FourYuYueDelegate
 -(void)didSummitOrder:(OrderModel *)orderModel
 {

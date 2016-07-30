@@ -71,6 +71,13 @@
     _vipNameLabel.clipsToBounds= YES;
     _vipNameLabel.layer.cornerRadius = kCornerRadous;
     
+    
+    _setfollowButton.clipsToBounds = YES;
+    _setfollowButton.layer.cornerRadius = kCornerRadous;
+    _setfollowButton.layer.borderColor = kBorderColor.CGColor;
+    _setfollowButton.layer.borderWidth = 1;
+    
+    
     _rightView.hidden = YES;
     
     
@@ -517,6 +524,8 @@
     _phoneLabel.text = [NSString stringWithFormat:@" 联系电话:%@",_selectedModel.cUserModel.mobile];
     
     
+    
+    
     [_historyserviceTable reloadData];
     
     
@@ -569,4 +578,27 @@
 }
 
 
+- (IBAction)setfollowAction:(id)sender {
+    
+    int follow_id = _selectedModel.follow_id;
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kUpdateFollow Params:@{@"follow_id":@(follow_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+       
+        if (isSuccess) {
+            
+            [CommonMethods showDefaultErrorString:@"跟进提醒成功"];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:kHadUpdateFollowNoti object:nil];
+            
+            
+              _rightView.hidden = YES;
+            
+            [_userTableView.header beginRefreshing];
+            
+            
+            
+        }
+    }];
+    
+}
 @end

@@ -26,6 +26,9 @@ typedef void (^upLoadPhotoBlock)(BOOL success,NSArray*results);
 
 @interface CommonMethods : NSObject
 
++(UIImage*)convertViewToImage:(UIView*)view;
+
+
 +(NSString*)getHHmmssStr:(NSString*)dateStr;
 
 +(NSString *)getYYYYMMddHHmmssDateStr:(NSDate*)date;
@@ -125,8 +128,7 @@ typedef void (^upLoadPhotoBlock)(BOOL success,NSArray*results);
 
 #pragma mark - 获取date中的月日
 + (NSString *)getMounthAndDay:(NSDate *)dateTime;
-#pragma mark - Bmob上传图片 
-+(void)upLoadPhotos:(NSArray*)photos resultBlock:(upLoadPhotoBlock)block;
+
 
 #pragma mark - 整理手机号码格式
 +(NSString*)getRightPhoneNum:(NSString*)phoneNum;

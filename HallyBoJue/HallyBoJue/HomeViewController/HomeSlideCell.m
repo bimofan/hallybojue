@@ -13,6 +13,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    _numberLabel.clipsToBounds=  YES;
+    _numberLabel.layer.cornerRadius = _numberLabel.frame.size.width/2;
+    
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

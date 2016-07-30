@@ -336,7 +336,7 @@
         dict = [_money_month objectAtIndex:indexPath.row];
         
         
-        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dict objectForKey:@"order_old_amount"]];
+        cell.moneyLabel.text = [NSString stringWithFormat:@"￥%@",[dict objectForKey:@"sum"]];
         
     }
     

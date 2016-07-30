@@ -28,12 +28,16 @@ CGFloat cellHeight = 45;
 {
     NSInteger selectedSection;
     
+    
+    
 }
 
 @property (nonatomic,strong) NSArray *slideTitles;
 @property(nonatomic,strong) HomeHeaderView *homeHeaderView;
 @property(nonatomic,strong) UIView*selectedBackView;
 @property (nonatomic,strong) NSDictionary *keeperRankData;
+@property (nonatomic,strong) NSDictionary *unreaddict;
+
 
 
 @property(nonatomic,strong) FirstPageViewController *firstpageController;
@@ -80,6 +84,13 @@ CGFloat cellHeight = 45;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getKeeperRank) name:kUpdateKeeperRankNoti object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getunreadnumber) name:kHadUpdateFollowNoti object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getunreadnumber) name:kRecevieNewOrderNoti object:nil];
+    
+    
+    
     
     [self.headerView addSubview:self.homeHeaderView];
     
@@ -121,11 +132,36 @@ CGFloat cellHeight = 45;
         
         [self getKeeperRank];
         
+        [self getunreadnumber];
+        
+        
         
         
     }
 }
 
+
+#pragma mark - 获取未读消息数
+-(void)getunreadnumber
+{
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHadLogin]) {
+        
+        int keeper_id = [UserInfo getkeeperid];
+        int store_id = [UserInfo getstoreid];
+        
+        [[NetWorking shareNetWorking] RequestWithAction:kUnReadNumber Params:@{@"keeper_id":@(keeper_id),@"store_id":@(store_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+           
+            if (isSuccess) {
+                
+                _unreaddict = data;
+                
+                [_slideTabelView reloadData];
+                
+                
+            }
+        }];
+    }
+}
 -(void)dealloc
 {
     [[NSNotificationCenter defaultCenter ]removeObserver:self name:kChangedAvatarNoti object:nil];
@@ -341,7 +377,51 @@ CGFloat cellHeight = 45;
         cell.slideimageview.image = [UIImage imageNamed:[dict objectForKey:@"image"]];
     }
     
+    int num = 0;
     
+    switch (indexPath.section) {
+        case 0:
+        {
+             num = [[_unreaddict objectForKey:@"catch_num"]intValue];
+            
+          
+        }
+        break;
+       case 1:
+        {
+            num = [[_unreaddict objectForKey:@"appoint_num"]intValue];
+        }
+        break;
+
+      case 3:
+        {
+             num = [[_unreaddict objectForKey:@"follow_num"]intValue];
+        }
+        break;
+        
+        
+        default:
+        {
+           
+            num = 0;
+            
+            
+        }
+        break;
+    }
+    
+    if (num > 0) {
+        
+        cell.numberLabel.adjustsFontSizeToFitWidth = YES;
+        
+        cell.numberLabel.hidden = NO;
+        cell.numberLabel.text = [NSString stringWithFormat:@"%d",num];
+        
+    }
+    else
+    {
+        cell.numberLabel.hidden = YES;
+    }
 
     
     
@@ -514,6 +594,8 @@ CGFloat cellHeight = 45;
     
     [self switchSubPage:1];
     
+    [self  getunreadnumber];
+    
     
     
     
@@ -526,6 +608,9 @@ CGFloat cellHeight = 45;
     self.homeHeaderView.headImageView.image = [UIImage imageWithData:noti.object];
     
 }
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

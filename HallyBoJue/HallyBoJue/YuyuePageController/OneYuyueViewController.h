@@ -56,6 +56,13 @@
 - (IBAction)sendAction:(id)sender;
 
 
+
+@property (weak, nonatomic) IBOutlet UIButton *printSheetButotn;
+
+- (IBAction)printAction:(id)sender;
+
+
+
 @property (weak, nonatomic) IBOutlet UIButton *addServiceButton;
 
 - (IBAction)addServiceAction:(id)sender;

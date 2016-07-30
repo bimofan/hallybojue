@@ -9,11 +9,15 @@
 #import "OneYuyueViewController.h"
 #import "OneYuyueCell.h"
 #import "AddServiceViewController.h"
+#import "ToPrintViewController.h"
 
 
 
 
-@interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface OneYuyueViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIPrintInteractionControllerDelegate>
+
+@property (nonatomic,strong) UIPrintInteractionController *printer;
+@property (nonatomic,strong) ToPrintViewController *toPrintViewController;
 
 
 @end
@@ -47,6 +51,13 @@
     _addServiceButton.layer.borderWidth = 1;
     _addServiceButton.layer.borderColor = kBorderColor.CGColor;
     
+    _printSheetButotn.clipsToBounds= YES;
+    _printSheetButotn.layer.cornerRadius = kCornerRadous;
+    _printSheetButotn.layer.borderWidth = 1;
+    _printSheetButotn.layer.borderColor = kBorderColor.CGColor;
+    
+    
+    
     
     _headImageView.clipsToBounds=  YES;
     _headImageView.layer.cornerRadius = _headImageView.frame.size.width/2;
@@ -62,6 +73,40 @@
     
     
 
+}
+
+
+-(ToPrintViewController*)toPrintViewController
+{
+    if (!_toPrintViewController) {
+        
+        _toPrintViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ToPrintViewController"];
+        _toPrintViewController.view.frame = self.view.frame;
+        
+    }
+    
+    return _toPrintViewController;
+    
+}
+
+-(UIPrintInteractionController*)printer
+{
+    if (!_printer) {
+        
+        _printer = [UIPrintInteractionController sharedPrintController];
+        
+        _printer.delegate = self;
+        
+    }
+    
+    return _printer;
+    
+}
+
+-(void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kAddService object:nil];
+    
 }
 
 -(void)setOrdermodel:(OrderModel *)ordermodel
@@ -202,7 +247,8 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"确定开始派工吗?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"服务预估时间" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alert.alertViewStyle  = UIAlertViewStylePlainTextInput;
         
         alert.tag = 9999;
         
@@ -222,7 +268,6 @@
     
     
     NSMutableDictionary *mudict = [[NSMutableDictionary alloc]init];
-    
     [mudict setObject:@(_ordermodel.store_id) forKey:@"store_id"];
     [mudict setObject:@(_ordermodel.user_id) forKey:@"user_id"];
     [mudict setObject:@(_ordermodel.id) forKey:@"service_order_id"];
@@ -307,8 +352,13 @@
 {
     if (alertView.tag == 9999  && buttonIndex == 1) {
         
+        UITextField *firstTF = [alertView textFieldAtIndex:0];
+        
+        int minis = [firstTF.text intValue];
+        
         if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
             
+            _ordermodel.service_time = minis;
             
             [self.delegate startSendWorders:_ordermodel];
             
@@ -316,5 +366,83 @@
         }
         
     }
+}
+- (IBAction)printAction:(id)sender {
+    
+
+    
+ 
+        int order_id = _ordermodel.id;
+    
+    
+    [[NetWorking shareNetWorking] RequestWithAction:kGetCarCheckList Params:@{@"service_order_id":@(order_id)} itemModel:nil result:^(BOOL isSuccess, id data) {
+        
+        if (isSuccess) {
+            
+            DataModel *model = (DataModel*)data;
+            
+            self.toPrintViewController.orderModel = _ordermodel;
+            
+            self.toPrintViewController.carcheckArray =model.items;
+            
+            
+//            
+            UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
+            //            pic.delegate = self;
+            
+            UIPrintInfo *printInfo = [UIPrintInfo printInfo];
+            printInfo.outputType = UIPrintInfoOutputGeneral;
+            printInfo.jobName = @"工单";
+            pic.printInfo = printInfo;
+            
+            //    UISimpleTextPrintFormatter *textFormatter = [[UISimpleTextPrintFormatter alloc]
+            //                                                 initWithText:@"teatagsatagabagsfdagatg"];
+            //    textFormatter.startPage = 0;
+            //    textFormatter.contentInsets = UIEdgeInsetsMake(72.0, 72.0, 72.0, 72.0); // 1 inch margins
+            //    textFormatter.maximumContentWidth = 6 * 72.0;
+            //    pic.printFormatter = textFormatter;
+            //
+            pic.showsPageRange = NO;
+            
+            UIPrintFormatter *fommater = [[UIPrintFormatter alloc]init];
+            fommater.contentInsets =UIEdgeInsetsMake(72.0, 72.0, 72.0, 72.0);
+            fommater.maximumContentWidth = 6 * 72.0;
+//            pic.printFormatter = fommater;
+            
+            
+            pic.printingItem = [CommonMethods convertViewToImage:self.toPrintViewController.view];
+            
+            
+            
+            void (^completionHandler)(UIPrintInteractionController *, BOOL, NSError *) =
+            ^(UIPrintInteractionController *printController, BOOL completed, NSError *error) {
+                if (!completed && error) {
+                    NSLog(@"Printing could not complete because of error: %@", error);
+                }
+            };
+            if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+                [pic presentFromBarButtonItem:sender animated:YES completionHandler:completionHandler];
+                
+            } else {
+                
+                [pic presentAnimated:YES completionHandler:completionHandler];
+            }
+            
+        }
+    }];
+    
+    
+    
+}
+
+#pragma mark  UIPrintInteractionControllerDelegate
+-(void)printInteractionControllerWillStartJob:(UIPrintInteractionController *)printInteractionController
+{
+    
+}
+
+-(void)printInteractionControllerDidFinishJob:(UIPrintInteractionController *)printInteractionController
+{
+    
 }
 @end

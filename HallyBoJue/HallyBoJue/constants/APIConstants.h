@@ -113,6 +113,13 @@
  */
 #define kOrderStartService  @"korder/startservice"
 
+/*  分派技师和工位
+ *  services(jsonstring)
+ *  order_id
+ */
+#define kOrderSendWorkers    @"korder/sendworkers"
+
+
 
 /**  提交环车检查
  *  service_order_id
@@ -333,6 +340,25 @@
  */
 #define kChangePayType       @"korder/changedpaytype"
 
+/* 提醒数字
+ * keeper_id
+ *
+ */
+#define kUnReadNumber         @"kuser/unreadnumber"
+
+
+/* 设置已跟进
+ * follow_id
+ *
+ */
+#define kUpdateFollow     @"kfollow/updatefollow"
+
+
+/*  获取车检列表
+ *  service_order_id
+ *
+ */
+#define kGetCarCheckList    @"korder/getcarchecklist"
 
 
 
