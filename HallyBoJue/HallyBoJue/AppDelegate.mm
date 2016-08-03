@@ -76,7 +76,6 @@
         
         [[UIApplication sharedApplication] registerUserNotificationSettings:uns];
         
-        [[UIApplication sharedApplication] registerForRemoteNotifications];
         
         
 
@@ -93,33 +92,33 @@
     
     
   BOOL unregist =   [XGPush isUnRegisterStatus];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHadLogin]) {
-        
-        
-        [XGPush setAccount:[NSString stringWithFormat:@"%@",[UserInfo getUserModel].mobile]];
-
-        NSData *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
-        
-        if (deviceToken) {
-            
-            
-            [XGPush registerDevice:deviceToken successCallback:^{
-                
-                //成功之后的处理
-                NSLog(@"[XGPush Demo]register successBlock");
-                
-                
-            } errorCallback:^{
-                //失败之后的处理
-                NSLog(@"[XGPush Demo]register errorBlock");
-            }];
-            
-            
-        }
-        
-        
-    }
+//    
+//    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHadLogin]) {
+//        
+//        
+//        [XGPush setAccount:[NSString stringWithFormat:@"%@",[UserInfo getUserModel].mobile]];
+//
+//        NSData *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+//        
+//        if (deviceToken) {
+//            
+//            
+//            [XGPush registerDevice:deviceToken successCallback:^{
+//                
+//                //成功之后的处理
+//                NSLog(@"[XGPush Demo]register successBlock");
+//                
+//                
+//            } errorCallback:^{
+//                //失败之后的处理
+//                NSLog(@"[XGPush Demo]register errorBlock");
+//            }];
+//            
+//            
+//        }
+//        
+//        
+//    }
     
     NSLog(@"isUnregist:%d",unregist);
     
@@ -158,14 +157,17 @@
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     
+    NSString *deviceTokenString2 = [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<" withString:@""]stringByReplacingOccurrencesOfString:@">" withString:@""]stringByReplacingOccurrencesOfString:@" " withString:@""];
     
+//    NSString *devicestr = [[NSString alloc]initWithData:deviceToken encoding:NSUTF8StringEncoding];
     
-    [[NSUserDefaults standardUserDefaults ] setObject:deviceToken forKey:kDeviceToken];
+    [[NSUserDefaults standardUserDefaults ] setObject:deviceTokenString2 forKey:kDeviceToken];
     
     [[NSUserDefaults standardUserDefaults] synchronize];
     
+    
 
-    NSLog(@"xingge appid:%d",[XGPush getAccessID]);
+    NSLog(@"xingge appid:%d devicetoken:%@",[XGPush getAccessID],deviceTokenString2);
     
 
     
@@ -182,6 +184,11 @@
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     NSLog(@"did receiveRemoteNotification:%@",userInfo);
+    
+    NSDictionary *aps = [userInfo objectForKey:@"aps"];
+    NSString *alert = [aps objectForKey:@"alert"];
+    
+    [[[UIAlertView alloc]initWithTitle:nil message:alert delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil]show ];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kRecevieNewOrderNoti object:nil];
     

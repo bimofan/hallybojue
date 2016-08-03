@@ -33,6 +33,11 @@
     _doneService.layer.borderWidth = 1;
     _doneService.layer.borderColor = kBorderColor.CGColor;
     
+    _headImageVie.clipsToBounds = YES;
+    _headImageVie.layer.cornerRadius = _headImageVie.frame.size.width/2;
+    _headImageVie.contentMode = UIViewContentModeScaleAspectFill;
+    
+    
     
     _printButton.clipsToBounds= YES;
     _printButton.layer.cornerRadius = kCornerRadous;

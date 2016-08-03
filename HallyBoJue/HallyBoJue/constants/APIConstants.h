@@ -361,6 +361,14 @@
 #define kGetCarCheckList    @"korder/getcarchecklist"
 
 
+/*   退出登录
+ *   mobile
+ *
+ *
+ */
+#define kLogout      @"kuser/logout"
+
+
 
 
 

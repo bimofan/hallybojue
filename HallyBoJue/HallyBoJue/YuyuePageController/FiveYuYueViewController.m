@@ -78,9 +78,33 @@
     
     _timeLabel.text = _orderModel.order_time;
     
-    _statusLabel.text = _orderModel.status_str;
+    _statusLabel.text = [NSString stringWithFormat:@"支付状态:%@", _orderModel.status_str];
     
     _payType = _orderModel.pay_type;
+    
+    NSString *paytype_str = @"";
+    switch (_orderModel.pay_type) {
+        case 1:
+        {
+            paytype_str = @"支付方式:在线支付";
+        }
+        break;
+        case 2:
+        {
+            paytype_str = @"支付方式:线下支付";
+        }
+        break;
+        case 3:
+        {
+            paytype_str = @"支付方式:异常支付";
+        }
+        break;
+        
+        default:
+        break;
+    }
+    
+    _paytypeLabel.text = paytype_str;
     
     
     _order_amount_Label.text = [NSString stringWithFormat:@"￥%.2f",_orderModel.order_amount];
@@ -224,6 +248,10 @@
         if (isSuccess) {
             
             [CommonMethods showDefaultErrorString:@"支付方式修改成功"];
+            
+            _orderModel.pay_type = _payType;
+            
+            [self setOrderModel:_orderModel];
             
             
         }

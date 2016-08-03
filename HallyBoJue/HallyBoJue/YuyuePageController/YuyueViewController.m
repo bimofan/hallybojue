@@ -630,6 +630,8 @@
                 if (temmodel.id == model.id) {
                     
                     
+                    
+                    
                     temmodel.status = 4;
                     
                     temmodel.status_str = @"服务中";
@@ -644,6 +646,8 @@
             
             
             
+        
+            [[NSNotificationCenter defaultCenter ] postNotificationName:kRecevieNewOrderNoti object:nil];
             
             model.status_str = @"服务中";
             model.status = 4;

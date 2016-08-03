@@ -9,7 +9,7 @@
 #import "SettingViewController.h"
 #import "ChangeAvatarViewController.h"
 #import "ChangePasswordViewController.h"
-
+#import "XGPush.h"
 
 @interface SettingViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 
@@ -211,7 +211,15 @@
 {
     if (buttonIndex == 1) {
         
-    
+     
+
+        
+        NSString *mobile = [UserInfo getUserModel].mobile;
+        
+        [[NetWorking shareNetWorking] RequestWithAction:kLogout Params:@{@"mobile":mobile} itemModel:nil result:^(BOOL isSuccess, id data) {
+           
+            
+        }];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kLogoutNotification object:nil];
         

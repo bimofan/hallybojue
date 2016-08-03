@@ -64,9 +64,14 @@
         return;
     }
     
-    NSString *ip = [GetIPAddress getIPAddress:YES];
+    NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+    if (!deviceToken) {
+        deviceToken = @"";
+        
+    }
     
-    NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text,@"ip":ip};
+    
+    NSDictionary *param = @{@"mobile":_usernameTF.text,@"password":_codeTF.text,@"devicetoken":deviceToken};
     
      Usermodel *model = [[Usermodel alloc]init];
     
@@ -76,19 +81,25 @@
         
         if (isSuccess) {
           
+            
+           
+             [XGPush startApp:kXingePush_ACCESSID appKey:kXingePush_ACCESSKEY];
     
             //绑定信鸽推送
             [XGPush initForReregister:^{
                 
-                [XGPush setAccount:[NSString stringWithFormat:@"%@",model.mobile]];
+             [XGPush setAccount:[NSString stringWithFormat:@"%@",model.mobile]];
                 
-                
-                NSData *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:kDeviceToken];
+             
                 
                 if (deviceToken) {
                     
                     
-                    [XGPush registerDevice:deviceToken];
+//                    [XGPush registerDevice:deviceToken];
+                  NSString *devicetokenstr =  [XGPush registerDeviceStr:deviceToken];
+                    
+                    NSLog(@"devicetoken: %@",devicetokenstr);
+                    
                     
                     
                 }

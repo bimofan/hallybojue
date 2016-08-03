@@ -60,9 +60,9 @@ NetWorking *netWorking;
             
             block(NO,nil);
             
-            NSLog(@"url:%@,param:%@",url,param);
+//            NSLog(@"url:%@,param:%@",url,param);
             
-            NSLog(@"++++++++++Data is not Dictionary:%@",responseObject);
+//            NSLog(@"++++++++++Data is not Dictionary:%@",responseObject);
 
             return ;
             
@@ -143,7 +143,7 @@ NetWorking *netWorking;
         
         NSLog(@"url:%@,param:%@",url,param);
         
-        NSLog(@"success:%@",responseObject);
+//        NSLog(@"success:%@",responseObject);
         
         
         

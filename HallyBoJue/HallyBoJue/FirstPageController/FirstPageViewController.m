@@ -329,15 +329,19 @@
                 
                 NSString *service_name = [dict objectForKey:@"name"];
                 
-                if (muserviceString.length == 0) {
+                if (service_name) {
+                    if (muserviceString.length == 0) {
+                        
+                        [muserviceString appendString:service_name];
+                    }
+                    else
+                    {
+                        [muserviceString appendFormat:@"\n \n%@",service_name];
+                        
+                    }
                     
-                    [muserviceString appendString:service_name];
                 }
-                else
-                {
-                    [muserviceString appendFormat:@"\n \n%@",service_name];
-                    
-                }
+           
             }
             cell.serviceLabel.text = muserviceString;
             
