@@ -78,6 +78,11 @@
 #define ScreenHeight [UIScreen mainScreen].bounds.size.height
 
 
+//打印页面的宽度
+#define kPrintpageWidth    600
+#define kPrintpageHeight    800
+
+
 //默认头像
 #define kDefaultHeadImage   [UIImage imageNamed:@"defaultHead"]
 

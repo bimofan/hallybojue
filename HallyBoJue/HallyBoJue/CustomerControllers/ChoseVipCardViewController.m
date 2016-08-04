@@ -50,14 +50,23 @@
     [super viewWillAppear: animated];
     
     
-    if (_vipCardsArray.count == 0) {
-        
-         [self getvipdatas];
-        
-    }
+ 
     
         
 
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+ 
+    
+  
+    [self getvipdatas];
+        
+  
+    
 }
 
 -(void)ok
@@ -105,6 +114,8 @@
         
     }];
 }
+
+
 
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -143,7 +143,7 @@ NetWorking *netWorking;
         
         NSLog(@"url:%@,param:%@",url,param);
         
-//        NSLog(@"success:%@",responseObject);
+        NSLog(@"success:%@",responseObject);
         
         
         

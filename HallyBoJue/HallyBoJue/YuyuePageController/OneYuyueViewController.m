@@ -56,6 +56,12 @@
     _printSheetButotn.layer.borderWidth = 1;
     _printSheetButotn.layer.borderColor = kBorderColor.CGColor;
     
+    _showvipcardbutton.clipsToBounds= YES;
+    _showvipcardbutton.layer.cornerRadius = kCornerRadous;
+    _showvipcardbutton.layer.borderWidth = 1;
+    _showvipcardbutton.layer.borderColor = kBorderColor.CGColor;
+    
+    
     
     
     
@@ -81,7 +87,7 @@
     if (!_toPrintViewController) {
         
         _toPrintViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ToPrintViewController"];
-        _toPrintViewController.view.frame = self.view.frame;
+        _toPrintViewController.view.frame = CGRectMake(0, 0, kPrintpageWidth, kPrintpageHeight);
         
     }
     
@@ -359,6 +365,8 @@
         if ([self.delegate respondsToSelector:@selector(startSendWorders:)]) {
             
             _ordermodel.service_time = minis;
+            _ordermodel.expecte_time = [NSString stringWithFormat:@"%d",minis*60];
+            
             
             [self.delegate startSendWorders:_ordermodel];
             
@@ -388,7 +396,7 @@
             
 //            
             UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
-            //            pic.delegate = self;
+                        pic.delegate = self;
             
             UIPrintInfo *printInfo = [UIPrintInfo printInfo];
             printInfo.outputType = UIPrintInfoOutputGeneral;
@@ -443,6 +451,19 @@
 
 -(void)printInteractionControllerDidFinishJob:(UIPrintInteractionController *)printInteractionController
 {
+    [CommonMethods showDefaultErrorString:@"打印成功"];
+    
+}
+
+- (IBAction)showvipAction:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@(_ordermodel.user_id) forKey:kGetVipCardUser_id];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"showvipnav"];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
     
 }
 @end

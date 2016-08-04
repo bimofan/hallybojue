@@ -72,6 +72,12 @@
     _RemindButton.layer.borderColor = kBorderColor.CGColor;
     _RemindButton.layer.borderWidth = 1;
     
+    _uservipcardButton.clipsToBounds = YES;
+    _uservipcardButton.layer.cornerRadius = kCornerRadous;
+    _uservipcardButton.layer.borderColor = kBorderColor.CGColor;
+    _uservipcardButton.layer.borderWidth = 1;
+    
+    
     
     
 
@@ -351,5 +357,15 @@
     
     
     
+}
+- (IBAction)showuservipcardAction:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:_cUserModel.user_id forKey:kGetVipCardUser_id];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"showvipnav"];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
 }
 @end

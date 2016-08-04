@@ -368,6 +368,12 @@
  */
 #define kLogout      @"kuser/logout"
 
+/* 获取user vipcards
+ *  user_id
+ */
+#define kCustomerUservipcardinfo   @"kcustomer/uservipcardinfo"
+
+
 
 
 

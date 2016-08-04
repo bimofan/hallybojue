@@ -41,6 +41,14 @@
 //当前操作的订单
 #define kOrderInfo       @"OrderInfo"
 
+
+//获取vipcard 的user_id
+#define kGetVipCardUser_id   @"GetVipCardUser_id"
+
+//显示vipcard 类型  1显示所有  2显示单独用户
+#define kShowVipCardType     @"kShowVipCardType"
+
+
 //增加服务内容 类型
 #define kAddNewServiceType    @"AddNewServiceType"
 

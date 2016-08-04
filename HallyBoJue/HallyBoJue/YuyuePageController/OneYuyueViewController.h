@@ -48,12 +48,17 @@
 @property (weak, nonatomic) IBOutlet UITableView *serviceTable;
 
 @property (weak, nonatomic) IBOutlet UIButton *checkButton;
+
 - (IBAction)checkAction:(id)sender;
+
+
 
 
 @property (weak, nonatomic) IBOutlet UIButton *sendButton;
 
 - (IBAction)sendAction:(id)sender;
+
+
 
 
 
@@ -66,6 +71,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *addServiceButton;
 
 - (IBAction)addServiceAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIButton *showvipcardbutton;
+- (IBAction)showvipAction:(id)sender;
 
 
 @end

@@ -127,6 +127,8 @@
 		138EEA261D298B64005D4A00 /* BaiduMapHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA251D298B64005D4A00 /* BaiduMapHelper.m */; };
 		138EEA351D29BD87005D4A00 /* CustomerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA321D29BD87005D4A00 /* CustomerCell.m */; };
 		138EEA361D29BD87005D4A00 /* CustomerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 138EEA341D29BD87005D4A00 /* CustomerViewController.m */; };
+		139353311D52CC7400892A5C /* ShowVipCardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 139353301D52CC7400892A5C /* ShowVipCardViewController.m */; };
+		139353341D52D49200892A5C /* ShowVipCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139353331D52D49200892A5C /* ShowVipCardCell.m */; };
 		139705701D40714E00EBD326 /* PushServiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1397056F1D40714E00EBD326 /* PushServiceViewController.m */; };
 		139705731D4079AB00EBD326 /* PushServiceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 139705721D4079AB00EBD326 /* PushServiceCell.m */; };
 		13989C0C1D4336F100BDF16B /* BlankCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 13989C0B1D4336F100BDF16B /* BlankCell.m */; };
@@ -412,6 +414,10 @@
 		138EEA321D29BD87005D4A00 /* CustomerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerCell.m; sourceTree = "<group>"; };
 		138EEA331D29BD87005D4A00 /* CustomerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomerViewController.h; sourceTree = "<group>"; };
 		138EEA341D29BD87005D4A00 /* CustomerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomerViewController.m; sourceTree = "<group>"; };
+		1393532F1D52CC7400892A5C /* ShowVipCardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowVipCardViewController.h; sourceTree = "<group>"; };
+		139353301D52CC7400892A5C /* ShowVipCardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowVipCardViewController.m; sourceTree = "<group>"; };
+		139353321D52D49200892A5C /* ShowVipCardCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShowVipCardCell.h; sourceTree = "<group>"; };
+		139353331D52D49200892A5C /* ShowVipCardCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShowVipCardCell.m; sourceTree = "<group>"; };
 		1397056E1D40714E00EBD326 /* PushServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceViewController.h; sourceTree = "<group>"; };
 		1397056F1D40714E00EBD326 /* PushServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushServiceViewController.m; sourceTree = "<group>"; };
 		139705711D4079AB00EBD326 /* PushServiceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushServiceCell.h; sourceTree = "<group>"; };
@@ -1054,6 +1060,7 @@
 		138EEA301D29BD87005D4A00 /* CustomerControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1393532E1D52CC1C00892A5C /* ShowVipCardViewController */,
 				13989C0F1D44BEA100BDF16B /* EditCarInfoViewController */,
 				1397056D1D40712900EBD326 /* PushServiceViewController */,
 				13FA59AC1D3F25800041790F /* AddVipCardViewController */,
@@ -1070,6 +1077,17 @@
 				139C54FE1D2D462D000A7C8E /* CarTableViewCell.m */,
 			);
 			path = CustomerControllers;
+			sourceTree = "<group>";
+		};
+		1393532E1D52CC1C00892A5C /* ShowVipCardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1393532F1D52CC7400892A5C /* ShowVipCardViewController.h */,
+				139353301D52CC7400892A5C /* ShowVipCardViewController.m */,
+				139353321D52D49200892A5C /* ShowVipCardCell.h */,
+				139353331D52D49200892A5C /* ShowVipCardCell.m */,
+			);
+			name = ShowVipCardViewController;
 			sourceTree = "<group>";
 		};
 		1397056D1D40712900EBD326 /* PushServiceViewController */ = {
@@ -1425,6 +1443,7 @@
 			files = (
 				1384A6821D28621300D74892 /* YuyueRightCell.m in Sources */,
 				1384A6651D281B0A00D74892 /* JSONHTTPClient.m in Sources */,
+				139353341D52D49200892A5C /* ShowVipCardCell.m in Sources */,
 				138EEA031D296298005D4A00 /* CUserModel.m in Sources */,
 				1384A6341D27D2DB00D74892 /* AFHTTPRequestOperation.m in Sources */,
 				132C2F4C1D3079F400163F55 /* CarCheckViewController.m in Sources */,
@@ -1492,6 +1511,7 @@
 				1384A6671D281B0A00D74892 /* JSONKeyMapper.m in Sources */,
 				139705731D4079AB00EBD326 /* PushServiceCell.m in Sources */,
 				13A3F1EA1D3CC6D800C79B17 /* ServiceHistoryViewController.m in Sources */,
+				139353311D52CC7400892A5C /* ShowVipCardViewController.m in Sources */,
 				132084841D3B9E0200EDA00A /* FollowUserCell.m in Sources */,
 				13E8C9411D3891A500BA0F58 /* FourServiceCell.m in Sources */,
 				13D4C27B1D45E42A001432D3 /* PushHistoryViewController.m in Sources */,

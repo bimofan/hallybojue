@@ -53,6 +53,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *printButton;
 
 
+@property (weak, nonatomic) IBOutlet UIButton *vipcardButton;
+
+- (IBAction)showvipcardAction:(id)sender;
+
+
 - (IBAction)printAction:(id)sender;
 
 - (IBAction)addServiceAction:(id)sender;

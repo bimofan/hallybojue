@@ -11,6 +11,7 @@
 
 @interface ToPrintViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UILabel *orderidLabel;
 
 @property (nonatomic,strong) UIButton *sender;
 
@@ -24,5 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *carinfoLabel;
 
 @property (weak, nonatomic) IBOutlet UITableView *serviceTableView;
+
+
+@property (weak, nonatomic) IBOutlet UILabel *startTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *etaLabel;
+
 
 @end

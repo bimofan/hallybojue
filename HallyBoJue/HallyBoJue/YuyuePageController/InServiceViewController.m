@@ -11,7 +11,7 @@
 #import "ToPrintViewController.h"
 
 
-@interface InServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
+@interface InServiceViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate,UIPrintInteractionControllerDelegate>
 @property (nonatomic,strong) ToPrintViewController *toPrintViewController;
 
 @end
@@ -43,6 +43,12 @@
     _printButton.layer.cornerRadius = kCornerRadous;
     _printButton.layer.borderColor = kBorderColor.CGColor;
     _printButton.layer.borderWidth = 1;
+    
+    _vipcardButton.clipsToBounds =YES;
+    _vipcardButton.layer.cornerRadius = kCornerRadous;
+    _vipcardButton.layer.borderColor = kBorderColor.CGColor;
+    _vipcardButton.layer.borderWidth = 1;
+    
     
     
     _serviceTable.delegate = self;
@@ -141,7 +147,7 @@
     if (!_toPrintViewController) {
         
         _toPrintViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"ToPrintViewController"];
-        _toPrintViewController.view.frame = self.view.frame;
+        _toPrintViewController.view.frame = CGRectMake(0, 0, kPrintpageWidth, kPrintpageHeight);
         
     }
     
@@ -151,7 +157,21 @@
 
 
 
+
+- (IBAction)showvipcardAction:(id)sender {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@(_orderModel.user_id) forKey:kGetVipCardUser_id];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    UINavigationController *nav = [self.storyboard instantiateViewControllerWithIdentifier:@"showvipnav"];
+    
+    [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:nav animated:YES completion:nil];
+    
+}
+
 #pragma mark - 打印
+
 - (IBAction)printAction:(id)sender {
     
     
@@ -171,7 +191,7 @@
             
             //
             UIPrintInteractionController *pic = [UIPrintInteractionController sharedPrintController];
-            //            pic.delegate = self;
+            pic.delegate = self;
             
             UIPrintInfo *printInfo = [UIPrintInfo printInfo];
             printInfo.outputType = UIPrintInfoOutputGeneral;
@@ -344,5 +364,18 @@
         }];
     }
 }
+
+#pragma mark  UIPrintInteractionControllerDelegate
+-(void)printInteractionControllerWillStartJob:(UIPrintInteractionController *)printInteractionController
+{
+    
+}
+
+-(void)printInteractionControllerDidFinishJob:(UIPrintInteractionController *)printInteractionController
+{
+    [CommonMethods showDefaultErrorString:@"打印成功"];
+    
+}
+
 
 @end

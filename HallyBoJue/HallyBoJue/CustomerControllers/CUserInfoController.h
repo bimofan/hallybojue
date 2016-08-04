@@ -49,6 +49,8 @@
 
 - (IBAction)registCardAction:(id)sender;
 
+@property (weak, nonatomic) IBOutlet UIButton *uservipcardButton;
 
+- (IBAction)showuservipcardAction:(id)sender;
 
 @end
