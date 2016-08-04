@@ -74,7 +74,11 @@
     
     hadFirstRequest = NO;
     
-    [_leftTableView.header beginRefreshing];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:kHadLogin]) {
+        
+           [_leftTableView.header beginRefreshing];
+    }
+ 
     
     
     
@@ -97,7 +101,7 @@
     [super viewDidAppear: animated];
     
   
-    if (_yuyueArray.count == 0) {
+    if (_yuyueArray.count == 0 && [[NSUserDefaults standardUserDefaults]boolForKey:kHadLogin]) {
         
         [_leftTableView.header beginRefreshing];
         

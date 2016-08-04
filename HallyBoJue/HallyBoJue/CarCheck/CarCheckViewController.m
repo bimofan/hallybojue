@@ -696,27 +696,35 @@
 -(void)didChoseItems:(NSArray*)items
 {
     
-    NSDictionary *selectedDict = [items firstObject];
-    
-    NSString *advise = [selectedDict objectForKey:@"advise"];
-    
-    NSInteger advise_id = [[selectedDict objectForKey:@"advise_id"]integerValue];
-    
-    NSDictionary *rightdict = [_rightDataArray objectAtIndex:_rightSelectedindex];
-    
-    NSMutableDictionary *muRightDict = [[NSMutableDictionary alloc]initWithDictionary:rightdict];
-    
-    [muRightDict setObject:advise forKey:@"advise"];
-    
-    [muRightDict setObject:@(advise_id) forKey:@"advise_id"];
-    
-    
-    [_rightDataArray replaceObjectAtIndex:_rightSelectedindex withObject:muRightDict];
-    
-    [self saveleftdata];
-    
-    
-    [_advisButton setTitle:advise forState:UIControlStateNormal];
+    if (items.count > 0) {
+        
+        NSDictionary *selectedDict = [items firstObject];
+        
+        NSString *advise = [selectedDict objectForKey:@"advise"];
+        
+        NSInteger advise_id = [[selectedDict objectForKey:@"advise_id"]integerValue];
+        
+        NSDictionary *rightdict = [_rightDataArray objectAtIndex:_rightSelectedindex];
+        
+        NSMutableDictionary *muRightDict = [[NSMutableDictionary alloc]initWithDictionary:rightdict];
+        
+        if (!advise) {
+            
+            advise = @"";
+        }
+        [muRightDict setObject:advise forKey:@"advise"];
+        
+        [muRightDict setObject:@(advise_id) forKey:@"advise_id"];
+        
+        
+        [_rightDataArray replaceObjectAtIndex:_rightSelectedindex withObject:muRightDict];
+        
+        [self saveleftdata];
+        
+        
+        [_advisButton setTitle:advise forState:UIControlStateNormal];
+    }
+
     
     
     
