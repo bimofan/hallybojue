@@ -368,12 +368,12 @@
 #pragma mark  UIPrintInteractionControllerDelegate
 -(void)printInteractionControllerWillStartJob:(UIPrintInteractionController *)printInteractionController
 {
-    
+     [CommonMethods showDefaultErrorString:@"开始打印"];
 }
 
 -(void)printInteractionControllerDidFinishJob:(UIPrintInteractionController *)printInteractionController
 {
-    [CommonMethods showDefaultErrorString:@"打印成功"];
+
     
 }
 

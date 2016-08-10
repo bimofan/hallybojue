@@ -31,7 +31,7 @@
 @property (nonatomic,strong) NSDictionary *car;
 @property (nonatomic,strong) NSDictionary *service_order;
 
-@property (nonatomic,assign) BOOL iscall;
+@property (nonatomic,assign) int iscall;
 @property (nonatomic,strong) NSString *follow_time;
 
 

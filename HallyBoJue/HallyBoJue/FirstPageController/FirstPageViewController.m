@@ -193,8 +193,10 @@
                      OrderModel *ordermodel = [[OrderModel alloc ]init];
                     
                     NSDictionary *dict = [dataModel.items objectAtIndex:i];
+                    NSMutableDictionary *mudict = [[NSMutableDictionary alloc]initWithDictionary:dict];
                     
-                    [ordermodel setValuesForKeysWithDictionary:dict];
+                   
+                    [ordermodel setValuesForKeysWithDictionary:mudict];
                     
                     ordermodel.usermodel = [[CUserModel alloc]init];
                     

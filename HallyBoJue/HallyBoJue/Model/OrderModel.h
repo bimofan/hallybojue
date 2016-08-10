@@ -50,7 +50,9 @@
 
 @property (nonatomic,assign) int service_time;
 
-@property (nonatomic,assign) BOOL sendworker;
+@property (nonatomic,assign) int sendworker;
+
+@property (nonatomic,strong) NSDictionary *order_location;
 
 
 

@@ -253,8 +253,10 @@
     }
     else
     {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"服务预估时间" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:nil message:@"服务预估时间(分钟)" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alert.alertViewStyle  = UIAlertViewStylePlainTextInput;
+        UITextField *TF = [alert textFieldAtIndex:0];
+        TF.keyboardType = UIKeyboardTypeNumberPad;
         
         alert.tag = 9999;
         
@@ -446,14 +448,16 @@
 #pragma mark  UIPrintInteractionControllerDelegate
 -(void)printInteractionControllerWillStartJob:(UIPrintInteractionController *)printInteractionController
 {
-    
+    [CommonMethods showDefaultErrorString:@"开始打印"];
 }
 
 -(void)printInteractionControllerDidFinishJob:(UIPrintInteractionController *)printInteractionController
 {
-    [CommonMethods showDefaultErrorString:@"打印成功"];
+  
     
 }
+
+
 
 - (IBAction)showvipAction:(id)sender {
     
